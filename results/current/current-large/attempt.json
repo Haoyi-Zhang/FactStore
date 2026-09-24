@@ -1,0 +1,8 @@
+{
+  "case": "current-large",
+  "status": "CASE_COMPLETED",
+  "charged_cpu_reservation_seconds": 1200.0,
+  "campaign_charge_refunded": false,
+  "scientific_acceptance": "NOT_INFERRED",
+  "exit_code": 0
+}

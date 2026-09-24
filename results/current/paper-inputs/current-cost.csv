@@ -1,0 +1,10 @@
+scale,facts,engine,write_median_bytes,final_stored_median_bytes
+small,3000,FrontierStore,49152,1288184.0
+small,3000,SQLite-Normalized,335872,5264256.0
+small,3000,SQLite-Rooted-Audit,1363968,23076562.0
+medium,12000,FrontierStore,49152,3072188.5
+medium,12000,SQLite-Normalized,397312,7262408.0
+medium,12000,SQLite-Rooted-Audit,5306368,68829742.0
+large,36000,FrontierStore,49152,8054685.5
+large,36000,SQLite-Normalized,391168,11874348.0
+large,36000,SQLite-Rooted-Audit,15953920,143483441.5

@@ -1,0 +1,21 @@
+{
+  "case": "order-counterbalance",
+  "status": "CONTROLLER_TERMINATED_NO_OBSERVATIONS",
+  "wall_seconds_lower_bound_before_external_termination": 240.0,
+  "user_cpu_seconds_to_accounting": null,
+  "system_cpu_seconds_to_accounting": null,
+  "sampled_concurrent_tree_rss_peak_bytes": null,
+  "sampled_aggregate_threads_peak": null,
+  "sampled_process_count_peak": null,
+  "sampled_peak_is_continuous_bound": false,
+  "aggregate_address_space_design_bound_bytes": 4294967296,
+  "exit_code": null,
+  "charged_cpu_reservation_seconds_including_controller_and_validation": 480.0,
+  "campaign_charge_refunded": false,
+  "monitor_error": "The guarded launcher ended before it could emit final accounting.",
+  "explicit_case_worker_threads_bound": 0,
+  "process_count_stop": 2,
+  "child_cpu_affinity_count": 1,
+  "child_address_space_limit_bytes": 2147483648,
+  "sampled_os_threads_are_worker_count": false
+}

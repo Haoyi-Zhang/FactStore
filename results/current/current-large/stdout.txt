@@ -1,0 +1,1 @@
+{"status": "CASE_COMPLETED", "mode": "large", "rows": 48}

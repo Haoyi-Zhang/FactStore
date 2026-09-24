@@ -1,0 +1,52 @@
+{
+  "status": "CURRENT_EVIDENCE_SELECTION_FROZEN",
+  "accepted": [
+    {
+      "scale": "small",
+      "directory": "current-small"
+    },
+    {
+      "scale": "medium",
+      "directory": "current-medium-retry"
+    },
+    {
+      "scale": "large",
+      "directory": "current-large"
+    }
+  ],
+  "pilot": {
+    "directory": "current-pilot",
+    "use": "method admission only; excluded from main comparison"
+  },
+  "excluded": [
+    {
+      "directory": "current-medium",
+      "reason": "Controller was absent during the tail; retained only as failure evidence."
+    },
+    {
+      "directory": "boundary-tests",
+      "reason": "Admission monitor parser failed before a scientific result."
+    },
+    {
+      "directory": "boundary-tests-retry",
+      "reason": "A false operating-system thread gate terminated the case."
+    },
+    {
+      "directory": "order-sensitivity",
+      "reason": "The first order-control implementation failed before emitting observations."
+    },
+    {
+      "directory": "order-counterbalance",
+      "reason": "The corrected guarded order-control run emitted no observations before controller termination."
+    }
+  ],
+  "selection_rule": "Only attempts with attached controller accounting and durable-oracle equality enter the retained comparison tables.",
+  "combined_metric": "Per-observation persistence-return time plus the immediately following full-audit time; medians and p95 are computed after pairing.",
+  "execution_order": [
+    "FrontierStore",
+    "SQLite-Normalized",
+    "SQLite-Rooted-Audit"
+  ],
+  "order_control_status": "NO_ACCEPTED_COUNTERBALANCED_OBSERVATIONS",
+  "interpretation": "Latency ordering is descriptive for the retained fixed-order runs, not an order-controlled performance conclusion."
+}

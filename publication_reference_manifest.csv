@@ -1,0 +1,63 @@
+bibtex_key,title,manuscript_role,stable_locator
+ahmad2012dbtoaster,"DBToaster: Higher-Order Delta Processing for Dynamic, Frequently Fresh Views",Introduction and Section 8,https://doi.org/10.14778/2336664.2336670
+avgustinov2016ql,QL: Object-Oriented Queries on Relational Data,Introduction and Section 8,https://doi.org/10.4230/LIPIcs.ECOOP.2016.2
+budiu2023dbsp,DBSP: Automatic Incremental View Maintenance for Rich Query Languages,Model and Related Work,https://doi.org/10.14778/3587136.3587137
+buneman2001provenance,Why and Where: A Characterization of Data Provenance,Section 8,https://doi.org/10.1007/3-540-44503-X_20
+chajed2021gojournal,"GoJournal: A Verified, Concurrent, Crash-Safe Journaling System",Correctness Boundary and Related Work,https://www.usenix.org/system/files/osdi21-chajed.pdf
+chen2017dfscq,Verifying a High-Performance Crash-Safe File System Using a Tree Specification,Section 8,https://doi.org/10.1145/3132747.3132776
+chen2015fscq,Using Crash Hoare Logic for Certifying the FSCQ File System,Section 8,https://doi.org/10.1145/2815400.2815402
+cheney2009provenance,"Provenance in Databases: Why, How, and Where",Introduction,https://doi.org/10.1561/1900000006
+chidambaram2013optimistic,Optimistic Crash Consistency,Section 8,https://doi.org/10.1145/2517349.2522726
+chidambaram2012cwo,Consistency Without Ordering,Correctness and Related Work,https://www.usenix.org/system/files/conference/fast12/chidambaram.pdf
+ernst2001daikon,Dynamically Discovering Likely Program Invariants to Support Program Evolution,Introduction and Section 8,https://doi.org/10.1109/32.908957
+ganger2000softupdates,Soft Updates: A Solution to the Metadata Update Problem in File Systems,Section 3.2 and Section 8,https://doi.org/10.1145/350853.350863
+gao2026logicscan,LogicScan: An LLM-Driven Framework for Detecting Business Logic Vulnerabilities in Smart Contracts,Introduction and Lineage Boundary,https://arxiv.org/pdf/2602.03271
+gjengset2018noria,"Noria: Dynamic, Partially-Stateful Data-Flow for High-Performance Web Applications",Related Work,https://www.usenix.org/system/files/osdi18-gjengset.pdf
+green2007semirings,Provenance Semirings,Model and Related Work,https://doi.org/10.1145/1265530.1265535
+hammer2014adapton,"Adapton: Composable, Demand-Driven Incremental Computation",Section 8,https://doi.org/10.1145/2594291.2594324
+hance2020veribetrkv,Storage Systems Are Distributed Systems (So Verify Them That Way!),Correctness Boundary and Related Work,https://www.usenix.org/system/files/osdi20-hance.pdf
+jordan2016souffle,Souffl\'e: On Synthesis of Program Analyzers,Introduction and Section 8,https://doi.org/10.1007/978-3-319-41540-6_23
+leblanc2024squirrelfs,SquirrelFS: Using the Rust Compiler to Check File-System Crash Consistency,Section 8,https://www.usenix.org/conference/osdi24/presentation/leblanc
+mcsherry2013differential,Differential Dataflow,Introduction and Section 8,https://www.microsoft.com/en-us/research/publication/differential-dataflow/
+mohan1992aries,ARIES: A Transaction Recovery Method Supporting Fine-Granularity Locking and Partial Rollbacks Using Write-Ahead Logging,Section 8,https://doi.org/10.1145/128765.128770
+mohan2018crashmonkey,Finding Crash-Consistency Bugs with Bounded Black-Box Crash Testing,Section 2.4 and Section 8,https://www.usenix.org/conference/osdi18/presentation/mohan
+oneil1996lsm,The Log-Structured Merge-Tree (LSM-Tree),Section 8,https://doi.org/10.1007/s002360050048
+pillai2017ccfs,Application Crash Consistency and Performance with CCFS,Evidence Boundary and Related Work,https://www.usenix.org/system/files/conference/fast17/fast17_pillai.pdf
+rosenblum1992lfs,The Design and Implementation of a Log-Structured File System,Section 3.2 and Section 8,https://doi.org/10.1145/146941.146943
+sigurbjarnarson2016yggdrasil,Push-Button Verification of File Systems via Crash Refinement,Section 8,https://www.usenix.org/conference/osdi16/technical-sessions/presentation/sigurbjarnarson
+andersen2016btrdb,BTrDB: Optimizing Storage System Design for Timeseries Processing,Introduction and Related Work,https://www.usenix.org/system/files/conference/fast16/fast16-papers-andersen.pdf
+fryer2012recon,Recon: Verifying File System Consistency at Runtime,Introduction and Related Work,https://www.usenix.org/system/files/conference/fast12/fryer2-16-12.pdf
+kumar2017wafl,High-Performance Metadata Integrity Protection in the WAFL Copy-on-Write File System,Introduction and Related Work,https://www.usenix.org/system/files/conference/fast17/fast17-kumar.pdf
+shin2016isotope,Isotope: Transactional Isolation for Block Storage,Contract and Related Work,https://www.usenix.org/system/files/conference/fast16/fast16-papers-shin.pdf
+yuan2016betrfs,Optimizing Every Operation in a Write-Optimized File System,Results and Related Work,https://www.usenix.org/system/files/conference/fast16/fast16-papers-yuan.pdf
+lee2015f2fs,F2FS: A New File System for Flash Storage,Results and Related Work,https://www.usenix.org/system/files/conference/fast15/fast15-paper-lee.pdf
+liu2025ananke,"Fast, Transparent Filesystem Microkernel Recovery with Ananke",Evidence Boundary and Related Work,https://www.usenix.org/system/files/fast25-liu-jing.pdf
+shacham2017omid,"Omid, Reloaded: Scalable and Highly-Available Transaction Processing",Transactional Null and Related Work,https://www.usenix.org/system/files/conference/fast17/fast17-shacham.pdf
+ren2026hats,Holistic and Automated Task Scheduling for Distributed LSM-tree-based Storage,Methodology and Related Work,https://www.usenix.org/system/files/fast26-ren.pdf
+lu2016wisckey,WiscKey: Separating Keys from Values in SSD-Conscious Storage,Results and Related Work,https://www.usenix.org/system/files/conference/fast16/fast16-papers-lu.pdf
+berenson1995critique,A Critique of ANSI SQL Isolation Levels,Transactional Equivalence and Related Work,https://doi.org/10.1145/223784.223785
+adya2000generalized,Generalized Isolation Level Definitions,Transactional Equivalence and Related Work,https://doi.org/10.1109/ICDE.2000.839388
+fekete2005snapshot,Making Snapshot Isolation Serializable,Transactional Equivalence and Related Work,https://doi.org/10.1145/1071610.1071615
+cahill2008serializable,Serializable Isolation for Snapshot Databases,Transactional Equivalence and Related Work,https://doi.org/10.1145/1376616.1376690
+ports2012ssi,Serializable Snapshot Isolation in PostgreSQL,Transactional Equivalence and Related Work,https://doi.org/10.14778/2367502.2367523
+pillai2014filesystems,All File Systems Are Not Created Equal: On the Complexity of Crafting Crash-Consistent Applications,Correctness Boundary and Related Work,https://www.usenix.org/conference/osdi14/technical-sessions/presentation/pillai
+zheng2013ssd,Understanding the Robustness of SSDs under Power Fault,Correctness Boundary and Related Work,https://www.usenix.org/conference/fast13/technical-sessions/presentation/zheng
+gunawi2008sqck,SQCK: A Declarative File System Checker,Related Work,https://www.usenix.org/conference/osdi-08/sqck-declarative-file-system-checker
+prabhakaran2005iron,IRON File Systems,Correctness Boundary and Related Work,https://doi.org/10.1145/1095810.1095830
+rodeh2013btrfs,BTRFS: The Linux B-Tree Filesystem,Introduction and Related Work,https://doi.org/10.1145/2501620.2501623
+blakeley1986views,Efficiently Updating Materialized Views,Related Work,https://doi.org/10.1145/16894.16861
+gupta1993views,Maintaining Views Incrementally,Related Work,https://doi.org/10.1145/170035.170066
+acar2002adaptive,Adaptive Functional Programming,Related Work,https://doi.org/10.1145/503272.503296
+hammer2015names,Incremental Computation with Names,Related Work,https://doi.org/10.1145/2814270.2814305
+motik2015datalog,Incremental Update of Datalog Materialisation: the Backward/Forward Algorithm,Introduction and Related Work,https://doi.org/10.1609/aaai.v29i1.9409
+bravenboer2009declarative,Strictly Declarative Specification of Sophisticated Points-to Analyses,Introduction and Related Work,https://doi.org/10.1145/1640089.1640108
+whaley2005bddbddb,Using Datalog with Binary Decision Diagrams for Program Analysis,Introduction and Related Work,https://doi.org/10.1007/11575467_8
+cui2000lineage,Tracing the Lineage of View Data in a Warehousing Environment,Related Work,https://doi.org/10.1145/357775.357777
+bhagwat2004annotations,An Annotation Management System for Relational Databases,Related Work,https://www.vldb.org/conf/2004/RS23P2.PDF
+simmhan2005survey,A Survey of Data Provenance in e-Science,Related Work,https://doi.org/10.1145/1084805.1084812
+benjelloun2006uldb,ULDBs: Databases with Uncertainty and Lineage,Related Work,https://doi.org/10.5555/1182635.1164209
+li2004sundr,SUNDR: Secure Untrusted Data Repository,Implications and Related Work,https://www.usenix.org/event/osdi04/tech/full_papers/li_j/li_j.pdf
+mahajan2010depot,Depot: Cloud Storage with Minimal Trust,Implications and Related Work,https://www.usenix.org/conference/osdi10/depot-cloud-storage-minimal-trust
+schneier1999auditlogs,Secure Audit Logs to Support Computer Forensics,Implications and Related Work,https://doi.org/10.1145/317087.317089
+mytkowicz2009wrongdata,Producing Wrong Data Without Doing Anything Obviously Wrong!,Evaluation Method and Related Work,https://doi.org/10.1145/1508244.1508275
+curtsinger2013stabilizer,STABILIZER: Statistically Sound Performance Evaluation,Evaluation Method and Related Work,https://doi.org/10.1145/2451116.2451141

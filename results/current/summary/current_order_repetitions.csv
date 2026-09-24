@@ -1,0 +1,8 @@
+scale,case_directory,repetition,frontier_combined_median_ms,rooted_combined_median_ms,frontier_to_rooted_median_ratio,rooted_faster_aligned_updates,frontier_faster_aligned_updates,ties,aligned_updates
+small,current-small,0,199.063,131.9065825,1.5091210478445984,15,1,0,16
+small,current-small,1,210.529177,120.58749499999999,1.7458624295993546,15,1,0,16
+small,current-small,2,240.35896350000002,119.28957300000002,2.014920143104209,14,2,0,16
+medium,current-medium-retry,0,1046.636236,722.037735,1.4495589153661061,11,1,0,12
+medium,current-medium-retry,1,945.340567,723.607318,1.3064275933704694,9,3,0,12
+large,current-large,0,2935.284554,2573.649206,1.140514623032895,6,2,0,8
+large,current-large,1,2826.415462,2548.2245009999997,1.109170507108314,5,3,0,8

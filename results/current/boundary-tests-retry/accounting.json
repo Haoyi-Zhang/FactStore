@@ -1,0 +1,18 @@
+{
+  "case": "boundary-tests",
+  "status": "RESOURCE_LIMIT",
+  "wall_seconds_to_accounting": 0.007309142999986307,
+  "user_cpu_seconds_to_accounting": 0.0,
+  "system_cpu_seconds_to_accounting": 0.0075429999999999985,
+  "sampled_concurrent_tree_rss_peak_bytes": 96522240,
+  "sampled_aggregate_threads_peak": 7,
+  "sampled_process_count_peak": 2,
+  "sampled_peak_is_continuous_bound": false,
+  "aggregate_address_space_design_bound_bytes": 1048576000,
+  "exit_code": -9,
+  "admission_available_memory_bytes": 3931942912,
+  "admission_worker_headroom": 4,
+  "charged_cpu_reservation_seconds_including_controller_and_validation": 240.0,
+  "campaign_charge_refunded": false,
+  "monitor_error": null
+}

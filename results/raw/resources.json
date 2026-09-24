@@ -1,0 +1,9 @@
+{
+  "mode": "full",
+  "network_used": false,
+  "peak_resident_mib": 213.5078125,
+  "system_cpu_seconds": 12.72334,
+  "user_cpu_seconds": 376.780107,
+  "wall_seconds": 355.86625378700023,
+  "workers": 4
+}

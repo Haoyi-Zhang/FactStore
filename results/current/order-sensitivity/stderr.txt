@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "<artifact-root>/experiments/order_sensitivity.py", line 205, in <module>
+    run(arguments.output)
+    ~~~^^^^^^^^^^^^^^^^^^
+  File "<artifact-root>/experiments/order_sensitivity.py", line 69, in run
+    durable = engine.durable_state()
+              ^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'FrontierStore' object has no attribute 'durable_state'

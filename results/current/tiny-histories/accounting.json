@@ -1,0 +1,22 @@
+{
+  "case": "tiny-histories",
+  "status": "CASE_COMPLETED",
+  "wall_seconds_to_accounting": 0.7239294530000393,
+  "user_cpu_seconds_to_accounting": 0.693063,
+  "system_cpu_seconds_to_accounting": 0.06495099999999998,
+  "sampled_concurrent_tree_rss_peak_bytes": 192466944,
+  "sampled_aggregate_threads_peak": 7,
+  "sampled_process_count_peak": 2,
+  "sampled_peak_is_continuous_bound": false,
+  "aggregate_address_space_design_bound_bytes": 1048576000,
+  "exit_code": 0,
+  "admission_available_memory_bytes": 3931840512,
+  "admission_worker_headroom": 4,
+  "charged_cpu_reservation_seconds_including_controller_and_validation": 120.0,
+  "campaign_charge_refunded": false,
+  "monitor_error": null,
+  "explicit_case_worker_threads_bound": 0,
+  "process_count_stop": 2,
+  "child_cpu_affinity_count": 1,
+  "sampled_os_threads_are_worker_count": false
+}

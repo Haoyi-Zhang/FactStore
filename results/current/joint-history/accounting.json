@@ -1,0 +1,22 @@
+{
+  "case": "joint-history",
+  "status": "CASE_COMPLETED",
+  "wall_seconds_to_accounting": 0.8346185480000372,
+  "user_cpu_seconds_to_accounting": 0.724174,
+  "system_cpu_seconds_to_accounting": 0.09900899999999999,
+  "sampled_concurrent_tree_rss_peak_bytes": 193507328,
+  "sampled_aggregate_threads_peak": 8,
+  "sampled_process_count_peak": 2,
+  "sampled_peak_is_continuous_bound": false,
+  "aggregate_address_space_design_bound_bytes": 1048576000,
+  "exit_code": 0,
+  "admission_available_memory_bytes": 3931873280,
+  "admission_worker_headroom": 4,
+  "charged_cpu_reservation_seconds_including_controller_and_validation": 240.0,
+  "campaign_charge_refunded": false,
+  "monitor_error": null,
+  "explicit_case_worker_threads_bound": 1,
+  "process_count_stop": 2,
+  "child_cpu_affinity_count": 1,
+  "sampled_os_threads_are_worker_count": false
+}

@@ -1,0 +1,8 @@
+{
+  "case": "order-sensitivity",
+  "status": "CASE_FAILED",
+  "charged_cpu_reservation_seconds": 600.0,
+  "campaign_charge_refunded": false,
+  "scientific_acceptance": "NOT_INFERRED",
+  "exit_code": 1
+}

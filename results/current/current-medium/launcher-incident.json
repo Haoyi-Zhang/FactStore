@@ -1,0 +1,15 @@
+{
+  "case": "current-medium",
+  "status": "UNCONTROLLED_TAIL_NOT_ACCEPTED",
+  "detected_utc": "2026-09-10T17:00:01.979887Z",
+  "charged_cpu_reservation_seconds": 900.0,
+  "campaign_charge_refunded": false,
+  "facts": [
+    "The outer launcher process was terminated by the execution interface before it wrote accounting.json.",
+    "The child process remained alive because the runner created a separate session without a parent-death signal.",
+    "The child later wrote a syntactically complete 72-row medium output and exited, but the controller was absent during the tail of execution.",
+    "The orphan was explicitly terminated or confirmed gone before any subsequent case was admitted."
+  ],
+  "scientific_use": "The generated observations are retained as failure evidence but excluded from manuscript tables, plots, claims, and accepted reproductions.",
+  "required_repair": "Require the child to receive SIGKILL if the runner parent dies, retain a pre-launch reservation record, and rerun into a fresh output directory under an attached controller."
+}

@@ -1,0 +1,23 @@
+{
+  "case": "current-medium",
+  "status": "CASE_COMPLETED",
+  "wall_seconds_to_accounting": 51.909223798000085,
+  "user_cpu_seconds_to_accounting": 53.952078,
+  "system_cpu_seconds_to_accounting": 1.405831,
+  "sampled_concurrent_tree_rss_peak_bytes": 249270272,
+  "sampled_aggregate_threads_peak": 7,
+  "sampled_process_count_peak": 2,
+  "sampled_peak_is_continuous_bound": false,
+  "aggregate_address_space_design_bound_bytes": 2684354560,
+  "exit_code": 0,
+  "admission_available_memory_bytes": 3931045888,
+  "admission_worker_headroom": 4,
+  "charged_cpu_reservation_seconds_including_controller_and_validation": 900.0,
+  "campaign_charge_refunded": false,
+  "monitor_error": null,
+  "explicit_case_worker_threads_bound": 0,
+  "process_count_stop": 2,
+  "child_cpu_affinity_count": 1,
+  "child_address_space_limit_bytes": 1342177280,
+  "sampled_os_threads_are_worker_count": false
+}

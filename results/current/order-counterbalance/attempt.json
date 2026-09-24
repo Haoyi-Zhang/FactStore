@@ -1,0 +1,8 @@
+{
+  "case": "order-counterbalance",
+  "status": "CONTROLLER_TERMINATED_NO_OBSERVATIONS",
+  "charged_cpu_reservation_seconds": 480.0,
+  "campaign_charge_refunded": false,
+  "scientific_acceptance": "EXCLUDED",
+  "exit_code": null
+}

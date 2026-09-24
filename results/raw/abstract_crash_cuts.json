@@ -1,0 +1,45 @@
+{
+  "all_closed": true,
+  "crash_cuts": 7750,
+  "cut_counts": {
+    "after_footer": 775,
+    "after_header": 775,
+    "after_root_dirsync": 775,
+    "after_root_fsync": 775,
+    "after_root_replace": 775,
+    "after_root_write": 775,
+    "after_segment_dirsync": 775,
+    "after_segment_fsync": 775,
+    "before_footer": 775,
+    "before_segment": 775
+  },
+  "cuts": [
+    "before_segment",
+    "after_header",
+    "before_footer",
+    "after_footer",
+    "after_segment_fsync",
+    "after_segment_dirsync",
+    "after_root_write",
+    "after_root_fsync",
+    "after_root_replace",
+    "after_root_dirsync"
+  ],
+  "histories": 775,
+  "intermediate_states": 2925,
+  "operation_counts": {
+    "advance_schema": 585,
+    "install_fact": 585,
+    "replace_a": 585,
+    "replace_b": 585,
+    "retract_fact": 585
+  },
+  "operations": [
+    "replace_a",
+    "replace_b",
+    "retract_fact",
+    "install_fact",
+    "advance_schema"
+  ],
+  "violations": []
+}

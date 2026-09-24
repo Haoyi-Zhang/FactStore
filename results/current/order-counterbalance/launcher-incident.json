@@ -1,0 +1,14 @@
+{
+  "case": "order-counterbalance",
+  "status": "NO_ACCEPTED_OBSERVATIONS",
+  "charged_cpu_reservation_seconds": 480.0,
+  "campaign_charge_refunded": false,
+  "facts": [
+    "The complete case reservation was charged before launch.",
+    "The guarded launcher ended before writing its normal final accounting record.",
+    "Neither observations.json nor observations.csv was produced.",
+    "The launched process tree was confirmed absent before finalization."
+  ],
+  "scientific_use": "Retained only as failed order-control evidence. It establishes neither presence nor absence of a run-order effect and contributes no latency observation.",
+  "follow_up": "No rerun is admitted because the frozen campaign allowance is exhausted."
+}

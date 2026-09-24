@@ -1,0 +1,1 @@
+{"status": "CASE_COMPLETED", "mode": "pilot", "rows": 24}

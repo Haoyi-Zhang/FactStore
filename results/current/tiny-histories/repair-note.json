@@ -1,0 +1,10 @@
+{
+  "status": "DETERMINISTIC_CORRECTION_COMPLETED",
+  "scientific_measurement": false,
+  "reason": "Removed an unintended prefix truncation from the declared finite history universe.",
+  "retired_history_count": 769,
+  "current_history_count": 775,
+  "current_intermediate_state_count": 2925,
+  "current_publication_cut_count": 7750,
+  "resource_accounting": "The correction is a deterministic finite checker rerun under document/artifact maintenance; no performance observation was added and no prior campaign charge was refunded."
+}

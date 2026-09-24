@@ -1,0 +1,11 @@
+file,upstream_path,use
+Airdrop.sol,contracts/src/app/airdrop/Airdrop.sol,compact lexical excerpt
+Create2.sol,contracts/src/app/create2/Create2.sol,compact lexical excerpt
+CrowdFund.sol,contracts/src/app/crowd-fund/CrowdFund.sol,compact lexical excerpt
+DutchAuction.sol,contracts/src/app/dutch-auction/DutchAuction.sol,compact lexical excerpt
+ERC20.sol,contracts/src/app/erc20/ERC20.sol,compact lexical excerpt
+ERC721.sol,contracts/src/app/erc721/ERC721.sol,compact lexical excerpt
+EnglishAuction.sol,contracts/src/app/english-auction/EnglishAuction.sol,compact lexical excerpt
+EtherWallet.sol,contracts/src/app/ether-wallet/EtherWallet.sol,compact lexical excerpt
+Proxy.sol,contracts/src/app/deploy-any-contract/Proxy.sol,compact lexical excerpt
+TokenSwap.sol,contracts/src/app/erc20/TokenSwap.sol,compact lexical excerpt

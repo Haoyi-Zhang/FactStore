@@ -1,0 +1,8 @@
+mutation,expected_witness,observed_witness,rejected
+missing-selected-segment,MISSING_SEGMENT,MISSING_SEGMENT,True
+truncated-footer,INCOMPLETE_SEGMENT,INCOMPLETE_SEGMENT,True
+record-phase-order,PHASE_ORDER,PHASE_ORDER,True
+source-generation-type,FIELD_TYPE,FIELD_TYPE,True
+stale-dependency-generation,STALE_DEPENDENCY,STALE_DEPENDENCY,True
+root-fact-count,ROOT_COUNT,ROOT_COUNT,True
+selected-path-escape,PATH_ESCAPE,PATH_ESCAPE,True

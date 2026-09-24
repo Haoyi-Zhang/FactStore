@@ -1,0 +1,13 @@
+role,scale,case_directory,source_count,fact_count,engine,observations,update_median_ms,update_p95_ms,audit_median_ms,audit_p95_ms,combined_median_ms,combined_p95_ms,write_median_bytes,final_stored_median_bytes,all_durable_equal,audit_kind
+pilot,pilot,current-pilot,500,3000,FrontierStore,8,18.3886515,21.81345475,134.9355395,197.57903665,153.645063,218.0877621,28672.0,808397,True,independent-segment-parser-plus-fresh-open
+pilot,pilot,current-pilot,500,3000,SQLite-Normalized,8,4.3404475,4.70415835,19.4592345,49.17104364999998,23.656211,53.25520589999998,198656.0,2356256,True,sqlite-one-read-transaction
+pilot,pilot,current-pilot,500,3000,SQLite-Rooted-Audit,8,24.3408145,25.53690375,93.662275,127.735105,117.9056135,152.0706597,1355776.0,12127726,True,root-selected-sqlite-and-independent-full-export
+accepted,small,current-small,500,3000,FrontierStore,48,19.348549,47.34838144999996,195.386031,285.96711300000004,219.7698475,304.5083771,49152.0,1288184,True,independent-segment-parser-plus-fresh-open
+accepted,small,current-small,500,3000,SQLite-Normalized,48,5.2294225,6.1856757,22.649105,71.6060835,28.2193135,76.84926555000001,335872.0,5264256,True,sqlite-one-read-transaction
+accepted,small,current-small,500,3000,SQLite-Rooted-Audit,48,25.6583635,57.75229704999996,77.0733645,136.4148056,128.0102265,164.36662065,1363968.0,23076562,True,root-selected-sqlite-and-independent-full-export
+accepted,medium,current-medium-retry,2000,12000,FrontierStore,24,110.13158,258.0006260999998,869.2565995,1013.7775174999999,979.0637690000001,1205.3154151499998,49152.0,3072188.5,True,independent-segment-parser-plus-fresh-open
+accepted,medium,current-medium-retry,2000,12000,SQLite-Normalized,24,20.956384,85.89279305,172.35870799999998,204.26010535,198.109898,225.7485878,397312.0,7262408.0,True,sqlite-one-read-transaction
+accepted,medium,current-medium-retry,2000,12000,SQLite-Rooted-Audit,24,165.0911635,247.31390344999994,566.4582605,654.7190759,722.7833085,827.28162765,5306368.0,68829742.0,True,root-selected-sqlite-and-independent-full-export
+accepted,large,current-large,6000,36000,FrontierStore,16,409.709652,460.1674005,2428.4138734999997,3038.0014105,2884.6880135,3392.0829465,49152.0,8054685.5,True,independent-segment-parser-plus-fresh-open
+accepted,large,current-large,6000,36000,SQLite-Normalized,16,79.3120445,192.20859075,625.3440725,1079.04094125,737.820705,1265.98806825,391168.0,11874348.0,True,sqlite-one-read-transaction
+accepted,large,current-large,6000,36000,SQLite-Rooted-Audit,16,612.920312,748.6178944999999,1973.8938465,2284.5200415,2548.2245009999997,2959.5299029999996,15953920.0,143483441.5,True,root-selected-sqlite-and-independent-full-export

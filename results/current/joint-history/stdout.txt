@@ -1,0 +1,1 @@
+{"status": "CASE_COMPLETED", "completed_updates": 20}

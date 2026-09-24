@@ -1,0 +1,136 @@
+{
+  "batch_one": {
+    "FrontierStore_update_p50_ms": 16.6197405,
+    "SQLite-Normalized_update_p50_ms": 1.188635
+  },
+  "central": {
+    "batch": 8,
+    "dependency_width": 2,
+    "engines": {
+      "DBM-Dumb-Rebuild": {
+        "query_p50_us": 0.556,
+        "space_amplification_p50": 1.000008128,
+        "update_p50_ms": 210.311889,
+        "update_p95_ms": 266.3893202,
+        "write_amplification_p50": 816.441750842
+      },
+      "FrontierStore": {
+        "query_p50_us": 6.63,
+        "space_amplification_p50": 1.068605984,
+        "update_p50_ms": 66.5134685,
+        "update_p95_ms": 72.50791985,
+        "write_amplification_p50": 5.516498316
+      },
+      "SQLite-Normalized": {
+        "query_p50_us": 6.73,
+        "space_amplification_p50": 1.254949533,
+        "update_p50_ms": 7.2675345,
+        "update_p95_ms": 7.7667193,
+        "write_amplification_p50": 45.247434485
+      },
+      "SQLite-Rebuild": {
+        "query_p50_us": 0.551,
+        "space_amplification_p50": 1.195658041,
+        "update_p50_ms": 242.80093,
+        "update_p95_ms": 308.198292,
+        "write_amplification_p50": 974.121661055
+      }
+    },
+    "fact_count": 36000,
+    "source_count": 6000
+  },
+  "compaction": {
+    "0": {
+      "base_p50_ms": null,
+      "open_p50_ms": 481.6257795,
+      "space_amplification_p50": 1.827554785
+    },
+    "10": {
+      "base_p50_ms": 55.43938975,
+      "open_p50_ms": 116.998482,
+      "space_amplification_p50": 1.147917292
+    },
+    "40": {
+      "base_p50_ms": 62.310197,
+      "open_p50_ms": 123.412996,
+      "space_amplification_p50": 1.147917292
+    }
+  },
+  "concurrency": {
+    "0": {
+      "reader_snapshots_per_s_p50": 0.0,
+      "writer_p95_ms_p50": 6.16122785,
+      "writer_updates_per_s_p50": 64.649610214
+    },
+    "1": {
+      "reader_snapshots_per_s_p50": 14.141408192,
+      "writer_p95_ms_p50": 42.15471405,
+      "writer_updates_per_s_p50": 14.141408192
+    },
+    "3": {
+      "reader_snapshots_per_s_p50": 19.249820806,
+      "writer_p95_ms_p50": 154.0591518,
+      "writer_updates_per_s_p50": 5.409785707
+    }
+  },
+  "correctness": {
+    "abstract_crash_cuts": 7750,
+    "abstract_histories": 775,
+    "abstract_violations": 0,
+    "archived_asserted_tests": 23,
+    "concurrency_runs": 9,
+    "intermediate_states": 2925,
+    "mutation_failures": 0,
+    "mutations": 7,
+    "process_exit_failures": 0,
+    "process_exits": 80,
+    "public_updates": 40,
+    "reader_closure_violations": 0
+  },
+  "evidence_scope": "Retained earlier implementation; current repaired evidence is recorded separately; no individual old test transcript.",
+  "invalidation": {
+    "affected_facts": 24,
+    "fact_count": 96000,
+    "reverse_p50_us": 1.883,
+    "scan_p50_us": 33798.9385
+  },
+  "mode": "full",
+  "public_input": {
+    "final_facts": 129,
+    "update_p50_ms": 0.634617,
+    "updates": 40,
+    "verify_p50_ms": 4.697281500000001
+  },
+  "ratios": {
+    "dbm_dumb_rebuild_over_frontier_update": 3.161944396269156,
+    "scan_over_reverse_invalidation": 17949.515932023365,
+    "sqlite_normalized_over_frontier_update": 0.10926410340486152,
+    "sqlite_rebuild_over_frontier_update": 3.6504024745003334
+  },
+  "raw_counts": {
+    "compaction": 24,
+    "concurrency": 9,
+    "crash": 80,
+    "invalidation": 240,
+    "mutation": 7,
+    "public_input": 40,
+    "scale": 96,
+    "sensitivity": 168,
+    "summary": 52
+  },
+  "resources": {
+    "campaign_total_known": false,
+    "interpretation": "Earlier sampled interval only; actual historical use is not reconstructed. Current admission uses a separate conservative policy upper bound.",
+    "retained_sample": {
+      "mode": "full",
+      "network_used": false,
+      "peak_resident_mib": 213.5078125,
+      "system_cpu_seconds": 12.72334,
+      "user_cpu_seconds": 376.780107,
+      "wall_seconds": 355.86625378700023,
+      "workers": 4
+    },
+    "rss_is_aggregate_concurrent": false,
+    "worker_count_is_observed": false
+  }
+}
