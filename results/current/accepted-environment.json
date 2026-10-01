@@ -1,0 +1,109 @@
+{
+  "cases": {
+    "large": {
+      "accounting_file": "results/current/current-large/accounting.json",
+      "admission_available_memory_bytes": 3930697728,
+      "admission_worker_headroom": 4,
+      "child_cpu_affinity_count": 1,
+      "configuration": {
+        "batch": 8,
+        "repetitions": 2,
+        "source_counts": [
+          6000
+        ],
+        "updates": 8
+      },
+      "directory": "current-large",
+      "exact_environment_fields": "unknown fields inherit the common explicit-unknown list",
+      "mode": "large",
+      "observations": 48,
+      "observations_file": "results/current/current-large/observations.json",
+      "sampled_aggregate_threads_peak": 7,
+      "sampled_concurrent_tree_rss_peak_bytes": 352030720,
+      "sampled_process_count_peak": 2,
+      "timing_scope": "persistence return excludes shared apply_transaction; audit is timed separately after every update",
+      "write_bytes_available_for_every_row": true,
+      "write_scope": "Linux process write_bytes delta; software-accounted block writes, not device traffic"
+    },
+    "medium": {
+      "accounting_file": "results/current/current-medium-retry/accounting.json",
+      "admission_available_memory_bytes": 3931045888,
+      "admission_worker_headroom": 4,
+      "child_cpu_affinity_count": 1,
+      "configuration": {
+        "batch": 8,
+        "repetitions": 2,
+        "source_counts": [
+          2000
+        ],
+        "updates": 12
+      },
+      "directory": "current-medium-retry",
+      "exact_environment_fields": "unknown fields inherit the common explicit-unknown list",
+      "mode": "medium",
+      "observations": 72,
+      "observations_file": "results/current/current-medium-retry/observations.json",
+      "sampled_aggregate_threads_peak": 7,
+      "sampled_concurrent_tree_rss_peak_bytes": 249270272,
+      "sampled_process_count_peak": 2,
+      "timing_scope": "persistence return excludes shared apply_transaction; audit is timed separately after every update",
+      "write_bytes_available_for_every_row": true,
+      "write_scope": "Linux process write_bytes delta; software-accounted block writes, not device traffic"
+    },
+    "small": {
+      "accounting_file": "results/current/current-small/accounting.json",
+      "admission_available_memory_bytes": 3931340800,
+      "admission_worker_headroom": 4,
+      "child_cpu_affinity_count": 1,
+      "configuration": {
+        "batch": 8,
+        "repetitions": 3,
+        "source_counts": [
+          500
+        ],
+        "updates": 16
+      },
+      "directory": "current-small",
+      "exact_environment_fields": "unknown fields inherit the common explicit-unknown list",
+      "mode": "small",
+      "observations": 144,
+      "observations_file": "results/current/current-small/observations.json",
+      "sampled_aggregate_threads_peak": 7,
+      "sampled_concurrent_tree_rss_peak_bytes": 209801216,
+      "sampled_process_count_peak": 2,
+      "timing_scope": "persistence return excludes shared apply_transaction; audit is timed separately after every update",
+      "write_bytes_available_for_every_row": true,
+      "write_scope": "Linux process write_bytes delta; software-accounted block writes, not device traffic"
+    }
+  },
+  "confirmed_common": {
+    "cgroup_v2_controls_required_and_observed": true,
+    "child_cpu_affinity_count": 1,
+    "engine_order": [
+      "FrontierStore",
+      "SQLite-Normalized",
+      "SQLite-Rooted-Audit"
+    ],
+    "evidence_basis": [
+      "accepted runs completed through a launcher that requires fcntl, /proc/meminfo, /proc process status, cgroup-v2 memory.max/cpu.max, os.sched_getaffinity, and zero SwapTotal",
+      "all accepted observation rows contain a non-null /proc/self/io write_bytes delta"
+    ],
+    "platform_family": "Linux-compatible POSIX environment",
+    "procfs_required_and_observed": true,
+    "rooted_audit_timed_pair_passes": 2,
+    "swap_total_required_zero": true
+  },
+  "scope": "accepted fixed-order engine runs only",
+  "source_identity_limit": "The delivered source contains later correctness and documentation repairs. No immutable identifier was retained for the exact source tree that produced the accepted timings, so the current tree is not claimed byte-identical to the timed tree.",
+  "status": "PARTIALLY_RECOVERED_WITH_EXPLICIT_UNKNOWNS",
+  "unknown_not_recorded_at_measurement_time": [
+    "Python interpreter version and build",
+    "SQLite library version and compile options",
+    "Linux kernel release and distribution",
+    "filesystem type, mount options, and storage medium",
+    "host CPU model and frequency policy",
+    "virtualization/container provider and host sharing",
+    "immutable source commit, release, or byte-identical source identifier"
+  ],
+  "warning": "This record reconstructs only facts supported by retained run files and the launcher contract. It does not substitute the current review machine for the original measurement environment."
+}

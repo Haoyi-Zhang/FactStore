@@ -1,10 +1,19 @@
 {
-  "status": "DETERMINISTIC_CORRECTION_COMPLETED",
-  "scientific_measurement": false,
-  "reason": "Removed an unintended prefix truncation from the declared finite history universe.",
-  "retired_history_count": 769,
+  "abstract_model": "abstract-selector-object-v1",
   "current_history_count": 775,
   "current_intermediate_state_count": 2925,
   "current_publication_cut_count": 7750,
-  "resource_accounting": "The correction is a deterministic finite checker rerun under document/artifact maintenance; no performance observation was added and no prior campaign charge was refunded."
+  "negative_controls": [
+    "NON_ENDPOINT_OBSERVATION",
+    "CUT_ENDPOINT_MISMATCH"
+  ],
+  "reason": "Removed the prefix truncation and replaced the old preassigned-endpoint closure loop with an abstract complete-object/selector state machine plus a separate endpoint/cut oracle.",
+  "resource_accounting": "This deterministic finite checker and non-performance validation add no accepted timing observation and refund no prior campaign charge.",
+  "retired_history_count": 769,
+  "scientific_measurement": false,
+  "selected_endpoint_counts": {
+    "new": 1550,
+    "old": 6200
+  },
+  "status": "DETERMINISTIC_CORRECTION_AND_ORACLE_REPAIR_COMPLETED"
 }

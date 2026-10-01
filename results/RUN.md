@@ -28,7 +28,7 @@ The pilot is retained but excluded from the main comparison. `current/current-me
 - `current/tiny-histories/`: 775 histories, 2,925 states, and 7,750 publication cuts complete with zero violations.
 - `current/joint-history/`: 20 updates, one reader, and five compactions complete; fresh and held endpoints, pins, standalone checking, and released-history collection all pass.
 
-Earlier current-suite directories are retained as intermediate evidence. Only `code-audit-tests/` is the source-coupled complete 104-method transcript for the delivered implementation.
+Earlier current-suite directories are retained as intermediate evidence. Only `code-audit-tests/` is the source-coupled complete 114-method transcript for the delivered implementation.
 
 ## Historical surfaces
 
@@ -101,3 +101,15 @@ PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=. python experiments/journal_robustness.py 
 ```
 
 It emits JSON, two CSV surfaces, and TeX macros with a fixed bootstrap seed. The outputs remain conditional on the fixed engine order.
+
+
+## Reviewer-repair validation
+
+`current/reviewer-repairs/verification.json` is a deterministic, non-performance
+record for the abstract selector oracle, replacement-only dependency change,
+legal closed-nonendpoint construction, rooted-audit double-pass call count, and
+all-source syntax parser negative case.  `current/accepted-environment.json`
+records the confirmed historical platform surface and explicitly unknown fields
+for all three accepted scale cases.  Neither file modifies the frozen 264 timing
+rows.
+

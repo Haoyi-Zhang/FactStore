@@ -188,6 +188,29 @@ dependencies in one read transaction. One SQL write transaction is not enough
 when an observation uses several completed autocommit SELECTs. See
 `proofs/representation.md` for the exact logical reduction and a closed but
 nonendpoint counterexample. The normalized reader and its closed-nonendpoint regression are executed in the
-current 104-method suite. The accepted comparison materializes every normalized
+current 114-method suite. The accepted comparison materializes every normalized
 observation in one read transaction; all accepted durable decodes equal the
 shared logical oracle.
+
+
+## Abstract publication evidence and timed rooted-audit scope
+
+The current bounded publication record uses `abstract-selector-object-v1`.
+For each abstract cut, the checker constructs a complete-object map and visible
+selector, materializes the selected object, then applies a separately defined
+old/new cut oracle and closure checks.  A closed mixed observation must fail with
+`NON_ENDPOINT_OBSERVATION`; a complete new object selected before root replacement
+must fail with `CUT_ENDPOINT_MISMATCH`.  This is an abstract selector model, not
+a filesystem or device-failure model.
+
+The retained SQLite rooted-audit timing path performs two full selected-pair
+reads per sample.  Each read decodes the SQLite image, parses the canonical
+export, and compares the complete values.  The wrapper then compares the first
+decoded value with the logical oracle.  Existing timing rows retain that
+specific double-pass meaning.
+
+All current Python sources are parsed read-only with `ast.parse`; a syntax error
+in any unimported `.py` file fails verification.  The current complete executable
+suite is the retained 114-method transcript.  Earlier test counts remain only in
+explicitly historical records.
+

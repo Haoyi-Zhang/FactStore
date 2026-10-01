@@ -180,7 +180,7 @@ prefix of accepted publications, possibly including the interrupted attempt.
 
 The write-all loop and failure quarantine argument are detailed in
 `representation.md`, Section 4. Their selected boundary cases pass in the
-104-method suite. The ten historical process-exit placements predate the current
+114-method suite. The ten historical process-exit placements predate the current
 publication repairs and are not power-loss experiments. The theorem
 asserts neither raw-device durability nor correctness after failed system calls
 followed by continued use of the old instance. It is not an exactly-once
@@ -271,7 +271,7 @@ semantic completeness. A maliciously replaced but internally closed history can
 be accepted, and an analyzer-omitted dependency cannot be inferred from payloads.
 
 The current complete executable suite contains 114 methods and passes all 114. Its eight modules contribute 23 core-store cases, 12 transition-boundary cases, 23 representation cases, 24 input-capture/preflight cases, 16 strict-format cases, 11 rooted-audit/export cases, two complete-enumeration cases, and three journal-evidence/reference-surface cases.
-The current bounded model completes all $5^4+5^3+5^2=775$ histories in the declared finite alphabet, 2,925 intermediate states, and 7,750 abstract publication cuts with zero closure, endpoint, horizon, or inverse violations. The former 769-history output omitted six length-two histories and is retained only as explicitly retired evidence.
+The current bounded model completes all $5^4+5^3+5^2=775$ histories in the declared finite alphabet and 2,925 intermediate states.  For each final transition it replays ten abstract publication events into a complete-object map and selector, materializes the selected object, and then applies a separately defined cut/endpoint oracle plus closure, horizon, and inverse checks.  All 7,750 observations pass.  A closed mixed value and an early new selector are retained negative controls.  This is an abstract selector model, not a concrete filesystem or device-failure model.  The former 769-history output omitted six length-two histories and is retained only as explicitly retired evidence.
 
 The current joint operational case uses 24 sources, 144 facts, one reader, 20
 updates, and five compactions. After every successful update return, a fresh
@@ -299,7 +299,7 @@ therefore do not establish specialized-engine novelty.
 The same file gives a closed, horizon-respecting nonendpoint observation when
 separate SELECTs straddle a commit. The repaired normalized reader begins one
 explicit read transaction, and the deterministic regression now executes in the
-104-method suite.
+114-method suite.
 
 The generic rooted inspectability control writes a complete immutable SQLite
 image and a complete canonical audit export, then atomically replaces one root

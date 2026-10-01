@@ -1,5 +1,7 @@
 {
   "all_closed": true,
+  "all_endpoints": true,
+  "closure_violations": [],
   "crash_cuts": 7750,
   "cut_counts": {
     "after_footer": 775,
@@ -25,8 +27,10 @@
     "after_root_replace",
     "after_root_dirsync"
   ],
+  "endpoint_violations": [],
   "histories": 775,
   "intermediate_states": 2925,
+  "model": "abstract-selector-object-v1",
   "operation_counts": {
     "advance_schema": 585,
     "install_fact": 585,
@@ -41,5 +45,9 @@
     "install_fact",
     "advance_schema"
   ],
+  "selected_endpoint_counts": {
+    "new": 1550,
+    "old": 6200
+  },
   "violations": []
 }

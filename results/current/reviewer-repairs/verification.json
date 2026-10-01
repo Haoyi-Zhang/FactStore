@@ -1,0 +1,86 @@
+{
+  "f1": {
+    "abstract_model": "abstract-selector-object-v1",
+    "closed_nonendpoint_rejected_as": "NON_ENDPOINT_OBSERVATION",
+    "wrong_selector_rejected_as": "CUT_ENDPOINT_MISMATCH"
+  },
+  "f2": {
+    "final_dependencies": [
+      [
+        "b",
+        1
+      ]
+    ],
+    "final_reverse": {
+      "a": [],
+      "b": [
+        "p"
+      ]
+    },
+    "invalidation_set_empty": true,
+    "normalized_decode_equal": true,
+    "replacement_clear_set": [
+      "p"
+    ]
+  },
+  "f3": {
+    "changed_source": "b",
+    "differs_from_new_without_epoch": true,
+    "differs_from_old_without_epoch": true,
+    "mixed_closed": true,
+    "new_generation": 2,
+    "old_generation": 1
+  },
+  "f4": {
+    "database_export_comparisons": 2,
+    "export_parses": 2,
+    "following_expected_state_comparisons": 1,
+    "frozen_results_reinterpreted_only": true,
+    "observed_selected_pair_reads": 2,
+    "selected_pair_reads": 2,
+    "sqlite_decodes": 2
+  },
+  "f6": {
+    "coverage": [
+      "experiments/__init__.py",
+      "experiments/common.py",
+      "experiments/current_validation.py",
+      "experiments/exhaustive.py",
+      "experiments/generate_paper_values.py",
+      "experiments/joint_history.py",
+      "experiments/journal_robustness.py",
+      "experiments/order_sensitivity.py",
+      "experiments/run_all.py",
+      "experiments/run_bounded.py",
+      "experiments/summarize_current.py",
+      "experiments/summarize_results.py",
+      "experiments/verify_artifact.py",
+      "experiments/verify_checked_results.py",
+      "experiments/verify_publication_references.py",
+      "experiments/verify_reviewer_repairs.py",
+      "frontierstore/__init__.py",
+      "frontierstore/audit_export.py",
+      "frontierstore/baselines.py",
+      "frontierstore/checker.py",
+      "frontierstore/extractor.py",
+      "frontierstore/model.py",
+      "frontierstore/store.py",
+      "frontierstore/workload.py",
+      "tests/__init__.py",
+      "tests/crash_worker.py",
+      "tests/test_audit_export.py",
+      "tests/test_boundaries.py",
+      "tests/test_exhaustive.py",
+      "tests/test_input_capture.py",
+      "tests/test_journal_evidence.py",
+      "tests/test_representation.py",
+      "tests/test_store.py",
+      "tests/test_strict_formats.py"
+    ],
+    "negative_witness": "Python syntax parse failed for not_imported.py: invalid syntax (not_imported.py, line 1)",
+    "python_sources_parsed": 34,
+    "unimported_syntax_error_rejected": true
+  },
+  "scientific_measurement": false,
+  "status": "REVIEWER_REPAIRS_VALIDATED"
+}

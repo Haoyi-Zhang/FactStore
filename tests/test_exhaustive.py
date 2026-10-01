@@ -9,6 +9,7 @@ import tempfile
 import unittest
 
 from experiments import exhaustive
+from frontierstore.model import check_closure, states_equal
 
 
 class BoundedEnumerationTests(unittest.TestCase):
@@ -32,7 +33,30 @@ class BoundedEnumerationTests(unittest.TestCase):
             self.assertEqual(2925, result["intermediate_states"])
             self.assertEqual(7750, result["crash_cuts"])
             self.assertTrue(result["all_closed"])
+            self.assertTrue(result["all_endpoints"])
+            self.assertEqual({"old": 6200, "new": 1550}, result["selected_endpoint_counts"])
+            self.assertEqual([], result["closure_violations"])
+            self.assertEqual([], result["endpoint_violations"])
             self.assertEqual([], result["violations"])
+
+            old, new, mixed = exhaustive.closure_counterexample()
+            self.assertEqual([], check_closure(mixed))
+            self.assertFalse(states_equal(old, mixed, include_epoch=False))
+            self.assertFalse(states_equal(new, mixed, include_epoch=False))
+            self.assertEqual(
+                "NON_ENDPOINT_OBSERVATION",
+                exhaustive.endpoint_identity_errors(old, new, "after_root_fsync", mixed)[0]["code"],
+            )
+
+            wrong = exhaustive.publication_at_cut(
+                old, new, "after_root_fsync", selector_override="new"
+            )
+            visible = exhaustive.materialize(wrong)
+            self.assertEqual([], check_closure(visible))
+            self.assertEqual(
+                "CUT_ENDPOINT_MISMATCH",
+                exhaustive.endpoint_identity_errors(old, new, "after_root_fsync", visible)[0]["code"],
+            )
             self.assertEqual(result, json.loads(output.read_text(encoding="utf-8")))
 
 

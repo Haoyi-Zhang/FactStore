@@ -10,7 +10,7 @@ import unittest
 from frontierstore.checker import run as independent_check
 from frontierstore.model import (
     Delta, Fact, Source, State, Transaction, TransitionError,
-    apply_transaction, bootstrap_state, check_closure,
+    apply_transaction, bootstrap_state, check_closure, states_equal,
 )
 from frontierstore.store import FrontierStore, StoreFormatError
 
@@ -67,6 +67,22 @@ class BoundaryTests(unittest.TestCase):
     def test_closed_target_does_not_justify_empty_delta(self):
         new, _ = self.updated()
         self.assert_rejected_unchanged('DELTA_STATE_MISMATCH', new, Delta({}, (), (), {}, {}, ()))
+
+        # A replacement may change only the fact's dependency group.  The
+        # invalidation set is empty, but the old dependency and inverse member
+        # still have to be removed before the replacement is inserted.
+        old = bootstrap_state(
+            {'a': 'a0', 'b': 'b0'},
+            [{'id': 'p', 'payload': 'p0', 'sources': ['a']}],
+        )
+        replaced, delta = apply_transaction(old, Transaction(
+            fact_replacements=[{'id': 'p', 'payload': 'p1', 'sources': ['b']}],
+        ))
+        self.assertEqual(('p',), delta.fact_del)
+        self.assertEqual((('b', 1),), replaced.facts['p'].dependencies)
+        self.assertEqual((), replaced.reverse['a'])
+        self.assertEqual(('p',), replaced.reverse['b'])
+        self.assertEqual([], check_closure(replaced))
 
     def test_changed_source_requires_next_epoch_stamp(self):
         old = self.store.state
@@ -130,12 +146,27 @@ class BoundaryTests(unittest.TestCase):
         self.assertEqual(before, (path / 'ROOT').read_bytes())
 
     def test_closure_alone_allows_nonatomic_intermediate(self):
-        old = self.initial
-        new, _ = self.updated()
-        retracted_first = State(old.epoch, old.schema, old.sources, {}, {'a': (), 'b': ()})
-        self.assertEqual([], check_closure(retracted_first))
-        self.assertNotEqual(old.observational_dict(), retracted_first.observational_dict())
-        self.assertNotEqual(new.observational_dict(), retracted_first.observational_dict())
+        old = bootstrap_state(
+            {'a': 'a0', 'b': 'b0'},
+            [{'id': 'p', 'payload': 'old', 'sources': ['a']}],
+        )
+        new, _ = apply_transaction(old, Transaction(
+            source_changes={'b': 'b1'},
+            fact_replacements=[{'id': 'p', 'payload': 'new', 'sources': ['a']}],
+        ))
+        mixed = State(
+            old.epoch,
+            old.schema,
+            dict(old.sources),
+            dict(new.facts),
+            {key: tuple(value) for key, value in old.reverse.items()},
+        )
+        self.assertEqual([], check_closure(mixed))
+        self.assertFalse(states_equal(old, mixed, include_epoch=False))
+        self.assertFalse(states_equal(new, mixed, include_epoch=False))
+        self.assertEqual('b0', mixed.sources['b'].payload)
+        self.assertEqual('new', mixed.facts['p'].payload)
+        self.assertEqual(2, new.sources['b'].generation)
 
     def test_current_and_pinned_snapshots_have_different_freshness(self):
         with self.store.snapshot() as pinned:

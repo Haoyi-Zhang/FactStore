@@ -1,0 +1,9 @@
+{
+  "case": "reviewer-repairs",
+  "command": "PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=. python -m experiments.verify_reviewer_repairs --output results/current/reviewer-repairs/verification.json",
+  "exit_code": 0,
+  "frozen_performance_rows_modified": false,
+  "scientific_measurement": false,
+  "scope": "deterministic non-performance validation for findings F1, F2, F3, F4, and F6",
+  "status": "CASE_COMPLETED"
+}

@@ -35,20 +35,25 @@ on this domain even though R is not a separately persisted relation.
 
 ### Lemma B: faithful lowering of a valid delta
 
-Take one next-epoch delta whose six-phase fold over C equals closed C'. Exclude
-source put/delete and reverse put/delete overlap as the declared adapter does.
-Inside one SQL write transaction, delete or replace named sources; delete each
-removed fact and all its dependency rows; for every supplied fact, replace its
-payload/schema and its entire dependency group; finally replace e and sigma.
-The resulting tables are E(C').
+Take one next-epoch delta whose six-phase fold over C equals closed C'.  Let I
+be the logical invalidation set, let N be the replacement map, and define
+J = I union dom(N).  Exclude source put/delete and reverse put/delete overlap as
+the declared adapter does.  Inside one SQL write transaction, delete every fact
+row and complete dependency group named by J; apply the source edits; insert
+every replacement fact, payload/schema row, and complete new dependency group;
+finally replace e and sigma.  The resulting tables are E(C').
 
 For sources, disjoint puts/deletes commute, and untouched rows are retained.
-For facts, an explicit deletion followed by a replacement has the same meaning
-as the six-phase edit. Replacing the entire dependency group prevents residual
-edges when a fact changes its dependency set. Every untouched fact has the same
-group. Closure of C' determines R' uniquely from S' and those groups; independent
-reverse updates need no separate table. The metadata updates supply the exact
-post-state epoch/schema. These component equalities prove the assertion.
+For facts outside J, the old row and dependency group are unchanged.  Every fact
+in I is removed unless N supplies its replacement.  Every fact in dom(N) first
+loses its complete old dependency group even when I is empty, then receives the
+replacement group.  This prevents residual edges when a fact changes only its
+dependency set.  For example, with live a@1 and b@1 and p initially depending on
+a@1, a replacement of p that depends on b@1 has I empty but p in J; the final
+D relation contains only (p,b,1), and the derived inverse has R[a]=empty and
+R[b]={p}.  Closure of C' determines R' uniquely from S' and those groups;
+independent reverse updates need no separate table.  The metadata updates supply
+the exact post-state epoch/schema.  These component equalities prove the assertion.
 
 Schema cutover is included: all old facts disappear or are replaced at the new
 schema. Source retraction and later reintroduction are included provided C'
@@ -92,6 +97,26 @@ from a correct transactional composition. A meaningful storage contribution woul
 still require a distinct representation/checker contract or evidenced operational
 advantage. This is a reduction of the stated semantics, not a universal claim
 that no specialized store can be worthwhile, and not a new benchmark result.
+
+
+## 2a. Independent abstract publication/selection check
+
+For each final transition in the declared finite history universe, the bounded
+checker represents publication as a map from object names to complete immutable
+logical states plus a selector naming one object.  It replays abstract events:
+the new object becomes available only after the footer event, while the selector
+changes only at root replacement.  Materialization follows the selector; it is
+not assigned from the expected endpoint.  A separate explicit cut oracle then
+requires the old endpoint before root replacement and the new endpoint from root
+replacement onward, in addition to closure and endpoint-membership checks.
+
+The deterministic validation retains two negative cases.  First, the legal
+two-source construction below yields a dependency-closed value equal to neither
+endpoint and is rejected as NON_ENDPOINT_OBSERVATION.  Second, forcing the new
+selector before root replacement selects a complete closed endpoint but is
+rejected as CUT_ENDPOINT_MISMATCH.  The 7,750 observations therefore check the
+abstract selector rule and endpoint identity under this finite model.  They do
+not model torn bytes, write-cache ordering, or device failure.
 
 ## 2. Proposition 1: closure does not imply endpoint identity
 
@@ -237,6 +262,13 @@ This construction does not independently parse SQLite pages and is not an
 optimized extension to SQLite. It externalizes the logical state into a second
 complete format, thereby matching the old-or-new cross-interface selector while
 paying complete-image write and retention cost. Six dedicated export methods plus selector-grammar regressions cover valid pairs, malformed exports, cross-pair disagreement, selector binding, and duplicate fields. All pass.
+
+The retained timing wrapper calls the complete selected-pair reader twice per
+audit sample: durable_state performs one SQLite decode, one export parse, and one
+full equality comparison; audit_report independently repeats the same three
+operations.  The wrapper then compares the first decoded state with the shared
+logical oracle.  The frozen timings describe this delivered double-pass path;
+they are not divided by two or reinterpreted as an optimized single-pass audit.
 
 The retained current comparison audits after every update. Across 500/3,000,
 2,000/12,000, and 6,000/36,000 source/fact scales, all 264 measured endpoints are

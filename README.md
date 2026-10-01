@@ -36,7 +36,7 @@ All persistent create paths capture and validate the supplied bootstrap before r
 
 - 114 of 114 current executable methods pass; the source-coupled transcript and count record are under `results/current/code-audit-tests/`.
 - 775 bounded histories cover 2,925 intermediate logical states; this is the complete Cartesian product for the declared five-operation alphabet at lengths two, three, and four. The former 769-history prefix result is retained under `results/retired/` and is not current evidence.
-- 7,750 abstract publication cuts have zero endpoint, closure, horizon, or inverse violations.
+- 7,750 abstract publication observations materialized through a complete-object map and selector have zero closure, endpoint-membership, or cut-correspondence violations; closed-mix and early-selector negative controls fail as expected.
 - The joint case completes 20 updates, one reader, and five compactions over 24 sources and 144 facts.
 - Every fresh post-return acquisition equals the complete expected endpoint.
 - Every held acquisition remains equal to its captured endpoint.
@@ -77,7 +77,7 @@ Metadata, sources, facts, and dependency edges are stored in normalized tables. 
 
 ### SQLite rooted audit
 
-Each update writes a complete immutable SQLite image and a complete canonical export, synchronizes both, and atomically replaces one selector naming the pair. The export parser uses only the Python standard library and checks strict structure, source-generation closure, schema equality, ordering, and exact reverse membership. The audit requires equal database and export decodes. SQLite internals are not modified, and SQLite physical pages are not independently parsed.
+Each update writes a complete immutable SQLite image and a complete canonical export, synchronizes both, and atomically replaces one selector naming the pair. The export parser uses only the Python standard library and checks strict structure, source-generation closure, schema equality, ordering, and exact reverse membership. The audit requires equal database and export decodes. SQLite internals are not modified, and SQLite physical pages are not independently parsed. The frozen timing harness calls the complete selected-pair reader twice per audit sample--once through `durable_state()` and once through `audit_report()`--then compares the first decoded state with the logical oracle. Each retained rooted-audit sample therefore includes two full database decodes, two export parses, and two pair comparisons; the published numbers are not single-pass timings.
 
 ## Reconstructing retained and current summaries
 
@@ -88,6 +88,7 @@ mkdir -p ../summary-reconstruction ../current-summary-reconstruction ../paper-in
 PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=. python experiments/verify_checked_results.py --results results
 PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=. python experiments/verify_artifact.py
 PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=. python experiments/verify_publication_references.py
+PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=. python experiments/verify_reviewer_repairs.py --output ../reviewer-repairs.json
 PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=. python experiments/summarize_results.py --results results --output ../summary-reconstruction
 PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=. python experiments/summarize_current.py --results results/current --output ../current-summary-reconstruction --paper-dir ../paper-input-reconstruction
 PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=. python experiments/generate_paper_values.py --output ../paper-input-reconstruction/paper-values.tex
@@ -118,6 +119,23 @@ The current aggregator admits only:
 - `results/current/current-large/`.
 
 It records 264 retained observation rows, regenerates the paper CSVs and macros, and emits scale-level and per-repetition order diagnostics. The pilot, two monitor failures, first uncontrolled medium attempt, interface-error order launch, and no-observation counterbalance launch remain retained but excluded. No excluded output is silently substituted.
+
+
+## Platform and historical environment boundary
+
+`PLATFORM.md` separates platform-neutral data-only reconstruction from engine
+execution.  The accepted timing records confirm only a Linux-compatible POSIX
+surface with `fcntl`, procfs (`/proc/self/io`), cgroup-v2 controls, schedulable
+CPU affinity, and zero configured swap at admission.  They did not retain the
+Python/SQLite version, kernel/distribution, filesystem and mount options, CPU,
+storage medium, virtualization provider, or immutable timed-source identifier.
+Those fields are explicitly unknown in `results/current/accepted-environment.json`
+and are not backfilled from a later review machine.
+
+The package verifier parses every delivered `.py` source with `ast.parse`
+without importing it.  `verify_reviewer_repairs.py` additionally creates an
+unimported bad Python file in a temporary directory and requires that same
+parser surface to reject it with a path-specific witness.
 
 ## Current executable cases
 

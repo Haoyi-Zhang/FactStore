@@ -61,7 +61,13 @@ def verify(results: str | Path) -> dict[str, object]:
     require(exhaustive["histories"] == 775, "abstract history count")
     require(exhaustive["intermediate_states"] == 2925, "abstract intermediate-state count")
     require(exhaustive["crash_cuts"] == 7750, "abstract crash-cut count")
-    require(exhaustive["all_closed"] is True and not exhaustive["violations"], "abstract closure violation")
+    require(exhaustive["all_closed"] is True, "abstract closure violation")
+    require(exhaustive.get("all_endpoints") is True, "abstract endpoint violation")
+    require(exhaustive.get("closure_violations") == [], "abstract closure witness")
+    require(exhaustive.get("endpoint_violations") == [], "abstract endpoint witness")
+    require(not exhaustive["violations"], "abstract publication violation")
+    require(exhaustive.get("model") == "abstract-selector-object-v1", "abstract publication model identity")
+    require(exhaustive.get("selected_endpoint_counts") == {"old": 6200, "new": 1550}, "abstract selector counts")
 
     for row in rows["scale"] + rows["sensitivity"]:
         require(truth(row["durable_equal"]), "durable equality failed")

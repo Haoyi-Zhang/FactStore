@@ -34,7 +34,15 @@ def render_paper_values(artifact_root: str | Path) -> str:
     root = Path(artifact_root)
     abstract = load_json(root / "results/raw/abstract_crash_cuts.json")
     require(abstract.get("all_closed") is True, "bounded abstract cuts are not all closed")
+    require(abstract.get("all_endpoints") is True, "bounded abstract cuts violate endpoint identity")
+    require(abstract.get("closure_violations") == [], "bounded closure violations are present")
+    require(abstract.get("endpoint_violations") == [], "bounded endpoint violations are present")
     require(abstract.get("violations") == [], "bounded abstract-cut violations are present")
+    require(abstract.get("model") == "abstract-selector-object-v1", "bounded abstract selector model differs")
+    require(
+        abstract.get("selected_endpoint_counts") == {"old": 6200, "new": 1550},
+        "bounded abstract selector counts differ",
+    )
 
     histories = int(abstract["histories"])
     logical_states = int(abstract["intermediate_states"])

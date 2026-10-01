@@ -23,6 +23,24 @@ CONFIGS = {
     "large": {"source_counts": [6000], "repetitions": 2, "updates": 8, "batch": 8},
 }
 ENGINES = ("FrontierStore", SQLiteNormalized.name, SQLiteRootedAudit.name)
+ROOTED_AUDIT_TIMED_PAIR_PASSES = 2
+
+
+def rooted_audit_timed_operations() -> dict[str, int]:
+    """Static accounting for the retained SQLite rooted-audit call path.
+
+    ``audit`` first calls ``durable_state`` and then ``audit_report``.  Each
+    method independently invokes ``_read_selected_pair``, which performs one
+    SQLite decode, one canonical-export parse, and one complete equality check.
+    """
+
+    return {
+        "selected_pair_reads": ROOTED_AUDIT_TIMED_PAIR_PASSES,
+        "sqlite_decodes": ROOTED_AUDIT_TIMED_PAIR_PASSES,
+        "export_parses": ROOTED_AUDIT_TIMED_PAIR_PASSES,
+        "database_export_comparisons": ROOTED_AUDIT_TIMED_PAIR_PASSES,
+        "following_expected_state_comparisons": 1,
+    }
 
 
 def create_engine(name: str, path: Path, state):
@@ -55,7 +73,7 @@ def audit(engine, path: Path, expected) -> tuple[str, float]:
         report = engine.audit_report()
         if report["status"] != "ACCEPT":
             raise AssertionError(report)
-        kind = "root-selected-sqlite-and-independent-full-export"
+        kind = "root-selected-sqlite-and-independent-full-export-twice-plus-oracle"
     else:
         durable = engine.durable_state()
         kind = "sqlite-one-read-transaction"
@@ -145,7 +163,8 @@ def run(mode: str, output: Path) -> dict[str, Any]:
         "engines": list(ENGINES),
         "timing_scope": "persistence return excludes shared apply_transaction; audit is timed separately after every update",
         "write_scope": "Linux process write_bytes delta; software-accounted block writes, not device traffic",
-        "rooted_audit_scope": "full immutable SQLite image plus full canonical export selected by one root; no SQLite internals modified",
+        "rooted_audit_scope": "retained timed path performs two full selected-pair reads (durable_state and audit_report), each decoding SQLite and the canonical export and comparing them, followed by one expected-state comparison; no SQLite internals modified",
+        "rooted_audit_timed_operations": rooted_audit_timed_operations(),
         "rows": rows,
         "summary": summaries,
     }

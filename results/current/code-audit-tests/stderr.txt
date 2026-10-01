@@ -114,6 +114,6 @@ test_record_rejects_unknown_field (test_strict_formats.SegmentGrammarTests.test_
 test_root_rejects_unknown_field (test_strict_formats.SegmentGrammarTests.test_root_rejects_unknown_field) ... ok
 
 ----------------------------------------------------------------------
-Ran 114 tests in 4.157s
+Ran 114 tests in 1.927s
 
 OK

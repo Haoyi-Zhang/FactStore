@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import ast
 import csv
 import json
 import re
@@ -74,6 +75,96 @@ def read_rows(path: Path) -> list[dict[str, str]]:
 def require(condition: bool, message: str) -> None:
     if not condition:
         raise AssertionError(message)
+
+
+
+
+def parse_python_sources(root: Path) -> list[str]:
+    """Parse every Python source below ``root`` without importing it.
+
+    This catches syntax errors in implementation, test, and utility modules that
+    are not reached by the normal import graph.  The returned relative-path list
+    is sorted so callers can audit the exact coverage surface.
+    """
+
+    parsed: list[str] = []
+    for path in sorted(root.rglob("*.py")):
+        relative = path.relative_to(root).as_posix()
+        try:
+            source = path.read_text(encoding="utf-8")
+            ast.parse(source, filename=relative)
+        except (OSError, UnicodeError, SyntaxError) as error:
+            raise AssertionError(f"Python syntax parse failed for {relative}: {error}") from error
+        parsed.append(relative)
+    require(bool(parsed), "no Python sources found for syntax parsing")
+    return parsed
+
+
+def verify_reviewer_repairs_and_environment(root: Path, parsed_python_sources: list[str]) -> None:
+    """Check reviewer-repair evidence and historical environment boundaries."""
+
+    repair_path = root / "results/current/reviewer-repairs/verification.json"
+    repair = json.loads(repair_path.read_text(encoding="utf-8"))
+    require(repair.get("status") == "REVIEWER_REPAIRS_VALIDATED", "reviewer repair status")
+    require(repair.get("scientific_measurement") is False, "reviewer repair measurement boundary")
+    require(repair["f1"]["abstract_model"] == "abstract-selector-object-v1", "abstract publication model")
+    require(repair["f1"]["closed_nonendpoint_rejected_as"] == "NON_ENDPOINT_OBSERVATION", "closed mix negative")
+    require(repair["f1"]["wrong_selector_rejected_as"] == "CUT_ENDPOINT_MISMATCH", "wrong selector negative")
+    require(repair["f2"]["invalidation_set_empty"] is True, "replacement-only invalidation premise")
+    require(repair["f2"]["replacement_clear_set"] == ["p"], "replacement clear set")
+    require(repair["f2"]["final_dependencies"] == [["b", 1]], "replacement dependency result")
+    require(repair["f2"]["final_reverse"] == {"a": [], "b": ["p"]}, "replacement reverse result")
+    require(repair["f2"]["normalized_decode_equal"] is True, "relational replacement decode")
+    require(repair["f3"]["old_generation"] == 1 and repair["f3"]["new_generation"] == 2, "legal source generation")
+    require(repair["f3"]["mixed_closed"] is True, "mixed closure")
+    require(repair["f3"]["differs_from_old_without_epoch"] is True, "mixed/old identity")
+    require(repair["f3"]["differs_from_new_without_epoch"] is True, "mixed/new identity")
+    for field in ("selected_pair_reads", "sqlite_decodes", "export_parses", "database_export_comparisons"):
+        require(repair["f4"][field] == 2, f"rooted audit operation count: {field}")
+    require(repair["f4"]["observed_selected_pair_reads"] == 2, "observed rooted pair reads")
+    require(repair["f4"]["following_expected_state_comparisons"] == 1, "rooted expected-state comparisons")
+    require(repair["f4"]["frozen_results_reinterpreted_only"] is True, "frozen timing boundary")
+    require(repair["f6"]["coverage"] == parsed_python_sources, "Python syntax coverage differs")
+    require(repair["f6"]["python_sources_parsed"] == len(parsed_python_sources), "Python syntax count differs")
+    require(repair["f6"]["unimported_syntax_error_rejected"] is True, "unimported syntax negative")
+    require("not_imported.py" in repair["f6"]["negative_witness"], "syntax negative witness")
+
+    environment = json.loads((root / "results/current/accepted-environment.json").read_text(encoding="utf-8"))
+    require(environment.get("status") == "PARTIALLY_RECOVERED_WITH_EXPLICIT_UNKNOWNS", "accepted environment status")
+    require(environment.get("scope") == "accepted fixed-order engine runs only", "accepted environment scope")
+    confirmed = environment.get("confirmed_common", {})
+    require(confirmed.get("platform_family") == "Linux-compatible POSIX environment", "platform family")
+    require(confirmed.get("procfs_required_and_observed") is True, "procfs record")
+    require(confirmed.get("cgroup_v2_controls_required_and_observed") is True, "cgroup record")
+    require(confirmed.get("swap_total_required_zero") is True, "swap record")
+    require(confirmed.get("child_cpu_affinity_count") == 1, "affinity record")
+    require(tuple(confirmed.get("engine_order", ())) == ENGINE_ORDER, "environment engine order")
+    require(confirmed.get("rooted_audit_timed_pair_passes") == 2, "environment rooted audit count")
+    unknown = environment.get("unknown_not_recorded_at_measurement_time", [])
+    for phrase in ("Python interpreter", "SQLite library", "filesystem type", "host CPU", "virtualization", "immutable source"):
+        require(any(phrase in item for item in unknown), f"missing explicit unknown: {phrase}")
+    warning = environment.get("warning", "")
+    require(
+        "does not substitute the current review machine" in warning or "not backfilled" in warning,
+        "historical environment non-backfill warning",
+    )
+
+    expected_dirs = {"small": "current-small", "medium": "current-medium-retry", "large": "current-large"}
+    require(set(environment.get("cases", {})) == set(expected_dirs), "accepted environment case set")
+    for scale, directory in expected_dirs.items():
+        case = environment["cases"][scale]
+        require(case["directory"] == directory and case["mode"] == scale, f"{scale}: environment identity")
+        observations = json.loads((root / case["observations_file"]).read_text(encoding="utf-8"))
+        accounting = json.loads((root / case["accounting_file"]).read_text(encoding="utf-8"))
+        require(case["observations"] == len(observations["rows"]), f"{scale}: observation count")
+        require(case["configuration"] == observations["configuration"], f"{scale}: configuration")
+        for field in (
+            "admission_available_memory_bytes", "admission_worker_headroom",
+            "child_cpu_affinity_count", "sampled_aggregate_threads_peak",
+            "sampled_concurrent_tree_rss_peak_bytes", "sampled_process_count_peak",
+        ):
+            require(case[field] == accounting[field], f"{scale}: accounting field {field}")
+        require(all(row.get("write_bytes") is not None for row in observations["rows"]), f"{scale}: write counter availability")
 
 
 def verify_current(root: Path) -> int:
@@ -230,6 +321,8 @@ def verify_current(root: Path) -> int:
 
 def main() -> int:
     root = Path(__file__).resolve().parents[1]
+    parsed_python_sources = parse_python_sources(root)
+    verify_reviewer_repairs_and_environment(root, parsed_python_sources)
     historical = verify(root / "results")
     current_observations = verify_current(root)
     current_test_count = load_current_test_count(root / "results/current")
@@ -354,6 +447,10 @@ def main() -> int:
     # cannot survive an otherwise successful artifact verification.
     maintenance = json.loads((root / "results/maintenance.json").read_text(encoding="utf-8"))
     abstract = json.loads((root / "results/raw/abstract_crash_cuts.json").read_text(encoding="utf-8"))
+    require(abstract.get("model") == "abstract-selector-object-v1", "bounded publication model")
+    require(abstract.get("all_closed") is True and abstract.get("all_endpoints") is True, "bounded publication status")
+    require(abstract.get("closure_violations") == [] and abstract.get("endpoint_violations") == [], "bounded publication violations")
+    require(abstract.get("selected_endpoint_counts") == {"old": 6200, "new": 1550}, "bounded selector counts")
     joint = json.loads((root / "results/current/joint-history/observations.json").read_text(encoding="utf-8"))
     resource = json.loads((root / "resource-accounting.json").read_text(encoding="utf-8"))
     joint_compactions = sum(row.get("compaction_ns") is not None for row in joint["rows"])
@@ -371,6 +468,15 @@ def main() -> int:
         "bounded_histories": int(abstract["histories"]),
         "bounded_intermediate_states": int(abstract["intermediate_states"]),
         "abstract_publication_cuts": int(abstract["crash_cuts"]),
+        "abstract_publication_model": "abstract-selector-object-v1",
+        "abstract_closure_violations": 0,
+        "abstract_endpoint_violations": 0,
+        "abstract_selected_old": 6200,
+        "abstract_selected_new": 1550,
+        "reviewer_repair_status": "REVIEWER_REPAIRS_VALIDATED",
+        "accepted_environment_status": "PARTIALLY_RECOVERED_WITH_EXPLICIT_UNKNOWNS",
+        "rooted_audit_timed_pair_passes": 2,
+        "python_sources_parsed": len(parsed_python_sources),
         "joint_updates": int(joint["updates"]),
         "joint_compactions": joint_compactions,
         "journal_target": "ACM Transactions on Storage",
@@ -403,6 +509,7 @@ def main() -> int:
         "README.md",
         "LICENSE",
         "FORMAT.md",
+        "PLATFORM.md",
         "proofs/model.md",
         "proofs/representation.md",
         "external_resources.csv",
@@ -410,6 +517,7 @@ def main() -> int:
         "reference_audit.csv",
         "publication_reference_manifest.csv",
         "experiments/verify_publication_references.py",
+        "experiments/verify_reviewer_repairs.py",
         "resource-accounting.json",
         "results/summary/all_summary.csv",
         "results/summary/headline.json",
@@ -437,6 +545,11 @@ def main() -> int:
         "results/current/paper-inputs/paper-values.tex",
         "experiments/generate_paper_values.py",
         "results/current/acceptance.json",
+        "results/current/accepted-environment.json",
+        "results/current/reviewer-repairs/verification.json",
+        "results/current/reviewer-repairs/stdout.txt",
+        "results/current/reviewer-repairs/stderr.txt",
+        "results/current/reviewer-repairs/record.json",
         "results/current/order-sensitivity/attempt.json",
         "results/current/order-sensitivity/accounting.json",
         "results/current/order-counterbalance/attempt.json",
@@ -482,6 +595,7 @@ def main() -> int:
         "historical_summary_rows": historical["summary_rows"],
         "current_accepted_observations": current_observations,
         "maintenance_state": "CONSISTENT",
+        "python_sources_parsed": len(parsed_python_sources),
     }, sort_keys=True))
     return 0
 
