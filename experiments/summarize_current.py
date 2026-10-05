@@ -34,6 +34,7 @@ TEST_ROW_PATTERN = re.compile(r"^(test[^\n]+) \.\.\. (ok|FAIL|ERROR|skipped[^\n]
 
 
 def load_current_test_count(results_root: Path) -> int:
+    """Read the retained transcript count, not the delivered source's suite size."""
     evidence = results_root / "code-audit-tests"
     transcript = (evidence / "stderr.txt").read_text(encoding="utf-8")
     stdout = (evidence / "stdout.txt").read_text(encoding="utf-8")

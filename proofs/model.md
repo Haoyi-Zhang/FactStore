@@ -270,7 +270,7 @@ organizationally independent. It checks declared structure, not authenticity or
 semantic completeness. A maliciously replaced but internally closed history can
 be accepted, and an analyzer-omitted dependency cannot be inferred from payloads.
 
-The current complete executable suite contains 114 methods and passes all 114. Its eight modules contribute 23 core-store cases, 12 transition-boundary cases, 23 representation cases, 24 input-capture/preflight cases, 16 strict-format cases, 11 rooted-audit/export cases, two complete-enumeration cases, and three journal-evidence/reference-surface cases.
+The retained passing transcript covers 114 methods in eight modules: 23 core-store cases, 12 transition-boundary cases, 23 representation cases, 24 input-capture/preflight cases, 16 strict-format cases, 11 rooted-audit/export cases, two complete-enumeration cases, and three journal-evidence/reference-surface cases. The delivered source additionally contains four SQLite integer-domain methods, making 118 in total; those four are not covered by this retained transcript.
 The current bounded model completes all $5^4+5^3+5^2=775$ histories in the declared finite alphabet and 2,925 intermediate states.  For each final transition it replays ten abstract publication events into a complete-object map and selector, materializes the selected object, and then applies a separately defined cut/endpoint oracle plus closure, horizon, and inverse checks.  All 7,750 observations pass.  A closed mixed value and an early new selector are retained negative controls.  This is an abstract selector model, not a concrete filesystem or device-failure model.  The former 769-history output omitted six length-two histories and is retained only as explicitly retired evidence.
 
 The current joint operational case uses 24 sources, 144 facts, one reader, 20
@@ -319,4 +319,3 @@ pinned complete bases can retain at least qB bytes even when K=0. These are
 implementation-bound families, not universal lower bounds. A future positive
 result would need an incremental sound certificate or a controlled deployment
 constraint in which the byte/retention difference is itself decisive.
-

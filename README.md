@@ -34,7 +34,7 @@ All persistent create paths capture and validate the supplied bootstrap before r
 
 ### Executed correctness evidence
 
-- 114 of 114 current executable methods pass; the source-coupled transcript and count record are under `results/current/code-audit-tests/`.
+- The retained 114-method run passes; its transcript and count record are under `results/current/code-audit-tests/`. The current source contains 118 methods, including four additional SQLite integer-domain methods outside that transcript.
 - 775 bounded histories cover 2,925 intermediate logical states; this is the complete Cartesian product for the declared five-operation alphabet at lengths two, three, and four. The former 769-history prefix result is retained under `results/retired/` and is not current evidence.
 - 7,750 abstract publication observations materialized through a complete-object map and selector have zero closure, endpoint-membership, or cut-correspondence violations; closed-mix and early-selector negative controls fail as expected.
 - The joint case completes 20 updates, one reader, and five compactions over 24 sources and 144 facts.
