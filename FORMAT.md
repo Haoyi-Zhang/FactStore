@@ -172,6 +172,13 @@ or obsolete histories retained by pins.
 
 Bootstrap input is privately captured and closure-checked before an existing target directory is removed. For every update adapter, the proposed endpoint and delta are privately captured; the six-phase fold over the current endpoint must reconstruct the supplied next endpoint exactly, and the next epoch and changed-source stamps must agree, before persistent mutation begins. Rejection at this preflight boundary leaves the previously selected durable state unchanged. This rule does not make replacement of an existing whole directory atomic after an I/O failure.
 
+The SQLite adapters use native signed-64 INTEGER encoding. They reject an epoch
+or schema greater than `2^63-1` before directory replacement or update mutation.
+Closure bounds every source/dependency generation by the epoch and equates fact
+schemas with the state schema. The common comparison domain additionally uses
+the segment filename epoch bound `1..99,999,999`. These executable restrictions
+do not restrict the abstract logical state or existential relational encoding.
+
 ## 9. Decoder predicates and relational materialization
 
 Counts have exactly the three named families and nonnegative integer values;
@@ -213,4 +220,3 @@ All current Python sources are parsed read-only with `ast.parse`; a syntax error
 in any unimported `.py` file fails verification.  The current complete executable
 suite is the retained 114-method transcript.  Earlier test counts remain only in
 explicitly historical records.
-

@@ -20,6 +20,12 @@ The decoder groups Drel by fact, sorts each dependency list, and reconstructs
 R[i] as the sorted set of facts whose rows name i, for every source i, including
 sources with no dependents. Counts are derived rather than stored separately.
 The domain is the image of well-formed closed states, not arbitrary SQL data.
+This is an abstract exact encoding. The delivered native-INTEGER SQLite adapters
+support positive signed-64 epoch/schema values; closure bounds generations by
+epoch and equates fact schemas with the state schema. These bounds are checked
+before replacement or mutation. The common comparison domain also applies the
+segment filename epoch bound. Encoding arbitrary logical integers would require
+an exact alternative representation, not native SQLite INTEGER binding.
 The reference wrappers disable foreign-key enforcement and trust valid prepared
 transitions. This argument does not silently give those wrappers an untrusted
 input validation interface.
@@ -294,4 +300,3 @@ space for FrontierStore, but no measured full-audit latency advantage in the
 retained fixed-order runs. It does not prove that the rooted composition is
 generally faster, nor is it an impossibility theorem for incrementally certified
 or authenticated auditable storage.
-

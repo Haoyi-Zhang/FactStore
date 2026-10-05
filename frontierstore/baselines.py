@@ -58,6 +58,17 @@ def _capture_full_state(state: State) -> State:
     return captured
 
 
+def _capture_sql_state(state: State, *, immutable: bool = False) -> State:
+    """Validate native SQLite integer encodability before persistent mutation."""
+    captured = _capture_full_state(state) if immutable else capture_closed_state(state)
+    for role, value in (("epoch", captured.epoch), ("schema", captured.schema)):
+        if value > (1 << 63) - 1:
+            raise TransitionError("SQLITE_INTEGER_LIMIT", f"{role} exceeds signed-64 encoding")
+    # Closure bounds every source/dependency generation by epoch and equates
+    # every fact schema with the state schema, so these checks cover all binds.
+    return captured
+
+
 def _fsync_directory(path: Path) -> None:
     descriptor = os.open(path, os.O_RDONLY | getattr(os, "O_DIRECTORY", 0))
     try:
@@ -318,7 +329,7 @@ class SQLiteNormalized:
 
     @classmethod
     def create(cls, path: str | os.PathLike[str], state: State) -> "SQLiteNormalized":
-        captured = capture_closed_state(state)
+        captured = _capture_sql_state(state)
         target = Path(path)
         if target.exists():
             shutil.rmtree(target)
@@ -343,7 +354,7 @@ class SQLiteNormalized:
         return self._state.clone()
 
     def persist_precomputed(self, state: State, delta: Delta) -> None:
-        captured = capture_closed_state(state)
+        captured = _capture_sql_state(state)
         delta = capture_and_validate_delta(self._state, captured, delta)
         connection = self.connection
         connection.execute("BEGIN IMMEDIATE")
@@ -409,7 +420,7 @@ class SQLiteRebuild:
 
     @classmethod
     def create(cls, path: str | os.PathLike[str], state: State) -> "SQLiteRebuild":
-        captured = capture_closed_state(state)
+        captured = _capture_sql_state(state)
         target = Path(path)
         if target.exists():
             shutil.rmtree(target)
@@ -424,6 +435,7 @@ class SQLiteRebuild:
 
     @staticmethod
     def _write_image(state: State, path: Path) -> None:
+        state = _capture_sql_state(state)
         if path.exists():
             path.unlink()
         connection = sqlite3.connect(path)
@@ -447,7 +459,7 @@ class SQLiteRebuild:
         return self._state.clone()
 
     def persist_precomputed(self, state: State, delta: Delta) -> None:
-        captured = capture_closed_state(state)
+        captured = _capture_sql_state(state)
         capture_and_validate_delta(self._state, captured, delta)
         temp = self.path / f".image.sqlite.tmp-{os.getpid()}"
         self._write_image(captured, temp)
@@ -606,7 +618,7 @@ class SQLiteRootedAudit:
 
     @classmethod
     def create(cls, path: str | os.PathLike[str], state: State) -> "SQLiteRootedAudit":
-        captured = _capture_full_state(state)
+        captured = _capture_sql_state(state, immutable=True)
         target = Path(path)
         if target.exists():
             shutil.rmtree(target)
@@ -715,7 +727,7 @@ class SQLiteRootedAudit:
 
     def persist_precomputed(self, state: State, delta: Delta) -> None:
         self._require_usable()
-        captured = _capture_full_state(state)
+        captured = _capture_sql_state(state, immutable=True)
         captured_delta = capture_and_validate_delta(self._state, captured, delta)
         # Detect another publisher or external selector mutation before creating
         # new immutable objects.  Cross-instance concurrent writers are outside
