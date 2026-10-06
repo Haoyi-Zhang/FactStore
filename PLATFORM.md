@@ -71,4 +71,4 @@ skips. A five-times-wall reservation is a conservative diagnostic policy charge,
 not a measured CPU total or a hard resource guarantee. Windows process CPU is
 read from completed worker handles; the owned nested SQLite workers are metered
 separately. No aggregate-tree memory peak is measured. The original full-suite
-Linux storage coverage remains a runtime gap until the prepared run executes.
+Linux storage coverage was still a runtime gap at the earlier Windows handoff. The delivered `results/current/linux/run.json` now records six completed finite correctness stages, including the source-bound 140-method suite in `results/current/linux/unit/`. This does not extend the recorded coverage to arbitrary device failures or Linux performance measurements.

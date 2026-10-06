@@ -24,11 +24,11 @@ The pilot is retained but excluded from the main comparison. `current/current-me
 
 ## Current correctness surfaces
 
-- `current/code-audit-tests/`: 104 of 104 executable methods pass; `record.json` binds the count and success fields to the complete verbose transcript.
+- `current/code-audit-tests/`: 114 of 114 executable methods pass in the preserved earlier run; `record.json` binds the count and success fields to its complete verbose transcript.
 - `current/tiny-histories/`: 775 histories, 2,925 states, and 7,750 publication cuts complete with zero violations.
 - `current/joint-history/`: 20 updates, one reader, and five compactions complete; fresh and held endpoints, pins, standalone checking, and released-history collection all pass.
 
-Earlier current-suite directories are retained as intermediate evidence. Only `code-audit-tests/` is the source-coupled complete 114-method transcript for the delivered implementation.
+Earlier current-suite directories are retained as intermediate evidence. `code-audit-tests/` preserves the earlier complete 114-method transcript. The separate `current/linux/unit/` transcript records all 140 methods in the delivered Python source; `current/linux/run.json` binds that source inventory and reports six completed finite correctness stages. These are retained correctness records, not fresh performance measurements.
 
 ## Historical surfaces
 
@@ -112,4 +112,3 @@ all-source syntax parser negative case.  `current/accepted-environment.json`
 records the confirmed historical platform surface and explicitly unknown fields
 for all three accepted scale cases.  Neither file modifies the frozen 264 timing
 rows.
-
