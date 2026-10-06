@@ -1,0 +1,2 @@
+{"claims": 33, "current_accepted_observations": 264, "full_paper_calibration_rows": 18, "historical_summary_rows": 52, "maintenance_state": "CONSISTENT", "performance_inference": "DESCRIPTIVE_FIXED_ORDER_ONLY", "positive_mechanism_claim": "TERMINATED", "python_sources_parsed": 40, "references": 62, "scientific_decision": "COMPLETE_BOUNDED_NEGATIVE_LOGICAL_RESULT", "status": "PACKAGE_DATA_CONSISTENT"}
+{"case": "retained", "status": "COMPLETED"}

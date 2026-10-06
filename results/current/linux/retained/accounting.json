@@ -1,0 +1,30 @@
+{
+  "child_cpu": {
+    "scope": "waited child and descendants accounted through that child",
+    "system_seconds": 0.036972000000000005,
+    "user_seconds": 1.5987829999999992
+  },
+  "command": [
+    "/opt/hostedtoolcache/Python/3.12.14/x64/bin/python",
+    "-B",
+    "-m",
+    "experiments.owned_checks",
+    "--case",
+    "retained",
+    "--output",
+    "/home/runner/work/_temp/p021-owned-checks/retained/checks.json",
+    "--scratch",
+    "/home/runner/work/_temp/p021-owned-checks/retained/scratch"
+  ],
+  "controller_cpu_seconds": 0.002596362000000005,
+  "cpu_policy_reservation_seconds": 130,
+  "cpu_reservation_is_measurement": false,
+  "exit_code": 0,
+  "refunded": false,
+  "rss_scope": "lifetime maximum, not per-stage or concurrent-tree peak",
+  "stage": "retained",
+  "status": "COMPLETED",
+  "waited_children_lifetime_max_rss_bytes": 33525760,
+  "wall_reservation_seconds": 130,
+  "wall_seconds": 1.6778276099999943
+}

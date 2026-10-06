@@ -1,0 +1,118 @@
+{
+  "actual_reader_interleave": {
+    "commits": 1,
+    "fresh_new": true,
+    "held_old": true
+  },
+  "case": "sqlite-strict",
+  "export_rejections": [
+    {
+      "case": "unknown",
+      "witness": "TOP_LEVEL_SHAPE"
+    },
+    {
+      "case": "bool-epoch",
+      "witness": "EPOCH_TYPE"
+    },
+    {
+      "case": "horizon",
+      "witness": "SOURCE_HORIZON"
+    },
+    {
+      "case": "inverse",
+      "witness": "REVERSE_MISMATCH"
+    },
+    {
+      "case": "stale",
+      "witness": "STALE_DEPENDENCY"
+    },
+    {
+      "case": "schema",
+      "witness": "SCHEMA_MISMATCH"
+    },
+    {
+      "case": "identity",
+      "witness": "SOURCE_KEY_MISMATCH"
+    },
+    {
+      "case": "dependency-order",
+      "witness": "DEPENDENCY_ORDER"
+    },
+    {
+      "case": "duplicate",
+      "witness": "DUPLICATE_FIELD"
+    }
+  ],
+  "export_valid_controls": 1,
+  "scientific_measurement": false,
+  "sqlite_rejections": [
+    {
+      "case": "extra-meta",
+      "witness": "META_SET"
+    },
+    {
+      "case": "missing-source",
+      "witness": "MISSING_SOURCE"
+    },
+    {
+      "case": "future-source",
+      "witness": "SOURCE_GENERATION_HORIZON"
+    },
+    {
+      "case": "schema",
+      "witness": "FACT_SCHEMA"
+    },
+    {
+      "case": "missing-fact",
+      "witness": "MISSING_FACT"
+    },
+    {
+      "case": "empty-dependency",
+      "witness": "EMPTY_DEPENDENCY"
+    }
+  ],
+  "sqlite_setup_scope": "SQLite API FULL/WAL setup; adapter create/directory fsync not exercised",
+  "sqlite_transitions": [
+    {
+      "endpoint_equal": true,
+      "epoch": 2,
+      "step": 1
+    },
+    {
+      "endpoint_equal": true,
+      "epoch": 3,
+      "step": 2
+    },
+    {
+      "endpoint_equal": true,
+      "epoch": 4,
+      "step": 3
+    },
+    {
+      "endpoint_equal": true,
+      "epoch": 5,
+      "step": 4
+    },
+    {
+      "endpoint_equal": true,
+      "epoch": 6,
+      "step": 5
+    },
+    {
+      "endpoint_equal": true,
+      "epoch": 7,
+      "step": 6
+    },
+    {
+      "endpoint_equal": true,
+      "epoch": 8,
+      "step": 7
+    },
+    {
+      "endpoint_equal": true,
+      "epoch": 9,
+      "step": 8
+    }
+  ],
+  "status": "COMPLETED"
+}

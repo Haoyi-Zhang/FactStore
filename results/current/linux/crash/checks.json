@@ -1,0 +1,222 @@
+{
+  "case": "crash",
+  "crash_scope": "owned process exits with OS alive; no raw-device power-loss claim",
+  "scientific_measurement": false,
+  "segment_process_exits": [
+    {
+      "cut": "before_segment",
+      "endpoint_equal": true,
+      "epoch": 1,
+      "exit_code": 73,
+      "seed": 701
+    },
+    {
+      "cut": "after_header",
+      "endpoint_equal": true,
+      "epoch": 1,
+      "exit_code": 73,
+      "seed": 701
+    },
+    {
+      "cut": "before_footer",
+      "endpoint_equal": true,
+      "epoch": 1,
+      "exit_code": 73,
+      "seed": 701
+    },
+    {
+      "cut": "after_footer",
+      "endpoint_equal": true,
+      "epoch": 1,
+      "exit_code": 73,
+      "seed": 701
+    },
+    {
+      "cut": "after_segment_fsync",
+      "endpoint_equal": true,
+      "epoch": 1,
+      "exit_code": 73,
+      "seed": 701
+    },
+    {
+      "cut": "after_segment_dirsync",
+      "endpoint_equal": true,
+      "epoch": 1,
+      "exit_code": 73,
+      "seed": 701
+    },
+    {
+      "cut": "after_root_write",
+      "endpoint_equal": true,
+      "epoch": 1,
+      "exit_code": 73,
+      "seed": 701
+    },
+    {
+      "cut": "after_root_fsync",
+      "endpoint_equal": true,
+      "epoch": 1,
+      "exit_code": 73,
+      "seed": 701
+    },
+    {
+      "cut": "after_root_replace",
+      "endpoint_equal": true,
+      "epoch": 2,
+      "exit_code": 73,
+      "seed": 701
+    },
+    {
+      "cut": "after_root_dirsync",
+      "endpoint_equal": true,
+      "epoch": 2,
+      "exit_code": 73,
+      "seed": 701
+    },
+    {
+      "cut": "before_segment",
+      "endpoint_equal": true,
+      "epoch": 1,
+      "exit_code": 73,
+      "seed": 702
+    },
+    {
+      "cut": "after_header",
+      "endpoint_equal": true,
+      "epoch": 1,
+      "exit_code": 73,
+      "seed": 702
+    },
+    {
+      "cut": "before_footer",
+      "endpoint_equal": true,
+      "epoch": 1,
+      "exit_code": 73,
+      "seed": 702
+    },
+    {
+      "cut": "after_footer",
+      "endpoint_equal": true,
+      "epoch": 1,
+      "exit_code": 73,
+      "seed": 702
+    },
+    {
+      "cut": "after_segment_fsync",
+      "endpoint_equal": true,
+      "epoch": 1,
+      "exit_code": 73,
+      "seed": 702
+    },
+    {
+      "cut": "after_segment_dirsync",
+      "endpoint_equal": true,
+      "epoch": 1,
+      "exit_code": 73,
+      "seed": 702
+    },
+    {
+      "cut": "after_root_write",
+      "endpoint_equal": true,
+      "epoch": 1,
+      "exit_code": 73,
+      "seed": 702
+    },
+    {
+      "cut": "after_root_fsync",
+      "endpoint_equal": true,
+      "epoch": 1,
+      "exit_code": 73,
+      "seed": 702
+    },
+    {
+      "cut": "after_root_replace",
+      "endpoint_equal": true,
+      "epoch": 2,
+      "exit_code": 73,
+      "seed": 702
+    },
+    {
+      "cut": "after_root_dirsync",
+      "endpoint_equal": true,
+      "epoch": 2,
+      "exit_code": 73,
+      "seed": 702
+    }
+  ],
+  "sqlite_process_exits": [
+    {
+      "child_cpu": {
+        "scope": "see waited-child rusage",
+        "system_seconds": null,
+        "user_seconds": null
+      },
+      "cut": "before-commit",
+      "endpoint_equal": true,
+      "epoch": 1,
+      "exit_code": 73,
+      "mode": "WAL"
+    },
+    {
+      "child_cpu": {
+        "scope": "see waited-child rusage",
+        "system_seconds": null,
+        "user_seconds": null
+      },
+      "cut": "after-commit",
+      "endpoint_equal": true,
+      "epoch": 2,
+      "exit_code": 73,
+      "mode": "WAL"
+    },
+    {
+      "child_cpu": {
+        "scope": "see waited-child rusage",
+        "system_seconds": null,
+        "user_seconds": null
+      },
+      "cut": "after-close",
+      "endpoint_equal": true,
+      "epoch": 2,
+      "exit_code": 73,
+      "mode": "WAL"
+    },
+    {
+      "child_cpu": {
+        "scope": "see waited-child rusage",
+        "system_seconds": null,
+        "user_seconds": null
+      },
+      "cut": "before-commit",
+      "endpoint_equal": true,
+      "epoch": 1,
+      "exit_code": 73,
+      "mode": "DELETE"
+    },
+    {
+      "child_cpu": {
+        "scope": "see waited-child rusage",
+        "system_seconds": null,
+        "user_seconds": null
+      },
+      "cut": "after-commit",
+      "endpoint_equal": true,
+      "epoch": 2,
+      "exit_code": 73,
+      "mode": "DELETE"
+    },
+    {
+      "child_cpu": {
+        "scope": "see waited-child rusage",
+        "system_seconds": null,
+        "user_seconds": null
+      },
+      "cut": "after-close",
+      "endpoint_equal": true,
+      "epoch": 2,
+      "exit_code": 73,
+      "mode": "DELETE"
+    }
+  ],
+  "status": "COMPLETED"
+}

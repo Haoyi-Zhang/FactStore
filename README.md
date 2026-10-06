@@ -34,7 +34,7 @@ All persistent create paths capture and validate the supplied bootstrap before r
 
 ### Executed correctness evidence
 
-- The retained 114-method run passes; its transcript and count record are under `results/current/code-audit-tests/`. The current source contains the existing 132 methods plus eight new finite-run admission/coverage methods (140 total). The additional 26 methods and subsequent edits are not retroactively validated by the retained transcript.
+- The earlier 114-method transcript is under `results/current/code-audit-tests/`. A fresh Linux run in `results/current/linux/` passes all 140 current methods without skips. Six correctness stages finish in 12.80 seconds and also cover the finite model, 26 process-exit cases, strict SQLite/export boundaries, and the joint update/compaction history. This run is separate from the older engine performance measurements.
 - 775 bounded histories cover 2,925 intermediate logical states; this is the complete Cartesian product for the declared five-operation alphabet at lengths two, three, and four. The former 769-history prefix result is retained under `results/retired/` and is not current evidence.
 - 7,750 abstract publication observations materialized through a complete-object map and selector have zero closure, endpoint-membership, or cut-correspondence violations; closed-mix and early-selector negative controls fail as expected.
 - The joint case completes 20 updates, one reader, and five compactions over 24 sources and 144 facts.

@@ -1,0 +1,30 @@
+{
+  "child_cpu": {
+    "scope": "waited child and descendants accounted through that child",
+    "system_seconds": 0.02734299999999998,
+    "user_seconds": 0.2572320000000001
+  },
+  "command": [
+    "/opt/hostedtoolcache/Python/3.12.14/x64/bin/python",
+    "-B",
+    "-m",
+    "experiments.owned_checks",
+    "--case",
+    "sqlite-strict",
+    "--output",
+    "/home/runner/work/_temp/p021-owned-checks/sqlite-strict/checks.json",
+    "--scratch",
+    "/home/runner/work/_temp/p021-owned-checks/sqlite-strict/scratch"
+  ],
+  "controller_cpu_seconds": 0.0014312209999999964,
+  "cpu_policy_reservation_seconds": 130,
+  "cpu_reservation_is_measurement": false,
+  "exit_code": 0,
+  "refunded": false,
+  "rss_scope": "lifetime maximum, not per-stage or concurrent-tree peak",
+  "stage": "sqlite-strict",
+  "status": "COMPLETED",
+  "waited_children_lifetime_max_rss_bytes": 33525760,
+  "wall_reservation_seconds": 130,
+  "wall_seconds": 0.3245951170000012
+}
