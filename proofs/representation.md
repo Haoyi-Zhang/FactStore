@@ -1,7 +1,7 @@
 # Representation, observation, and publication obligations
 
 These are finite hand arguments about the stated interfaces. Selected premises
-and counterexamples are exercised by the 114-method suite and bounded histories,
+and counterexamples are exercised by the retained 114-method run and bounded histories,
 but that execution does not turn the arguments into mechanized verification or
 establish a new storage principle.
 
@@ -26,6 +26,10 @@ epoch and equates fact schemas with the state schema. These bounds are checked
 before replacement or mutation. The common comparison domain also applies the
 segment filename epoch bound. Encoding arbitrary logical integers would require
 an exact alternative representation, not native SQLite INTEGER binding.
+SQLite TEXT binding additionally requires UTF-8-encodable payloads. Python text
+can contain unpaired surrogates even when logical closure holds; the adapters
+reject those payloads before directory replacement or update mutation. This
+representation restriction does not limit the abstract encoding theorem.
 The reference wrappers disable foreign-key enforcement and trust valid prepared
 transitions. This argument does not silently give those wrappers an untrusted
 input validation interface.
@@ -152,7 +156,10 @@ SELECTs. It now begins one explicit read transaction before reading metadata and
 closes it after materialization. In WAL mode, the first read fixes the snapshot.
 The deterministic regression commits through another connection between the
 source and fact statements and requires C0, followed by C1 on a fresh read. That
-case passes in the current 114-method suite. The current performance harness reads
+case passes in the retained 114-method transcript. The separately budgeted
+Windows SQLite stage also exercises the actual reader across another
+connection's commit; this does not constitute a passing full storage suite.
+The current performance harness reads
 for equality after each timed write with no overlapping writer; all accepted
 normalized decodes equal the shared logical endpoint.
 

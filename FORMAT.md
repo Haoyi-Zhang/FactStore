@@ -178,6 +178,12 @@ Closure bounds every source/dependency generation by the epoch and equates fact
 schemas with the state schema. The common comparison domain additionally uses
 the segment filename epoch bound `1..99,999,999`. These executable restrictions
 do not restrict the abstract logical state or existential relational encoding.
+SQLite TEXT payloads must also be UTF-8 encodable. Lone surrogates in Python
+strings are rejected during preflight, before create replaces a directory or
+an update starts durable mutation. Empty text, NUL characters, and valid
+non-ASCII Unicode remain supported. The JSON-segment logical domain is wider
+than native SQLite TEXT binding; this restriction is part of the common
+representation-comparison domain, not the abstract relational theorem.
 
 ## 9. Decoder predicates and relational materialization
 
@@ -194,8 +200,8 @@ The normalized relational comparator materializes metadata, sources, facts, and
 dependencies in one read transaction. One SQL write transaction is not enough
 when an observation uses several completed autocommit SELECTs. See
 `proofs/representation.md` for the exact logical reduction and a closed but
-nonendpoint counterexample. The normalized reader and its closed-nonendpoint regression are executed in the
-current 114-method suite. The accepted comparison materializes every normalized
+nonendpoint counterexample. The normalized reader and its closed-nonendpoint
+regression appear in the retained 114-method passing transcript. The accepted comparison materializes every normalized
 observation in one read transaction; all accepted durable decodes equal the
 shared logical oracle.
 
@@ -217,6 +223,7 @@ decoded value with the logical oracle.  Existing timing rows retain that
 specific double-pass meaning.
 
 All current Python sources are parsed read-only with `ast.parse`; a syntax error
-in any unimported `.py` file fails verification.  The current complete executable
-suite is the retained 114-method transcript.  Earlier test counts remain only in
-explicitly historical records.
+in any unimported `.py` file fails verification.  The retained complete executable
+passing transcript contains 114 methods. The delivered suite has 140 methods;
+the separate Windows diagnostic is partial rather than a complete passing run.
+Earlier test counts remain only in explicitly historical records.

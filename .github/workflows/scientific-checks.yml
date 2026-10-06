@@ -1,0 +1,30 @@
+name: Finite scientific checks
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  owned-checks:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+      PYTHONUTF8: '1'
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: '3.12'
+      - name: New separately reserved finite run from the flat artifact root
+        run: python -B -m experiments.fresh_run --authorize-new-run --out "$RUNNER_TEMP/p021-owned-checks"
+      - name: Preserve raw output even when a scientific gate fails
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: p021-owned-checks-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/p021-owned-checks
+          if-no-files-found: error

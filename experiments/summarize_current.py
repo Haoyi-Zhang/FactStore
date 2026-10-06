@@ -29,6 +29,12 @@ EXCLUDED = {
     "order-counterbalance": "The corrected guarded order-control run emitted no observations before controller termination.",
 }
 ENGINE_ORDER = ("FrontierStore", "SQLite-Normalized", "SQLite-Rooted-Audit")
+CASE_CONFIGS = {
+    "pilot": {"source_counts": [500], "repetitions": 1, "updates": 8, "batch": 4},
+    "small": {"source_counts": [500], "repetitions": 3, "updates": 16, "batch": 8},
+    "medium": {"source_counts": [2000], "repetitions": 2, "updates": 12, "batch": 8},
+    "large": {"source_counts": [6000], "repetitions": 2, "updates": 8, "batch": 8},
+}
 TEST_COUNT_PATTERN = re.compile(r"^Ran (\d+) tests? in [^\n]+$", re.MULTILINE)
 TEST_ROW_PATTERN = re.compile(r"^(test[^\n]+) \.\.\. (ok|FAIL|ERROR|skipped[^\n]*)$", re.MULTILINE)
 
@@ -100,16 +106,83 @@ def load_rows(path: Path) -> list[dict[str, Any]]:
             "dependency_width": int(row["dependency_width"]),
             "update_ms": float(row["update_ms"]),
             "audit_ms": float(row["audit_ms"]),
-            "write_bytes": None if row["write_bytes"] == "" else int(float(row["write_bytes"])),
-            "stored_bytes": int(float(row["stored_bytes"])),
-            "durable_equal": row["durable_equal"].strip().lower() == "true",
+            "write_bytes": None if row["write_bytes"] == "" else int(row["write_bytes"]),
+            "stored_bytes": int(row["stored_bytes"]),
+            "selected_segments": None if row["selected_segments"] == "" else int(row["selected_segments"]),
+            "durable_equal": row["durable_equal"] == "True",
         })
     return converted
 
 
+def load_admitted_rows(scale: str, case_dir: str, results_root: Path) -> list[dict[str, Any]]:
+    """Bind retained CSV rows to completed accounting and the declared grid.
+
+    This checks retained records only; it does not rerun engines or authenticate
+    historical files. The medium retry deliberately retains the controller case
+    name ``current-medium`` rather than its destination directory name.
+    """
+    expected_directory = PILOT if scale == "pilot" else ACCEPTED[scale]
+    if case_dir != expected_directory:
+        raise AssertionError(f"unadmitted case directory: {case_dir}")
+    directory = results_root / case_dir
+    accounting = json.loads((directory / "accounting.json").read_text(encoding="utf-8"))
+    controller_case = "current-medium" if scale == "medium" else f"current-{scale}"
+    if (accounting.get("case") != controller_case
+            or accounting.get("status") != "CASE_COMPLETED"
+            or type(accounting.get("exit_code")) is not int or accounting["exit_code"] != 0
+            or accounting.get("monitor_error", "missing") is not None):
+        raise AssertionError(f"incomplete controller accounting: {case_dir}")
+    observed = json.loads((directory / "observations.json").read_text(encoding="utf-8"))
+    config = CASE_CONFIGS[scale]
+    if (observed.get("status") != "CASE_COMPLETED" or observed.get("mode") != scale
+            or observed.get("configuration") != config
+            or observed.get("engines") != list(ENGINE_ORDER)):
+        raise AssertionError(f"unexpected completed-case declaration: {case_dir}")
+    rows = load_rows(directory / "observations.csv")
+    json_rows = observed.get("rows")
+    if not isinstance(json_rows, list) or len(rows) != len(json_rows):
+        raise AssertionError(f"CSV/JSON row count differs: {case_dir}")
+    expected_identities = [
+        (source_count, repetition, engine, update)
+        for source_count in config["source_counts"]
+        for repetition in range(config["repetitions"])
+        for engine in ENGINE_ORDER
+        for update in range(1, config["updates"] + 1)
+    ]
+    identities = [(row["source_count"], row["repetition"], row["engine"], row["update"]) for row in rows]
+    if identities != expected_identities:
+        raise AssertionError(f"incomplete, duplicate, or reordered observation grid: {case_dir}")
+    audit_kinds = {
+        "FrontierStore": "independent-segment-parser-plus-fresh-open",
+        "SQLite-Normalized": "sqlite-one-read-transaction",
+        # Retained rows use this legacy label; the double-pass scope is preserved.
+        "SQLite-Rooted-Audit": "root-selected-sqlite-and-independent-full-export",
+    }
+    for row, json_row in zip(rows, json_rows):
+        if row != json_row or not isinstance(json_row, dict):
+            raise AssertionError(f"CSV/JSON observation differs: {case_dir}")
+        if (row["mode"] != scale or row["fact_count"] != row["source_count"] * 6
+                or row["batch"] != config["batch"] or row["dependency_width"] != 2
+                or json_row.get("durable_equal") is not True
+                or row["audit_kind"] != audit_kinds[row["engine"]]):
+            raise AssertionError(f"observation contract differs: {case_dir}")
+        for field in ("source_count", "fact_count", "repetition", "update", "batch", "dependency_width",
+                      "write_bytes", "stored_bytes"):
+            if type(json_row[field]) is not int or json_row[field] < 0:
+                raise AssertionError(f"invalid observation integer {field}: {case_dir}")
+        for field in ("update_ms", "audit_ms"):
+            value = json_row[field]
+            if type(value) not in (int, float) or not math.isfinite(value) or value < 0:
+                raise AssertionError(f"invalid observation time {field}: {case_dir}")
+        selected = row["selected_segments"]
+        expected_selected = row["update"] + 1 if row["engine"] == "FrontierStore" else None
+        if selected != expected_selected or (selected is not None and type(json_row["selected_segments"]) is not int):
+            raise AssertionError(f"selected-chain count differs: {case_dir}")
+    return rows
+
+
 def aggregate_case(scale: str, case_dir: str, results_root: Path, role: str) -> tuple[list[dict[str, Any]], dict[str, Any]]:
-    source = results_root / case_dir / "observations.csv"
-    rows = load_rows(source)
+    rows = load_admitted_rows(scale, case_dir, results_root)
     engines = sorted({row["engine"] for row in rows}, key=ENGINE_ORDER.index)
     if tuple(engines) != ENGINE_ORDER:
         raise AssertionError(f"unexpected engine set in {case_dir}: {engines}")
@@ -196,7 +269,7 @@ def build_order_diagnostics(results_root: Path) -> tuple[list[dict[str, Any]], l
     scale_rows: list[dict[str, Any]] = []
     repetition_rows: list[dict[str, Any]] = []
     for scale, directory in ACCEPTED.items():
-        rows = load_rows(results_root / directory / "observations.csv")
+        rows = load_admitted_rows(scale, directory, results_root)
         repetitions = sorted({row["repetition"] for row in rows})
         all_pair_differences: list[float] = []
         total_rooted_wins = total_frontier_wins = total_ties = 0

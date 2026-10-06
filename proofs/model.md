@@ -180,7 +180,7 @@ prefix of accepted publications, possibly including the interrupted attempt.
 
 The write-all loop and failure quarantine argument are detailed in
 `representation.md`, Section 4. Their selected boundary cases pass in the
-114-method suite. The ten historical process-exit placements predate the current
+retained 114-method transcript. The ten historical process-exit placements predate the current
 publication repairs and are not power-loss experiments. The theorem
 asserts neither raw-device durability nor correctness after failed system calls
 followed by continued use of the old instance. It is not an exactly-once
@@ -270,7 +270,7 @@ organizationally independent. It checks declared structure, not authenticity or
 semantic completeness. A maliciously replaced but internally closed history can
 be accepted, and an analyzer-omitted dependency cannot be inferred from payloads.
 
-The retained passing transcript covers 114 methods in eight modules: 23 core-store cases, 12 transition-boundary cases, 23 representation cases, 24 input-capture/preflight cases, 16 strict-format cases, 11 rooted-audit/export cases, two complete-enumeration cases, and three journal-evidence/reference-surface cases. The delivered source additionally contains four SQLite integer-domain methods, making 118 in total; those four are not covered by this retained transcript.
+The retained passing transcript covers 114 methods in eight modules: 23 core-store cases, 12 transition-boundary cases, 23 representation cases, 24 input-capture/preflight cases, 16 strict-format cases, 11 rooted-audit/export cases, two complete-enumeration cases, and three journal-evidence/reference-surface cases. The delivered source additionally contains six SQLite integer/text-domain methods, twelve data-only evidence-admission methods, and eight finite-run admission/coverage methods, making 140 in total; those 26 are not covered by this retained transcript. Changes to existing methods are likewise not retroactively validated by that transcript. The separately budgeted Windows run passes 24 existing methods plus eight runner methods, but has ten synchronization errors and 98 existing methods unavailable through POSIX-only imports. It is not a complete passing storage suite and does not weaken the publication premises above.
 The current bounded model completes all $5^4+5^3+5^2=775$ histories in the declared finite alphabet and 2,925 intermediate states.  For each final transition it replays ten abstract publication events into a complete-object map and selector, materializes the selected object, and then applies a separately defined cut/endpoint oracle plus closure, horizon, and inverse checks.  All 7,750 observations pass.  A closed mixed value and an early new selector are retained negative controls.  This is an abstract selector model, not a concrete filesystem or device-failure model.  The former 769-history output omitted six length-two histories and is retained only as explicitly retired evidence.
 
 The current joint operational case uses 24 sources, 144 facts, one reader, 20
@@ -298,8 +298,9 @@ therefore do not establish specialized-engine novelty.
 
 The same file gives a closed, horizon-respecting nonendpoint observation when
 separate SELECTs straddle a commit. The repaired normalized reader begins one
-explicit read transaction, and the deterministic regression now executes in the
-114-method suite.
+explicit read transaction, and the deterministic regression appears in the
+retained 114-method transcript; the new owned SQLite stage independently checks
+that reader across a commit without claiming complete storage-suite coverage.
 
 The generic rooted inspectability control writes a complete immutable SQLite
 image and a complete canonical audit export, then atomically replaces one root

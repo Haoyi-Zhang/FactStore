@@ -89,6 +89,11 @@ def parse_python_sources(root: Path) -> list[str]:
 
     parsed: list[str] = []
     for path in sorted(root.rglob("*.py")):
+        parts = path.relative_to(root).parts
+        # Checkout metadata is not a delivered source. Nested .git directories
+        # remain prohibited by the package-hygiene check below.
+        if parts[0] == ".git":
+            continue
         relative = path.relative_to(root).as_posix()
         try:
             source = path.read_text(encoding="utf-8")
@@ -98,6 +103,21 @@ def parse_python_sources(root: Path) -> list[str]:
         parsed.append(relative)
     require(bool(parsed), "no Python sources found for syntax parsing")
     return parsed
+
+
+def verify_retained_syntax_coverage(retained: dict, current: list[str]) -> None:
+    """Check the original inventory without claiming it covered later files.
+
+    All current sources have already been parsed in this invocation, including
+    additions. Historical coverage and count remain bound to their own record.
+    """
+    coverage = retained.get("coverage")
+    require(isinstance(coverage, list) and bool(coverage), "retained syntax inventory missing")
+    require(all(isinstance(path, str) for path in coverage), "retained syntax path type")
+    require(coverage == sorted(set(coverage)), "retained syntax inventory is not unique and sorted")
+    require(type(retained.get("python_sources_parsed")) is int
+            and retained["python_sources_parsed"] == len(coverage), "retained syntax count differs")
+    require(set(coverage) <= set(current), "retained syntax source is missing from current tree")
 
 
 def verify_reviewer_repairs_and_environment(root: Path, parsed_python_sources: list[str]) -> None:
@@ -124,8 +144,7 @@ def verify_reviewer_repairs_and_environment(root: Path, parsed_python_sources: l
     require(repair["f4"]["observed_selected_pair_reads"] == 2, "observed rooted pair reads")
     require(repair["f4"]["following_expected_state_comparisons"] == 1, "rooted expected-state comparisons")
     require(repair["f4"]["frozen_results_reinterpreted_only"] is True, "frozen timing boundary")
-    require(repair["f6"]["coverage"] == parsed_python_sources, "Python syntax coverage differs")
-    require(repair["f6"]["python_sources_parsed"] == len(parsed_python_sources), "Python syntax count differs")
+    verify_retained_syntax_coverage(repair["f6"], parsed_python_sources)
     require(repair["f6"]["unimported_syntax_error_rejected"] is True, "unimported syntax negative")
     require("not_imported.py" in repair["f6"]["negative_witness"], "syntax negative witness")
 
@@ -476,7 +495,11 @@ def main() -> int:
         "reviewer_repair_status": "REVIEWER_REPAIRS_VALIDATED",
         "accepted_environment_status": "PARTIALLY_RECOVERED_WITH_EXPLICIT_UNKNOWNS",
         "rooted_audit_timed_pair_passes": 2,
-        "python_sources_parsed": len(parsed_python_sources),
+        # Maintenance metadata accompanies the retained repair record, not a
+        # claim that later files were parsed by that historical execution.
+        "python_sources_parsed": json.loads(
+            (root / "results/current/reviewer-repairs/verification.json").read_text(encoding="utf-8")
+        )["f6"]["python_sources_parsed"],
         "joint_updates": int(joint["updates"]),
         "joint_compactions": joint_compactions,
         "journal_target": "ACM Transactions on Storage",
@@ -567,6 +590,8 @@ def main() -> int:
     text_violations: list[str] = []
     for path in root.rglob("*"):
         rel = path.relative_to(root)
+        if rel.parts[0] == ".git":
+            continue
         if any(part in FORBIDDEN_PATH_PARTS for part in rel.parts):
             bad_paths.append(rel.as_posix())
         if path.is_file() and path.suffix in FORBIDDEN_FILE_SUFFIXES:

@@ -64,6 +64,14 @@ def _capture_sql_state(state: State, *, immutable: bool = False) -> State:
     for role, value in (("epoch", captured.epoch), ("schema", captured.schema)):
         if value > (1 << 63) - 1:
             raise TransitionError("SQLITE_INTEGER_LIMIT", f"{role} exceeds signed-64 encoding")
+    # Python str can contain lone surrogates; SQLite TEXT binding cannot encode
+    # them. Reject before create removes a target or update starts mutation.
+    for family, records in (("source", captured.sources), ("fact", captured.facts)):
+        for identifier, record in records.items():
+            try:
+                record.payload.encode("utf-8")
+            except UnicodeEncodeError as error:
+                raise TransitionError("SQLITE_TEXT_ENCODING", f"{family}:{identifier} is not UTF-8 encodable") from error
     # Closure bounds every source/dependency generation by epoch and equates
     # every fact schema with the state schema, so these checks cover all binds.
     return captured

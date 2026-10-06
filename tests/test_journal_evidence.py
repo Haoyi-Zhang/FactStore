@@ -35,6 +35,13 @@ class JournalEvidenceTests(unittest.TestCase):
             )
             retained = results / "summary" / "journal-robustness.json"
             self.assertEqual(left, json.loads(retained.read_text(encoding="utf-8")))
+            # The documented package check is byte-exact, including on Windows.
+            for suffix in (".json", ".csv", ".tex"):
+                self.assertEqual(retained.with_suffix(suffix).read_bytes(), first.with_suffix(suffix).read_bytes())
+            self.assertEqual(
+                retained.with_name("journal-robustness-paired.csv").read_bytes(),
+                first.with_name("journal-robustness-paired.csv").read_bytes(),
+            )
 
     def test_reference_surface_recurses_through_local_inputs(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:

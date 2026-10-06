@@ -34,7 +34,7 @@ All persistent create paths capture and validate the supplied bootstrap before r
 
 ### Executed correctness evidence
 
-- The retained 114-method run passes; its transcript and count record are under `results/current/code-audit-tests/`. The current source contains 118 methods, including four additional SQLite integer-domain methods outside that transcript.
+- The retained 114-method run passes; its transcript and count record are under `results/current/code-audit-tests/`. The current source contains the existing 132 methods plus eight new finite-run admission/coverage methods (140 total). The additional 26 methods and subsequent edits are not retroactively validated by the retained transcript.
 - 775 bounded histories cover 2,925 intermediate logical states; this is the complete Cartesian product for the declared five-operation alphabet at lengths two, three, and four. The former 769-history prefix result is retained under `results/retired/` and is not current evidence.
 - 7,750 abstract publication observations materialized through a complete-object map and selector have zero closure, endpoint-membership, or cut-correspondence violations; closed-mix and early-selector negative controls fail as expected.
 - The joint case completes 20 updates, one reader, and five compactions over 24 sources and 144 facts.
@@ -133,19 +133,58 @@ Those fields are explicitly unknown in `results/current/accepted-environment.jso
 and are not backfilled from a later review machine.
 
 The package verifier parses every delivered `.py` source with `ast.parse`
-without importing it.  `verify_reviewer_repairs.py` additionally creates an
+without importing it, excluding only root-level Git checkout metadata. The
+retained repair record's 34-source inventory is checked against its own count
+and preserved as historical coverage; additions are parsed in the current run,
+not retroactively inserted into that record. `verify_reviewer_repairs.py` additionally creates an
 unimported bad Python file in a temporary directory and requires that same
 parser surface to reject it with a path-specific witness.
 
+Current summaries, paired diagnostics, and robustness reconstruction admit rows
+only after checking completed controller accounting, matching CSV/JSON values,
+finite nonnegative measurements, and the full declared observation grid. Missing
+or duplicate identities are rejected before aggregation. Canonical robustness
+JSON and TeX outputs use LF newlines on every platform, preserving the retained
+byte surface. The data-only regression subset is runnable with:
+
+```sh
+PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=. python -m unittest tests.test_evidence_admission tests.test_journal_evidence -v
+```
+
+Logical-model and standalone-parser imports do not eagerly import the POSIX
+store. Requesting `FrontierStore` or `Snapshot` still loads the Linux-specific
+engine. The finite-model and SQLite preflight tests can therefore run without
+emulating Linux storage behavior. SQLite preflight rejects non-UTF-8 payloads
+(such as lone Python surrogates) before create replacement or update mutation.
+
+Repository CI uses a 180-second whole-check timeout and always attempts to upload
+raw logs. It runs data reconstruction, the data-only subset, finite enumeration,
+and in-memory/preflight SQLite tests, not storage-engine benchmarks or the
+complete Linux regression suite. An unrun workflow is not
+executed correctness evidence.
+
 ## Current executable cases
 
-The guarded runner defines named, bounded cases for the complete suite, bounded histories, joint history, scale comparison, and attempted order control. Existing result paths refuse replacement. The campaign allowance is exhausted, so no further scientific run is admitted in this project. The data-only reconstruction commands remain usable because they do not execute storage engines.
+The historical guarded runner defines named cases for tests, histories, scale comparison, and attempted order control. Its lifetime allowance is exhausted: `run_bounded.py` must not admit another run or reset `resource-accounting.json`. Data-only reconstruction remains usable.
+
+For a separately authorized **new finite correctness run**, the flat artifact repository has one fixed entry point:
+
+```sh
+PYTHONUTF8=1 PYTHONDONTWRITEBYTECODE=1 python -B -m experiments.fresh_run \
+  --authorize-new-run --out /tmp/p021-owned-checks
+```
+
+The destination must be absent and outside the deliverable. This does not reuse the old allowance. It reserves the entire new run before launching, retains failed reservations without refund, checks the old ledger and source bytes afterward, and leaves all raw output in that destination. Six sequential stages cover the complete test inventory, finite histories, owned SQLite and strict-export cases, owned process exits, the joint history, and retained-data reconstruction. There is no scale/throughput matrix, external source-program execution, or downloaded experimental input. See `PLATFORM.md` for limits and accounting scope.
+
+The new Windows diagnostic exercises all test discovery, but is not a passing full-suite result: 24 of the existing 132 methods and all eight new methods pass; ten existing rooted-image methods error on file synchronization and 98 existing methods cannot be imported because their modules require `fcntl`. There are no skipped methods or assertion failures. The separate finite stage checks 775 histories, 2,925 states, and 7,750 abstract cuts. The owned SQLite stage matches eight persisted endpoints and an actual reader spanning another connection's commit, rejects six malformed databases and nine malformed exports, and accepts its valid export control. Six owned SQLite process exits cover WAL and DELETE at before-commit, after-commit, and after-close. These are process-exit and SQLite-API results with the operating system alive; the owned SQL bootstrap does not test the adapters' directory synchronization. Segment publication/recovery and the joint history remain unexecuted on this host. No synchronization or locking mechanism was replaced to obtain these results.
+
+`.github/workflows/scientific-checks.yml` prepares that same finite entry point on Ubuntu 24.04 from the **flat artifact root**, on main pushes or explicit dispatch. It retains a failing job exit and uses an always-run raw-output upload. The workflow has not been executed as part of this local handoff; preparing it is not cloud validation. The older data-only integrity workflow remains separate.
 
 The experimental launcher uses one child, bounded address space, a wall watchdog, concurrent-tree monitoring, and a parent-death signal on supported systems. Monitoring is a bounded operational guard, not a proof of continuous peak memory or progress through uninterruptible kernel I/O.
 
 ## Resource accounting
 
-Unknown inherited scientific use is conservatively charged to the full non-reserved allocation rather than treated as zero. Failed and interrupted attempts consume their complete reservations. The final campaign CPU upper bound reaches 28,800 seconds, with no remaining scientific-run allowance. The two order-control attempts are retained and excluded from timing inference. See `resource-accounting.json` and the per-case accounting files.
+Unknown inherited scientific use is conservatively charged to the full non-reserved allocation rather than treated as zero. Failed and interrupted attempts consume their complete reservations. The historical campaign CPU upper bound reaches 28,800 seconds, with no remaining allowance. The two order-control attempts are retained and excluded from timing inference. See the unchanged `resource-accounting.json` and historical per-case accounting files. New finite-run reservations and observed use are recorded only in each external destination's `run.json` and per-stage accounting; they do not alter historical measurements or replenish that lifetime allowance.
 
 ## Contents
 

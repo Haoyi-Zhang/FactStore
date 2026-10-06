@@ -17,6 +17,8 @@ import random
 import statistics
 from typing import Any, Iterable
 
+from experiments.summarize_current import load_admitted_rows
+
 ACCEPTED = (
     ("small", "current-small"),
     ("medium", "current-medium-retry"),
@@ -64,19 +66,13 @@ def _bootstrap_median_interval(values: list[float], *, seed: int) -> tuple[float
 def _load_rows(results: Path) -> list[dict[str, Any]]:
     rows: list[dict[str, Any]] = []
     for scale, directory in ACCEPTED:
-        path = results / directory / "observations.csv"
-        with path.open(newline="", encoding="utf-8") as handle:
-            for raw in csv.DictReader(handle):
-                row: dict[str, Any] = dict(raw)
-                row["scale"] = scale
-                for key in ("source_count", "fact_count", "repetition", "update", "batch", "dependency_width"):
-                    row[key] = int(row[key])
-                for key in ("update_ms", "audit_ms", "write_bytes", "stored_bytes"):
-                    row[key] = float(row[key])
-                row["combined_ms"] = row["update_ms"] + row["audit_ms"]
-                if row.get("durable_equal") != "True":
-                    raise ValueError(f"non-oracle row in accepted input: {path}")
-                rows.append(row)
+        for raw in load_admitted_rows(scale, directory, results):
+            row: dict[str, Any] = dict(raw)
+            row["scale"] = scale
+            for key in ("update_ms", "audit_ms", "write_bytes", "stored_bytes"):
+                row[key] = float(row[key])
+            row["combined_ms"] = row["update_ms"] + row["audit_ms"]
+            rows.append(row)
     return rows
 
 
@@ -177,7 +173,7 @@ def run(results: Path, output: Path) -> dict[str, Any]:
         "paired_frontier_rooted": paired,
     }
     output.parent.mkdir(parents=True, exist_ok=True)
-    output.write_text(json.dumps(result, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+    output.write_text(json.dumps(result, indent=2, sort_keys=True) + "\n", encoding="utf-8", newline="\n")
     _write_csv(output.with_suffix(".csv"), distributions)
     _write_csv(output.with_name(output.stem + "-paired.csv"), paired)
 
@@ -205,7 +201,7 @@ def run(results: Path, output: Path) -> dict[str, Any]:
             f"\\newcommand{{\\{prefix}PairDiffQOne}}{{{float(row['q1_frontier_minus_rooted_ms']):.2f}}}",
             f"\\newcommand{{\\{prefix}PairDiffQThree}}{{{float(row['q3_frontier_minus_rooted_ms']):.2f}}}",
         ])
-    output.with_suffix(".tex").write_text("\n".join(macro_lines) + "\n", encoding="utf-8")
+    output.with_suffix(".tex").write_text("\n".join(macro_lines) + "\n", encoding="utf-8", newline="\n")
     return result
 
 
