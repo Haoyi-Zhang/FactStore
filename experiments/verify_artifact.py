@@ -77,6 +77,27 @@ def require(condition: bool, message: str) -> None:
         raise AssertionError(message)
 
 
+def verify_primary_wrapper(paper: Path) -> dict:
+    """Inspect the current wrapper when papers accompany the code checkout.
+
+    Retained publication metadata describes its own earlier rendering, not
+    the current wrapper. A standalone artifact does not include the paper.
+    """
+    source = paper / "main.tex"
+    if not source.is_file():
+        return {"status": "NOT_INCLUDED", "source_inspected": False}
+    text = source.read_text(encoding="utf-8")
+    match = re.search(r"\\documentclass\[([^]]+)\]\{acmart\}", text)
+    require(match is not None, "current primary ACM wrapper missing")
+    options = tuple(part.strip() for part in match.group(1).split(","))
+    require(options == ("acmsmall", "screen", "review", "anonymous"),
+            "current primary wrapper format differs")
+    for name in ("journal-preamble.tex", "journal-frontmatter.tex"):
+        require(r"\input{" + name + "}" in text, "current primary shared source differs")
+    return {"status": "SOURCE_CHECKED", "source_inspected": True,
+            "class_options": list(options), "pdf_inspected": False}
+
+
 
 
 def parse_python_sources(root: Path) -> list[str]:
@@ -340,6 +361,7 @@ def verify_current(root: Path) -> int:
 
 def main() -> int:
     root = Path(__file__).resolve().parents[1]
+    current_primary_wrapper = verify_primary_wrapper(root.parent / "paper")
     parsed_python_sources = parse_python_sources(root)
     verify_reviewer_repairs_and_environment(root, parsed_python_sources)
     historical = verify(root / "results")
@@ -412,7 +434,9 @@ def main() -> int:
     )
     require(publication["target_journal"] == "ACM Transactions on Storage", "journal target mismatch")
     require(publication["author_presentation"] == "anonymous", "paper anonymity mismatch")
-    require(publication["review_format"] == "manuscript,screen,review,anonymous", "review format record")
+    # These fields validate the retained rendering record only. The current
+    # primary source is inspected separately, not inferred from this record.
+    require(publication["review_format"] == "manuscript,screen,review,anonymous", "retained review format record")
     require(publication["layout_format"] == "acmsmall,screen,anonymous", "TOS layout format record")
     require(int(publication["review_pages"]) > 0 and int(publication["tos_layout_pages"]) > 0, "paper page counts")
     require(publication["review_page_size"] == "US Letter", "review page size")
@@ -621,6 +645,7 @@ def main() -> int:
         "current_accepted_observations": current_observations,
         "maintenance_state": "CONSISTENT",
         "python_sources_parsed": len(parsed_python_sources),
+        "current_primary_wrapper": current_primary_wrapper,
     }, sort_keys=True))
     return 0
 
