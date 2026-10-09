@@ -49,7 +49,10 @@ def initialize_sql(path: Path, state, mode="WAL") -> None:
 
 def unit_checks(report):
     inventory = source_inventory(ROOT)
-    baseline = [name for name in inventory if not name.startswith("tests.test_fresh_run.")]
+    # The retained 132-method baseline predates both run-admission checks
+    # and paper-wrapper checks. All current methods are still executed below.
+    baseline = [name for name in inventory if not name.startswith(
+        ("tests.test_fresh_run.", "tests.test_primary_wrapper."))]
     if len(baseline) != 132:
         raise AssertionError(f"expected the existing 132-method surface, found {len(baseline)}")
     loader = unittest.TestLoader()
