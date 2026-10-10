@@ -15,16 +15,16 @@ class PrimaryWrapperTests(unittest.TestCase):
             r"\input{journal-frontmatter.tex}"+"\n", encoding="utf-8")
         return root
 
-    def test_current_acmsmall_wrapper(self):
+    def test_current_manuscript_wrapper(self):
         with tempfile.TemporaryDirectory() as directory:
-            result = verify_primary_wrapper(self.write_wrapper(directory, "acmsmall,screen,review,anonymous"))
+            result = verify_primary_wrapper(self.write_wrapper(directory, "manuscript,screen,review,anonymous"))
             self.assertEqual("SOURCE_CHECKED", result["status"])
             self.assertFalse(result["pdf_inspected"])
 
-    def test_retained_manuscript_format_is_not_current(self):
+    def test_production_format_is_not_current(self):
         with tempfile.TemporaryDirectory() as directory:
             with self.assertRaisesRegex(AssertionError, "format differs"):
-                verify_primary_wrapper(self.write_wrapper(directory, "manuscript,screen,review,anonymous"))
+                verify_primary_wrapper(self.write_wrapper(directory, "acmsmall,screen,review,anonymous"))
 
     def test_standalone_code_checkout_does_not_claim_paper_inspection(self):
         with tempfile.TemporaryDirectory() as directory:

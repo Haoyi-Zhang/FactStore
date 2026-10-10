@@ -90,7 +90,7 @@ def verify_primary_wrapper(paper: Path) -> dict:
     match = re.search(r"\\documentclass\[([^]]+)\]\{acmart\}", text)
     require(match is not None, "current primary ACM wrapper missing")
     options = tuple(part.strip() for part in match.group(1).split(","))
-    require(options == ("acmsmall", "screen", "review", "anonymous"),
+    require(options == ("manuscript", "screen", "review", "anonymous"),
             "current primary wrapper format differs")
     for name in ("journal-preamble.tex", "journal-frontmatter.tex"):
         require(r"\input{" + name + "}" in text, "current primary shared source differs")
