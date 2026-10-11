@@ -1,0 +1,81 @@
+{
+  "environment": {
+    "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+    "sqlite": "3.53.1",
+    "platform": "Windows-11-10.0.28000-SP0"
+  },
+  "rows": [
+    {
+      "sources": 500,
+      "facts": 3000,
+      "updates": 16,
+      "sqlite_before_checkpoint_bytes": 6476256,
+      "sqlite_after_checkpoint_bytes": 913408,
+      "checkpoint_elapsed_ns": 5227900,
+      "checkpoint_result": [
+        0,
+        0,
+        0
+      ],
+      "initial_checkpoint_result": [
+        0,
+        0,
+        0
+      ],
+      "full_image_export_all_endpoints_bytes": 24164763,
+      "full_image_export_current_endpoint_bytes": 1490968,
+      "retained_endpoints_all": 17,
+      "retained_endpoints_current": 1,
+      "endpoint_equal": true,
+      "scope": "SQLite API; all regular DB/WAL/SHM files; image+canonical export; no segment-store timing"
+    },
+    {
+      "sources": 2000,
+      "facts": 12000,
+      "updates": 12,
+      "sqlite_before_checkpoint_bytes": 7613280,
+      "sqlite_after_checkpoint_bytes": 3022848,
+      "checkpoint_elapsed_ns": 11330600,
+      "checkpoint_result": [
+        0,
+        0,
+        0
+      ],
+      "initial_checkpoint_result": [
+        0,
+        0,
+        0
+      ],
+      "full_image_export_all_endpoints_bytes": 69536499,
+      "full_image_export_current_endpoint_bytes": 5411019,
+      "retained_endpoints_all": 13,
+      "retained_endpoints_current": 1,
+      "endpoint_equal": true,
+      "scope": "SQLite API; all regular DB/WAL/SHM files; image+canonical export; no segment-store timing"
+    },
+    {
+      "sources": 6000,
+      "facts": 36000,
+      "updates": 8,
+      "sqlite_before_checkpoint_bytes": 11892888,
+      "sqlite_after_checkpoint_bytes": 8790016,
+      "checkpoint_elapsed_ns": 12946900,
+      "checkpoint_result": [
+        0,
+        0,
+        0
+      ],
+      "initial_checkpoint_result": [
+        0,
+        0,
+        0
+      ],
+      "full_image_export_all_endpoints_bytes": 143777607,
+      "full_image_export_current_endpoint_bytes": 16019695,
+      "retained_endpoints_all": 9,
+      "retained_endpoints_current": 1,
+      "endpoint_equal": true,
+      "scope": "SQLite API; all regular DB/WAL/SHM files; image+canonical export; no segment-store timing"
+    }
+  ]
+}

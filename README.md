@@ -1,6 +1,6 @@
 # FrontierStore artifact
 
-This artifact supports the negative result reported in **Auditable Source–Fact Storage: Transactional Equivalence, Closure Counterexamples, and Representation Costs**. It contains:
+This artifact supports the negative result reported in **Auditable Source�CFact Storage: Transactional Equivalence, Closure Counterexamples, and Representation Costs**. It contains:
 
 - a finite source/fact transition model;
 - the FrontierStore typed immutable-segment implementation;
@@ -11,7 +11,7 @@ This artifact supports the negative result reported in **Auditable Source–Fact
 - retained historical rows and current fixed-order measurements;
 - deterministic reconstruction scripts, formal arguments, and evidence ledgers.
 
-The theorem-level result is that the stated logical contract is transactionally expressible and therefore does not require FrontierStore or another specialized engine. In the retained fixed-order runs, the generic rooted database/export composition has lower pooled and per-repetition persistence-plus-full-audit medians, while FrontierStore emits and retains fewer bytes. No counterbalanced observation was admitted, so the timing ordering is descriptive rather than an order-controlled performance conclusion. The artifact preserves the logical result, the cost observations, and the failed order-control evidence.
+The stated logical contract is transactionally expressible and does not require FrontierStore. In the retained fixed-order runs, the rooted database/export control has lower persistence-plus-full-audit medians and FrontierStore emits fewer process-accounted bytes. Stored size depends on maintenance and historical retention: the checkpoint and matched-history control below separates those effects. Timing order remains descriptive because the runs were not counterbalanced.
 
 ## Scientific boundary
 
@@ -64,6 +64,32 @@ A shared untimed transition first constructs the exact next state and delta. Per
 Process-accounted writes are operating-system block-write counters around persistence, not device traffic or flash write amplification. Final stored bytes are short-run directory sizes, not a long-running reclamation model. Ordinary page cache is retained.
 
 The retained pooled medians favor the rooted database/export control at all three scales, and every per-repetition median has the same ordering. SQLite rooted audit is lower on 44/48, 20/24, and 11/16 aligned transition identities from small to large. SQLite rooted audit writes 27.75, 107.96, and 324.58 times as many process-accounted bytes as FrontierStore and retains 17.91, 22.40, and 17.81 times as many bytes. Normalized SQLite has the smallest pooled median when a separate export is unnecessary. Because all runs use one fixed order and two bounded counterbalance launches produced no accepted observation, none of these timing statements is an order-independent or causal speed claim.
+
+### Checkpoint and matched-history control
+
+`experiments/maintenance_control.py` applies the deterministic workload through
+the normalized SQLite delta writer, with automatic checkpoints disabled. It
+measures database, WAL and shared-memory bytes before and after a real truncating
+checkpoint, its elapsed time, and the equality of the complete decoded endpoint.
+A separate control retains every complete image/export pair or only the latest;
+both policies recover the same current state. The run is retained in
+`results/maintenance-control.json`.
+
+| Sources / facts | Before checkpoint | After checkpoint | Checkpoint | All pairs | Latest pair |
+|---:|---:|---:|---:|---:|---:|
+| 500 / 3,000 | 6,476,256 B | 913,408 B | 5.23 ms | 24,164,763 B | 1,490,968 B |
+| 2,000 / 12,000 | 7,613,280 B | 3,022,848 B | 11.33 ms | 69,536,499 B | 5,411,019 B |
+| 6,000 / 36,000 | 11,892,888 B | 8,790,016 B | 12.95 ms | 143,777,607 B | 16,019,695 B |
+
+This is a Windows SQLite-API run, not POSIX directory-synchronization evidence
+or a joint rerun of the segment engine. The earlier directory ratios are
+policy-specific; these measurements do not establish a new cross-engine ranking.
+Reproduce from the artifact root with:
+
+```sh
+PYTHONDONTWRITEBYTECODE=1 python -B -m experiments.maintenance_control --output /tmp/maintenance-control.json
+PYTHONDONTWRITEBYTECODE=1 python -B -m unittest tests.test_maintenance_control -v
+```
 
 ## Representation choices
 
