@@ -1,6 +1,6 @@
 # FrontierStore artifact
 
-This artifact supports the negative result reported in **Auditable Source�CFact Storage: Transactional Equivalence, Closure Counterexamples, and Representation Costs**. It contains:
+This artifact supports the negative result reported in **Auditable Source–Fact Storage: Transactional Equivalence, Closure Counterexamples, and Representation Costs**. It contains:
 
 - a finite source/fact transition model;
 - the FrontierStore typed immutable-segment implementation;
