@@ -228,7 +228,16 @@ def main() -> int:
                 "process_count_scope": "fixed reviewed schedule, not RLIMIT_NPROC",
                 "os_release": Path("/etc/os-release").read_text(encoding="utf-8")}
         for stage in STAGES:
-            run["stages"].append(execute(stage, output, deadline))
+            outcome = execute(stage, output, deadline)
+            run["stages"].append(outcome)
+            print(json.dumps({"stage": stage, "status": outcome["status"],
+                              "exit_code": outcome.get("exit_code")}), flush=True)
+            if outcome["status"] != "COMPLETED":
+                for stream_name in ("stdout.txt", "stderr.txt"):
+                    stream = output / stage / stream_name
+                    if stream.is_file():
+                        print(stream.read_text(encoding="utf-8", errors="replace")[-16000:],
+                              file=sys.stderr, flush=True)
             write_json(output / "run.json", run)
         run["old_ledger_unchanged"] = digest(ROOT / "resource-accounting.json") == original
         run["source_unchanged"] = source_hashes(ROOT) == hashes

@@ -11,10 +11,13 @@ class FreshRunTests(unittest.TestCase):
     def test_existing_132_methods_are_statically_inventoried(self):
         names = fresh_run.source_inventory(fresh_run.ROOT)
         existing = [n for n in names if not n.startswith(
-            ("tests.test_fresh_run.", "tests.test_primary_wrapper."))]
+            ("tests.test_fresh_run.", "tests.test_primary_wrapper.",
+             "tests.test_maintenance_control."))]
         self.assertEqual(132, len(existing))
         wrappers = [n for n in names if n.startswith("tests.test_primary_wrapper.")]
         self.assertEqual(3, len(wrappers))
+        maintenance = [n for n in names if n.startswith("tests.test_maintenance_control.")]
+        self.assertEqual(2, len(maintenance))
         self.assertEqual(len(names), len(set(names)))
 
     def test_exhausted_old_ledger_is_read_only(self):
