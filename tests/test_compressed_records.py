@@ -55,6 +55,10 @@ class CompressedRecordTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, 'count mismatch'):
             bind_record(self.row, self.summary, 8, 'all')
         self.row['updates'] = 12
+        self.row['records'][1]['index'] = True
+        with self.assertRaisesRegex(ValueError, 'update sequence'):
+            bind_record(self.row, self.summary, 8, 'all')
+        self.row['records'][1]['index'] = 1
         self.summary['endpoint_equal'] = 1
         with self.assertRaisesRegex(ValueError, 'differs from summary'):
             bind_record(self.row, self.summary, 8, 'all')

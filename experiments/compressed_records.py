@@ -57,7 +57,8 @@ def bind_record(value, summary, size, policy):
     if type(records) is not list or len(records) != 15 or any(type(x) is not dict for x in records):
         raise ValueError('lifecycle event coverage mismatch')
     updates = [x for x in records if x.get('event') == 'update']
-    if len(updates) != 12 or [x.get('index') for x in updates] != list(range(1, 13)):
+    if (len(updates) != 12 or any(type(x.get('index')) is not int for x in updates)
+            or [x.get('index') for x in updates] != list(range(1, 13))):
         raise ValueError('lifecycle update sequence mismatch')
     if value.get('endpoint_equal') is not True or value.get('held_endpoint_equal') is not True:
         raise ValueError('lifecycle endpoint checks are not successful')
