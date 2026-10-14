@@ -15,6 +15,12 @@ transaction, current and held outputs, file inventories and removed filenames.
 archive database/export pairs. The shared logical model is used in replay; this
 does not constitute an independently authored transition theory.
 
+The package validator decodes each of these six declared gzip JSON records
+with a 32 MiB per-file bound, checks the complete twelve-update sequence and
+typed counts, and matches every aggregate field to the corresponding summary.
+Other compressed bundles remain disallowed. This is data-format and
+record/summary checking, not an additional native experiment.
+
 Actual counts: 6 cases, 72 update inputs/current outputs, 36 held update outputs,
 6 close/reopen outputs, 90 event records, 36 checkpoint results, 42 final archive
 pairs re-decoded, 72 archive files actually removed, zero discrepancies.

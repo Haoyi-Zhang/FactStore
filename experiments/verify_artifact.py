@@ -25,6 +25,7 @@ from experiments.summarize_current import (
     write_paper_inputs,
 )
 from experiments.verify_checked_results import verify
+from experiments.compressed_records import verify_compressed_records
 
 
 REQUIRED_CLAIM_COLUMNS = {
@@ -609,6 +610,10 @@ def main() -> int:
     present = {path.relative_to(root).as_posix() for path in root.rglob("*") if path.is_file()}
     require(required <= present, f"missing required artifact files: {sorted(required - present)}")
 
+    # These gzip files contain bounded JSON event records, not nested packages.
+    # Decode every declared case and bind all its summary fields before allowing
+    # it through package hygiene. Other compressed/archive files remain invalid.
+    verified_records = verify_compressed_records(root)
     nested_archives: list[str] = []
     bad_paths: list[str] = []
     text_violations: list[str] = []
@@ -621,7 +626,8 @@ def main() -> int:
         if path.is_file() and path.suffix in FORBIDDEN_FILE_SUFFIXES:
             bad_paths.append(rel.as_posix())
         if path.is_file() and path.suffix.lower() in {".zip", ".tar", ".gz", ".7z"}:
-            nested_archives.append(rel.as_posix())
+            if rel.as_posix() not in verified_records:
+                nested_archives.append(rel.as_posix())
         if path.is_file() and path.suffix.lower() in {".py", ".md", ".csv", ".json", ".txt"}:
             text = path.read_text(encoding="utf-8", errors="ignore")
             for token in FORBIDDEN_TEXT:
