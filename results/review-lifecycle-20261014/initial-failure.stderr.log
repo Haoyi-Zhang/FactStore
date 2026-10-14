@@ -1,0 +1,55 @@
+test_checkpoint_and_history_keep_exact_endpoint (tests.test_maintenance_control.MaintenanceTests.test_checkpoint_and_history_keep_exact_endpoint) ... FAIL
+test_reject_invalid_size (tests.test_maintenance_control.MaintenanceTests.test_reject_invalid_size) ... ok
+test_declared_universe_contains_every_length_two_to_four_history (tests.test_exhaustive.BoundedEnumerationTests.test_declared_universe_contains_every_length_two_to_four_history) ... ok
+test_runner_emits_counts_derived_from_the_full_universe (tests.test_exhaustive.BoundedEnumerationTests.test_runner_emits_counts_derived_from_the_full_universe) ... ok
+test_low_level_image_preflight_preserves_existing_path (tests.test_sql_integer_domain.SQLiteIntegerDomain.test_low_level_image_preflight_preserves_existing_path) ... ok
+test_replacing_create_rejects_before_filesystem_access (tests.test_sql_integer_domain.SQLiteIntegerDomain.test_replacing_create_rejects_before_filesystem_access) ... ok
+test_supported_schema_boundaries (tests.test_sql_integer_domain.SQLiteIntegerDomain.test_supported_schema_boundaries) ... ok
+test_text_update_preflight_and_supported_unicode_round_trip (tests.test_sql_integer_domain.SQLiteIntegerDomain.test_text_update_preflight_and_supported_unicode_round_trip) ... ok
+test_unencodable_text_create_rejects_before_filesystem_access (tests.test_sql_integer_domain.SQLiteIntegerDomain.test_unencodable_text_create_rejects_before_filesystem_access) ... ok
+test_update_rejects_before_delta_or_mutation (tests.test_sql_integer_domain.SQLiteIntegerDomain.test_update_rejects_before_delta_or_mutation) ... ok
+test_input_and_output_bounds_reject_before_creation (experiments.history_lifecycle_tests.HistoryLifecycleTests.test_input_and_output_bounds_reject_before_creation) ... ok
+test_policies_share_exact_updates_and_required_lease (experiments.history_lifecycle_tests.HistoryLifecycleTests.test_policies_share_exact_updates_and_required_lease) ... ok
+test_reader_lease_checkpoint_and_actual_archive_collection (experiments.history_lifecycle_tests.HistoryLifecycleTests.test_reader_lease_checkpoint_and_actual_archive_collection) ... FAIL
+test_reader_requires_one_explicit_transaction (experiments.history_lifecycle_tests.HistoryLifecycleTests.test_reader_requires_one_explicit_transaction) ... ok
+
+======================================================================
+FAIL: test_checkpoint_and_history_keep_exact_endpoint (tests.test_maintenance_control.MaintenanceTests.test_checkpoint_and_history_keep_exact_endpoint)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\CodexProjects\wg-check\substantive-library\P021\artifact\tests\test_maintenance_control.py", line 13, in test_checkpoint_and_history_keep_exact_endpoint
+    self.assertEqual(row["history_remaining_files"], ["image-3.json", "image-3.sqlite"])
+AssertionError: Lists differ: ['image-0.sqlite-shm', 'image-0.sqlite-wal', 'ima[156 chars]wal'] != ['image-3.json', 'image-3.sqlite']
+
+First differing element 0:
+'image-0.sqlite-shm'
+'image-3.json'
+
+First list contains 8 additional elements.
+First extra element 2:
+'image-1.sqlite-shm'
+
++ ['image-3.json', 'image-3.sqlite']
+- ['image-0.sqlite-shm',
+-  'image-0.sqlite-wal',
+-  'image-1.sqlite-shm',
+-  'image-1.sqlite-wal',
+-  'image-2.sqlite-shm',
+-  'image-2.sqlite-wal',
+-  'image-3.json',
+-  'image-3.sqlite',
+-  'image-3.sqlite-shm',
+-  'image-3.sqlite-wal']
+
+======================================================================
+FAIL: test_reader_lease_checkpoint_and_actual_archive_collection (experiments.history_lifecycle_tests.HistoryLifecycleTests.test_reader_lease_checkpoint_and_actual_archive_collection)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\CodexProjects\wg-check\substantive-library\P021\artifact\experiments\history_lifecycle_tests.py", line 21, in test_reader_lease_checkpoint_and_actual_archive_collection
+    self.assertEqual(len(row['final']['files']),3)
+AssertionError: 15 != 3
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.515s
+
+FAILED (failures=2)
