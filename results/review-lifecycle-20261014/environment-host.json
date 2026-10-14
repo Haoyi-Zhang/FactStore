@@ -1,0 +1,18 @@
+{
+  "observed_date": "2026-10-14 Asia/Shanghai",
+  "cpu_source": "Get-CimInstance Win32_Processor",
+  "cpu": "12th Gen Intel(R) Core(TM) i7-12700KF",
+  "physical_cores": 12,
+  "logical_processors": 20,
+  "os_source": "Get-CimInstance Win32_OperatingSystem",
+  "os_caption": "Microsoft Windows 11 专业版",
+  "version": "10.0.28000",
+  "build": "28000",
+  "architecture": "64 位",
+  "filesystem_source": "Get-CimInstance Win32_LogicalDisk DeviceID D:",
+  "filesystem": "NTFS",
+  "storage_device_medium": "not measured",
+  "virtualization_provider": "not measured",
+  "wsl_status": "wsl --list --quiet exits 1: subsystem not installed; no installation attempted",
+  "scope": "actual current host only; never backfilled into inherited Linux timing environment"
+}

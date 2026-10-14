@@ -325,6 +325,8 @@ def main() -> int:
 
     status: dict[str, object] = {
         "status": "REFERENCE_INVENTORY_CONSISTENT",
+        "scope": "offline inventory and metadata checks; passage flags are inherited audit declarations, not fresh source full-text verification",
+        "fulltext_verification_performed": False,
         "reference_count": len(audit),
         "minimum_reference_count": MINIMUM_REFERENCES,
         "audit_manifest_key_equality": True,

@@ -1,0 +1,11 @@
+{
+  "cases": 6,
+  "updates": 72,
+  "raw_records": 90,
+  "held_read_outputs": 36,
+  "checkpoint_outputs": 36,
+  "retained_archive_pairs_redecoded": 42,
+  "actual_removed_archive_files": 72,
+  "mismatches": 0,
+  "scope": "shared-model raw replay plus native re-decode of every retained archive; not an independent transition theory, POSIX publisher validation or three-engine comparison"
+}

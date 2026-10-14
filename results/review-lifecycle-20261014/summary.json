@@ -1,0 +1,2333 @@
+{
+  "cases": 6,
+  "environment": {
+    "clocks": {
+      "monotonic": {
+        "adjustable": false,
+        "implementation": "GetTickCount64()",
+        "monotonic": true,
+        "resolution": 0.015625
+      },
+      "perf_counter": {
+        "adjustable": false,
+        "implementation": "QueryPerformanceCounter()",
+        "monotonic": true,
+        "resolution": 1e-07
+      },
+      "process_time": {
+        "adjustable": false,
+        "implementation": "GetProcessTimes()",
+        "monotonic": true,
+        "resolution": 1e-07
+      },
+      "time": {
+        "adjustable": true,
+        "implementation": "GetSystemTimeAsFileTime()",
+        "monotonic": false,
+        "resolution": 0.015625
+      }
+    },
+    "platform": "Windows-11-10.0.28000-SP0",
+    "python": "3.12.14 (main, Aug 25 2026, 14:01:42) [MSC v.1944 64 bit (AMD64)]",
+    "sqlite": "3.53.1",
+    "sqlite_source_id": "2026-05-05 10:34:17 c88b22011a54b4f6fbd149e9f8e4de77658ce58143a1af0e3785e4e6475127e9"
+  },
+  "fixed_policy_order": true,
+  "interpretation": "one repetition per size/policy; descriptive API lifecycle, not a common-native-persistence three-engine ranking or novelty claim",
+  "raw_record_count": 90,
+  "rows": [
+    {
+      "before_close": {
+        "archive_bytes": 695625,
+        "db_wal_shm_bytes": 81920,
+        "files": {
+          "history/audit-00000001.json": 9577,
+          "history/audit-00000002.json": 9857,
+          "history/audit-00000003.json": 10137,
+          "history/audit-00000004.json": 10417,
+          "history/audit-00000005.json": 10697,
+          "history/audit-00000006.json": 10977,
+          "history/audit-00000007.json": 11257,
+          "history/audit-00000008.json": 11537,
+          "history/audit-00000009.json": 11817,
+          "history/audit-00000010.json": 12202,
+          "history/audit-00000011.json": 12482,
+          "history/audit-00000012.json": 12762,
+          "history/audit-00000013.json": 13042,
+          "history/image-00000001.sqlite": 40960,
+          "history/image-00000002.sqlite": 40960,
+          "history/image-00000003.sqlite": 40960,
+          "history/image-00000004.sqlite": 40960,
+          "history/image-00000005.sqlite": 40960,
+          "history/image-00000006.sqlite": 40960,
+          "history/image-00000007.sqlite": 40960,
+          "history/image-00000008.sqlite": 40960,
+          "history/image-00000009.sqlite": 40960,
+          "history/image-00000010.sqlite": 40960,
+          "history/image-00000011.sqlite": 40960,
+          "history/image-00000012.sqlite": 49152,
+          "history/image-00000013.sqlite": 49152,
+          "normalized.sqlite": 49152,
+          "normalized.sqlite-shm": 32768,
+          "normalized.sqlite-wal": 0
+        },
+        "total_bytes": 777545
+      },
+      "checkpoints": [
+        {
+          "after": {
+            "archive_bytes": 0,
+            "db_wal_shm_bytes": 73728,
+            "files": {
+              "normalized.sqlite": 40960,
+              "normalized.sqlite-shm": 32768,
+              "normalized.sqlite-wal": 0
+            },
+            "total_bytes": 73728
+          },
+          "all_frames_checkpointed": true,
+          "before": {
+            "archive_bytes": 0,
+            "db_wal_shm_bytes": 131656,
+            "files": {
+              "normalized.sqlite": 4096,
+              "normalized.sqlite-shm": 32768,
+              "normalized.sqlite-wal": 94792
+            },
+            "total_bytes": 131656
+          },
+          "elapsed_ns": 490200,
+          "event": "bootstrap",
+          "mode": "TRUNCATE",
+          "result": [
+            0,
+            0,
+            0
+          ],
+          "wal_truncated": true
+        },
+        {
+          "after": {
+            "archive_bytes": 359639,
+            "db_wal_shm_bytes": 246800,
+            "files": {
+              "history/audit-00000001.json": 9577,
+              "history/audit-00000002.json": 9857,
+              "history/audit-00000003.json": 10137,
+              "history/audit-00000004.json": 10417,
+              "history/audit-00000005.json": 10697,
+              "history/audit-00000006.json": 10977,
+              "history/audit-00000007.json": 11257,
+              "history/image-00000001.sqlite": 40960,
+              "history/image-00000002.sqlite": 40960,
+              "history/image-00000003.sqlite": 40960,
+              "history/image-00000004.sqlite": 40960,
+              "history/image-00000005.sqlite": 40960,
+              "history/image-00000006.sqlite": 40960,
+              "history/image-00000007.sqlite": 40960,
+              "normalized.sqlite": 40960,
+              "normalized.sqlite-shm": 32768,
+              "normalized.sqlite-wal": 173072
+            },
+            "total_bytes": 606439
+          },
+          "all_frames_checkpointed": false,
+          "before": {
+            "archive_bytes": 359639,
+            "db_wal_shm_bytes": 246800,
+            "files": {
+              "history/audit-00000001.json": 9577,
+              "history/audit-00000002.json": 9857,
+              "history/audit-00000003.json": 10137,
+              "history/audit-00000004.json": 10417,
+              "history/audit-00000005.json": 10697,
+              "history/audit-00000006.json": 10977,
+              "history/audit-00000007.json": 11257,
+              "history/image-00000001.sqlite": 40960,
+              "history/image-00000002.sqlite": 40960,
+              "history/image-00000003.sqlite": 40960,
+              "history/image-00000004.sqlite": 40960,
+              "history/image-00000005.sqlite": 40960,
+              "history/image-00000006.sqlite": 40960,
+              "history/image-00000007.sqlite": 40960,
+              "normalized.sqlite": 40960,
+              "normalized.sqlite-shm": 32768,
+              "normalized.sqlite-wal": 173072
+            },
+            "total_bytes": 606439
+          },
+          "elapsed_ns": 16900,
+          "event": "held-reader",
+          "mode": "PASSIVE",
+          "result": [
+            0,
+            42,
+            0
+          ],
+          "wal_truncated": false
+        },
+        {
+          "after": {
+            "archive_bytes": 359639,
+            "db_wal_shm_bytes": 246800,
+            "files": {
+              "history/audit-00000001.json": 9577,
+              "history/audit-00000002.json": 9857,
+              "history/audit-00000003.json": 10137,
+              "history/audit-00000004.json": 10417,
+              "history/audit-00000005.json": 10697,
+              "history/audit-00000006.json": 10977,
+              "history/audit-00000007.json": 11257,
+              "history/image-00000001.sqlite": 40960,
+              "history/image-00000002.sqlite": 40960,
+              "history/image-00000003.sqlite": 40960,
+              "history/image-00000004.sqlite": 40960,
+              "history/image-00000005.sqlite": 40960,
+              "history/image-00000006.sqlite": 40960,
+              "history/image-00000007.sqlite": 40960,
+              "normalized.sqlite": 40960,
+              "normalized.sqlite-shm": 32768,
+              "normalized.sqlite-wal": 173072
+            },
+            "total_bytes": 606439
+          },
+          "all_frames_checkpointed": false,
+          "before": {
+            "archive_bytes": 359639,
+            "db_wal_shm_bytes": 246800,
+            "files": {
+              "history/audit-00000001.json": 9577,
+              "history/audit-00000002.json": 9857,
+              "history/audit-00000003.json": 10137,
+              "history/audit-00000004.json": 10417,
+              "history/audit-00000005.json": 10697,
+              "history/audit-00000006.json": 10977,
+              "history/audit-00000007.json": 11257,
+              "history/image-00000001.sqlite": 40960,
+              "history/image-00000002.sqlite": 40960,
+              "history/image-00000003.sqlite": 40960,
+              "history/image-00000004.sqlite": 40960,
+              "history/image-00000005.sqlite": 40960,
+              "history/image-00000006.sqlite": 40960,
+              "history/image-00000007.sqlite": 40960,
+              "normalized.sqlite": 40960,
+              "normalized.sqlite-shm": 32768,
+              "normalized.sqlite-wal": 173072
+            },
+            "total_bytes": 606439
+          },
+          "elapsed_ns": 17200,
+          "event": "held-reader",
+          "mode": "TRUNCATE",
+          "result": [
+            1,
+            42,
+            0
+          ],
+          "wal_truncated": false
+        },
+        {
+          "after": {
+            "archive_bytes": 359639,
+            "db_wal_shm_bytes": 73728,
+            "files": {
+              "history/audit-00000001.json": 9577,
+              "history/audit-00000002.json": 9857,
+              "history/audit-00000003.json": 10137,
+              "history/audit-00000004.json": 10417,
+              "history/audit-00000005.json": 10697,
+              "history/audit-00000006.json": 10977,
+              "history/audit-00000007.json": 11257,
+              "history/image-00000001.sqlite": 40960,
+              "history/image-00000002.sqlite": 40960,
+              "history/image-00000003.sqlite": 40960,
+              "history/image-00000004.sqlite": 40960,
+              "history/image-00000005.sqlite": 40960,
+              "history/image-00000006.sqlite": 40960,
+              "history/image-00000007.sqlite": 40960,
+              "normalized.sqlite": 40960,
+              "normalized.sqlite-shm": 32768,
+              "normalized.sqlite-wal": 0
+            },
+            "total_bytes": 433367
+          },
+          "all_frames_checkpointed": true,
+          "before": {
+            "archive_bytes": 359639,
+            "db_wal_shm_bytes": 246800,
+            "files": {
+              "history/audit-00000001.json": 9577,
+              "history/audit-00000002.json": 9857,
+              "history/audit-00000003.json": 10137,
+              "history/audit-00000004.json": 10417,
+              "history/audit-00000005.json": 10697,
+              "history/audit-00000006.json": 10977,
+              "history/audit-00000007.json": 11257,
+              "history/image-00000001.sqlite": 40960,
+              "history/image-00000002.sqlite": 40960,
+              "history/image-00000003.sqlite": 40960,
+              "history/image-00000004.sqlite": 40960,
+              "history/image-00000005.sqlite": 40960,
+              "history/image-00000006.sqlite": 40960,
+              "history/image-00000007.sqlite": 40960,
+              "normalized.sqlite": 40960,
+              "normalized.sqlite-shm": 32768,
+              "normalized.sqlite-wal": 173072
+            },
+            "total_bytes": 606439
+          },
+          "elapsed_ns": 684800,
+          "event": "reader-released",
+          "mode": "TRUNCATE",
+          "result": [
+            0,
+            0,
+            0
+          ],
+          "wal_truncated": true
+        },
+        {
+          "after": {
+            "archive_bytes": 464913,
+            "db_wal_shm_bytes": 73728,
+            "files": {
+              "history/audit-00000001.json": 9577,
+              "history/audit-00000002.json": 9857,
+              "history/audit-00000003.json": 10137,
+              "history/audit-00000004.json": 10417,
+              "history/audit-00000005.json": 10697,
+              "history/audit-00000006.json": 10977,
+              "history/audit-00000007.json": 11257,
+              "history/audit-00000008.json": 11537,
+              "history/audit-00000009.json": 11817,
+              "history/image-00000001.sqlite": 40960,
+              "history/image-00000002.sqlite": 40960,
+              "history/image-00000003.sqlite": 40960,
+              "history/image-00000004.sqlite": 40960,
+              "history/image-00000005.sqlite": 40960,
+              "history/image-00000006.sqlite": 40960,
+              "history/image-00000007.sqlite": 40960,
+              "history/image-00000008.sqlite": 40960,
+              "history/image-00000009.sqlite": 40960,
+              "normalized.sqlite": 40960,
+              "normalized.sqlite-shm": 32768,
+              "normalized.sqlite-wal": 0
+            },
+            "total_bytes": 538641
+          },
+          "all_frames_checkpointed": true,
+          "before": {
+            "archive_bytes": 464913,
+            "db_wal_shm_bytes": 131440,
+            "files": {
+              "history/audit-00000001.json": 9577,
+              "history/audit-00000002.json": 9857,
+              "history/audit-00000003.json": 10137,
+              "history/audit-00000004.json": 10417,
+              "history/audit-00000005.json": 10697,
+              "history/audit-00000006.json": 10977,
+              "history/audit-00000007.json": 11257,
+              "history/audit-00000008.json": 11537,
+              "history/audit-00000009.json": 11817,
+              "history/image-00000001.sqlite": 40960,
+              "history/image-00000002.sqlite": 40960,
+              "history/image-00000003.sqlite": 40960,
+              "history/image-00000004.sqlite": 40960,
+              "history/image-00000005.sqlite": 40960,
+              "history/image-00000006.sqlite": 40960,
+              "history/image-00000007.sqlite": 40960,
+              "history/image-00000008.sqlite": 40960,
+              "history/image-00000009.sqlite": 40960,
+              "normalized.sqlite": 40960,
+              "normalized.sqlite-shm": 32768,
+              "normalized.sqlite-wal": 57712
+            },
+            "total_bytes": 596353
+          },
+          "elapsed_ns": 689700,
+          "event": "reader-gap",
+          "mode": "TRUNCATE",
+          "result": [
+            0,
+            0,
+            0
+          ],
+          "wal_truncated": true
+        },
+        {
+          "after": {
+            "archive_bytes": 695625,
+            "db_wal_shm_bytes": 81920,
+            "files": {
+              "history/audit-00000001.json": 9577,
+              "history/audit-00000002.json": 9857,
+              "history/audit-00000003.json": 10137,
+              "history/audit-00000004.json": 10417,
+              "history/audit-00000005.json": 10697,
+              "history/audit-00000006.json": 10977,
+              "history/audit-00000007.json": 11257,
+              "history/audit-00000008.json": 11537,
+              "history/audit-00000009.json": 11817,
+              "history/audit-00000010.json": 12202,
+              "history/audit-00000011.json": 12482,
+              "history/audit-00000012.json": 12762,
+              "history/audit-00000013.json": 13042,
+              "history/image-00000001.sqlite": 40960,
+              "history/image-00000002.sqlite": 40960,
+              "history/image-00000003.sqlite": 40960,
+              "history/image-00000004.sqlite": 40960,
+              "history/image-00000005.sqlite": 40960,
+              "history/image-00000006.sqlite": 40960,
+              "history/image-00000007.sqlite": 40960,
+              "history/image-00000008.sqlite": 40960,
+              "history/image-00000009.sqlite": 40960,
+              "history/image-00000010.sqlite": 40960,
+              "history/image-00000011.sqlite": 40960,
+              "history/image-00000012.sqlite": 49152,
+              "history/image-00000013.sqlite": 49152,
+              "normalized.sqlite": 49152,
+              "normalized.sqlite-shm": 32768,
+              "normalized.sqlite-wal": 0
+            },
+            "total_bytes": 777545
+          },
+          "all_frames_checkpointed": true,
+          "before": {
+            "archive_bytes": 695625,
+            "db_wal_shm_bytes": 213840,
+            "files": {
+              "history/audit-00000001.json": 9577,
+              "history/audit-00000002.json": 9857,
+              "history/audit-00000003.json": 10137,
+              "history/audit-00000004.json": 10417,
+              "history/audit-00000005.json": 10697,
+              "history/audit-00000006.json": 10977,
+              "history/audit-00000007.json": 11257,
+              "history/audit-00000008.json": 11537,
+              "history/audit-00000009.json": 11817,
+              "history/audit-00000010.json": 12202,
+              "history/audit-00000011.json": 12482,
+              "history/audit-00000012.json": 12762,
+              "history/audit-00000013.json": 13042,
+              "history/image-00000001.sqlite": 40960,
+              "history/image-00000002.sqlite": 40960,
+              "history/image-00000003.sqlite": 40960,
+              "history/image-00000004.sqlite": 40960,
+              "history/image-00000005.sqlite": 40960,
+              "history/image-00000006.sqlite": 40960,
+              "history/image-00000007.sqlite": 40960,
+              "history/image-00000008.sqlite": 40960,
+              "history/image-00000009.sqlite": 40960,
+              "history/image-00000010.sqlite": 40960,
+              "history/image-00000011.sqlite": 40960,
+              "history/image-00000012.sqlite": 49152,
+              "history/image-00000013.sqlite": 49152,
+              "normalized.sqlite": 40960,
+              "normalized.sqlite-shm": 32768,
+              "normalized.sqlite-wal": 140112
+            },
+            "total_bytes": 909465
+          },
+          "elapsed_ns": 712300,
+          "event": "final",
+          "mode": "TRUNCATE",
+          "result": [
+            0,
+            0,
+            0
+          ],
+          "wal_truncated": true
+        }
+      ],
+      "endpoint_equal": true,
+      "facts": 48,
+      "final": {
+        "archive_bytes": 695625,
+        "db_wal_shm_bytes": 81920,
+        "files": {
+          "history/audit-00000001.json": 9577,
+          "history/audit-00000002.json": 9857,
+          "history/audit-00000003.json": 10137,
+          "history/audit-00000004.json": 10417,
+          "history/audit-00000005.json": 10697,
+          "history/audit-00000006.json": 10977,
+          "history/audit-00000007.json": 11257,
+          "history/audit-00000008.json": 11537,
+          "history/audit-00000009.json": 11817,
+          "history/audit-00000010.json": 12202,
+          "history/audit-00000011.json": 12482,
+          "history/audit-00000012.json": 12762,
+          "history/audit-00000013.json": 13042,
+          "history/image-00000001.sqlite": 40960,
+          "history/image-00000002.sqlite": 40960,
+          "history/image-00000003.sqlite": 40960,
+          "history/image-00000004.sqlite": 40960,
+          "history/image-00000005.sqlite": 40960,
+          "history/image-00000006.sqlite": 40960,
+          "history/image-00000007.sqlite": 40960,
+          "history/image-00000008.sqlite": 40960,
+          "history/image-00000009.sqlite": 40960,
+          "history/image-00000010.sqlite": 40960,
+          "history/image-00000011.sqlite": 40960,
+          "history/image-00000012.sqlite": 49152,
+          "history/image-00000013.sqlite": 49152,
+          "normalized.sqlite": 49152,
+          "normalized.sqlite-shm": 32768,
+          "normalized.sqlite-wal": 0
+        },
+        "total_bytes": 777545
+      },
+      "held_endpoint_equal": true,
+      "lifecycle_elapsed_ns": 170443600,
+      "peak_sampled_bytes": 909465,
+      "policy": "all",
+      "process_cpu_ns": 125000000,
+      "raw_record_count": 15,
+      "release_at": 6,
+      "retained_epochs": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "scope": "SQLite API including bootstrap, transitions, commit, reads, content-flushed history, actual archive collection, checkpoints, close/reopen. Excludes raw-log serialization, POSIX directory sync, atomic export/root publication, device traffic and other engines.",
+      "settings": {
+        "archive_journal_mode": "DELETE",
+        "busy_timeout": 0,
+        "foreign_keys": 0,
+        "journal_mode": "wal",
+        "page_size": 4096,
+        "synchronous": 2,
+        "wal_autocheckpoint": 0
+      },
+      "sources": 8,
+      "stage_ns": {
+        "archive": 72393500,
+        "checkpoint": 2611100,
+        "persistence": 25639300,
+        "reads": 13146400,
+        "reclamation": 27600,
+        "transition": 9261600
+      },
+      "updates": 12
+    },
+    {
+      "before_close": {
+        "archive_bytes": 62194,
+        "db_wal_shm_bytes": 81920,
+        "files": {
+          "history/audit-00000013.json": 13042,
+          "history/image-00000013.sqlite": 49152,
+          "normalized.sqlite": 49152,
+          "normalized.sqlite-shm": 32768,
+          "normalized.sqlite-wal": 0
+        },
+        "total_bytes": 144114
+      },
+      "checkpoints": [
+        {
+          "after": {
+            "archive_bytes": 0,
+            "db_wal_shm_bytes": 73728,
+            "files": {
+              "normalized.sqlite": 40960,
+              "normalized.sqlite-shm": 32768,
+              "normalized.sqlite-wal": 0
+            },
+            "total_bytes": 73728
+          },
+          "all_frames_checkpointed": true,
+          "before": {
+            "archive_bytes": 0,
+            "db_wal_shm_bytes": 131656,
+            "files": {
+              "normalized.sqlite": 4096,
+              "normalized.sqlite-shm": 32768,
+              "normalized.sqlite-wal": 94792
+            },
+            "total_bytes": 131656
+          },
+          "elapsed_ns": 480700,
+          "event": "bootstrap",
+          "mode": "TRUNCATE",
+          "result": [
+            0,
+            0,
+            0
+          ],
+          "wal_truncated": true
+        },
+        {
+          "after": {
+            "archive_bytes": 102754,
+            "db_wal_shm_bytes": 246800,
+            "files": {
+              "history/audit-00000001.json": 9577,
+              "history/audit-00000007.json": 11257,
+              "history/image-00000001.sqlite": 40960,
+              "history/image-00000007.sqlite": 40960,
+              "normalized.sqlite": 40960,
+              "normalized.sqlite-shm": 32768,
+              "normalized.sqlite-wal": 173072
+            },
+            "total_bytes": 349554
+          },
+          "all_frames_checkpointed": false,
+          "before": {
+            "archive_bytes": 102754,
+            "db_wal_shm_bytes": 246800,
+            "files": {
+              "history/audit-00000001.json": 9577,
+              "history/audit-00000007.json": 11257,
+              "history/image-00000001.sqlite": 40960,
+              "history/image-00000007.sqlite": 40960,
+              "normalized.sqlite": 40960,
+              "normalized.sqlite-shm": 32768,
+              "normalized.sqlite-wal": 173072
+            },
+            "total_bytes": 349554
+          },
+          "elapsed_ns": 16800,
+          "event": "held-reader",
+          "mode": "PASSIVE",
+          "result": [
+            0,
+            42,
+            0
+          ],
+          "wal_truncated": false
+        },
+        {
+          "after": {
+            "archive_bytes": 102754,
+            "db_wal_shm_bytes": 246800,
+            "files": {
+              "history/audit-00000001.json": 9577,
+              "history/audit-00000007.json": 11257,
+              "history/image-00000001.sqlite": 40960,
+              "history/image-00000007.sqlite": 40960,
+              "normalized.sqlite": 40960,
+              "normalized.sqlite-shm": 32768,
+              "normalized.sqlite-wal": 173072
+            },
+            "total_bytes": 349554
+          },
+          "all_frames_checkpointed": false,
+          "before": {
+            "archive_bytes": 102754,
+            "db_wal_shm_bytes": 246800,
+            "files": {
+              "history/audit-00000001.json": 9577,
+              "history/audit-00000007.json": 11257,
+              "history/image-00000001.sqlite": 40960,
+              "history/image-00000007.sqlite": 40960,
+              "normalized.sqlite": 40960,
+              "normalized.sqlite-shm": 32768,
+              "normalized.sqlite-wal": 173072
+            },
+            "total_bytes": 349554
+          },
+          "elapsed_ns": 13400,
+          "event": "held-reader",
+          "mode": "TRUNCATE",
+          "result": [
+            1,
+            42,
+            0
+          ],
+          "wal_truncated": false
+        },
+        {
+          "after": {
+            "archive_bytes": 52217,
+            "db_wal_shm_bytes": 73728,
+            "files": {
+              "history/audit-00000007.json": 11257,
+              "history/image-00000007.sqlite": 40960,
+              "normalized.sqlite": 40960,
+              "normalized.sqlite-shm": 32768,
+              "normalized.sqlite-wal": 0
+            },
+            "total_bytes": 125945
+          },
+          "all_frames_checkpointed": true,
+          "before": {
+            "archive_bytes": 52217,
+            "db_wal_shm_bytes": 246800,
+            "files": {
+              "history/audit-00000007.json": 11257,
+              "history/image-00000007.sqlite": 40960,
+              "normalized.sqlite": 40960,
+              "normalized.sqlite-shm": 32768,
+              "normalized.sqlite-wal": 173072
+            },
+            "total_bytes": 299017
+          },
+          "elapsed_ns": 687700,
+          "event": "reader-released",
+          "mode": "TRUNCATE",
+          "result": [
+            0,
+            0,
+            0
+          ],
+          "wal_truncated": true
+        },
+        {
+          "after": {
+            "archive_bytes": 52777,
+            "db_wal_shm_bytes": 73728,
+            "files": {
+              "history/audit-00000009.json": 11817,
+              "history/image-00000009.sqlite": 40960,
+              "normalized.sqlite": 40960,
+              "normalized.sqlite-shm": 32768,
+              "normalized.sqlite-wal": 0
+            },
+            "total_bytes": 126505
+          },
+          "all_frames_checkpointed": true,
+          "before": {
+            "archive_bytes": 52777,
+            "db_wal_shm_bytes": 131440,
+            "files": {
+              "history/audit-00000009.json": 11817,
+              "history/image-00000009.sqlite": 40960,
+              "normalized.sqlite": 40960,
+              "normalized.sqlite-shm": 32768,
+              "normalized.sqlite-wal": 57712
+            },
+            "total_bytes": 184217
+          },
+          "elapsed_ns": 657200,
+          "event": "reader-gap",
+          "mode": "TRUNCATE",
+          "result": [
+            0,
+            0,
+            0
+          ],
+          "wal_truncated": true
+        },
+        {
+          "after": {
+            "archive_bytes": 62194,
+            "db_wal_shm_bytes": 81920,
+            "files": {
+              "history/audit-00000013.json": 13042,
+              "history/image-00000013.sqlite": 49152,
+              "normalized.sqlite": 49152,
+              "normalized.sqlite-shm": 32768,
+              "normalized.sqlite-wal": 0
+            },
+            "total_bytes": 144114
+          },
+          "all_frames_checkpointed": true,
+          "before": {
+            "archive_bytes": 62194,
+            "db_wal_shm_bytes": 213840,
+            "files": {
+              "history/audit-00000013.json": 13042,
+              "history/image-00000013.sqlite": 49152,
+              "normalized.sqlite": 40960,
+              "normalized.sqlite-shm": 32768,
+              "normalized.sqlite-wal": 140112
+            },
+            "total_bytes": 276034
+          },
+          "elapsed_ns": 738400,
+          "event": "final",
+          "mode": "TRUNCATE",
+          "result": [
+            0,
+            0,
+            0
+          ],
+          "wal_truncated": true
+        }
+      ],
+      "endpoint_equal": true,
+      "facts": 48,
+      "final": {
+        "archive_bytes": 62194,
+        "db_wal_shm_bytes": 81920,
+        "files": {
+          "history/audit-00000013.json": 13042,
+          "history/image-00000013.sqlite": 49152,
+          "normalized.sqlite": 49152,
+          "normalized.sqlite-shm": 32768,
+          "normalized.sqlite-wal": 0
+        },
+        "total_bytes": 144114
+      },
+      "held_endpoint_equal": true,
+      "lifecycle_elapsed_ns": 157466400,
+      "peak_sampled_bytes": 401491,
+      "policy": "leases",
+      "process_cpu_ns": 140625000,
+      "raw_record_count": 15,
+      "release_at": 6,
+      "retained_epochs": [
+        13
+      ],
+      "scope": "SQLite API including bootstrap, transitions, commit, reads, content-flushed history, actual archive collection, checkpoints, close/reopen. Excludes raw-log serialization, POSIX directory sync, atomic export/root publication, device traffic and other engines.",
+      "settings": {
+        "archive_journal_mode": "DELETE",
+        "busy_timeout": 0,
+        "foreign_keys": 0,
+        "journal_mode": "wal",
+        "page_size": 4096,
+        "synchronous": 2,
+        "wal_autocheckpoint": 0
+      },
+      "sources": 8,
+      "stage_ns": {
+        "archive": 73844600,
+        "checkpoint": 2594200,
+        "persistence": 25256900,
+        "reads": 13011400,
+        "reclamation": 6243300,
+        "transition": 9052400
+      },
+      "updates": 12
+    },
+    {
+      "before_close": {
+        "archive_bytes": 2960060,
+        "db_wal_shm_bytes": 188416,
+        "files": {
+          "history/audit-00000001.json": 76595,
+          "history/audit-00000002.json": 77085,
+          "history/audit-00000003.json": 77585,
+          "history/audit-00000004.json": 78070,
+          "history/audit-00000005.json": 78560,
+          "history/audit-00000006.json": 79060,
+          "history/audit-00000007.json": 79550,
+          "history/audit-00000008.json": 80015,
+          "history/audit-00000009.json": 80510,
+          "history/audit-00000010.json": 81100,
+          "history/audit-00000011.json": 81689,
+          "history/audit-00000012.json": 82270,
+          "history/audit-00000013.json": 82851,
+          "history/image-00000001.sqlite": 131072,
+          "history/image-00000002.sqlite": 135168,
+          "history/image-00000003.sqlite": 143360,
+          "history/image-00000004.sqlite": 143360,
+          "history/image-00000005.sqlite": 143360,
+          "history/image-00000006.sqlite": 147456,
+          "history/image-00000007.sqlite": 147456,
+          "history/image-00000008.sqlite": 155648,
+          "history/image-00000009.sqlite": 155648,
+          "history/image-00000010.sqlite": 155648,
+          "history/image-00000011.sqlite": 155648,
+          "history/image-00000012.sqlite": 155648,
+          "history/image-00000013.sqlite": 155648,
+          "normalized.sqlite": 155648,
+          "normalized.sqlite-shm": 32768,
+          "normalized.sqlite-wal": 0
+        },
+        "total_bytes": 3148476
+      },
+      "checkpoints": [
+        {
+          "after": {
+            "archive_bytes": 0,
+            "db_wal_shm_bytes": 163840,
+            "files": {
+              "normalized.sqlite": 131072,
+              "normalized.sqlite-shm": 32768,
+              "normalized.sqlite-wal": 0
+            },
+            "total_bytes": 163840
+          },
+          "all_frames_checkpointed": true,
+          "before": {
+            "archive_bytes": 0,
+            "db_wal_shm_bytes": 226416,
+            "files": {
+              "normalized.sqlite": 4096,
+              "normalized.sqlite-shm": 32768,
+              "normalized.sqlite-wal": 189552
+            },
+            "total_bytes": 226416
+          },
+          "elapsed_ns": 565900,
+          "event": "bootstrap",
+          "mode": "TRUNCATE",
+          "result": [
+            0,
+            0,
+            0
+          ],
+          "wal_truncated": true
+        },
+        {
+          "after": {
+            "archive_bytes": 1537737,
+            "db_wal_shm_bytes": 954912,
+            "files": {
+              "history/audit-00000001.json": 76595,
+              "history/audit-00000002.json": 77085,
+              "history/audit-00000003.json": 77585,
+              "history/audit-00000004.json": 78070,
+              "history/audit-00000005.json": 78560,
+              "history/audit-00000006.json": 79060,
+              "history/audit-00000007.json": 79550,
+              "history/image-00000001.sqlite": 131072,
+              "history/image-00000002.sqlite": 135168,
+              "history/image-00000003.sqlite": 143360,
+              "history/image-00000004.sqlite": 143360,
+              "history/image-00000005.sqlite": 143360,
+              "history/image-00000006.sqlite": 147456,
+              "history/image-00000007.sqlite": 147456,
+              "normalized.sqlite": 131072,
+              "normalized.sqlite-shm": 32768,
+              "normalized.sqlite-wal": 791072
+            },
+            "total_bytes": 2492649
+          },
+          "all_frames_checkpointed": false,
+          "before": {
+            "archive_bytes": 1537737,
+            "db_wal_shm_bytes": 954912,
+            "files": {
+              "history/audit-00000001.json": 76595,
+              "history/audit-00000002.json": 77085,
+              "history/audit-00000003.json": 77585,
+              "history/audit-00000004.json": 78070,
+              "history/audit-00000005.json": 78560,
+              "history/audit-00000006.json": 79060,
+              "history/audit-00000007.json": 79550,
+              "history/image-00000001.sqlite": 131072,
+              "history/image-00000002.sqlite": 135168,
+              "history/image-00000003.sqlite": 143360,
+              "history/image-00000004.sqlite": 143360,
+              "history/image-00000005.sqlite": 143360,
+              "history/image-00000006.sqlite": 147456,
+              "history/image-00000007.sqlite": 147456,
+              "normalized.sqlite": 131072,
+              "normalized.sqlite-shm": 32768,
+              "normalized.sqlite-wal": 791072
+            },
+            "total_bytes": 2492649
+          },
+          "elapsed_ns": 19100,
+          "event": "held-reader",
+          "mode": "PASSIVE",
+          "result": [
+            0,
+            192,
+            0
+          ],
+          "wal_truncated": false
+        },
+        {
+          "after": {
+            "archive_bytes": 1537737,
+            "db_wal_shm_bytes": 954912,
+            "files": {
+              "history/audit-00000001.json": 76595,
+              "history/audit-00000002.json": 77085,
+              "history/audit-00000003.json": 77585,
+              "history/audit-00000004.json": 78070,
+              "history/audit-00000005.json": 78560,
+              "history/audit-00000006.json": 79060,
+              "history/audit-00000007.json": 79550,
+              "history/image-00000001.sqlite": 131072,
+              "history/image-00000002.sqlite": 135168,
+              "history/image-00000003.sqlite": 143360,
+              "history/image-00000004.sqlite": 143360,
+              "history/image-00000005.sqlite": 143360,
+              "history/image-00000006.sqlite": 147456,
+              "history/image-00000007.sqlite": 147456,
+              "normalized.sqlite": 131072,
+              "normalized.sqlite-shm": 32768,
+              "normalized.sqlite-wal": 791072
+            },
+            "total_bytes": 2492649
+          },
+          "all_frames_checkpointed": false,
+          "before": {
+            "archive_bytes": 1537737,
+            "db_wal_shm_bytes": 954912,
+            "files": {
+              "history/audit-00000001.json": 76595,
+              "history/audit-00000002.json": 77085,
+              "history/audit-00000003.json": 77585,
+              "history/audit-00000004.json": 78070,
+              "history/audit-00000005.json": 78560,
+              "history/audit-00000006.json": 79060,
+              "history/audit-00000007.json": 79550,
+              "history/image-00000001.sqlite": 131072,
+              "history/image-00000002.sqlite": 135168,
+              "history/image-00000003.sqlite": 143360,
+              "history/image-00000004.sqlite": 143360,
+              "history/image-00000005.sqlite": 143360,
+              "history/image-00000006.sqlite": 147456,
+              "history/image-00000007.sqlite": 147456,
+              "normalized.sqlite": 131072,
+              "normalized.sqlite-shm": 32768,
+              "normalized.sqlite-wal": 791072
+            },
+            "total_bytes": 2492649
+          },
+          "elapsed_ns": 15100,
+          "event": "held-reader",
+          "mode": "TRUNCATE",
+          "result": [
+            1,
+            192,
+            0
+          ],
+          "wal_truncated": false
+        },
+        {
+          "after": {
+            "archive_bytes": 1537737,
+            "db_wal_shm_bytes": 180224,
+            "files": {
+              "history/audit-00000001.json": 76595,
+              "history/audit-00000002.json": 77085,
+              "history/audit-00000003.json": 77585,
+              "history/audit-00000004.json": 78070,
+              "history/audit-00000005.json": 78560,
+              "history/audit-00000006.json": 79060,
+              "history/audit-00000007.json": 79550,
+              "history/image-00000001.sqlite": 131072,
+              "history/image-00000002.sqlite": 135168,
+              "history/image-00000003.sqlite": 143360,
+              "history/image-00000004.sqlite": 143360,
+              "history/image-00000005.sqlite": 143360,
+              "history/image-00000006.sqlite": 147456,
+              "history/image-00000007.sqlite": 147456,
+              "normalized.sqlite": 147456,
+              "normalized.sqlite-shm": 32768,
+              "normalized.sqlite-wal": 0
+            },
+            "total_bytes": 1717961
+          },
+          "all_frames_checkpointed": true,
+          "before": {
+            "archive_bytes": 1537737,
+            "db_wal_shm_bytes": 954912,
+            "files": {
+              "history/audit-00000001.json": 76595,
+              "history/audit-00000002.json": 77085,
+              "history/audit-00000003.json": 77585,
+              "history/audit-00000004.json": 78070,
+              "history/audit-00000005.json": 78560,
+              "history/audit-00000006.json": 79060,
+              "history/audit-00000007.json": 79550,
+              "history/image-00000001.sqlite": 131072,
+              "history/image-00000002.sqlite": 135168,
+              "history/image-00000003.sqlite": 143360,
+              "history/image-00000004.sqlite": 143360,
+              "history/image-00000005.sqlite": 143360,
+              "history/image-00000006.sqlite": 147456,
+              "history/image-00000007.sqlite": 147456,
+              "normalized.sqlite": 131072,
+              "normalized.sqlite-shm": 32768,
+              "normalized.sqlite-wal": 791072
+            },
+            "total_bytes": 2492649
+          },
+          "elapsed_ns": 921600,
+          "event": "reader-released",
+          "mode": "TRUNCATE",
+          "result": [
+            0,
+            0,
+            0
+          ],
+          "wal_truncated": true
+        },
+        {
+          "after": {
+            "archive_bytes": 2009558,
+            "db_wal_shm_bytes": 188416,
+            "files": {
+              "history/audit-00000001.json": 76595,
+              "history/audit-00000002.json": 77085,
+              "history/audit-00000003.json": 77585,
+              "history/audit-00000004.json": 78070,
+              "history/audit-00000005.json": 78560,
+              "history/audit-00000006.json": 79060,
+              "history/audit-00000007.json": 79550,
+              "history/audit-00000008.json": 80015,
+              "history/audit-00000009.json": 80510,
+              "history/image-00000001.sqlite": 131072,
+              "history/image-00000002.sqlite": 135168,
+              "history/image-00000003.sqlite": 143360,
+              "history/image-00000004.sqlite": 143360,
+              "history/image-00000005.sqlite": 143360,
+              "history/image-00000006.sqlite": 147456,
+              "history/image-00000007.sqlite": 147456,
+              "history/image-00000008.sqlite": 155648,
+              "history/image-00000009.sqlite": 155648,
+              "normalized.sqlite": 155648,
+              "normalized.sqlite-shm": 32768,
+              "normalized.sqlite-wal": 0
+            },
+            "total_bytes": 2197974
+          },
+          "all_frames_checkpointed": true,
+          "before": {
+            "archive_bytes": 2009558,
+            "db_wal_shm_bytes": 448056,
+            "files": {
+              "history/audit-00000001.json": 76595,
+              "history/audit-00000002.json": 77085,
+              "history/audit-00000003.json": 77585,
+              "history/audit-00000004.json": 78070,
+              "history/audit-00000005.json": 78560,
+              "history/audit-00000006.json": 79060,
+              "history/audit-00000007.json": 79550,
+              "history/audit-00000008.json": 80015,
+              "history/audit-00000009.json": 80510,
+              "history/image-00000001.sqlite": 131072,
+              "history/image-00000002.sqlite": 135168,
+              "history/image-00000003.sqlite": 143360,
+              "history/image-00000004.sqlite": 143360,
+              "history/image-00000005.sqlite": 143360,
+              "history/image-00000006.sqlite": 147456,
+              "history/image-00000007.sqlite": 147456,
+              "history/image-00000008.sqlite": 155648,
+              "history/image-00000009.sqlite": 155648,
+              "normalized.sqlite": 147456,
+              "normalized.sqlite-shm": 32768,
+              "normalized.sqlite-wal": 267832
+            },
+            "total_bytes": 2457614
+          },
+          "elapsed_ns": 842700,
+          "event": "reader-gap",
+          "mode": "TRUNCATE",
+          "result": [
+            0,
+            0,
+            0
+          ],
+          "wal_truncated": true
+        },
+        {
+          "after": {
+            "archive_bytes": 2960060,
+            "db_wal_shm_bytes": 188416,
+            "files": {
+              "history/audit-00000001.json": 76595,
+              "history/audit-00000002.json": 77085,
+              "history/audit-00000003.json": 77585,
+              "history/audit-00000004.json": 78070,
+              "history/audit-00000005.json": 78560,
+              "history/audit-00000006.json": 79060,
+              "history/audit-00000007.json": 79550,
+              "history/audit-00000008.json": 80015,
+              "history/audit-00000009.json": 80510,
+              "history/audit-00000010.json": 81100,
+              "history/audit-00000011.json": 81689,
+              "history/audit-00000012.json": 82270,
+              "history/audit-00000013.json": 82851,
+              "history/image-00000001.sqlite": 131072,
+              "history/image-00000002.sqlite": 135168,
+              "history/image-00000003.sqlite": 143360,
+              "history/image-00000004.sqlite": 143360,
+              "history/image-00000005.sqlite": 143360,
+              "history/image-00000006.sqlite": 147456,
+              "history/image-00000007.sqlite": 147456,
+              "history/image-00000008.sqlite": 155648,
+              "history/image-00000009.sqlite": 155648,
+              "history/image-00000010.sqlite": 155648,
+              "history/image-00000011.sqlite": 155648,
+              "history/image-00000012.sqlite": 155648,
+              "history/image-00000013.sqlite": 155648,
+              "normalized.sqlite": 155648,
+              "normalized.sqlite-shm": 32768,
+              "normalized.sqlite-wal": 0
+            },
+            "total_bytes": 3148476
+          },
+          "all_frames_checkpointed": true,
+          "before": {
+            "archive_bytes": 2960060,
+            "db_wal_shm_bytes": 761128,
+            "files": {
+              "history/audit-00000001.json": 76595,
+              "history/audit-00000002.json": 77085,
+              "history/audit-00000003.json": 77585,
+              "history/audit-00000004.json": 78070,
+              "history/audit-00000005.json": 78560,
+              "history/audit-00000006.json": 79060,
+              "history/audit-00000007.json": 79550,
+              "history/audit-00000008.json": 80015,
+              "history/audit-00000009.json": 80510,
+              "history/audit-00000010.json": 81100,
+              "history/audit-00000011.json": 81689,
+              "history/audit-00000012.json": 82270,
+              "history/audit-00000013.json": 82851,
+              "history/image-00000001.sqlite": 131072,
+              "history/image-00000002.sqlite": 135168,
+              "history/image-00000003.sqlite": 143360,
+              "history/image-00000004.sqlite": 143360,
+              "history/image-00000005.sqlite": 143360,
+              "history/image-00000006.sqlite": 147456,
+              "history/image-00000007.sqlite": 147456,
+              "history/image-00000008.sqlite": 155648,
+              "history/image-00000009.sqlite": 155648,
+              "history/image-00000010.sqlite": 155648,
+              "history/image-00000011.sqlite": 155648,
+              "history/image-00000012.sqlite": 155648,
+              "history/image-00000013.sqlite": 155648,
+              "normalized.sqlite": 155648,
+              "normalized.sqlite-shm": 32768,
+              "normalized.sqlite-wal": 572712
+            },
+            "total_bytes": 3721188
+          },
+          "elapsed_ns": 827100,
+          "event": "final",
+          "mode": "TRUNCATE",
+          "result": [
+            0,
+            0,
+            0
+          ],
+          "wal_truncated": true
+        }
+      ],
+      "endpoint_equal": true,
+      "facts": 384,
+      "final": {
+        "archive_bytes": 2960060,
+        "db_wal_shm_bytes": 188416,
+        "files": {
+          "history/audit-00000001.json": 76595,
+          "history/audit-00000002.json": 77085,
+          "history/audit-00000003.json": 77585,
+          "history/audit-00000004.json": 78070,
+          "history/audit-00000005.json": 78560,
+          "history/audit-00000006.json": 79060,
+          "history/audit-00000007.json": 79550,
+          "history/audit-00000008.json": 80015,
+          "history/audit-00000009.json": 80510,
+          "history/audit-00000010.json": 81100,
+          "history/audit-00000011.json": 81689,
+          "history/audit-00000012.json": 82270,
+          "history/audit-00000013.json": 82851,
+          "history/image-00000001.sqlite": 131072,
+          "history/image-00000002.sqlite": 135168,
+          "history/image-00000003.sqlite": 143360,
+          "history/image-00000004.sqlite": 143360,
+          "history/image-00000005.sqlite": 143360,
+          "history/image-00000006.sqlite": 147456,
+          "history/image-00000007.sqlite": 147456,
+          "history/image-00000008.sqlite": 155648,
+          "history/image-00000009.sqlite": 155648,
+          "history/image-00000010.sqlite": 155648,
+          "history/image-00000011.sqlite": 155648,
+          "history/image-00000012.sqlite": 155648,
+          "history/image-00000013.sqlite": 155648,
+          "normalized.sqlite": 155648,
+          "normalized.sqlite-shm": 32768,
+          "normalized.sqlite-wal": 0
+        },
+        "total_bytes": 3148476
+      },
+      "held_endpoint_equal": true,
+      "lifecycle_elapsed_ns": 469346500,
+      "peak_sampled_bytes": 3721188,
+      "policy": "all",
+      "process_cpu_ns": 406250000,
+      "raw_record_count": 15,
+      "release_at": 6,
+      "retained_epochs": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "scope": "SQLite API including bootstrap, transitions, commit, reads, content-flushed history, actual archive collection, checkpoints, close/reopen. Excludes raw-log serialization, POSIX directory sync, atomic export/root publication, device traffic and other engines.",
+      "settings": {
+        "archive_journal_mode": "DELETE",
+        "busy_timeout": 0,
+        "foreign_keys": 0,
+        "journal_mode": "wal",
+        "page_size": 4096,
+        "synchronous": 2,
+        "wal_autocheckpoint": 0
+      },
+      "sources": 64,
+      "stage_ns": {
+        "archive": 154237200,
+        "checkpoint": 3191500,
+        "persistence": 121323800,
+        "reads": 71796700,
+        "reclamation": 28300,
+        "transition": 53183100
+      },
+      "updates": 12
+    },
+    {
+      "before_close": {
+        "archive_bytes": 238499,
+        "db_wal_shm_bytes": 188416,
+        "files": {
+          "history/audit-00000013.json": 82851,
+          "history/image-00000013.sqlite": 155648,
+          "normalized.sqlite": 155648,
+          "normalized.sqlite-shm": 32768,
+          "normalized.sqlite-wal": 0
+        },
+        "total_bytes": 426915
+      },
+      "checkpoints": [
+        {
+          "after": {
+            "archive_bytes": 0,
+            "db_wal_shm_bytes": 163840,
+            "files": {
+              "normalized.sqlite": 131072,
+              "normalized.sqlite-shm": 32768,
+              "normalized.sqlite-wal": 0
+            },
+            "total_bytes": 163840
+          },
+          "all_frames_checkpointed": true,
+          "before": {
+            "archive_bytes": 0,
+            "db_wal_shm_bytes": 226416,
+            "files": {
+              "normalized.sqlite": 4096,
+              "normalized.sqlite-shm": 32768,
+              "normalized.sqlite-wal": 189552
+            },
+            "total_bytes": 226416
+          },
+          "elapsed_ns": 787800,
+          "event": "bootstrap",
+          "mode": "TRUNCATE",
+          "result": [
+            0,
+            0,
+            0
+          ],
+          "wal_truncated": true
+        },
+        {
+          "after": {
+            "archive_bytes": 434673,
+            "db_wal_shm_bytes": 954912,
+            "files": {
+              "history/audit-00000001.json": 76595,
+              "history/audit-00000007.json": 79550,
+              "history/image-00000001.sqlite": 131072,
+              "history/image-00000007.sqlite": 147456,
+              "normalized.sqlite": 131072,
+              "normalized.sqlite-shm": 32768,
+              "normalized.sqlite-wal": 791072
+            },
+            "total_bytes": 1389585
+          },
+          "all_frames_checkpointed": false,
+          "before": {
+            "archive_bytes": 434673,
+            "db_wal_shm_bytes": 954912,
+            "files": {
+              "history/audit-00000001.json": 76595,
+              "history/audit-00000007.json": 79550,
+              "history/image-00000001.sqlite": 131072,
+              "history/image-00000007.sqlite": 147456,
+              "normalized.sqlite": 131072,
+              "normalized.sqlite-shm": 32768,
+              "normalized.sqlite-wal": 791072
+            },
+            "total_bytes": 1389585
+          },
+          "elapsed_ns": 31000,
+          "event": "held-reader",
+          "mode": "PASSIVE",
+          "result": [
+            0,
+            192,
+            0
+          ],
+          "wal_truncated": false
+        },
+        {
+          "after": {
+            "archive_bytes": 434673,
+            "db_wal_shm_bytes": 954912,
+            "files": {
+              "history/audit-00000001.json": 76595,
+              "history/audit-00000007.json": 79550,
+              "history/image-00000001.sqlite": 131072,
+              "history/image-00000007.sqlite": 147456,
+              "normalized.sqlite": 131072,
+              "normalized.sqlite-shm": 32768,
+              "normalized.sqlite-wal": 791072
+            },
+            "total_bytes": 1389585
+          },
+          "all_frames_checkpointed": false,
+          "before": {
+            "archive_bytes": 434673,
+            "db_wal_shm_bytes": 954912,
+            "files": {
+              "history/audit-00000001.json": 76595,
+              "history/audit-00000007.json": 79550,
+              "history/image-00000001.sqlite": 131072,
+              "history/image-00000007.sqlite": 147456,
+              "normalized.sqlite": 131072,
+              "normalized.sqlite-shm": 32768,
+              "normalized.sqlite-wal": 791072
+            },
+            "total_bytes": 1389585
+          },
+          "elapsed_ns": 15400,
+          "event": "held-reader",
+          "mode": "TRUNCATE",
+          "result": [
+            1,
+            192,
+            0
+          ],
+          "wal_truncated": false
+        },
+        {
+          "after": {
+            "archive_bytes": 227006,
+            "db_wal_shm_bytes": 180224,
+            "files": {
+              "history/audit-00000007.json": 79550,
+              "history/image-00000007.sqlite": 147456,
+              "normalized.sqlite": 147456,
+              "normalized.sqlite-shm": 32768,
+              "normalized.sqlite-wal": 0
+            },
+            "total_bytes": 407230
+          },
+          "all_frames_checkpointed": true,
+          "before": {
+            "archive_bytes": 227006,
+            "db_wal_shm_bytes": 954912,
+            "files": {
+              "history/audit-00000007.json": 79550,
+              "history/image-00000007.sqlite": 147456,
+              "normalized.sqlite": 131072,
+              "normalized.sqlite-shm": 32768,
+              "normalized.sqlite-wal": 791072
+            },
+            "total_bytes": 1181918
+          },
+          "elapsed_ns": 929700,
+          "event": "reader-released",
+          "mode": "TRUNCATE",
+          "result": [
+            0,
+            0,
+            0
+          ],
+          "wal_truncated": true
+        },
+        {
+          "after": {
+            "archive_bytes": 236158,
+            "db_wal_shm_bytes": 188416,
+            "files": {
+              "history/audit-00000009.json": 80510,
+              "history/image-00000009.sqlite": 155648,
+              "normalized.sqlite": 155648,
+              "normalized.sqlite-shm": 32768,
+              "normalized.sqlite-wal": 0
+            },
+            "total_bytes": 424574
+          },
+          "all_frames_checkpointed": true,
+          "before": {
+            "archive_bytes": 236158,
+            "db_wal_shm_bytes": 448056,
+            "files": {
+              "history/audit-00000009.json": 80510,
+              "history/image-00000009.sqlite": 155648,
+              "normalized.sqlite": 147456,
+              "normalized.sqlite-shm": 32768,
+              "normalized.sqlite-wal": 267832
+            },
+            "total_bytes": 684214
+          },
+          "elapsed_ns": 882700,
+          "event": "reader-gap",
+          "mode": "TRUNCATE",
+          "result": [
+            0,
+            0,
+            0
+          ],
+          "wal_truncated": true
+        },
+        {
+          "after": {
+            "archive_bytes": 238499,
+            "db_wal_shm_bytes": 188416,
+            "files": {
+              "history/audit-00000013.json": 82851,
+              "history/image-00000013.sqlite": 155648,
+              "normalized.sqlite": 155648,
+              "normalized.sqlite-shm": 32768,
+              "normalized.sqlite-wal": 0
+            },
+            "total_bytes": 426915
+          },
+          "all_frames_checkpointed": true,
+          "before": {
+            "archive_bytes": 238499,
+            "db_wal_shm_bytes": 761128,
+            "files": {
+              "history/audit-00000013.json": 82851,
+              "history/image-00000013.sqlite": 155648,
+              "normalized.sqlite": 155648,
+              "normalized.sqlite-shm": 32768,
+              "normalized.sqlite-wal": 572712
+            },
+            "total_bytes": 999627
+          },
+          "elapsed_ns": 917400,
+          "event": "final",
+          "mode": "TRUNCATE",
+          "result": [
+            0,
+            0,
+            0
+          ],
+          "wal_truncated": true
+        }
+      ],
+      "endpoint_equal": true,
+      "facts": 384,
+      "final": {
+        "archive_bytes": 238499,
+        "db_wal_shm_bytes": 188416,
+        "files": {
+          "history/audit-00000013.json": 82851,
+          "history/image-00000013.sqlite": 155648,
+          "normalized.sqlite": 155648,
+          "normalized.sqlite-shm": 32768,
+          "normalized.sqlite-wal": 0
+        },
+        "total_bytes": 426915
+      },
+      "held_endpoint_equal": true,
+      "lifecycle_elapsed_ns": 466099800,
+      "peak_sampled_bytes": 1616101,
+      "policy": "leases",
+      "process_cpu_ns": 406250000,
+      "raw_record_count": 15,
+      "release_at": 6,
+      "retained_epochs": [
+        13
+      ],
+      "scope": "SQLite API including bootstrap, transitions, commit, reads, content-flushed history, actual archive collection, checkpoints, close/reopen. Excludes raw-log serialization, POSIX directory sync, atomic export/root publication, device traffic and other engines.",
+      "settings": {
+        "archive_journal_mode": "DELETE",
+        "busy_timeout": 0,
+        "foreign_keys": 0,
+        "journal_mode": "wal",
+        "page_size": 4096,
+        "synchronous": 2,
+        "wal_autocheckpoint": 0
+      },
+      "sources": 64,
+      "stage_ns": {
+        "archive": 166750300,
+        "checkpoint": 3564000,
+        "persistence": 120342400,
+        "reads": 71575800,
+        "reclamation": 6155600,
+        "transition": 50351800
+      },
+      "updates": 12
+    },
+    {
+      "before_close": {
+        "archive_bytes": 18241367,
+        "db_wal_shm_bytes": 884736,
+        "files": {
+          "history/audit-00000001.json": 601287,
+          "history/audit-00000002.json": 601807,
+          "history/audit-00000003.json": 602322,
+          "history/audit-00000004.json": 602827,
+          "history/audit-00000005.json": 603347,
+          "history/audit-00000006.json": 603862,
+          "history/audit-00000007.json": 604382,
+          "history/audit-00000008.json": 604902,
+          "history/audit-00000009.json": 605422,
+          "history/audit-00000010.json": 606037,
+          "history/audit-00000011.json": 606661,
+          "history/audit-00000012.json": 607270,
+          "history/audit-00000013.json": 607881,
+          "history/image-00000001.sqlite": 741376,
+          "history/image-00000002.sqlite": 749568,
+          "history/image-00000003.sqlite": 761856,
+          "history/image-00000004.sqlite": 770048,
+          "history/image-00000005.sqlite": 782336,
+          "history/image-00000006.sqlite": 790528,
+          "history/image-00000007.sqlite": 798720,
+          "history/image-00000008.sqlite": 811008,
+          "history/image-00000009.sqlite": 819200,
+          "history/image-00000010.sqlite": 827392,
+          "history/image-00000011.sqlite": 835584,
+          "history/image-00000012.sqlite": 843776,
+          "history/image-00000013.sqlite": 851968,
+          "normalized.sqlite": 851968,
+          "normalized.sqlite-shm": 32768,
+          "normalized.sqlite-wal": 0
+        },
+        "total_bytes": 19126103
+      },
+      "checkpoints": [
+        {
+          "after": {
+            "archive_bytes": 0,
+            "db_wal_shm_bytes": 774144,
+            "files": {
+              "normalized.sqlite": 741376,
+              "normalized.sqlite-shm": 32768,
+              "normalized.sqlite-wal": 0
+            },
+            "total_bytes": 774144
+          },
+          "all_frames_checkpointed": true,
+          "before": {
+            "archive_bytes": 0,
+            "db_wal_shm_bytes": 840296,
+            "files": {
+              "normalized.sqlite": 4096,
+              "normalized.sqlite-shm": 32768,
+              "normalized.sqlite-wal": 803432
+            },
+            "total_bytes": 840296
+          },
+          "elapsed_ns": 1302400,
+          "event": "bootstrap",
+          "mode": "TRUNCATE",
+          "result": [
+            0,
+            0,
+            0
+          ],
+          "wal_truncated": true
+        },
+        {
+          "after": {
+            "archive_bytes": 9614266,
+            "db_wal_shm_bytes": 2735296,
+            "files": {
+              "history/audit-00000001.json": 601287,
+              "history/audit-00000002.json": 601807,
+              "history/audit-00000003.json": 602322,
+              "history/audit-00000004.json": 602827,
+              "history/audit-00000005.json": 603347,
+              "history/audit-00000006.json": 603862,
+              "history/audit-00000007.json": 604382,
+              "history/image-00000001.sqlite": 741376,
+              "history/image-00000002.sqlite": 749568,
+              "history/image-00000003.sqlite": 761856,
+              "history/image-00000004.sqlite": 770048,
+              "history/image-00000005.sqlite": 782336,
+              "history/image-00000006.sqlite": 790528,
+              "history/image-00000007.sqlite": 798720,
+              "normalized.sqlite": 741376,
+              "normalized.sqlite-shm": 32768,
+              "normalized.sqlite-wal": 1961152
+            },
+            "total_bytes": 12349562
+          },
+          "all_frames_checkpointed": false,
+          "before": {
+            "archive_bytes": 9614266,
+            "db_wal_shm_bytes": 2735296,
+            "files": {
+              "history/audit-00000001.json": 601287,
+              "history/audit-00000002.json": 601807,
+              "history/audit-00000003.json": 602322,
+              "history/audit-00000004.json": 602827,
+              "history/audit-00000005.json": 603347,
+              "history/audit-00000006.json": 603862,
+              "history/audit-00000007.json": 604382,
+              "history/image-00000001.sqlite": 741376,
+              "history/image-00000002.sqlite": 749568,
+              "history/image-00000003.sqlite": 761856,
+              "history/image-00000004.sqlite": 770048,
+              "history/image-00000005.sqlite": 782336,
+              "history/image-00000006.sqlite": 790528,
+              "history/image-00000007.sqlite": 798720,
+              "normalized.sqlite": 741376,
+              "normalized.sqlite-shm": 32768,
+              "normalized.sqlite-wal": 1961152
+            },
+            "total_bytes": 12349562
+          },
+          "elapsed_ns": 41700,
+          "event": "held-reader",
+          "mode": "PASSIVE",
+          "result": [
+            0,
+            476,
+            0
+          ],
+          "wal_truncated": false
+        },
+        {
+          "after": {
+            "archive_bytes": 9614266,
+            "db_wal_shm_bytes": 2735296,
+            "files": {
+              "history/audit-00000001.json": 601287,
+              "history/audit-00000002.json": 601807,
+              "history/audit-00000003.json": 602322,
+              "history/audit-00000004.json": 602827,
+              "history/audit-00000005.json": 603347,
+              "history/audit-00000006.json": 603862,
+              "history/audit-00000007.json": 604382,
+              "history/image-00000001.sqlite": 741376,
+              "history/image-00000002.sqlite": 749568,
+              "history/image-00000003.sqlite": 761856,
+              "history/image-00000004.sqlite": 770048,
+              "history/image-00000005.sqlite": 782336,
+              "history/image-00000006.sqlite": 790528,
+              "history/image-00000007.sqlite": 798720,
+              "normalized.sqlite": 741376,
+              "normalized.sqlite-shm": 32768,
+              "normalized.sqlite-wal": 1961152
+            },
+            "total_bytes": 12349562
+          },
+          "all_frames_checkpointed": false,
+          "before": {
+            "archive_bytes": 9614266,
+            "db_wal_shm_bytes": 2735296,
+            "files": {
+              "history/audit-00000001.json": 601287,
+              "history/audit-00000002.json": 601807,
+              "history/audit-00000003.json": 602322,
+              "history/audit-00000004.json": 602827,
+              "history/audit-00000005.json": 603347,
+              "history/audit-00000006.json": 603862,
+              "history/audit-00000007.json": 604382,
+              "history/image-00000001.sqlite": 741376,
+              "history/image-00000002.sqlite": 749568,
+              "history/image-00000003.sqlite": 761856,
+              "history/image-00000004.sqlite": 770048,
+              "history/image-00000005.sqlite": 782336,
+              "history/image-00000006.sqlite": 790528,
+              "history/image-00000007.sqlite": 798720,
+              "normalized.sqlite": 741376,
+              "normalized.sqlite-shm": 32768,
+              "normalized.sqlite-wal": 1961152
+            },
+            "total_bytes": 12349562
+          },
+          "elapsed_ns": 23200,
+          "event": "held-reader",
+          "mode": "TRUNCATE",
+          "result": [
+            1,
+            476,
+            0
+          ],
+          "wal_truncated": false
+        },
+        {
+          "after": {
+            "archive_bytes": 9614266,
+            "db_wal_shm_bytes": 831488,
+            "files": {
+              "history/audit-00000001.json": 601287,
+              "history/audit-00000002.json": 601807,
+              "history/audit-00000003.json": 602322,
+              "history/audit-00000004.json": 602827,
+              "history/audit-00000005.json": 603347,
+              "history/audit-00000006.json": 603862,
+              "history/audit-00000007.json": 604382,
+              "history/image-00000001.sqlite": 741376,
+              "history/image-00000002.sqlite": 749568,
+              "history/image-00000003.sqlite": 761856,
+              "history/image-00000004.sqlite": 770048,
+              "history/image-00000005.sqlite": 782336,
+              "history/image-00000006.sqlite": 790528,
+              "history/image-00000007.sqlite": 798720,
+              "normalized.sqlite": 798720,
+              "normalized.sqlite-shm": 32768,
+              "normalized.sqlite-wal": 0
+            },
+            "total_bytes": 10445754
+          },
+          "all_frames_checkpointed": true,
+          "before": {
+            "archive_bytes": 9614266,
+            "db_wal_shm_bytes": 2735296,
+            "files": {
+              "history/audit-00000001.json": 601287,
+              "history/audit-00000002.json": 601807,
+              "history/audit-00000003.json": 602322,
+              "history/audit-00000004.json": 602827,
+              "history/audit-00000005.json": 603347,
+              "history/audit-00000006.json": 603862,
+              "history/audit-00000007.json": 604382,
+              "history/image-00000001.sqlite": 741376,
+              "history/image-00000002.sqlite": 749568,
+              "history/image-00000003.sqlite": 761856,
+              "history/image-00000004.sqlite": 770048,
+              "history/image-00000005.sqlite": 782336,
+              "history/image-00000006.sqlite": 790528,
+              "history/image-00000007.sqlite": 798720,
+              "normalized.sqlite": 741376,
+              "normalized.sqlite-shm": 32768,
+              "normalized.sqlite-wal": 1961152
+            },
+            "total_bytes": 12349562
+          },
+          "elapsed_ns": 1870900,
+          "event": "reader-released",
+          "mode": "TRUNCATE",
+          "result": [
+            0,
+            0,
+            0
+          ],
+          "wal_truncated": true
+        },
+        {
+          "after": {
+            "archive_bytes": 12454798,
+            "db_wal_shm_bytes": 851968,
+            "files": {
+              "history/audit-00000001.json": 601287,
+              "history/audit-00000002.json": 601807,
+              "history/audit-00000003.json": 602322,
+              "history/audit-00000004.json": 602827,
+              "history/audit-00000005.json": 603347,
+              "history/audit-00000006.json": 603862,
+              "history/audit-00000007.json": 604382,
+              "history/audit-00000008.json": 604902,
+              "history/audit-00000009.json": 605422,
+              "history/image-00000001.sqlite": 741376,
+              "history/image-00000002.sqlite": 749568,
+              "history/image-00000003.sqlite": 761856,
+              "history/image-00000004.sqlite": 770048,
+              "history/image-00000005.sqlite": 782336,
+              "history/image-00000006.sqlite": 790528,
+              "history/image-00000007.sqlite": 798720,
+              "history/image-00000008.sqlite": 811008,
+              "history/image-00000009.sqlite": 819200,
+              "normalized.sqlite": 819200,
+              "normalized.sqlite-shm": 32768,
+              "normalized.sqlite-wal": 0
+            },
+            "total_bytes": 13306766
+          },
+          "all_frames_checkpointed": true,
+          "before": {
+            "archive_bytes": 12454798,
+            "db_wal_shm_bytes": 1556640,
+            "files": {
+              "history/audit-00000001.json": 601287,
+              "history/audit-00000002.json": 601807,
+              "history/audit-00000003.json": 602322,
+              "history/audit-00000004.json": 602827,
+              "history/audit-00000005.json": 603347,
+              "history/audit-00000006.json": 603862,
+              "history/audit-00000007.json": 604382,
+              "history/audit-00000008.json": 604902,
+              "history/audit-00000009.json": 605422,
+              "history/image-00000001.sqlite": 741376,
+              "history/image-00000002.sqlite": 749568,
+              "history/image-00000003.sqlite": 761856,
+              "history/image-00000004.sqlite": 770048,
+              "history/image-00000005.sqlite": 782336,
+              "history/image-00000006.sqlite": 790528,
+              "history/image-00000007.sqlite": 798720,
+              "history/image-00000008.sqlite": 811008,
+              "history/image-00000009.sqlite": 819200,
+              "normalized.sqlite": 798720,
+              "normalized.sqlite-shm": 32768,
+              "normalized.sqlite-wal": 725152
+            },
+            "total_bytes": 14011438
+          },
+          "elapsed_ns": 1703000,
+          "event": "reader-gap",
+          "mode": "TRUNCATE",
+          "result": [
+            0,
+            0,
+            0
+          ],
+          "wal_truncated": true
+        },
+        {
+          "after": {
+            "archive_bytes": 18241367,
+            "db_wal_shm_bytes": 884736,
+            "files": {
+              "history/audit-00000001.json": 601287,
+              "history/audit-00000002.json": 601807,
+              "history/audit-00000003.json": 602322,
+              "history/audit-00000004.json": 602827,
+              "history/audit-00000005.json": 603347,
+              "history/audit-00000006.json": 603862,
+              "history/audit-00000007.json": 604382,
+              "history/audit-00000008.json": 604902,
+              "history/audit-00000009.json": 605422,
+              "history/audit-00000010.json": 606037,
+              "history/audit-00000011.json": 606661,
+              "history/audit-00000012.json": 607270,
+              "history/audit-00000013.json": 607881,
+              "history/image-00000001.sqlite": 741376,
+              "history/image-00000002.sqlite": 749568,
+              "history/image-00000003.sqlite": 761856,
+              "history/image-00000004.sqlite": 770048,
+              "history/image-00000005.sqlite": 782336,
+              "history/image-00000006.sqlite": 790528,
+              "history/image-00000007.sqlite": 798720,
+              "history/image-00000008.sqlite": 811008,
+              "history/image-00000009.sqlite": 819200,
+              "history/image-00000010.sqlite": 827392,
+              "history/image-00000011.sqlite": 835584,
+              "history/image-00000012.sqlite": 843776,
+              "history/image-00000013.sqlite": 851968,
+              "normalized.sqlite": 851968,
+              "normalized.sqlite-shm": 32768,
+              "normalized.sqlite-wal": 0
+            },
+            "total_bytes": 19126103
+          },
+          "all_frames_checkpointed": true,
+          "before": {
+            "archive_bytes": 18241367,
+            "db_wal_shm_bytes": 2207480,
+            "files": {
+              "history/audit-00000001.json": 601287,
+              "history/audit-00000002.json": 601807,
+              "history/audit-00000003.json": 602322,
+              "history/audit-00000004.json": 602827,
+              "history/audit-00000005.json": 603347,
+              "history/audit-00000006.json": 603862,
+              "history/audit-00000007.json": 604382,
+              "history/audit-00000008.json": 604902,
+              "history/audit-00000009.json": 605422,
+              "history/audit-00000010.json": 606037,
+              "history/audit-00000011.json": 606661,
+              "history/audit-00000012.json": 607270,
+              "history/audit-00000013.json": 607881,
+              "history/image-00000001.sqlite": 741376,
+              "history/image-00000002.sqlite": 749568,
+              "history/image-00000003.sqlite": 761856,
+              "history/image-00000004.sqlite": 770048,
+              "history/image-00000005.sqlite": 782336,
+              "history/image-00000006.sqlite": 790528,
+              "history/image-00000007.sqlite": 798720,
+              "history/image-00000008.sqlite": 811008,
+              "history/image-00000009.sqlite": 819200,
+              "history/image-00000010.sqlite": 827392,
+              "history/image-00000011.sqlite": 835584,
+              "history/image-00000012.sqlite": 843776,
+              "history/image-00000013.sqlite": 851968,
+              "normalized.sqlite": 819200,
+              "normalized.sqlite-shm": 32768,
+              "normalized.sqlite-wal": 1355512
+            },
+            "total_bytes": 20448847
+          },
+          "elapsed_ns": 2151100,
+          "event": "final",
+          "mode": "TRUNCATE",
+          "result": [
+            0,
+            0,
+            0
+          ],
+          "wal_truncated": true
+        }
+      ],
+      "endpoint_equal": true,
+      "facts": 3000,
+      "final": {
+        "archive_bytes": 18241367,
+        "db_wal_shm_bytes": 884736,
+        "files": {
+          "history/audit-00000001.json": 601287,
+          "history/audit-00000002.json": 601807,
+          "history/audit-00000003.json": 602322,
+          "history/audit-00000004.json": 602827,
+          "history/audit-00000005.json": 603347,
+          "history/audit-00000006.json": 603862,
+          "history/audit-00000007.json": 604382,
+          "history/audit-00000008.json": 604902,
+          "history/audit-00000009.json": 605422,
+          "history/audit-00000010.json": 606037,
+          "history/audit-00000011.json": 606661,
+          "history/audit-00000012.json": 607270,
+          "history/audit-00000013.json": 607881,
+          "history/image-00000001.sqlite": 741376,
+          "history/image-00000002.sqlite": 749568,
+          "history/image-00000003.sqlite": 761856,
+          "history/image-00000004.sqlite": 770048,
+          "history/image-00000005.sqlite": 782336,
+          "history/image-00000006.sqlite": 790528,
+          "history/image-00000007.sqlite": 798720,
+          "history/image-00000008.sqlite": 811008,
+          "history/image-00000009.sqlite": 819200,
+          "history/image-00000010.sqlite": 827392,
+          "history/image-00000011.sqlite": 835584,
+          "history/image-00000012.sqlite": 843776,
+          "history/image-00000013.sqlite": 851968,
+          "normalized.sqlite": 851968,
+          "normalized.sqlite-shm": 32768,
+          "normalized.sqlite-wal": 0
+        },
+        "total_bytes": 19126103
+      },
+      "held_endpoint_equal": true,
+      "lifecycle_elapsed_ns": 3126321300,
+      "peak_sampled_bytes": 20448847,
+      "policy": "all",
+      "process_cpu_ns": 3078125000,
+      "raw_record_count": 15,
+      "release_at": 6,
+      "retained_epochs": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13
+      ],
+      "scope": "SQLite API including bootstrap, transitions, commit, reads, content-flushed history, actual archive collection, checkpoints, close/reopen. Excludes raw-log serialization, POSIX directory sync, atomic export/root publication, device traffic and other engines.",
+      "settings": {
+        "archive_journal_mode": "DELETE",
+        "busy_timeout": 0,
+        "foreign_keys": 0,
+        "journal_mode": "wal",
+        "page_size": 4096,
+        "synchronous": 2,
+        "wal_autocheckpoint": 0
+      },
+      "sources": 500,
+      "stage_ns": {
+        "archive": 1016712100,
+        "checkpoint": 7092300,
+        "persistence": 884215900,
+        "reads": 525314400,
+        "reclamation": 33900,
+        "transition": 381061900
+      },
+      "updates": 12
+    },
+    {
+      "before_close": {
+        "archive_bytes": 1459849,
+        "db_wal_shm_bytes": 884736,
+        "files": {
+          "history/audit-00000013.json": 607881,
+          "history/image-00000013.sqlite": 851968,
+          "normalized.sqlite": 851968,
+          "normalized.sqlite-shm": 32768,
+          "normalized.sqlite-wal": 0
+        },
+        "total_bytes": 2344585
+      },
+      "checkpoints": [
+        {
+          "after": {
+            "archive_bytes": 0,
+            "db_wal_shm_bytes": 774144,
+            "files": {
+              "normalized.sqlite": 741376,
+              "normalized.sqlite-shm": 32768,
+              "normalized.sqlite-wal": 0
+            },
+            "total_bytes": 774144
+          },
+          "all_frames_checkpointed": true,
+          "before": {
+            "archive_bytes": 0,
+            "db_wal_shm_bytes": 840296,
+            "files": {
+              "normalized.sqlite": 4096,
+              "normalized.sqlite-shm": 32768,
+              "normalized.sqlite-wal": 803432
+            },
+            "total_bytes": 840296
+          },
+          "elapsed_ns": 1298600,
+          "event": "bootstrap",
+          "mode": "TRUNCATE",
+          "result": [
+            0,
+            0,
+            0
+          ],
+          "wal_truncated": true
+        },
+        {
+          "after": {
+            "archive_bytes": 2745765,
+            "db_wal_shm_bytes": 2735296,
+            "files": {
+              "history/audit-00000001.json": 601287,
+              "history/audit-00000007.json": 604382,
+              "history/image-00000001.sqlite": 741376,
+              "history/image-00000007.sqlite": 798720,
+              "normalized.sqlite": 741376,
+              "normalized.sqlite-shm": 32768,
+              "normalized.sqlite-wal": 1961152
+            },
+            "total_bytes": 5481061
+          },
+          "all_frames_checkpointed": false,
+          "before": {
+            "archive_bytes": 2745765,
+            "db_wal_shm_bytes": 2735296,
+            "files": {
+              "history/audit-00000001.json": 601287,
+              "history/audit-00000007.json": 604382,
+              "history/image-00000001.sqlite": 741376,
+              "history/image-00000007.sqlite": 798720,
+              "normalized.sqlite": 741376,
+              "normalized.sqlite-shm": 32768,
+              "normalized.sqlite-wal": 1961152
+            },
+            "total_bytes": 5481061
+          },
+          "elapsed_ns": 42200,
+          "event": "held-reader",
+          "mode": "PASSIVE",
+          "result": [
+            0,
+            476,
+            0
+          ],
+          "wal_truncated": false
+        },
+        {
+          "after": {
+            "archive_bytes": 2745765,
+            "db_wal_shm_bytes": 2735296,
+            "files": {
+              "history/audit-00000001.json": 601287,
+              "history/audit-00000007.json": 604382,
+              "history/image-00000001.sqlite": 741376,
+              "history/image-00000007.sqlite": 798720,
+              "normalized.sqlite": 741376,
+              "normalized.sqlite-shm": 32768,
+              "normalized.sqlite-wal": 1961152
+            },
+            "total_bytes": 5481061
+          },
+          "all_frames_checkpointed": false,
+          "before": {
+            "archive_bytes": 2745765,
+            "db_wal_shm_bytes": 2735296,
+            "files": {
+              "history/audit-00000001.json": 601287,
+              "history/audit-00000007.json": 604382,
+              "history/image-00000001.sqlite": 741376,
+              "history/image-00000007.sqlite": 798720,
+              "normalized.sqlite": 741376,
+              "normalized.sqlite-shm": 32768,
+              "normalized.sqlite-wal": 1961152
+            },
+            "total_bytes": 5481061
+          },
+          "elapsed_ns": 23900,
+          "event": "held-reader",
+          "mode": "TRUNCATE",
+          "result": [
+            1,
+            476,
+            0
+          ],
+          "wal_truncated": false
+        },
+        {
+          "after": {
+            "archive_bytes": 1403102,
+            "db_wal_shm_bytes": 831488,
+            "files": {
+              "history/audit-00000007.json": 604382,
+              "history/image-00000007.sqlite": 798720,
+              "normalized.sqlite": 798720,
+              "normalized.sqlite-shm": 32768,
+              "normalized.sqlite-wal": 0
+            },
+            "total_bytes": 2234590
+          },
+          "all_frames_checkpointed": true,
+          "before": {
+            "archive_bytes": 1403102,
+            "db_wal_shm_bytes": 2735296,
+            "files": {
+              "history/audit-00000007.json": 604382,
+              "history/image-00000007.sqlite": 798720,
+              "normalized.sqlite": 741376,
+              "normalized.sqlite-shm": 32768,
+              "normalized.sqlite-wal": 1961152
+            },
+            "total_bytes": 4138398
+          },
+          "elapsed_ns": 1843500,
+          "event": "reader-released",
+          "mode": "TRUNCATE",
+          "result": [
+            0,
+            0,
+            0
+          ],
+          "wal_truncated": true
+        },
+        {
+          "after": {
+            "archive_bytes": 1424622,
+            "db_wal_shm_bytes": 851968,
+            "files": {
+              "history/audit-00000009.json": 605422,
+              "history/image-00000009.sqlite": 819200,
+              "normalized.sqlite": 819200,
+              "normalized.sqlite-shm": 32768,
+              "normalized.sqlite-wal": 0
+            },
+            "total_bytes": 2276590
+          },
+          "all_frames_checkpointed": true,
+          "before": {
+            "archive_bytes": 1424622,
+            "db_wal_shm_bytes": 1556640,
+            "files": {
+              "history/audit-00000009.json": 605422,
+              "history/image-00000009.sqlite": 819200,
+              "normalized.sqlite": 798720,
+              "normalized.sqlite-shm": 32768,
+              "normalized.sqlite-wal": 725152
+            },
+            "total_bytes": 2981262
+          },
+          "elapsed_ns": 1647000,
+          "event": "reader-gap",
+          "mode": "TRUNCATE",
+          "result": [
+            0,
+            0,
+            0
+          ],
+          "wal_truncated": true
+        },
+        {
+          "after": {
+            "archive_bytes": 1459849,
+            "db_wal_shm_bytes": 884736,
+            "files": {
+              "history/audit-00000013.json": 607881,
+              "history/image-00000013.sqlite": 851968,
+              "normalized.sqlite": 851968,
+              "normalized.sqlite-shm": 32768,
+              "normalized.sqlite-wal": 0
+            },
+            "total_bytes": 2344585
+          },
+          "all_frames_checkpointed": true,
+          "before": {
+            "archive_bytes": 1459849,
+            "db_wal_shm_bytes": 2207480,
+            "files": {
+              "history/audit-00000013.json": 607881,
+              "history/image-00000013.sqlite": 851968,
+              "normalized.sqlite": 819200,
+              "normalized.sqlite-shm": 32768,
+              "normalized.sqlite-wal": 1355512
+            },
+            "total_bytes": 3667329
+          },
+          "elapsed_ns": 2215000,
+          "event": "final",
+          "mode": "TRUNCATE",
+          "result": [
+            0,
+            0,
+            0
+          ],
+          "wal_truncated": true
+        }
+      ],
+      "endpoint_equal": true,
+      "facts": 3000,
+      "final": {
+        "archive_bytes": 1459849,
+        "db_wal_shm_bytes": 884736,
+        "files": {
+          "history/audit-00000013.json": 607881,
+          "history/image-00000013.sqlite": 851968,
+          "normalized.sqlite": 851968,
+          "normalized.sqlite-shm": 32768,
+          "normalized.sqlite-wal": 0
+        },
+        "total_bytes": 2344585
+      },
+      "held_endpoint_equal": true,
+      "lifecycle_elapsed_ns": 3488580000,
+      "peak_sampled_bytes": 6875451,
+      "policy": "leases",
+      "process_cpu_ns": 3406250000,
+      "raw_record_count": 15,
+      "release_at": 6,
+      "retained_epochs": [
+        13
+      ],
+      "scope": "SQLite API including bootstrap, transitions, commit, reads, content-flushed history, actual archive collection, checkpoints, close/reopen. Excludes raw-log serialization, POSIX directory sync, atomic export/root publication, device traffic and other engines.",
+      "settings": {
+        "archive_journal_mode": "DELETE",
+        "busy_timeout": 0,
+        "foreign_keys": 0,
+        "journal_mode": "wal",
+        "page_size": 4096,
+        "synchronous": 2,
+        "wal_autocheckpoint": 0
+      },
+      "sources": 500,
+      "stage_ns": {
+        "archive": 1260562700,
+        "checkpoint": 7070200,
+        "persistence": 801975100,
+        "reads": 728541100,
+        "reclamation": 9607500,
+        "transition": 416043600
+      },
+      "updates": 12
+    }
+  ],
+  "updates": 72
+}

@@ -12,6 +12,7 @@ import time
 from pathlib import Path
 
 from frontierstore.baselines import SQLiteNormalized, _insert_full_state, _read_sqlite_state, _sqlite_schema
+from frontierstore.audit_export import parse_audit_export
 from frontierstore.model import apply_transaction, canonical_state_bytes, states_equal
 from frontierstore.workload import make_synthetic_state, make_update
 
@@ -51,11 +52,31 @@ def run(source_count=500, updates=16):
             image = history / f"image-{index}.sqlite"
             with closing(sqlite3.connect(image)) as destination:
                 connection.backup(destination)
+                # Backups inherit WAL mode. A subsequent read-only open can
+                # leave per-image WAL/SHM sidecars, so use SQLite's documented
+                # rollback-mode representation for closed archive images.
+                if destination.execute("PRAGMA journal_mode=DELETE").fetchone()[0] != "delete":
+                    raise AssertionError("archive rollback-mode conversion failed")
             export = history / f"image-{index}.json"
             export.write_bytes(canonical_state_bytes(state))
             if not states_equal(_read_sqlite_state(image), state):
                 raise AssertionError("history image differs from exact endpoint")
             current_bytes.append(image.stat().st_size + export.stat().st_size)
+        all_history_bytes = disk_bytes(history)
+        start = time.perf_counter_ns()
+        latest_image = history / f"image-{updates}.sqlite"
+        latest_export = history / f"image-{updates}.json"
+        removed = []
+        for index in range(updates):
+            for suffix in ("sqlite", "json"):
+                candidate = history / f"image-{index}.{suffix}"
+                candidate.unlink()
+                removed.append(candidate.name)
+        reclamation_ns = time.perf_counter_ns() - start
+        if (not states_equal(_read_sqlite_state(latest_image), state) or
+                parse_audit_export(latest_export) != state.as_dict()):
+            raise AssertionError("actual latest-only reclamation changed its retained endpoint")
+        current_history_bytes = disk_bytes(history)
         before = disk_bytes(root)
         start = time.perf_counter_ns()
         checkpoint = connection.execute("PRAGMA wal_checkpoint(TRUNCATE)").fetchone()
@@ -67,8 +88,13 @@ def run(source_count=500, updates=16):
                   "sqlite_before_checkpoint_bytes": before, "sqlite_after_checkpoint_bytes": after,
                   "checkpoint_elapsed_ns": checkpoint_ns, "checkpoint_result": list(checkpoint),
                   "initial_checkpoint_result": list(initial_checkpoint),
-                  "full_image_export_all_endpoints_bytes": sum(current_bytes),
-                  "full_image_export_current_endpoint_bytes": current_bytes[-1],
+                  "full_image_export_all_endpoints_bytes": all_history_bytes,
+                  "full_image_export_current_endpoint_bytes": current_history_bytes,
+                  "last_pair_size_before_reclamation_bytes": current_bytes[-1],
+                  "history_reclamation_elapsed_ns": reclamation_ns,
+                  "history_removed_files": removed,
+                  "history_remaining_files": sorted(file.name for file in history.iterdir() if file.is_file()),
+                  "history_latest_endpoint_equal": True,
                   "retained_endpoints_all": updates + 1, "retained_endpoints_current": 1,
                   "endpoint_equal": True,
                   "scope": "SQLite API; all regular DB/WAL/SHM files; image+canonical export; no segment-store timing"}

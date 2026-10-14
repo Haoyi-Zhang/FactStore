@@ -34,7 +34,7 @@ All persistent create paths capture and validate the supplied bootstrap before r
 
 ### Executed correctness evidence
 
-- The earlier 114-method transcript is under `results/current/code-audit-tests/`. A fresh Linux run in `results/current/linux/` passes all 140 current methods without skips. Six correctness stages finish in 12.80 seconds and also cover the finite model, 26 process-exit cases, strict SQLite/export boundaries, and the joint update/compaction history. This run is separate from the older engine performance measurements.
+- The earlier 114-method transcript is under `results/current/code-audit-tests/`. A retained Linux run in `results/current/linux/` passes the 140 methods of its recorded source without skips. Six correctness stages finish in 12.80 seconds and also cover the finite model, 26 process-exit cases, strict SQLite/export boundaries, and the joint update/compaction history. This is separate from the older engine performance measurements and the later API lifecycle/maintenance corrections.
 - 775 bounded histories cover 2,925 intermediate logical states; this is the complete Cartesian product for the declared five-operation alphabet at lengths two, three, and four. The former 769-history prefix result is retained under `results/retired/` and is not current evidence.
 - 7,750 abstract publication observations materialized through a complete-object map and selector have zero closure, endpoint-membership, or cut-correspondence violations; closed-mix and early-selector negative controls fail as expected.
 - The joint case completes 20 updates, one reader, and five compactions over 24 sources and 144 facts.
@@ -71,8 +71,9 @@ The retained pooled medians favor the rooted database/export control at all thre
 the normalized SQLite delta writer, with automatic checkpoints disabled. It
 measures database, WAL and shared-memory bytes before and after a real truncating
 checkpoint, its elapsed time, and the equality of the complete decoded endpoint.
-A separate control retains every complete image/export pair or only the latest;
-both policies recover the same current state. The run is retained in
+A separate retained calculation sums the contents of every image/export pair
+and of the last pair; it did not execute latest-only deletion, and these pair
+columns exclude unmeasured archive sidecars. The run is retained in
 `results/maintenance-control.json`.
 
 | Sources / facts | Before checkpoint | After checkpoint | Checkpoint | All pairs | Latest pair |
@@ -211,6 +212,54 @@ The experimental launcher uses one child, bounded address space, a wall watchdog
 ## Resource accounting
 
 Unknown inherited scientific use is conservatively charged to the full non-reserved allocation rather than treated as zero. Failed and interrupted attempts consume their complete reservations. The historical campaign CPU upper bound reaches 28,800 seconds, with no remaining allowance. The two order-control attempts are retained and excluded from timing inference. See the unchanged `resource-accounting.json` and historical per-case accounting files. New finite-run reservations and observed use are recorded only in each external destination's `run.json` and per-stage accounting; they do not alter historical measurements or replenish that lifetime allowance.
+
+## Separate read-lease / full API lifecycle control
+
+`experiments.history_lifecycle` and its separately invoked
+`experiments.history_lifecycle_tests` compare two archive-retention policies on
+the same ordinary normalized writer, not three native storage engines. At 8/48,
+64/384 and 500/3,000 sources/facts, both preserve one bootstrap read transaction
+through six of twelve updates. All-history retains thirteen endpoints; leases
+retain current plus the live bootstrap and collect only released archives.
+WAL/FULL, zero automatic checkpoint and busy timeout are recorded. Archive
+images are closed in DELETE mode and file contents are synchronized; atomic
+pair publication and POSIX directory synchronization are outside this API stage.
+
+The corrected maintenance script also converts closed archive images to DELETE
+mode, performs actual obsolete-pair deletion, verifies the remaining database/
+export endpoint and records removal time and remaining files. Historical rows
+are not overwritten or relabeled as an execution of this correction.
+
+The new cohort under `results/review-lifecycle-20261014/` retains six complete
+input/output gzip documents (90 event records), all 36 checkpoint results,
+72 update inputs/current outputs, 36 held outputs and six close/reopen outputs.
+Raw replay and native re-decoding of all 42 remaining archive pairs have zero
+discrepancies. Actual lease-directed collection removes 72 archive files. Six
+PASSIVE status-zero results remain incomplete and six held TRUNCATE calls busy;
+six release TRUNCATE calls complete. All DB/WAL/SHM and archive file lengths are
+counted; live WAL/SHM files are never manually removed.
+
+From the artifact root, with assertions enabled and a fresh owned output:
+
+```text
+python -B -m experiments.history_lifecycle --authorize-new-study --out <fresh-owned-P021-output>
+python -B -m unittest experiments.history_lifecycle_tests tests.test_maintenance_control tests.test_exhaustive tests.test_sql_integer_domain -v
+```
+
+Both the command and the imported case function reject optimized Python before
+creating an output. The lifecycle tests allocate fresh temporary directories
+under the project root; they do not require a caller to redirect the global
+temporary directory. WAL setup, archive journal-mode selection and the initial
+reader snapshot are executed explicitly.
+
+The 14-method portable subset passes; it is not a new full 140-method POSIX run.
+The earlier Linux transcript and all old performance/result files remain
+unchanged. A new reservation, failed first attempt and final observations remain
+private and do not reset the exhausted historical resource ledger. Detailed
+contract and standard-mechanism overlap are in `proofs/lifecycle-contract.md`.
+The common native-persistence/history/audit-lease three-engine comparison is still
+unclosed. One fixed-order repetition per size/policy supplies descriptive API
+costs, not device traffic, statistical engine ranking or new-store novelty.
 
 ## Contents
 
