@@ -315,3 +315,14 @@ while allowing included text fragments:
 ```sh
 python -B -m unittest tests.test_primary_wrapper -v
 ```
+
+## Manuscript schematics
+
+The endpoint-selector and representation diagrams are generated directly in
+Python as vector PDFs with embedded fonts. They encode the defined relationships;
+the stored engine and lifecycle measurements are unchanged. With Python 3.9+
+and Matplotlib, run from the artifact root:
+
+```sh
+python -B figures/draw_schematics.py --output figures
+```
