@@ -17,6 +17,7 @@ import threading
 import time
 
 from frontierstore.checker import run as independent_check
+from frontierstore.checker import check_selected
 from frontierstore.model import Transaction, bootstrap_state
 from frontierstore.store import FrontierStore
 
@@ -99,7 +100,8 @@ def execute(output):
     rows = []
     report = {'status': 'INCOMPLETE', 'sources': SOURCES, 'facts': SOURCES*FACTS_PER_SOURCE,
               'updates': UPDATES, 'reader_threads': 1, 'compaction_interval': INTERVAL,
-              'oracle': 'complete endpoint dictionaries; older held handle compared to old endpoint',
+              'oracle': 'independent complete endpoint dictionaries; held values and captured-selector physical bytes checked separately',
+              'historical_byte_checks': 0,
               'rows': rows, 'comparison_scope': 'synthetic joint schedule, no new baseline timings'}
     try:
         with tempfile.TemporaryDirectory(prefix='frontier-joint-') as temporary:
@@ -110,7 +112,6 @@ def execute(output):
                 raise AssertionError('bootstrap oracle mismatch')
             commands, replies = queue.Queue(), queue.Queue()
             reader = threading.Thread(target=reader_loop, args=(store, commands, replies), daemon=True)
-            reader.start()
 
             def request(action, value=None):
                 commands.put((action, copy.deepcopy(value)))
@@ -118,9 +119,23 @@ def execute(output):
                 if status != 'ok':
                     raise AssertionError(detail)
 
-            protected = set(store.selected_segments)
-            request('hold', expected)
+            def verify_held_bytes():
+                # The writer/collector is quiescent here; the reader retains
+                # the corresponding pin while the independent parser reads.
+                checked = check_selected(path, held_selector)
+                if checked['endpoint'] != held_endpoint:
+                    raise AssertionError('protected historical bytes differ from captured endpoint')
+                if set(json.loads(held_selector)['segments']) != protected:
+                    raise AssertionError('captured selector differs from the held segment set')
+                report['historical_byte_checks'] += 1
+
+            reader.start()
             try:
+                protected = set(store.selected_segments)
+                request('hold', expected)
+                held_selector = (path/'ROOT').read_bytes()
+                held_endpoint = copy.deepcopy(expected)
+                verify_held_bytes()
                 for step in range(1, UPDATES+1):
                     expected, transaction = advance(expected, step)
                     start = time.perf_counter_ns()
@@ -128,6 +143,8 @@ def execute(output):
                     update_ns = time.perf_counter_ns()-start
                     # Queue handoff occurs after successful update return, not merely root fsync.
                     request('current', expected)
+                    verify_held_bytes()
+                    byte_events = ['after_update']
                     compact_ns = None
                     if step % INTERVAL == 0:
                         start = time.perf_counter_ns()
@@ -135,10 +152,14 @@ def execute(output):
                         compact_ns = time.perf_counter_ns()-start
                         expected['epoch'] += 1
                         request('current', expected)
+                        verify_held_bytes()
+                        byte_events.append('after_compaction')
                     store.collect()
                     present = {p.name for p in (path/'segments').glob('segment-*.jsonl')}
                     if not protected <= present:
                         raise AssertionError('collector removed pinned history')
+                    verify_held_bytes()
+                    byte_events.append('after_collection')
                     # No publisher or collector runs while the offline parser reads.
                     checked = independent_check(path)
                     if checked['status'] != 'ACCEPT':
@@ -147,6 +168,7 @@ def execute(output):
                            'compaction_ns': compact_ns, 'selected_segments': len(store.selected_segments),
                            'pinned_files': len(protected), 'current_endpoint_equal': True,
                            'historical_endpoint_equal': True, 'protected_present': True,
+                           'historical_bytes_equal': True, 'historical_byte_events': byte_events,
                            'quiescent_checker_accepted': True, 'released_history_collected': None}
                     if step % INTERVAL == 0:
                         request('release')
@@ -159,6 +181,9 @@ def execute(output):
                         if step < UPDATES:
                             protected = set(store.selected_segments)
                             request('hold', expected)
+                            held_selector = (path/'ROOT').read_bytes()
+                            held_endpoint = copy.deepcopy(expected)
+                            verify_held_bytes()
                     rows.append(row)
                 request('stop'); reader.join(timeout=5)
                 if reader.is_alive():

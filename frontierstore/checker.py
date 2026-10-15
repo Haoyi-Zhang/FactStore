@@ -122,8 +122,28 @@ def confined_segment(segment_dir: Path, value: Any) -> Path:
 
 def check(store_path: str | os.PathLike[str]) -> dict[str, Any]:
     path = Path(store_path)
-    segment_dir = path / SEGMENT_DIR
     root = read_json(path / ROOT_NAME, "ROOT_PARSE")
+    return _check_root(path, root)
+
+
+def check_selected(store_path: str | os.PathLike[str], selected_root: bytes) -> dict[str, Any]:
+    """Decode a captured selector and its physical segments without rewriting ROOT.
+
+    The caller must retain the named immutable segments and exclude concurrent
+    publication or collection during this read. This function does not acquire
+    a lease, consult an engine snapshot, or authenticate the selector's origin.
+    """
+    if not isinstance(selected_root, bytes):
+        reject("ROOT_PARSE", "captured selector must be bytes")
+    try:
+        root = json.loads(selected_root.decode("ascii"), object_pairs_hook=unique_object)
+    except (UnicodeDecodeError, json.JSONDecodeError) as exc:
+        reject("ROOT_PARSE", str(exc))
+    return _check_root(Path(store_path), root, include_endpoint=True)
+
+
+def _check_root(path: Path, root: Any, *, include_endpoint: bool = False) -> dict[str, Any]:
+    segment_dir = path / SEGMENT_DIR
     if not isinstance(root, dict) or root.get("format") != ROOT_FORMAT:
         reject("ROOT_FORMAT", "unrecognized root")
     exact_fields(root, _ROOT_FIELDS, "root")
@@ -301,7 +321,7 @@ def check(store_path: str | os.PathLike[str]) -> dict[str, Any]:
     actual_root_counts = {"sources": len(sources), "facts": len(facts), "reverse": len(reverse)}
     if root_counts != actual_root_counts:
         reject("ROOT_COUNT", {"declared": root_counts, "actual": actual_root_counts})
-    return {
+    result = {
         "status": "ACCEPT",
         "epoch": root_epoch,
         "schema": root_schema,
@@ -309,11 +329,32 @@ def check(store_path: str | os.PathLike[str]) -> dict[str, Any]:
         "records": records_checked,
         "counts": actual_root_counts,
     }
+    if include_endpoint:
+        result["endpoint"] = {
+            "epoch": root_epoch,
+            "schema": root_schema,
+            "sources": sources,
+            "facts": {
+                key: {**fact, "dependencies": [
+                    {"source": source, "generation": generation}
+                    for source, generation in fact["dependencies"]]}
+                for key, fact in facts.items()
+            },
+            "reverse": {key: list(members) for key, members in reverse.items()},
+        }
+    return result
 
 
 def run(store_path: str | os.PathLike[str]) -> dict[str, Any]:
     try:
         return check(store_path)
+    except Rejection as exc:
+        return {"status": "REJECT", "witness": exc.code, "detail": exc.detail}
+
+
+def run_selected(store_path: str | os.PathLike[str], selected_root: bytes) -> dict[str, Any]:
+    try:
+        return check_selected(store_path, selected_root)
     except Rejection as exc:
         return {"status": "REJECT", "witness": exc.code, "detail": exc.detail}
 

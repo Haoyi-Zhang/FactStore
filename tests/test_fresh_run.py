@@ -12,7 +12,8 @@ class FreshRunTests(unittest.TestCase):
         names = fresh_run.source_inventory(fresh_run.ROOT)
         existing = [n for n in names if not n.startswith(
             ("tests.test_fresh_run.", "tests.test_primary_wrapper.",
-             "tests.test_maintenance_control.", "tests.test_compressed_records."))]
+             "tests.test_maintenance_control.", "tests.test_compressed_records.",
+             "tests.test_historical_bytes."))]
         self.assertEqual(132, len(existing))
         wrappers = [n for n in names if n.startswith("tests.test_primary_wrapper.")]
         self.assertEqual(3, len(wrappers))
