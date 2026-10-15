@@ -303,3 +303,15 @@ costs, not device traffic, statistical engine ranking or new-store novelty.
 - `FORMAT.md`: exact durable byte-format and publication contract.
 
 The ten bundled Solidity excerpts are consumed only as irregular licensed text. No contract is executed, and lexical facts are not vulnerability labels or semantic audit ground truth. No private data, accelerator, production service, or new human evidence is required.
+
+## Manuscript
+
+When the paper accompanies this artifact, its single entry is `paper/main.tex`
+and its compiled manuscript is `paper/main.pdf`. The shared journal text, data,
+figures and bibliography are inputs to that entry. Build instructions are in
+`paper/README.md`. The source check rejects a second root-level manuscript entry
+while allowing included text fragments:
+
+```sh
+python -B -m unittest tests.test_primary_wrapper -v
+```

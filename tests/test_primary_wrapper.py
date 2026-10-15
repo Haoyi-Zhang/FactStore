@@ -31,3 +31,19 @@ class PrimaryWrapperTests(unittest.TestCase):
             result = verify_primary_wrapper(Path(directory))
             self.assertEqual("NOT_INCLUDED", result["status"])
             self.assertFalse(result["source_inspected"])
+
+    def test_additional_manuscript_entry_is_rejected(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = self.write_wrapper(directory, "manuscript,screen,review,anonymous")
+            (root / "alternate.tex").write_text(
+                r"\documentclass[manuscript,review]{acmart}", encoding="utf-8")
+            with self.assertRaisesRegex(AssertionError, "multiple manuscript entry points"):
+                verify_primary_wrapper(root)
+
+    def test_included_fragment_is_not_another_entry(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = self.write_wrapper(directory, "manuscript,screen,review,anonymous")
+            (root / "body.tex").write_text(r"\section{Introduction}", encoding="utf-8")
+            result = verify_primary_wrapper(root)
+            self.assertEqual(["main.tex"], result["entry_points"])
+            self.assertFalse(result["pdf_inspected"])

@@ -87,6 +87,12 @@ def verify_primary_wrapper(paper: Path) -> dict:
     source = paper / "main.tex"
     if not source.is_file():
         return {"status": "NOT_INCLUDED", "source_inspected": False}
+    entries = []
+    for path in sorted(paper.glob("*.tex")):
+        candidate = re.sub(r"(?<!\\)%[^\n]*", "", path.read_text(encoding="utf-8"))
+        if re.search(r"\\documentclass(?:\[[^]]*\])?\s*\{", candidate):
+            entries.append(path.name)
+    require(entries == ["main.tex"], "multiple manuscript entry points")
     text = source.read_text(encoding="utf-8")
     match = re.search(r"\\documentclass\[([^]]+)\]\{acmart\}", text)
     require(match is not None, "current primary ACM wrapper missing")
@@ -96,7 +102,8 @@ def verify_primary_wrapper(paper: Path) -> dict:
     for name in ("journal-preamble.tex", "journal-frontmatter.tex"):
         require(r"\input{" + name + "}" in text, "current primary shared source differs")
     return {"status": "SOURCE_CHECKED", "source_inspected": True,
-            "class_options": list(options), "pdf_inspected": False}
+            "class_options": list(options), "entry_points": entries,
+            "pdf_inspected": False}
 
 
 
