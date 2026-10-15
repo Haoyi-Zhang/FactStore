@@ -16,7 +16,7 @@ class FreshRunTests(unittest.TestCase):
              "tests.test_historical_bytes."))]
         self.assertEqual(132, len(existing))
         wrappers = [n for n in names if n.startswith("tests.test_primary_wrapper.")]
-        self.assertEqual(3, len(wrappers))
+        self.assertEqual(5, len(wrappers))
         maintenance = [n for n in names if n.startswith("tests.test_maintenance_control.")]
         self.assertEqual(2, len(maintenance))
         compressed = [n for n in names if n.startswith("tests.test_compressed_records.")]
