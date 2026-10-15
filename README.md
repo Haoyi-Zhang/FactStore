@@ -45,6 +45,33 @@ All persistent create paths capture and validate the supplied bootstrap before r
 
 The historical `results/raw/` files are preserved. In particular, earlier rows contain 80 process-exit cases and seven targeted mutations, but they predate current parser/publication repairs and are not presented as current-source correctness evidence.
 
+### Historical physical-byte checks
+
+The current joint runner captures the selector bytes at each historical pin
+acquisition. While that pin remains active and publication/collection is
+quiescent, a standalone parser reconstructs the complete endpoint from the
+protected segment bytes. It retains the captured epoch and compares all source,
+fact, dependency, reverse, and schema fields with the independent historical
+dictionary. The 20-update schedule checks five acquisitions and 45 subsequent
+update, compaction, and collection events, for 50 physical-endpoint comparisons.
+This is distinct from reading the held in-memory value or checking the current
+selector. The older retained joint transcript predates this additional oracle;
+current scientific CI executes the updated schedule directly.
+
+Nine portable fixture methods check the explicit-selector reader, including
+strict root parsing, missing/truncated files and a structurally valid payload
+change that only full endpoint equality detects. Five POSIX methods check real
+pinning through compaction and collection, two simultaneous leases with
+idempotent release, the complete joint schedule, its changed-history control,
+and reader cleanup after an initial parser failure. The current full test
+inventory includes these fourteen methods; the historical 132-method count and
+its transcripts remain tied to their own source. These are correctness checks,
+not new engine timings or a matched three-engine lifecycle comparison.
+
+```text
+python -B -m unittest tests.test_historical_bytes -v
+```
+
 ### Retained three-scale comparison
 
 A shared untimed transition first constructs the exact next state and delta. Persistence return is then timed and followed immediately by a timed full audit; transition construction, dependency discovery, and invalidation-set derivation are excluded. The aligned combined median is computed from each persistence and its following audit. All scale cases run engines in the fixed order FrontierStore, SQLite normalized, then SQLite rooted audit.
