@@ -269,7 +269,7 @@ counted; live WAL/SHM files are never manually removed.
 From the artifact root, with assertions enabled and a fresh owned output:
 
 ```text
-python -B -m experiments.history_lifecycle --authorize-new-study --out <fresh-owned-P021-output>
+python -B -m experiments.history_lifecycle --authorize-new-study --out <fresh-output-directory>
 python -B -m unittest experiments.history_lifecycle_tests tests.test_maintenance_control tests.test_exhaustive tests.test_sql_integer_domain -v
 ```
 
