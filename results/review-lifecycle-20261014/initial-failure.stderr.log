@@ -17,7 +17,7 @@ test_reader_requires_one_explicit_transaction (experiments.history_lifecycle_tes
 FAIL: test_checkpoint_and_history_keep_exact_endpoint (tests.test_maintenance_control.MaintenanceTests.test_checkpoint_and_history_keep_exact_endpoint)
 ----------------------------------------------------------------------
 Traceback (most recent call last):
-  File "D:\CodexProjects\wg-check\substantive-library\P021\artifact\tests\test_maintenance_control.py", line 13, in test_checkpoint_and_history_keep_exact_endpoint
+  File "<PROJECTS_ROOT>\wg-check\substantive-library\P021\artifact\tests\test_maintenance_control.py", line 13, in test_checkpoint_and_history_keep_exact_endpoint
     self.assertEqual(row["history_remaining_files"], ["image-3.json", "image-3.sqlite"])
 AssertionError: Lists differ: ['image-0.sqlite-shm', 'image-0.sqlite-wal', 'ima[156 chars]wal'] != ['image-3.json', 'image-3.sqlite']
 
@@ -45,7 +45,7 @@ First extra element 2:
 FAIL: test_reader_lease_checkpoint_and_actual_archive_collection (experiments.history_lifecycle_tests.HistoryLifecycleTests.test_reader_lease_checkpoint_and_actual_archive_collection)
 ----------------------------------------------------------------------
 Traceback (most recent call last):
-  File "D:\CodexProjects\wg-check\substantive-library\P021\artifact\experiments\history_lifecycle_tests.py", line 21, in test_reader_lease_checkpoint_and_actual_archive_collection
+  File "<PROJECTS_ROOT>\wg-check\substantive-library\P021\artifact\experiments\history_lifecycle_tests.py", line 21, in test_reader_lease_checkpoint_and_actual_archive_collection
     self.assertEqual(len(row['final']['files']),3)
 AssertionError: 15 != 3
 

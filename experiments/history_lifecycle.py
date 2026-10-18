@@ -25,7 +25,7 @@ from frontierstore.model import apply_transaction
 from frontierstore.workload import make_synthetic_state, make_update
 
 CANDIDATE=Path(__file__).resolve().parents[2]
-PRIVATE=Path('D:/CodexProjects/2026-07-13/new-chat-4/completion_workspace/library_review/private/substantive_library_completion/P021')
+PRIVATE=CANDIDATE/'artifact'/'results'/'lifecycle-replay'
 
 
 def owned(path):
