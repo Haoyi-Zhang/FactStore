@@ -92,7 +92,7 @@ def draw(out):
     d.text(-3.25,1.65,'(a) Separate reads',ha='left')
     d.box('old',-1.75,.95,2.7,.68,r'Old $M,S$')
     d.box('new',1.75,.95,2.7,.68,r'New $F,D$')
-    d.edge('old','new',sa='e',sb='w');d.text(0,1.40,'commit')
+    d.edge('old','new',sa='e',sb='w');d.text(0,1.55,'commit')
     d.box('mix',0,-.05,4.2,.85,'Closed mixed value\n'+r'neither $\mathcal{C}_0$ nor $\mathcal{C}_1$',dashed=True)
     d.edge('old','mix',sa='s',sb='nw');d.edge('new','mix',sa='s',sb='ne')
     d.line([(-3.25,-.75),(3.25,-.75)])
