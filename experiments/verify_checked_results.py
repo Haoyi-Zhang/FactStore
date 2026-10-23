@@ -10,13 +10,7 @@ import tempfile
 from typing import Mapping
 
 from experiments.common import read_csv
-from experiments.summarize_results import summarize
-
-
-def truth(value: str | bool) -> bool:
-    if isinstance(value, bool):
-        return value
-    return str(value).strip().lower() in {"1", "true", "yes"}
+from experiments.summarize_results import summarize, truth, validate_retained_input
 
 
 def require(condition: bool, message: str) -> None:
@@ -43,6 +37,7 @@ def verify(results: str | Path) -> dict[str, object]:
             "public_input",
         ]
     }
+    validate_retained_input(resources, rows)
     if mode == "full":
         expected = {
             "scale": 96,

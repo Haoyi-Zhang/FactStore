@@ -6,6 +6,7 @@ import argparse
 from collections import defaultdict
 import csv
 import json
+import math
 from pathlib import Path
 from typing import Any, Iterable, Mapping, Sequence
 
@@ -32,20 +33,71 @@ SUMMARY_FIELDS = [
     "extra",
 ]
 
+_NUMERIC_FIELDS = set('source_count fact_count update_ms query_p50_us write_bytes logical_update_bytes write_amplification stored_bytes logical_state_bytes space_amplification selected_segments sample dependency_width batch affected_facts interval updates base_publications base_p50_ms open_ms readers writer_updates writer_elapsed_s writer_updates_per_s writer_p50_ms writer_p95_ms reader_snapshots reader_snapshots_per_s mixed_violations exit_code time_us update schema invalidated_facts replacement_facts verify_ms final_compaction_ms final_selected_segments'.split())
+_BOOLEAN_FIELDS = set('durable_equal checker_ok state_equal equal_set matches_old matches_new following_update_ok timeout rejected final_checker_ok'.split())
+_FULL_COUNTS = dict(scale=96, sensitivity=168, invalidation=240, compaction=24,
+                    crash=80, mutation=7, concurrency=9, public_input=40)
+
+
+def finite_nonnegative(value: Any, role: str) -> float:
+    if isinstance(value, bool):
+        raise AssertionError(f'{role}: expected finite nonnegative number, not boolean')
+    try:
+        number = float(value)
+    except (TypeError, ValueError, OverflowError) as error:
+        raise AssertionError(f'{role}: expected finite nonnegative number') from error
+    if not math.isfinite(number) or number < 0:
+        raise AssertionError(f'{role}: expected finite nonnegative number')
+    return number
+
+
+def validate_retained_input(resources: Mapping[str, Any], families: Mapping[str, Sequence[Mapping[str, str]]]) -> None:
+    """Validate every measured field, even one not consumed by a median.
+
+    This is data admission, not an authentication or source-identity claim.
+    Empty optional cells remain permitted; existing consumers enforce their
+    required fields. Retained data and summaries are never repaired here.
+    """
+    if resources.get('mode') not in ('full', 'quick'):
+        raise AssertionError('unknown retained run mode')
+    for field in ('wall_seconds', 'user_cpu_seconds', 'system_cpu_seconds', 'peak_resident_mib'):
+        finite_nonnegative(resources.get(field), 'resource ' + field)
+    if type(resources.get('workers')) is not int or resources['workers'] <= 0:
+        raise AssertionError('resource workers must be a positive integer')
+    if type(resources.get('network_used')) is not bool:
+        raise AssertionError('resource network_used must be boolean')
+    for family, rows in families.items():
+        if resources['mode'] == 'full' and len(rows) != _FULL_COUNTS[family]:
+            raise AssertionError(f'{family}: full-run row count differs')
+        for index, row in enumerate(rows):
+            for field, value in row.items():
+                if value in ('', None):
+                    continue
+                if field in _NUMERIC_FIELDS:
+                    finite_nonnegative(value, f'{family}[{index}].{field}')
+                elif field in _BOOLEAN_FIELDS:
+                    truth(value)
+
 
 def numbers(rows: Sequence[Mapping[str, str]], field: str) -> list[float]:
     values = []
     for row in rows:
         value = row.get(field, "")
         if value not in {"", None}:
-            values.append(float(value))
+            values.append(finite_nonnegative(value, field))
     return values
 
 
 def truth(value: str | bool) -> bool:
     if isinstance(value, bool):
         return value
-    return str(value).strip().lower() in {"1", "true", "yes"}
+    if isinstance(value, str):
+        token = value.strip().lower()
+        if token in {'1', 'true', 'yes'}:
+            return True
+        if token in {'0', 'false', 'no'}:
+            return False
+    raise AssertionError(f'invalid retained boolean: {value!r}')
 
 
 def summary_row(
@@ -132,6 +184,9 @@ def summarize(results: str | Path, output: str | Path) -> tuple[list[dict[str, A
     public = read_csv(raw / "public_input.csv")
     abstract = json.loads((raw / "abstract_crash_cuts.json").read_text(encoding="utf-8"))
     resources = json.loads((raw / "resources.json").read_text(encoding="utf-8"))
+    validate_retained_input(resources, dict(scale=scale, sensitivity=sensitivity,
+        invalidation=invalidation, compaction=compaction, crash=crash,
+        mutation=mutation, concurrency=concurrency, public_input=public))
 
     rows: list[dict[str, Any]] = []
     for (source_count, engine), group in sorted(

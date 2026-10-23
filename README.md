@@ -45,6 +45,22 @@ All persistent create paths capture and validate the supplied bootstrap before r
 
 The historical `results/raw/` files are preserved. In particular, earlier rows contain 80 process-exit cases and seven targeted mutations, but they predate current parser/publication repairs and are not presented as current-source correctness evidence.
 
+Retained-data admission validates all measured numeric cells before aggregation,
+including cells not selected by a median. Nonfinite or negative measurements,
+unknown run modes, invalid resource fields and unrecognized Boolean values are
+rejected by both the historical aggregator and its verifier. Seven data-only
+regression methods cover these boundaries and require the unchanged original
+data and summaries to pass. Run them in ordinary and optimized Python:
+
+```sh
+python -B -m unittest tests.test_historical_admission -v
+python -B -O -m unittest tests.test_historical_admission -v
+```
+
+These checks validate admissible data and deterministic reconstruction; they
+do not recover the missing historical host/source identity or execute a
+matched cross-engine lifecycle.
+
 ### Historical physical-byte checks
 
 The current joint runner captures the selector bytes at each historical pin

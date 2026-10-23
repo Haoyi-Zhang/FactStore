@@ -23,6 +23,8 @@ jobs:
         run: python -B -m experiments.fresh_run --authorize-new-run --out "$RUNNER_TEMP/p021-owned-checks"
       - name: Compare checkpoint and matched-history policies
         run: python -B -m experiments.maintenance_control --output "$RUNNER_TEMP/p021-owned-checks/maintenance-control.json"
+      - name: Retained-data admission also survives optimized Python
+        run: python -B -O -m unittest tests.test_historical_admission -v
       - name: Preserve raw output even when a scientific gate fails
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
