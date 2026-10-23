@@ -13,7 +13,7 @@ import traceback
 import unittest
 from unittest.mock import patch
 
-from experiments.fresh_run import ROOT, child_cpu, source_inventory, write_json
+from experiments.fresh_run import ROOT, baseline_inventory, child_cpu, source_inventory, write_json
 from frontierstore import baselines
 from frontierstore.audit_export import check_audit_export
 from frontierstore.model import Transaction, apply_transaction, bootstrap_state, canonical_state_bytes
@@ -52,10 +52,7 @@ def unit_checks(report):
     # The retained 132-method baseline predates the run-admission, wrapper,
     # maintenance, compressed-record and historical-byte tests. The entire current inventory is
     # executed below; the historical baseline is not relabeled as their run.
-    baseline = [name for name in inventory if not name.startswith(
-        ("tests.test_fresh_run.", "tests.test_primary_wrapper.",
-         "tests.test_maintenance_control.", "tests.test_compressed_records.",
-         "tests.test_historical_bytes."))]
+    baseline = baseline_inventory(inventory)
     if len(baseline) != 132:
         raise AssertionError(f"expected the existing 132-method surface, found {len(baseline)}")
     loader = unittest.TestLoader()

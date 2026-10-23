@@ -21,6 +21,8 @@ jobs:
           python-version: '3.12'
       - name: New separately reserved finite run from the flat artifact root
         run: python -B -m experiments.fresh_run --authorize-new-run --out "$RUNNER_TEMP/p021-owned-checks"
+      - name: Report complete static and executed test coverage
+        run: python -c "import json,os,pathlib; x=json.loads((pathlib.Path(os.environ['RUNNER_TEMP'])/'p021-owned-checks/unit/checks.json').read_text()); print(json.dumps({k:x[k] for k in ('status','static_methods','existing_methods','tests_run','failures','errors','skipped')}))"
       - name: Compare checkpoint and matched-history policies
         run: python -B -m experiments.maintenance_control --output "$RUNNER_TEMP/p021-owned-checks/maintenance-control.json"
       - name: Retained-data admission also survives optimized Python

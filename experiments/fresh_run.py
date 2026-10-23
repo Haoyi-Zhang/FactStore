@@ -23,6 +23,20 @@ WHOLE_SECONDS = 840
 COMMAND_SECONDS = 130  # Six reservations (780 s) plus 60 s controller/cleanup.
 ADDRESS_BYTES = 1024 ** 3
 STAGES = ("unit", "finite", "sqlite-strict", "crash", "joint", "retained")
+BASELINE_EXCLUDED_PREFIXES = (
+    'tests.test_fresh_run.', 'tests.test_primary_wrapper.',
+    'tests.test_maintenance_control.', 'tests.test_compressed_records.',
+    'tests.test_historical_bytes.', 'tests.test_historical_admission.',
+)
+
+
+def baseline_inventory(inventory: list[str]) -> list[str]:
+    """Identify the frozen 132-method surface, without filtering execution.
+
+    The current suite must still discover and execute every static method,
+    including all of the extension modules listed here.
+    """
+    return [name for name in inventory if not name.startswith(BASELINE_EXCLUDED_PREFIXES)]
 
 
 def write_json(path: Path, value: dict) -> None:
