@@ -16,8 +16,27 @@ class FreshRunTests(unittest.TestCase):
         self.assertEqual(5, len(wrappers))
         maintenance = [n for n in names if n.startswith("tests.test_maintenance_control.")]
         self.assertEqual(2, len(maintenance))
-        compressed = [n for n in names if n.startswith("tests.test_compressed_records.")]
-        self.assertEqual(6, len(compressed))
+        compressed = {n for n in names if n.startswith("tests.test_compressed_records.")}
+        # The original six bounded-decoder checks remain; the scientific
+        # SQLite cohort adds six admission checks, not a new historical run.
+        expected_compressed = {
+            "tests.test_compressed_records.CompressedRecordTests." + method
+            for method in (
+                "test_valid_bounded_record_binds", "test_decode_bound_is_enforced",
+                "test_duplicate_and_nonfinite_json_reject", "test_truncated_gzip_rejects",
+                "test_unknown_case_and_missing_update_reject",
+                "test_typed_counts_and_full_summary_binding")
+        } | {
+            "tests.test_compressed_records.SQLiteFanoutAdmissionTests." + method
+            for method in (
+                "test_exact_twelve_source_bound_scientific_records_are_admitted",
+                "test_missing_or_unrecognized_compressed_case_rejects",
+                "test_measured_source_cannot_be_rebound",
+                "test_altered_raw_transaction_rejects_even_with_unchanged_counts",
+                "test_duplicate_summary_identity_and_changed_median_reject",
+                "test_real_package_gate_still_rejects_unadmitted_archives")
+        }
+        self.assertEqual(expected_compressed, compressed)
         self.assertEqual(len(names), len(set(names)))
 
     def test_baseline_split_retains_extensions_in_current_inventory(self):

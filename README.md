@@ -23,15 +23,16 @@ python -B -m experiments.fanout_cadence --check results/sqlite-fanout --tex ../p
 For a new measurement, replace `--check` with `--out` and choose a fresh owned
 directory. Replaying/checking retained data is not a new timing run. This is not
 the requested native FrontierStore/SQLite-N/SQLite-R matched lifecycle result;
-that Linux experiment remains scientifically open. No whole-engine ordering or
-device-write conclusion follows from this API sensitivity.
+the separately admitted Linux experiment below supplies that scoped comparison.
+No whole-engine ordering or device-write conclusion follows from this API
+sensitivity alone.
 
 The newly measured Windows cohort has the semantic dataset name `sqlite-fanout`.
 Only its new directory name changed; raw samples, observed footprints, negative
 results and the consumed source-before/after bytes are unchanged. This dataset
 is not the native Linux comparison below.
 
-### Pending supported-Linux comparison
+### Reviewed supported-Linux comparison
 
 `experiments/native_fanout_cadence.py` adds actual engine selection for the
 unchanged FrontierStore, SQLite-Normalized and SQLite-Rooted-Audit writers.
@@ -76,7 +77,11 @@ per-transition trace and final physical endpoint, prints compact JSON summaries,
 and uploads source/ledger identities, environment/SQLite options, actual native
 fsync/flock probe, compressed traces, final stores and logs even on failure.
 The artifact name is `p021-native-fanout-<run_id>-<run_attempt>`, retained for
-14 days. A reviewed successful run may later be imported as `results/native-fanout`.
+14 days. The reviewed successful run 40066415944 (job 120790520723, commit
+`f12a27c375ede02ebd3a12443485ebea815df837`) is now imported as
+`results/native-fanout`. Its original 169 uploaded members, logs and final stores
+are preserved, together with the byte-exact nine-source preimage and archive
+origin. `results/native-fanout/README.md` records the observed host and scope.
 A generated cohort is accepted only after the source-bound verifier succeeds;
 case-completion lines alone do not certify a result. Transaction replay compares
 the exact ordered JSON input, including dependency arrays after trace decoding.
@@ -86,13 +91,36 @@ job are required before importing native measurements into manuscript tables.
 An old failed run retains its own source identities and is never rebound to a
 fixed driver. The separately named `replay_cohort_contents` diagnostic returns
 a contents-only status, not fresh-source acceptance. The native three-engine
-scientific gap remains open until successful source-bound evidence is reviewed.
+comparison is now supported by this source-bound cohort, not by the first failed
+attempt or the Windows API measurements. Data-only replay confirms all 36 cases,
+288 updates, 72 maintenance epochs, 180 scheduled audits, 144 held reads and
+36 orderly reopens with zero mismatch. The nine measured sources are unchanged.
+
+```sh
+python -B -m experiments.native_fanout_results --check results/native-fanout --tex ../paper/native-fanout.tex
+python -B -m experiments.native_fanout_results --check results/native-fanout --check-tex ../paper/native-fanout.tex
+python -B -m unittest tests.test_native_fanout_results -v
+```
+
+The generated table shows SQLite-N lowest in lifecycle median for all four
+configurations. FrontierStore is lower than SQLite-R at width two; SQLite-R is
+lower at width eight. The comparison is three repetitions of a small synthetic
+state on one native host, not a universal engine ordering, independent real-world
+case, power-loss experiment or physical-device study. Import/replay on Windows
+does not re-execute native writers. Narrow `.gitattributes` rules preserve all
+nine measured files and imported dataset bytes even with `core.autocrlf=true`;
+an owned temporary-Git checkout regression verifies this without changing them.
 
 ### Compressed scientific evidence
 
 `python -B -m experiments.verify_artifact` admits the six retained lifecycle
-records and the twelve `results/sqlite-fanout` records through separate exact
-scientific consumers. For the latter, it checks the fixed case matrix and
+records, the twelve `results/sqlite-fanout` records and the 36
+`results/native-fanout` traces through separate exact scientific consumers.
+The native consumer checks original-member bytes, accepted artifact/commit,
+all nine current/preimage source bindings, bounded strict JSONL, ordered
+transactions, endpoints, phase sums, maintenance/lease schedules, saved physical
+stores and uploaded-summary equality before admitting only those 36 paths.
+For the SQLite-API cohort, it checks the fixed case matrix and
 filenames, measured source-before/after bindings, bounded JSON decoding, every
 input/current/held endpoint, audit and lease/reclamation schedule, checkpoint
 evidence, complete raw-to-summary equality and reaggregated medians. The shared
@@ -120,7 +148,7 @@ This artifact supports the negative result reported in **Auditable Source–Fact
 - retained historical rows and current fixed-order measurements;
 - deterministic reconstruction scripts, formal arguments, and evidence ledgers.
 
-The stated logical contract is transactionally expressible and does not require FrontierStore. In the retained fixed-order runs, the rooted database/export control has lower persistence-plus-full-audit medians and FrontierStore emits fewer process-accounted bytes. Stored size depends on maintenance and historical retention: the checkpoint and matched-history control below separates those effects. Timing order remains descriptive because the runs were not counterbalanced.
+The stated logical contract is transactionally expressible and does not require FrontierStore. In the retained fixed-order runs, the rooted database/export control has lower persistence-plus-full-audit medians and FrontierStore emits fewer process-accounted bytes. Stored size depends on maintenance and historical retention: the checkpoint and matched-history control below separates those effects. Those timing rows remain descriptive because they were not counterbalanced; the new native lifecycle is separately counterbalanced and does not rewrite them.
 
 ## Scientific boundary
 
@@ -336,11 +364,11 @@ engine. The finite-model and SQLite preflight tests can therefore run without
 emulating Linux storage behavior. SQLite preflight rejects non-UTF-8 payloads
 (such as lone Python surrogates) before create replacement or update mutation.
 
-Repository CI uses a 180-second whole-check timeout and always attempts to upload
-raw logs. It runs data reconstruction, the data-only subset, finite enumeration,
-and in-memory/preflight SQLite tests, not storage-engine benchmarks or the
-complete Linux regression suite. An unrun workflow is not
-executed correctness evidence.
+The retained-data integrity workflow uses a 180-second whole-check timeout and
+always attempts to upload raw logs. It runs reconstruction and data-only/finite
+checks. The separate scientific workflow also provides the complete owned
+correctness entry point and the bounded native lifecycle job described above;
+their execution records and evidence scopes are distinct.
 
 ## Current executable cases
 
@@ -357,7 +385,7 @@ The destination must be absent and outside the deliverable. This does not reuse 
 
 The new Windows diagnostic exercises all test discovery, but is not a passing full-suite result: 24 of the existing 132 methods and all eight new methods pass; ten existing rooted-image methods error on file synchronization and 98 existing methods cannot be imported because their modules require `fcntl`. There are no skipped methods or assertion failures. The separate finite stage checks 775 histories, 2,925 states, and 7,750 abstract cuts. The owned SQLite stage matches eight persisted endpoints and an actual reader spanning another connection's commit, rejects six malformed databases and nine malformed exports, and accepts its valid export control. Six owned SQLite process exits cover WAL and DELETE at before-commit, after-commit, and after-close. These are process-exit and SQLite-API results with the operating system alive; the owned SQL bootstrap does not test the adapters' directory synchronization. Segment publication/recovery and the joint history remain unexecuted on this host. No synchronization or locking mechanism was replaced to obtain these results.
 
-`.github/workflows/scientific-checks.yml` prepares that same finite entry point on Ubuntu 24.04 from the **flat artifact root**, on main pushes or explicit dispatch. It retains a failing job exit and uses an always-run raw-output upload. The workflow has not been executed as part of this local handoff; preparing it is not cloud validation. The older data-only integrity workflow remains separate.
+`.github/workflows/scientific-checks.yml` prepares that same finite entry point on Ubuntu 24.04 from the **flat artifact root**, on main pushes or explicit dispatch. It retains a failing job exit and uses an always-run raw-output upload. Its native lifecycle job has the reviewed successful run identified above; this does not retroactively certify a different full-suite source. The older data-only integrity workflow remains separate.
 
 The experimental launcher uses one child, bounded address space, a wall watchdog, concurrent-tree monitoring, and a parent-death signal on supported systems. Monitoring is a bounded operational guard, not a proof of continuous peak memory or progress through uninterruptible kernel I/O.
 
@@ -409,9 +437,11 @@ The earlier Linux transcript and all old performance/result files remain
 unchanged. A new reservation, failed first attempt and final observations remain
 private and do not reset the exhausted historical resource ledger. Detailed
 contract and standard-mechanism overlap are in `proofs/lifecycle-contract.md`.
-The common native-persistence/history/audit-lease three-engine comparison is still
-unclosed. One fixed-order repetition per size/policy supplies descriptive API
-costs, not device traffic, statistical engine ranking or new-store novelty.
+That API cohort does not itself close the common native-persistence/history/
+audit-lease comparison; the separate `results/native-fanout` cohort supplies
+the scoped native evidence. One fixed-order repetition per size/policy still
+supplies only descriptive API costs, not device traffic, statistical engine
+ranking or new-store novelty.
 
 ## Contents
 

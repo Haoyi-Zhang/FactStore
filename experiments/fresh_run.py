@@ -27,6 +27,7 @@ BASELINE_EXCLUDED_PREFIXES = (
     'tests.test_fresh_run.', 'tests.test_primary_wrapper.',
     'tests.test_maintenance_control.', 'tests.test_compressed_records.',
     'tests.test_historical_bytes.', 'tests.test_historical_admission.',
+    'tests.test_native_fanout_results.',
 )
 
 

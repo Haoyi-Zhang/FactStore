@@ -1,0 +1,26 @@
+{
+  "accepted": true,
+  "audit_every": 4,
+  "dependency_width": 8,
+  "engine": "sqlite_n",
+  "lifecycle_wall_ns": 1604335823,
+  "position": 1,
+  "process_cpu_ns": 1553571540,
+  "records": 10,
+  "repetition": 1,
+  "scope": "native bootstrap, workload construction, transitions, persistence, current/held reads, scheduled audits, maintenance, collection, release, orderly reopen; wall includes raw trace instrumentation; phase totals exclude trace writes",
+  "sources": 64,
+  "stage_ns": {
+    "audit": 43223734,
+    "bootstrap": 119012816,
+    "collection": 22541,
+    "current_read": 154304315,
+    "held_read": 44483179,
+    "maintenance": 75817883,
+    "persistence": 420083968,
+    "release": 2105110,
+    "reopen": 41463484,
+    "transition": 204153244
+  },
+  "updates": 8
+}

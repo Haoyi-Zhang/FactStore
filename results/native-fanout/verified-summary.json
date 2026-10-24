@@ -1,0 +1,245 @@
+{
+  "boundary": "quiescent native post-return equality/leases; SQLite-N remains a logical SQL null without an independent export/atomic cross-interface selector; no power loss or historical timing rewrite",
+  "cases": 36,
+  "held_endpoint_reads": 144,
+  "maintenance_epochs": 72,
+  "medians": [
+    {
+      "audit_interval": 1,
+      "engine": "frontier",
+      "median_phase_ms": {
+        "audit": 104.343,
+        "bootstrap": 53.866,
+        "collection": 5.505,
+        "current_read": 203.196,
+        "held_read": 43.18,
+        "maintenance": 20.609,
+        "persistence": 189.334,
+        "release": 0.143,
+        "reopen": 20.389,
+        "transition": 72.351
+      },
+      "median_wall_ms": 1128.089,
+      "repetitions": 3,
+      "width": 2
+    },
+    {
+      "audit_interval": 1,
+      "engine": "sqlite_n",
+      "median_phase_ms": {
+        "audit": 50.909,
+        "bootstrap": 48.207,
+        "collection": 0.015,
+        "current_read": 58.358,
+        "held_read": 16.711,
+        "maintenance": 30.533,
+        "persistence": 160.718,
+        "release": 2.06,
+        "reopen": 11.717,
+        "transition": 71.739
+      },
+      "median_wall_ms": 876.739,
+      "repetitions": 3,
+      "width": 2
+    },
+    {
+      "audit_interval": 1,
+      "engine": "sqlite_r",
+      "median_phase_ms": {
+        "audit": 93.997,
+        "bootstrap": 60.813,
+        "collection": 21.547,
+        "current_read": 106.38,
+        "held_read": 37.694,
+        "maintenance": 51.746,
+        "persistence": 457.043,
+        "release": 0.003,
+        "reopen": 19.41,
+        "transition": 71.419
+      },
+      "median_wall_ms": 1366.474,
+      "repetitions": 3,
+      "width": 2
+    },
+    {
+      "audit_interval": 4,
+      "engine": "frontier",
+      "median_phase_ms": {
+        "audit": 36.229,
+        "bootstrap": 49.69,
+        "collection": 5.119,
+        "current_read": 197.74,
+        "held_read": 37.417,
+        "maintenance": 20.061,
+        "persistence": 164.307,
+        "release": 0.152,
+        "reopen": 20.644,
+        "transition": 71.698
+      },
+      "median_wall_ms": 978.502,
+      "repetitions": 3,
+      "width": 2
+    },
+    {
+      "audit_interval": 4,
+      "engine": "sqlite_n",
+      "median_phase_ms": {
+        "audit": 16.763,
+        "bootstrap": 45.278,
+        "collection": 0.017,
+        "current_read": 58.189,
+        "held_read": 16.669,
+        "maintenance": 30.403,
+        "persistence": 141.913,
+        "release": 2.102,
+        "reopen": 11.866,
+        "transition": 72.001
+      },
+      "median_wall_ms": 758.653,
+      "repetitions": 3,
+      "width": 2
+    },
+    {
+      "audit_interval": 4,
+      "engine": "sqlite_r",
+      "median_phase_ms": {
+        "audit": 29.169,
+        "bootstrap": 61.169,
+        "collection": 29.105,
+        "current_read": 105.233,
+        "held_read": 38.13,
+        "maintenance": 48.216,
+        "persistence": 298.507,
+        "release": 0.003,
+        "reopen": 19.609,
+        "transition": 72.169
+      },
+      "median_wall_ms": 1082.944,
+      "repetitions": 3,
+      "width": 2
+    },
+    {
+      "audit_interval": 1,
+      "engine": "frontier",
+      "median_phase_ms": {
+        "audit": 329.572,
+        "bootstrap": 115.065,
+        "collection": 16.559,
+        "current_read": 546.995,
+        "held_read": 83.351,
+        "maintenance": 46.721,
+        "persistence": 402.163,
+        "release": 0.296,
+        "reopen": 65.753,
+        "transition": 210.408
+      },
+      "median_wall_ms": 2408.17,
+      "repetitions": 3,
+      "width": 8
+    },
+    {
+      "audit_interval": 1,
+      "engine": "sqlite_n",
+      "median_phase_ms": {
+        "audit": 131.227,
+        "bootstrap": 107.891,
+        "collection": 0.02,
+        "current_read": 146.801,
+        "held_read": 44.201,
+        "maintenance": 77.03,
+        "persistence": 394.329,
+        "release": 2.354,
+        "reopen": 29.313,
+        "transition": 204.425
+      },
+      "median_wall_ms": 1751.104,
+      "repetitions": 3,
+      "width": 8
+    },
+    {
+      "audit_interval": 1,
+      "engine": "sqlite_r",
+      "median_phase_ms": {
+        "audit": 237.071,
+        "bootstrap": 146.923,
+        "collection": 26.062,
+        "current_read": 281.618,
+        "held_read": 96.047,
+        "maintenance": 119.462,
+        "persistence": 519.857,
+        "release": 0.004,
+        "reopen": 48.986,
+        "transition": 205.489
+      },
+      "median_wall_ms": 2279.42,
+      "repetitions": 3,
+      "width": 8
+    },
+    {
+      "audit_interval": 4,
+      "engine": "frontier",
+      "median_phase_ms": {
+        "audit": 123.057,
+        "bootstrap": 112.285,
+        "collection": 6.594,
+        "current_read": 552.638,
+        "held_read": 83.791,
+        "maintenance": 45.085,
+        "persistence": 401.311,
+        "release": 0.288,
+        "reopen": 48.45,
+        "transition": 216.22
+      },
+      "median_wall_ms": 2109.448,
+      "repetitions": 3,
+      "width": 8
+    },
+    {
+      "audit_interval": 4,
+      "engine": "sqlite_n",
+      "median_phase_ms": {
+        "audit": 43.224,
+        "bootstrap": 119.013,
+        "collection": 0.023,
+        "current_read": 156.751,
+        "held_read": 44.483,
+        "maintenance": 75.818,
+        "persistence": 411.936,
+        "release": 2.127,
+        "reopen": 29.384,
+        "transition": 204.959
+      },
+      "median_wall_ms": 1599.047,
+      "repetitions": 3,
+      "width": 8
+    },
+    {
+      "audit_interval": 4,
+      "engine": "sqlite_r",
+      "median_phase_ms": {
+        "audit": 84.414,
+        "bootstrap": 145.295,
+        "collection": 18.905,
+        "current_read": 256.75,
+        "held_read": 95.973,
+        "maintenance": 121.026,
+        "persistence": 523.438,
+        "release": 0.003,
+        "reopen": 48.544,
+        "transition": 204.643
+      },
+      "median_wall_ms": 2036.46,
+      "repetitions": 3,
+      "width": 8
+    }
+  ],
+  "mismatches": 0,
+  "orderly_reopens": 36,
+  "paired_blocks": 12,
+  "scheduled_audits": 180,
+  "source_binding_verified": true,
+  "source_unchanged": true,
+  "status": "VERIFIED_FRESH_NATIVE_COHORT",
+  "unique_logical_streams": 2,
+  "updates": 288
+}

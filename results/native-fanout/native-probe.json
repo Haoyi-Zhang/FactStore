@@ -1,0 +1,8 @@
+{
+  "directory_fsync": true,
+  "file_fsync": true,
+  "flock": true,
+  "power_loss_test": false,
+  "replace": true,
+  "substitution_used": false
+}

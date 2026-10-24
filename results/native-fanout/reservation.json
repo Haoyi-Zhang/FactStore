@@ -1,0 +1,24 @@
+{
+  "audit_intervals": [
+    1,
+    4
+  ],
+  "authorized_new_bounded_study": true,
+  "case_limit_seconds": 60,
+  "cases": 36,
+  "engines": [
+    "frontier",
+    "sqlite_n",
+    "sqlite_r"
+  ],
+  "facts": 384,
+  "historical_ledger_reset": false,
+  "nonrefundable_seconds": 300,
+  "repetitions": 3,
+  "sources": 64,
+  "updates": 8,
+  "widths": [
+    2,
+    8
+  ]
+}

@@ -1,0 +1,72 @@
+{
+  "campaign_cpu_limit_seconds": 28800,
+  "repair_and_reproduction_reserve_seconds": 7200,
+  "historical_observed_cpu_seconds": 389.503447,
+  "historical_cpu_upper_bound_seconds": 21600.0,
+  "campaign_cpu_upper_bound_seconds": 28800.0,
+  "recorded_attempt_reservations_seconds": 6600.0,
+  "external_download_upper_bound_bytes": 1073741824,
+  "expanded_input_upper_bound_bytes": 2147483648,
+  "campaign_memory_peak_upper_bound_bytes": 3435973836,
+  "remaining_experiment_allowance_seconds": 0.0,
+  "admission": "REPAIR_REPRODUCTION_ONLY_UNDER_CONSERVATIVE_POLICY_ENVELOPE",
+  "historical_observation": {
+    "wall_seconds": 355.866253787,
+    "user_cpu_seconds": 376.780107,
+    "system_cpu_seconds": 12.72334,
+    "reported_peak_resident_mib": 213.5078125,
+    "rss_interpretation": "maximum of separate lifetime self/child RSS values, not concurrent sum",
+    "worker_interpretation": "literal four, not a measured peak",
+    "coverage": "one sampled orchestration interval; pilot, earlier attempts, later summary and validation are not bounded"
+  },
+  "required_admission_evidence": [
+    "A conservative cumulative campaign CPU upper bound covering every prior attempt, pilot, repair, subprocess and validation.",
+    "Known cumulative external-download and expanded-input upper bounds.",
+    "Current no-swap headroom, aggregate worker and address-space admission for the specific bounded case."
+  ],
+  "retained_maintenance_observation": {
+    "cpu_seconds_lower_bound": 18.317404,
+    "details": "results/maintenance.json",
+    "interpretation": "Measured command and clean-copy costs only; excludes unmetered activity. Actual historical use is not reconstructed; admission instead uses the separately recorded conservative campaign upper bound."
+  },
+  "current_maintenance_observation": {
+    "cpu_seconds_lower_bound": 23.315307,
+    "details": "results/maintenance.json",
+    "interpretation": "Partial current command CPU observations only; previous maintenance and scientific observations are separately preserved. The remaining allowance is derived only from the conservative policy charge, not from these measurements."
+  },
+  "historical_cpu_upper_bound_basis": "Conservative policy envelope: all pre-continuation scientific attempts, including unrecorded pilots, failures, subprocesses, cleanup, and validation, are charged to the entire 21,600-second non-reserve allocation. This is not a measurement, estimate, refund, or reset and assumes the inherited campaign did not already violate its frozen 28,800-second hard cap.",
+  "continuation_maintenance_reserved_seconds": 600.0,
+  "continuation_maintenance_basis": "A ten-minute single-core policy reservation covers the supplied maintenance observations and uninstrumented local editing, aggregation, rendering, inspection, and packaging activity before guarded execution. The measured lower bounds remain separately recorded and are not promoted to exact totals.",
+  "external_download_upper_bound_basis": "The complete one-GiB historical download allowance is conservatively charged. Guarded cases therefore admit no new downloaded experimental input and use only bundled inputs.",
+  "expanded_input_upper_bound_basis": "The complete two-GiB historical expanded-input allowance is conservatively charged. Guarded cases create only bounded temporary outputs from already bundled inputs.",
+  "campaign_memory_peak_basis": "The 3.2-GiB campaign peak cap is retained as the outer policy envelope; each guarded case applies a lower address-space design bound and sampled concurrent-tree monitor at admission and runtime.",
+  "remaining_repair_reproduction_allowance_seconds": 0.0,
+  "admission_scope": "Only the named current-source repair, correctness, reproduction, and discriminating comparison cases are admitted. No new broad matrix, downloaded input, external service, or claim-expanding workload is admitted.",
+  "accounting_caveat": "The upper bound is deliberately policy-conservative rather than reconstructed from missing telemetry. It can authorize bounded repair/reproduction without claiming knowledge of actual historical consumption. Any evidence that the inherited campaign exceeded the frozen hard cap invalidates admission.",
+  "uncontrolled_attempts": [
+    {
+      "case": "current-medium",
+      "charged_cpu_reservation_seconds": 900.0,
+      "charge_refunded": false,
+      "accepted_scientific_output": false,
+      "reason": "outer launcher terminated before accounting; child completed after loss of controller",
+      "evidence": "results/current/current-medium/launcher-incident.json"
+    },
+    {
+      "case": "order-sensitivity",
+      "charged_cpu_reservation_seconds": 600.0,
+      "charge_refunded": false,
+      "accepted_scientific_output": false,
+      "reason": "The prepared order-control script failed before emitting observations because it called an interface absent from FrontierStore.",
+      "evidence": "results/current/order-sensitivity/accounting.json;results/current/order-sensitivity/stderr.txt"
+    },
+    {
+      "case": "order-counterbalance",
+      "charged_cpu_reservation_seconds": 480.0,
+      "charge_refunded": false,
+      "accepted_scientific_output": false,
+      "reason": "The corrected guarded launcher ended before final accounting and emitted no observations.",
+      "evidence": "results/current/order-counterbalance/launcher-incident.json;results/current/order-counterbalance/accounting.json"
+    }
+  ]
+}

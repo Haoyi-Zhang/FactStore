@@ -1,0 +1,11 @@
+# Exact measured inputs and imported evidence must survive core.autocrlf.
+/experiments/native_fanout_cadence.py -text
+/experiments/history_lifecycle.py -text
+/frontierstore/store.py -text
+/frontierstore/baselines.py -text
+/frontierstore/model.py -text
+/frontierstore/checker.py -text
+/frontierstore/audit_export.py -text
+/frontierstore/workload.py -text
+/resource-accounting.json -text
+/results/native-fanout/** -text

@@ -1,0 +1,14 @@
+test_actual_native_writers_match_updates_maintenance_leases_and_reopen (experiments.native_fanout_cadence_tests.NativeFanoutTests.test_actual_native_writers_match_updates_maintenance_leases_and_reopen) ... ok
+test_all_declared_streams_replay_after_json_and_maintenance_epochs (experiments.native_fanout_cadence_tests.NativeFanoutTests.test_all_declared_streams_replay_after_json_and_maintenance_epochs) ... ok
+test_engine_order_is_counterbalanced_within_each_configuration (experiments.native_fanout_cadence_tests.NativeFanoutTests.test_engine_order_is_counterbalanced_within_each_configuration) ... ok
+test_existing_workflow_checks_are_preserved_and_native_job_is_bounded (experiments.native_fanout_cadence_tests.NativeFanoutTests.test_existing_workflow_checks_are_preserved_and_native_job_is_bounded) ... ok
+test_fresh_output_cannot_replace_delivery_or_existing_evidence (experiments.native_fanout_cadence_tests.NativeFanoutTests.test_fresh_output_cannot_replace_delivery_or_existing_evidence) ... ok
+test_json_transaction_roundtrip_is_exact_and_mutations_still_reject (experiments.native_fanout_cadence_tests.NativeFanoutTests.test_json_transaction_roundtrip_is_exact_and_mutations_still_reject) ... ok
+test_retained_windows_api_cohort_is_not_relabelled_native (experiments.native_fanout_cadence_tests.NativeFanoutTests.test_retained_windows_api_cohort_is_not_relabelled_native) ... ok
+test_source_gate_precedes_contents_only_replay (experiments.native_fanout_cadence_tests.NativeFanoutTests.test_source_gate_precedes_contents_only_replay) ... ok
+test_sqlite_only_summary_cannot_be_accepted_as_three_engine_evidence (experiments.native_fanout_cadence_tests.NativeFanoutTests.test_sqlite_only_summary_cannot_be_accepted_as_three_engine_evidence) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.669s
+
+OK

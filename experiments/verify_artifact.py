@@ -27,6 +27,7 @@ from experiments.summarize_current import (
 from experiments.verify_checked_results import verify
 from experiments.compressed_records import verify_compressed_records
 from experiments.sqlite_fanout_admission import verify_sqlite_fanout
+from experiments.native_fanout_results import verify_native_fanout
 
 
 REQUIRED_CLAIM_COLUMNS = {
@@ -623,6 +624,7 @@ def main() -> int:
     # it through package hygiene. Other compressed/archive files remain invalid.
     verified_records = verify_compressed_records(root)
     verified_records |= verify_sqlite_fanout(root)
+    verified_records |= verify_native_fanout(root)
     nested_archives: list[str] = []
     bad_paths: list[str] = []
     text_violations: list[str] = []

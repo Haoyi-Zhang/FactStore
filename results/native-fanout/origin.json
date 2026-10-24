@@ -1,0 +1,1030 @@
+{
+  "artifact_id": 12549104460,
+  "artifact_sha256": "54a6411b32062ab724723bc0191496f782f58dc7d87ce4eda70a68cc062e9ff1",
+  "dataset": "native-fanout",
+  "failed_attempt": "The first failed artifact remains separate and unmodified in private review evidence; its sources and failure are not relabeled as this accepted run.",
+  "head": "f12a27c375ede02ebd3a12443485ebea815df837",
+  "imported_members": [
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r0-w2-a1-frontier/case.json",
+      "bytes": 781,
+      "path": "cases/r0-w2-a1-frontier/case.json",
+      "sha256": "5b631267dec0f7267afa5200059d6304bc148a53549478f985645c689a859e5d"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r0-w2-a1-frontier/store/LOCK",
+      "bytes": 0,
+      "path": "cases/r0-w2-a1-frontier/store/LOCK",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r0-w2-a1-frontier/store/ROOT",
+      "bytes": 141,
+      "path": "cases/r0-w2-a1-frontier/store/ROOT",
+      "sha256": "ebb597cad4d2e5edee8cd9dba03991f61427843c50732abbf0a8b4b2e6c1c645"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r0-w2-a1-frontier/store/segments/segment-00000011.jsonl",
+      "bytes": 85603,
+      "path": "cases/r0-w2-a1-frontier/store/segments/segment-00000011.jsonl",
+      "sha256": "e1bae8e39116cd29e248b6fa6723800714e47f62663dc4f89e0c7b833f62d775"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r0-w2-a1-frontier/trace.jsonl.gz",
+      "bytes": 324093,
+      "path": "cases/r0-w2-a1-frontier/trace.jsonl.gz",
+      "sha256": "fd8b398b537e06d610527118f8a8708638e79de8e5986558c0556d9bede1a311"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r0-w2-a1-sqlite_n/case.json",
+      "bytes": 781,
+      "path": "cases/r0-w2-a1-sqlite_n/case.json",
+      "sha256": "663c7ca4454e4508c74a9138d718115561ccbcc09e00df3f8d509a90dafeafd2"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r0-w2-a1-sqlite_n/store/normalized.sqlite",
+      "bytes": 155648,
+      "path": "cases/r0-w2-a1-sqlite_n/store/normalized.sqlite",
+      "sha256": "96776ae32e20df0103dc0f35116593ff54524369e2f64c8558e1d466a5d9c9ac"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r0-w2-a1-sqlite_n/trace.jsonl.gz",
+      "bytes": 324115,
+      "path": "cases/r0-w2-a1-sqlite_n/trace.jsonl.gz",
+      "sha256": "88a06c488ce85cfe329c369453d24c94d8797c22d8f7b49e66487f78db901553"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r0-w2-a1-sqlite_r/case.json",
+      "bytes": 776,
+      "path": "cases/r0-w2-a1-sqlite_r/case.json",
+      "sha256": "19321dc5966b5ec5fad86248821f89d87bf8c39d77121bbabbd21da26766f729"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r0-w2-a1-sqlite_r/store/ROOT",
+      "bytes": 112,
+      "path": "cases/r0-w2-a1-sqlite_r/store/ROOT",
+      "sha256": "19931f11ad5be43d293eec84d20c4cb588a326e862fc139234df6de2473d5568"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r0-w2-a1-sqlite_r/store/exports/audit-00000011.json",
+      "bytes": 80615,
+      "path": "cases/r0-w2-a1-sqlite_r/store/exports/audit-00000011.json",
+      "sha256": "669cd9d0431ed10a11671500cfb8427bdc5e1d9009135521d14e7f621d1d4c46"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r0-w2-a1-sqlite_r/store/images/image-00000011.sqlite",
+      "bytes": 131072,
+      "path": "cases/r0-w2-a1-sqlite_r/store/images/image-00000011.sqlite",
+      "sha256": "da3f91724b89a8364466de3e4fbddb9b909bb6df3d9ffe433afbafb1fefc7998"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r0-w2-a1-sqlite_r/trace.jsonl.gz",
+      "bytes": 325693,
+      "path": "cases/r0-w2-a1-sqlite_r/trace.jsonl.gz",
+      "sha256": "a75ccaa0b8233ab2bd405db183da6a8261b278bbeb9062adf3565ab5e267e374"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r0-w2-a4-frontier/case.json",
+      "bytes": 776,
+      "path": "cases/r0-w2-a4-frontier/case.json",
+      "sha256": "2659aaa3616b83eee4037f30644806629f3efe6231bed439d300211054c394c4"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r0-w2-a4-frontier/store/ROOT",
+      "bytes": 141,
+      "path": "cases/r0-w2-a4-frontier/store/ROOT",
+      "sha256": "ebb597cad4d2e5edee8cd9dba03991f61427843c50732abbf0a8b4b2e6c1c645"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r0-w2-a4-frontier/store/LOCK",
+      "bytes": 0,
+      "path": "cases/r0-w2-a4-frontier/store/LOCK",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r0-w2-a4-frontier/store/segments/segment-00000011.jsonl",
+      "bytes": 85603,
+      "path": "cases/r0-w2-a4-frontier/store/segments/segment-00000011.jsonl",
+      "sha256": "e1bae8e39116cd29e248b6fa6723800714e47f62663dc4f89e0c7b833f62d775"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r0-w2-a4-frontier/trace.jsonl.gz",
+      "bytes": 279411,
+      "path": "cases/r0-w2-a4-frontier/trace.jsonl.gz",
+      "sha256": "eb61b3f01af2120614f1629b675ffe6de5d5de167d2c97645d90e385ec5e7fdc"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r0-w2-a4-sqlite_n/case.json",
+      "bytes": 774,
+      "path": "cases/r0-w2-a4-sqlite_n/case.json",
+      "sha256": "bc98de69dbbd4ca5d19014e5b178e41d05974f9f6594c5d82dec7bd7274e95fa"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r0-w2-a4-sqlite_n/store/normalized.sqlite",
+      "bytes": 155648,
+      "path": "cases/r0-w2-a4-sqlite_n/store/normalized.sqlite",
+      "sha256": "96776ae32e20df0103dc0f35116593ff54524369e2f64c8558e1d466a5d9c9ac"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r0-w2-a4-sqlite_n/trace.jsonl.gz",
+      "bytes": 279262,
+      "path": "cases/r0-w2-a4-sqlite_n/trace.jsonl.gz",
+      "sha256": "f20a7170f64a04dae71b4ac4e9c121a242fd15834ad0e4fa5edcb6dba6cbe6ad"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r0-w2-a4-sqlite_r/case.json",
+      "bytes": 776,
+      "path": "cases/r0-w2-a4-sqlite_r/case.json",
+      "sha256": "4f1a0cfbf9d1c65245af86d6abd432b21268e2a9f1adb16ffffa6afe7fecac2a"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r0-w2-a4-sqlite_r/store/ROOT",
+      "bytes": 112,
+      "path": "cases/r0-w2-a4-sqlite_r/store/ROOT",
+      "sha256": "19931f11ad5be43d293eec84d20c4cb588a326e862fc139234df6de2473d5568"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r0-w2-a4-sqlite_r/store/exports/audit-00000011.json",
+      "bytes": 80615,
+      "path": "cases/r0-w2-a4-sqlite_r/store/exports/audit-00000011.json",
+      "sha256": "669cd9d0431ed10a11671500cfb8427bdc5e1d9009135521d14e7f621d1d4c46"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r0-w2-a4-sqlite_r/store/images/image-00000011.sqlite",
+      "bytes": 131072,
+      "path": "cases/r0-w2-a4-sqlite_r/store/images/image-00000011.sqlite",
+      "sha256": "da3f91724b89a8364466de3e4fbddb9b909bb6df3d9ffe433afbafb1fefc7998"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r0-w8-a1-frontier/case.json",
+      "bytes": 782,
+      "path": "cases/r0-w8-a1-frontier/case.json",
+      "sha256": "04fd66a2ec0113b0b1abb8d39df51a2478a12b9e6ae402c4ef28830c347f40a8"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r0-w2-a4-sqlite_r/trace.jsonl.gz",
+      "bytes": 280615,
+      "path": "cases/r0-w2-a4-sqlite_r/trace.jsonl.gz",
+      "sha256": "a931f58e9d65d0f3588b68a7bf6a0c58aaa01edfe19bafc17feb6821983d8b09"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r0-w8-a1-frontier/store/LOCK",
+      "bytes": 0,
+      "path": "cases/r0-w8-a1-frontier/store/LOCK",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r0-w8-a1-frontier/store/ROOT",
+      "bytes": 141,
+      "path": "cases/r0-w8-a1-frontier/store/ROOT",
+      "sha256": "ebb597cad4d2e5edee8cd9dba03991f61427843c50732abbf0a8b4b2e6c1c645"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r0-w8-a1-frontier/store/segments/segment-00000011.jsonl",
+      "bytes": 204847,
+      "path": "cases/r0-w8-a1-frontier/store/segments/segment-00000011.jsonl",
+      "sha256": "4c15b387715929d97d7034bf40ee5a2c88001f06d4b20a6defce5b923980a08d"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r0-w8-a1-frontier/trace.jsonl.gz",
+      "bytes": 454490,
+      "path": "cases/r0-w8-a1-frontier/trace.jsonl.gz",
+      "sha256": "915586618addd235555efe84c260a2828548f9f84a67897c7612c02439925ee0"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r0-w8-a1-sqlite_n/case.json",
+      "bytes": 780,
+      "path": "cases/r0-w8-a1-sqlite_n/case.json",
+      "sha256": "c3ac42a2aa4c900320e88fc63c9665ced6a438118ca4be25fdb4cc23494318dc"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r0-w8-a1-sqlite_n/store/normalized.sqlite",
+      "bytes": 372736,
+      "path": "cases/r0-w8-a1-sqlite_n/store/normalized.sqlite",
+      "sha256": "cc7be952b81c2e9247a08de78891694f1fc5a3d5d2180f194ff8af49b480e59c"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r0-w8-a1-sqlite_n/trace.jsonl.gz",
+      "bytes": 454392,
+      "path": "cases/r0-w8-a1-sqlite_n/trace.jsonl.gz",
+      "sha256": "3839ee60e1b3dc4d414e61bbcd1a255a83bc479a8328ff33f0882520d3a11e08"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r0-w8-a1-sqlite_r/case.json",
+      "bytes": 781,
+      "path": "cases/r0-w8-a1-sqlite_r/case.json",
+      "sha256": "f3bdd7908d0aae1d2a25f4dd8e4a3d1da0c7ab74b6c2834d7507a71dfce139f1"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r0-w8-a1-sqlite_r/store/ROOT",
+      "bytes": 112,
+      "path": "cases/r0-w8-a1-sqlite_r/store/ROOT",
+      "sha256": "19931f11ad5be43d293eec84d20c4cb588a326e862fc139234df6de2473d5568"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r0-w8-a1-sqlite_r/store/exports/audit-00000011.json",
+      "bytes": 199859,
+      "path": "cases/r0-w8-a1-sqlite_r/store/exports/audit-00000011.json",
+      "sha256": "8e34e782b55627ba2c9ad5c6632b0d4125d7214014eba17aca8398192ca763e4"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r0-w8-a1-sqlite_r/store/images/image-00000011.sqlite",
+      "bytes": 339968,
+      "path": "cases/r0-w8-a1-sqlite_r/store/images/image-00000011.sqlite",
+      "sha256": "dae7dc199024b047b23366ff7eb961f288fff604e67ad2bf77469d1f1ee39746"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r0-w8-a1-sqlite_r/trace.jsonl.gz",
+      "bytes": 456003,
+      "path": "cases/r0-w8-a1-sqlite_r/trace.jsonl.gz",
+      "sha256": "172804751e98ab988f06f5620b9fee98adf4946e02a48fbfede89b07d858b0d0"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r0-w8-a4-frontier/case.json",
+      "bytes": 781,
+      "path": "cases/r0-w8-a4-frontier/case.json",
+      "sha256": "6a78934b2e7f4d8887158c05ee9bd080e5be60fc777bad9bc69fa4dc2ec65508"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r0-w8-a4-frontier/store/LOCK",
+      "bytes": 0,
+      "path": "cases/r0-w8-a4-frontier/store/LOCK",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r0-w8-a4-frontier/store/ROOT",
+      "bytes": 141,
+      "path": "cases/r0-w8-a4-frontier/store/ROOT",
+      "sha256": "ebb597cad4d2e5edee8cd9dba03991f61427843c50732abbf0a8b4b2e6c1c645"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r0-w8-a4-frontier/store/segments/segment-00000011.jsonl",
+      "bytes": 204847,
+      "path": "cases/r0-w8-a4-frontier/store/segments/segment-00000011.jsonl",
+      "sha256": "4c15b387715929d97d7034bf40ee5a2c88001f06d4b20a6defce5b923980a08d"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r0-w8-a4-frontier/trace.jsonl.gz",
+      "bytes": 393882,
+      "path": "cases/r0-w8-a4-frontier/trace.jsonl.gz",
+      "sha256": "61159ad74308b50b26fb2b52615be0bc804635a6e7c68e4753154f54ea5bf606"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r0-w8-a4-sqlite_n/case.json",
+      "bytes": 779,
+      "path": "cases/r0-w8-a4-sqlite_n/case.json",
+      "sha256": "348315e3ac60bf37d0c5df9b1be0b69f1c82f34efc3e45a149295d479451605b"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r0-w8-a4-sqlite_n/store/normalized.sqlite",
+      "bytes": 372736,
+      "path": "cases/r0-w8-a4-sqlite_n/store/normalized.sqlite",
+      "sha256": "cc7be952b81c2e9247a08de78891694f1fc5a3d5d2180f194ff8af49b480e59c"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r0-w8-a4-sqlite_n/trace.jsonl.gz",
+      "bytes": 393658,
+      "path": "cases/r0-w8-a4-sqlite_n/trace.jsonl.gz",
+      "sha256": "d42f22a93c9f20768f3f09f2ccaa471e63712df28afa8649af504893242e36e8"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r0-w8-a4-sqlite_r/case.json",
+      "bytes": 780,
+      "path": "cases/r0-w8-a4-sqlite_r/case.json",
+      "sha256": "ad96da62b79c434681a0656d50363c74c84500723802b52b1d27dfbf447f38b6"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r0-w8-a4-sqlite_r/store/ROOT",
+      "bytes": 112,
+      "path": "cases/r0-w8-a4-sqlite_r/store/ROOT",
+      "sha256": "19931f11ad5be43d293eec84d20c4cb588a326e862fc139234df6de2473d5568"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r0-w8-a4-sqlite_r/store/images/image-00000011.sqlite",
+      "bytes": 339968,
+      "path": "cases/r0-w8-a4-sqlite_r/store/images/image-00000011.sqlite",
+      "sha256": "dae7dc199024b047b23366ff7eb961f288fff604e67ad2bf77469d1f1ee39746"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r0-w8-a4-sqlite_r/trace.jsonl.gz",
+      "bytes": 395035,
+      "path": "cases/r0-w8-a4-sqlite_r/trace.jsonl.gz",
+      "sha256": "9416de7a68c7b6bdee7980e38e9646ccb87085b991941cc4d9898e2d719fac32"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r0-w8-a4-sqlite_r/store/exports/audit-00000011.json",
+      "bytes": 199859,
+      "path": "cases/r0-w8-a4-sqlite_r/store/exports/audit-00000011.json",
+      "sha256": "8e34e782b55627ba2c9ad5c6632b0d4125d7214014eba17aca8398192ca763e4"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r1-w2-a1-frontier/store/LOCK",
+      "bytes": 0,
+      "path": "cases/r1-w2-a1-frontier/store/LOCK",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r1-w2-a1-frontier/store/ROOT",
+      "bytes": 141,
+      "path": "cases/r1-w2-a1-frontier/store/ROOT",
+      "sha256": "ebb597cad4d2e5edee8cd9dba03991f61427843c50732abbf0a8b4b2e6c1c645"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r1-w2-a1-frontier/store/segments/segment-00000011.jsonl",
+      "bytes": 85603,
+      "path": "cases/r1-w2-a1-frontier/store/segments/segment-00000011.jsonl",
+      "sha256": "e1bae8e39116cd29e248b6fa6723800714e47f62663dc4f89e0c7b833f62d775"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r1-w2-a1-frontier/case.json",
+      "bytes": 778,
+      "path": "cases/r1-w2-a1-frontier/case.json",
+      "sha256": "41665841571054fca7c1f01cf24dd653d41bbfa55aab8f64fe35e403656aa775"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r1-w2-a1-frontier/trace.jsonl.gz",
+      "bytes": 324080,
+      "path": "cases/r1-w2-a1-frontier/trace.jsonl.gz",
+      "sha256": "f425fc136a42f97e5ed75bff2ff93cafac6b4b6b13dde23908662d3c43c9556a"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r1-w2-a1-sqlite_n/case.json",
+      "bytes": 774,
+      "path": "cases/r1-w2-a1-sqlite_n/case.json",
+      "sha256": "79c599bf5a1a47bebb9efeb7d62b5e52e2fd6d2a7668db98b1c9bcf7c35a16b5"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r1-w2-a1-sqlite_n/store/normalized.sqlite",
+      "bytes": 155648,
+      "path": "cases/r1-w2-a1-sqlite_n/store/normalized.sqlite",
+      "sha256": "96776ae32e20df0103dc0f35116593ff54524369e2f64c8558e1d466a5d9c9ac"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r1-w2-a1-sqlite_n/trace.jsonl.gz",
+      "bytes": 324095,
+      "path": "cases/r1-w2-a1-sqlite_n/trace.jsonl.gz",
+      "sha256": "fa6c05b041b4d1f39dbf8521c1e1cff525c42bf92598210559ab3b47ed03ff31"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r1-w2-a1-sqlite_r/case.json",
+      "bytes": 777,
+      "path": "cases/r1-w2-a1-sqlite_r/case.json",
+      "sha256": "cf8cba016689f224e1fa4625c34f6386a69a53873bc498d0a5c358bca0e2cf96"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r1-w2-a1-sqlite_r/store/ROOT",
+      "bytes": 112,
+      "path": "cases/r1-w2-a1-sqlite_r/store/ROOT",
+      "sha256": "19931f11ad5be43d293eec84d20c4cb588a326e862fc139234df6de2473d5568"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r1-w2-a1-sqlite_r/store/exports/audit-00000011.json",
+      "bytes": 80615,
+      "path": "cases/r1-w2-a1-sqlite_r/store/exports/audit-00000011.json",
+      "sha256": "669cd9d0431ed10a11671500cfb8427bdc5e1d9009135521d14e7f621d1d4c46"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r1-w2-a1-sqlite_r/store/images/image-00000011.sqlite",
+      "bytes": 131072,
+      "path": "cases/r1-w2-a1-sqlite_r/store/images/image-00000011.sqlite",
+      "sha256": "da3f91724b89a8364466de3e4fbddb9b909bb6df3d9ffe433afbafb1fefc7998"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r1-w2-a1-sqlite_r/trace.jsonl.gz",
+      "bytes": 325696,
+      "path": "cases/r1-w2-a1-sqlite_r/trace.jsonl.gz",
+      "sha256": "0b5efdb4ea809d262b721a538d1bc2f52f633370329bf9c0bb64feca5d5b055c"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r1-w2-a4-frontier/case.json",
+      "bytes": 776,
+      "path": "cases/r1-w2-a4-frontier/case.json",
+      "sha256": "50c6a3d9f50f8bea8138ab79f9e83fae493f7ff63a9cde9f7b2c9ef8d8fb5605"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r1-w2-a4-frontier/store/ROOT",
+      "bytes": 141,
+      "path": "cases/r1-w2-a4-frontier/store/ROOT",
+      "sha256": "ebb597cad4d2e5edee8cd9dba03991f61427843c50732abbf0a8b4b2e6c1c645"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r1-w2-a4-frontier/store/segments/segment-00000011.jsonl",
+      "bytes": 85603,
+      "path": "cases/r1-w2-a4-frontier/store/segments/segment-00000011.jsonl",
+      "sha256": "e1bae8e39116cd29e248b6fa6723800714e47f62663dc4f89e0c7b833f62d775"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r1-w2-a4-frontier/store/LOCK",
+      "bytes": 0,
+      "path": "cases/r1-w2-a4-frontier/store/LOCK",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r1-w2-a4-frontier/trace.jsonl.gz",
+      "bytes": 279400,
+      "path": "cases/r1-w2-a4-frontier/trace.jsonl.gz",
+      "sha256": "baecd20427424ddc6e6790d5b60311535660c2711273f2fee31669c5668e8a57"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r1-w2-a4-sqlite_n/case.json",
+      "bytes": 774,
+      "path": "cases/r1-w2-a4-sqlite_n/case.json",
+      "sha256": "274dbaa0d94332430864a18a8243c064b8acde99e6ed2bfcce45100a6dfca5c9"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r1-w2-a4-sqlite_n/store/normalized.sqlite",
+      "bytes": 155648,
+      "path": "cases/r1-w2-a4-sqlite_n/store/normalized.sqlite",
+      "sha256": "96776ae32e20df0103dc0f35116593ff54524369e2f64c8558e1d466a5d9c9ac"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r1-w2-a4-sqlite_n/trace.jsonl.gz",
+      "bytes": 279262,
+      "path": "cases/r1-w2-a4-sqlite_n/trace.jsonl.gz",
+      "sha256": "c81ea48f53f90db5b836c5c87fdefb30077cf9424ca149237e3167bde5bff4e7"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r1-w2-a4-sqlite_r/case.json",
+      "bytes": 776,
+      "path": "cases/r1-w2-a4-sqlite_r/case.json",
+      "sha256": "e29ae051f0de5707d0eef3460d78782c55b59146edb955e981549f48bc161b61"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r1-w2-a4-sqlite_r/store/exports/audit-00000011.json",
+      "bytes": 80615,
+      "path": "cases/r1-w2-a4-sqlite_r/store/exports/audit-00000011.json",
+      "sha256": "669cd9d0431ed10a11671500cfb8427bdc5e1d9009135521d14e7f621d1d4c46"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r1-w2-a4-sqlite_r/store/ROOT",
+      "bytes": 112,
+      "path": "cases/r1-w2-a4-sqlite_r/store/ROOT",
+      "sha256": "19931f11ad5be43d293eec84d20c4cb588a326e862fc139234df6de2473d5568"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r1-w2-a4-sqlite_r/store/images/image-00000011.sqlite",
+      "bytes": 131072,
+      "path": "cases/r1-w2-a4-sqlite_r/store/images/image-00000011.sqlite",
+      "sha256": "da3f91724b89a8364466de3e4fbddb9b909bb6df3d9ffe433afbafb1fefc7998"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r1-w2-a4-sqlite_r/trace.jsonl.gz",
+      "bytes": 280610,
+      "path": "cases/r1-w2-a4-sqlite_r/trace.jsonl.gz",
+      "sha256": "46cd54acaa11a36748b3be574fb0cf204598261af3fa65d7ecb23df3e4c67f5f"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r1-w8-a1-frontier/case.json",
+      "bytes": 781,
+      "path": "cases/r1-w8-a1-frontier/case.json",
+      "sha256": "acd001a26306613198daa84fde5b125efae96412cfb0ef9b4979f746296eb588"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r1-w8-a1-frontier/store/LOCK",
+      "bytes": 0,
+      "path": "cases/r1-w8-a1-frontier/store/LOCK",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r1-w8-a1-frontier/store/ROOT",
+      "bytes": 141,
+      "path": "cases/r1-w8-a1-frontier/store/ROOT",
+      "sha256": "ebb597cad4d2e5edee8cd9dba03991f61427843c50732abbf0a8b4b2e6c1c645"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r1-w8-a1-frontier/store/segments/segment-00000011.jsonl",
+      "bytes": 204847,
+      "path": "cases/r1-w8-a1-frontier/store/segments/segment-00000011.jsonl",
+      "sha256": "4c15b387715929d97d7034bf40ee5a2c88001f06d4b20a6defce5b923980a08d"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r1-w8-a1-frontier/trace.jsonl.gz",
+      "bytes": 454495,
+      "path": "cases/r1-w8-a1-frontier/trace.jsonl.gz",
+      "sha256": "12ee9bb6be3218ecb19f06f9891a532566fd4c4c253b9a50427c97c999b63aef"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r1-w8-a1-sqlite_n/case.json",
+      "bytes": 780,
+      "path": "cases/r1-w8-a1-sqlite_n/case.json",
+      "sha256": "0c6aa268c7eee26ab814df8937072fb31ad4acc0efdd425076041070cc5c82a8"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r1-w8-a1-sqlite_n/store/normalized.sqlite",
+      "bytes": 372736,
+      "path": "cases/r1-w8-a1-sqlite_n/store/normalized.sqlite",
+      "sha256": "cc7be952b81c2e9247a08de78891694f1fc5a3d5d2180f194ff8af49b480e59c"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r1-w8-a1-sqlite_n/trace.jsonl.gz",
+      "bytes": 454395,
+      "path": "cases/r1-w8-a1-sqlite_n/trace.jsonl.gz",
+      "sha256": "5379a8dc06328b149bec6cee06309da9a8c4d8ced362540bead11cee3ebe7677"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r1-w8-a1-sqlite_r/case.json",
+      "bytes": 781,
+      "path": "cases/r1-w8-a1-sqlite_r/case.json",
+      "sha256": "27d472ce502a19b4cd51bc0922fe8127e7f158a9ccfa9cbfa61bb8866d148bc2"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r1-w8-a1-sqlite_r/store/ROOT",
+      "bytes": 112,
+      "path": "cases/r1-w8-a1-sqlite_r/store/ROOT",
+      "sha256": "19931f11ad5be43d293eec84d20c4cb588a326e862fc139234df6de2473d5568"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r1-w8-a1-sqlite_r/store/exports/audit-00000011.json",
+      "bytes": 199859,
+      "path": "cases/r1-w8-a1-sqlite_r/store/exports/audit-00000011.json",
+      "sha256": "8e34e782b55627ba2c9ad5c6632b0d4125d7214014eba17aca8398192ca763e4"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r1-w8-a1-sqlite_r/store/images/image-00000011.sqlite",
+      "bytes": 339968,
+      "path": "cases/r1-w8-a1-sqlite_r/store/images/image-00000011.sqlite",
+      "sha256": "dae7dc199024b047b23366ff7eb961f288fff604e67ad2bf77469d1f1ee39746"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r1-w8-a1-sqlite_r/trace.jsonl.gz",
+      "bytes": 456003,
+      "path": "cases/r1-w8-a1-sqlite_r/trace.jsonl.gz",
+      "sha256": "fa03040c00c49e5239bf7d5651f4d9ceb378ec3f19bc56a682fd1cff2eee6bf9"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r1-w8-a4-frontier/case.json",
+      "bytes": 781,
+      "path": "cases/r1-w8-a4-frontier/case.json",
+      "sha256": "da70f7c590d1146bf652f1d5b7ee66ab206ea21400d18d12da16901351054aa4"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r1-w8-a4-frontier/store/LOCK",
+      "bytes": 0,
+      "path": "cases/r1-w8-a4-frontier/store/LOCK",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r1-w8-a4-frontier/store/ROOT",
+      "bytes": 141,
+      "path": "cases/r1-w8-a4-frontier/store/ROOT",
+      "sha256": "ebb597cad4d2e5edee8cd9dba03991f61427843c50732abbf0a8b4b2e6c1c645"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r1-w8-a4-frontier/store/segments/segment-00000011.jsonl",
+      "bytes": 204847,
+      "path": "cases/r1-w8-a4-frontier/store/segments/segment-00000011.jsonl",
+      "sha256": "4c15b387715929d97d7034bf40ee5a2c88001f06d4b20a6defce5b923980a08d"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r1-w8-a4-frontier/trace.jsonl.gz",
+      "bytes": 393882,
+      "path": "cases/r1-w8-a4-frontier/trace.jsonl.gz",
+      "sha256": "02f67ec48fee40b6b40a1ae43be0b65f1e74cbfc96a01b3fe646be8b78a69233"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r1-w8-a4-sqlite_n/case.json",
+      "bytes": 779,
+      "path": "cases/r1-w8-a4-sqlite_n/case.json",
+      "sha256": "fbacf299d59a5b29fcf1bc8fc8e42b5f7ce127c9d784750d04f1b4fb38c3e181"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r1-w8-a4-sqlite_n/trace.jsonl.gz",
+      "bytes": 393665,
+      "path": "cases/r1-w8-a4-sqlite_n/trace.jsonl.gz",
+      "sha256": "31092345a223f7634a048dc8e2664f6845dd31401e5d4a15f6d8a3609c7dd1eb"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r1-w8-a4-sqlite_n/store/normalized.sqlite",
+      "bytes": 372736,
+      "path": "cases/r1-w8-a4-sqlite_n/store/normalized.sqlite",
+      "sha256": "cc7be952b81c2e9247a08de78891694f1fc5a3d5d2180f194ff8af49b480e59c"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r1-w8-a4-sqlite_r/case.json",
+      "bytes": 780,
+      "path": "cases/r1-w8-a4-sqlite_r/case.json",
+      "sha256": "a578f4374cb79eafc57fa41a0387dcd3b66f76360595b99d0f8078b5bc98df9c"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r1-w8-a4-sqlite_r/store/ROOT",
+      "bytes": 112,
+      "path": "cases/r1-w8-a4-sqlite_r/store/ROOT",
+      "sha256": "19931f11ad5be43d293eec84d20c4cb588a326e862fc139234df6de2473d5568"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r1-w8-a4-sqlite_r/store/exports/audit-00000011.json",
+      "bytes": 199859,
+      "path": "cases/r1-w8-a4-sqlite_r/store/exports/audit-00000011.json",
+      "sha256": "8e34e782b55627ba2c9ad5c6632b0d4125d7214014eba17aca8398192ca763e4"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r1-w8-a4-sqlite_r/store/images/image-00000011.sqlite",
+      "bytes": 339968,
+      "path": "cases/r1-w8-a4-sqlite_r/store/images/image-00000011.sqlite",
+      "sha256": "dae7dc199024b047b23366ff7eb961f288fff604e67ad2bf77469d1f1ee39746"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r1-w8-a4-sqlite_r/trace.jsonl.gz",
+      "bytes": 395031,
+      "path": "cases/r1-w8-a4-sqlite_r/trace.jsonl.gz",
+      "sha256": "dc67583ba2f03be31fd105401dd3a7a8a315114aef970e68b0f512319163da25"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r2-w2-a1-frontier/case.json",
+      "bytes": 779,
+      "path": "cases/r2-w2-a1-frontier/case.json",
+      "sha256": "43010214169d2f479eeacb9d52672cd5c6a58b8214ade49da199171b8cc768f5"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r2-w2-a1-frontier/store/LOCK",
+      "bytes": 0,
+      "path": "cases/r2-w2-a1-frontier/store/LOCK",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r2-w2-a1-frontier/store/ROOT",
+      "bytes": 141,
+      "path": "cases/r2-w2-a1-frontier/store/ROOT",
+      "sha256": "ebb597cad4d2e5edee8cd9dba03991f61427843c50732abbf0a8b4b2e6c1c645"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r2-w2-a1-frontier/store/segments/segment-00000011.jsonl",
+      "bytes": 85603,
+      "path": "cases/r2-w2-a1-frontier/store/segments/segment-00000011.jsonl",
+      "sha256": "e1bae8e39116cd29e248b6fa6723800714e47f62663dc4f89e0c7b833f62d775"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r2-w2-a1-frontier/trace.jsonl.gz",
+      "bytes": 324080,
+      "path": "cases/r2-w2-a1-frontier/trace.jsonl.gz",
+      "sha256": "a0a5428a808fbb1a61ea7e655a5844071e6102bb2064b494c8f95e21b4f20c73"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r2-w2-a1-sqlite_n/case.json",
+      "bytes": 774,
+      "path": "cases/r2-w2-a1-sqlite_n/case.json",
+      "sha256": "ea3f96c2802bbe99cd39fe9f261874abbeb3b8793bf29dc2d194aa118420f098"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r2-w2-a1-sqlite_n/store/normalized.sqlite",
+      "bytes": 155648,
+      "path": "cases/r2-w2-a1-sqlite_n/store/normalized.sqlite",
+      "sha256": "96776ae32e20df0103dc0f35116593ff54524369e2f64c8558e1d466a5d9c9ac"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r2-w2-a1-sqlite_n/trace.jsonl.gz",
+      "bytes": 324102,
+      "path": "cases/r2-w2-a1-sqlite_n/trace.jsonl.gz",
+      "sha256": "764942bae2558bc61522416fe12ed89121b0096940869d5c350e2bbf9564b5c1"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r2-w2-a1-sqlite_r/case.json",
+      "bytes": 777,
+      "path": "cases/r2-w2-a1-sqlite_r/case.json",
+      "sha256": "b152d4da2dca17b6b4ca31f0c67db1e7d138aa0f8d46cc56eb6c693040784387"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r2-w2-a1-sqlite_r/store/ROOT",
+      "bytes": 112,
+      "path": "cases/r2-w2-a1-sqlite_r/store/ROOT",
+      "sha256": "19931f11ad5be43d293eec84d20c4cb588a326e862fc139234df6de2473d5568"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r2-w2-a1-sqlite_r/store/exports/audit-00000011.json",
+      "bytes": 80615,
+      "path": "cases/r2-w2-a1-sqlite_r/store/exports/audit-00000011.json",
+      "sha256": "669cd9d0431ed10a11671500cfb8427bdc5e1d9009135521d14e7f621d1d4c46"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r2-w2-a1-sqlite_r/store/images/image-00000011.sqlite",
+      "bytes": 131072,
+      "path": "cases/r2-w2-a1-sqlite_r/store/images/image-00000011.sqlite",
+      "sha256": "da3f91724b89a8364466de3e4fbddb9b909bb6df3d9ffe433afbafb1fefc7998"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r2-w2-a1-sqlite_r/trace.jsonl.gz",
+      "bytes": 325697,
+      "path": "cases/r2-w2-a1-sqlite_r/trace.jsonl.gz",
+      "sha256": "6776ef620abf466e26d84267ab45b8463d9a9bba24f1edad8921c2d1030ba0f4"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r2-w2-a4-frontier/case.json",
+      "bytes": 777,
+      "path": "cases/r2-w2-a4-frontier/case.json",
+      "sha256": "d27d516001bbb0c1a76442d911ebab6101479d4f174e0eb0a776530e55a088f5"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r2-w2-a4-frontier/store/LOCK",
+      "bytes": 0,
+      "path": "cases/r2-w2-a4-frontier/store/LOCK",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r2-w2-a4-frontier/store/ROOT",
+      "bytes": 141,
+      "path": "cases/r2-w2-a4-frontier/store/ROOT",
+      "sha256": "ebb597cad4d2e5edee8cd9dba03991f61427843c50732abbf0a8b4b2e6c1c645"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r2-w2-a4-frontier/store/segments/segment-00000011.jsonl",
+      "bytes": 85603,
+      "path": "cases/r2-w2-a4-frontier/store/segments/segment-00000011.jsonl",
+      "sha256": "e1bae8e39116cd29e248b6fa6723800714e47f62663dc4f89e0c7b833f62d775"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r2-w2-a4-frontier/trace.jsonl.gz",
+      "bytes": 279404,
+      "path": "cases/r2-w2-a4-frontier/trace.jsonl.gz",
+      "sha256": "f2941c586b2c5a6279ebdc0840bce849a7173937e0ba59b9326dc769f2811bd0"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r2-w2-a4-sqlite_n/case.json",
+      "bytes": 774,
+      "path": "cases/r2-w2-a4-sqlite_n/case.json",
+      "sha256": "db8f5820656eaac74ba857635e0a504345858ffc1a9aedf902a2a80d26529a99"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r2-w2-a4-sqlite_n/store/normalized.sqlite",
+      "bytes": 155648,
+      "path": "cases/r2-w2-a4-sqlite_n/store/normalized.sqlite",
+      "sha256": "96776ae32e20df0103dc0f35116593ff54524369e2f64c8558e1d466a5d9c9ac"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r2-w2-a4-sqlite_n/trace.jsonl.gz",
+      "bytes": 279255,
+      "path": "cases/r2-w2-a4-sqlite_n/trace.jsonl.gz",
+      "sha256": "6d1e34e454c45cd981e20a156e9266924112649d8b5bdd0dcdb1adb144a829ab"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r2-w2-a4-sqlite_r/case.json",
+      "bytes": 775,
+      "path": "cases/r2-w2-a4-sqlite_r/case.json",
+      "sha256": "375725d1d110e43f8e0e64453fa10dc9a7941afdb4f3ebbcab44f0d84f89c2e3"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r2-w2-a4-sqlite_r/store/ROOT",
+      "bytes": 112,
+      "path": "cases/r2-w2-a4-sqlite_r/store/ROOT",
+      "sha256": "19931f11ad5be43d293eec84d20c4cb588a326e862fc139234df6de2473d5568"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r2-w2-a4-sqlite_r/store/exports/audit-00000011.json",
+      "bytes": 80615,
+      "path": "cases/r2-w2-a4-sqlite_r/store/exports/audit-00000011.json",
+      "sha256": "669cd9d0431ed10a11671500cfb8427bdc5e1d9009135521d14e7f621d1d4c46"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r2-w2-a4-sqlite_r/store/images/image-00000011.sqlite",
+      "bytes": 131072,
+      "path": "cases/r2-w2-a4-sqlite_r/store/images/image-00000011.sqlite",
+      "sha256": "da3f91724b89a8364466de3e4fbddb9b909bb6df3d9ffe433afbafb1fefc7998"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r2-w8-a1-frontier/case.json",
+      "bytes": 782,
+      "path": "cases/r2-w8-a1-frontier/case.json",
+      "sha256": "f44620cdb078826a04e97637ab567393185d112eaf0b8eb3a1812d22fe212132"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r2-w2-a4-sqlite_r/trace.jsonl.gz",
+      "bytes": 280618,
+      "path": "cases/r2-w2-a4-sqlite_r/trace.jsonl.gz",
+      "sha256": "c5d241676b64cacff7f8a7ef6880ab6c5f409e00f0153003a53e0e3531a25c18"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r2-w8-a1-frontier/store/LOCK",
+      "bytes": 0,
+      "path": "cases/r2-w8-a1-frontier/store/LOCK",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r2-w8-a1-frontier/store/segments/segment-00000011.jsonl",
+      "bytes": 204847,
+      "path": "cases/r2-w8-a1-frontier/store/segments/segment-00000011.jsonl",
+      "sha256": "4c15b387715929d97d7034bf40ee5a2c88001f06d4b20a6defce5b923980a08d"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r2-w8-a1-frontier/store/ROOT",
+      "bytes": 141,
+      "path": "cases/r2-w8-a1-frontier/store/ROOT",
+      "sha256": "ebb597cad4d2e5edee8cd9dba03991f61427843c50732abbf0a8b4b2e6c1c645"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r2-w8-a1-frontier/trace.jsonl.gz",
+      "bytes": 454481,
+      "path": "cases/r2-w8-a1-frontier/trace.jsonl.gz",
+      "sha256": "63edfce27957469d73b105063d33f8df51ebbd05c99b01e9408017872880690c"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r2-w8-a1-sqlite_n/case.json",
+      "bytes": 781,
+      "path": "cases/r2-w8-a1-sqlite_n/case.json",
+      "sha256": "ba975b5cc89c7fbe23428485ce8209c44dfbf124558a149a1577ed9c8e86c38c"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r2-w8-a1-sqlite_n/store/normalized.sqlite",
+      "bytes": 372736,
+      "path": "cases/r2-w8-a1-sqlite_n/store/normalized.sqlite",
+      "sha256": "cc7be952b81c2e9247a08de78891694f1fc5a3d5d2180f194ff8af49b480e59c"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r2-w8-a1-sqlite_n/trace.jsonl.gz",
+      "bytes": 454397,
+      "path": "cases/r2-w8-a1-sqlite_n/trace.jsonl.gz",
+      "sha256": "11bbaa93283cad54f1526010cca57a30bdbdb4bee376292b7c9183d0a3a89c5e"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r2-w8-a1-sqlite_r/case.json",
+      "bytes": 781,
+      "path": "cases/r2-w8-a1-sqlite_r/case.json",
+      "sha256": "144b5a497319172b8b576a1c368c4db6f6f02517f0e46dcd4378b5e87daf7de6"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r2-w8-a1-sqlite_r/store/ROOT",
+      "bytes": 112,
+      "path": "cases/r2-w8-a1-sqlite_r/store/ROOT",
+      "sha256": "19931f11ad5be43d293eec84d20c4cb588a326e862fc139234df6de2473d5568"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r2-w8-a1-sqlite_r/store/exports/audit-00000011.json",
+      "bytes": 199859,
+      "path": "cases/r2-w8-a1-sqlite_r/store/exports/audit-00000011.json",
+      "sha256": "8e34e782b55627ba2c9ad5c6632b0d4125d7214014eba17aca8398192ca763e4"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r2-w8-a1-sqlite_r/store/images/image-00000011.sqlite",
+      "bytes": 339968,
+      "path": "cases/r2-w8-a1-sqlite_r/store/images/image-00000011.sqlite",
+      "sha256": "dae7dc199024b047b23366ff7eb961f288fff604e67ad2bf77469d1f1ee39746"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r2-w8-a1-sqlite_r/trace.jsonl.gz",
+      "bytes": 455997,
+      "path": "cases/r2-w8-a1-sqlite_r/trace.jsonl.gz",
+      "sha256": "fcbea0e67eed71d4598ef94743c5cc3880f01558caac601fe4eaa0848cfbaa68"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r2-w8-a4-frontier/case.json",
+      "bytes": 782,
+      "path": "cases/r2-w8-a4-frontier/case.json",
+      "sha256": "887a2f9ebf9b6bad97f8d31f4437f3341c3ceff09b435987c31752a38d4f860b"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r2-w8-a4-frontier/store/LOCK",
+      "bytes": 0,
+      "path": "cases/r2-w8-a4-frontier/store/LOCK",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r2-w8-a4-frontier/store/ROOT",
+      "bytes": 141,
+      "path": "cases/r2-w8-a4-frontier/store/ROOT",
+      "sha256": "ebb597cad4d2e5edee8cd9dba03991f61427843c50732abbf0a8b4b2e6c1c645"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r2-w8-a4-frontier/store/segments/segment-00000011.jsonl",
+      "bytes": 204847,
+      "path": "cases/r2-w8-a4-frontier/store/segments/segment-00000011.jsonl",
+      "sha256": "4c15b387715929d97d7034bf40ee5a2c88001f06d4b20a6defce5b923980a08d"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r2-w8-a4-frontier/trace.jsonl.gz",
+      "bytes": 393887,
+      "path": "cases/r2-w8-a4-frontier/trace.jsonl.gz",
+      "sha256": "c5d8a46878e23b53e09d0470da2149220a1ec5081ba68ce676b2ba2d84f66f82"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r2-w8-a4-sqlite_n/case.json",
+      "bytes": 779,
+      "path": "cases/r2-w8-a4-sqlite_n/case.json",
+      "sha256": "dc91dd2692cc291f554e0b00a3c27b9c10f8a67b85638b96d4c054814efac8b7"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r2-w8-a4-sqlite_n/store/normalized.sqlite",
+      "bytes": 372736,
+      "path": "cases/r2-w8-a4-sqlite_n/store/normalized.sqlite",
+      "sha256": "cc7be952b81c2e9247a08de78891694f1fc5a3d5d2180f194ff8af49b480e59c"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r2-w8-a4-sqlite_n/trace.jsonl.gz",
+      "bytes": 393668,
+      "path": "cases/r2-w8-a4-sqlite_n/trace.jsonl.gz",
+      "sha256": "68e613e639a9d82c18b238dc9f56aadab3a52cf40bb3d680b1245616bcdef62d"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r2-w8-a4-sqlite_r/case.json",
+      "bytes": 781,
+      "path": "cases/r2-w8-a4-sqlite_r/case.json",
+      "sha256": "aea4b027fdbec0c077566b322c55a946f631a1ef7eda44572c07bab72c7a6050"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r2-w8-a4-sqlite_r/store/ROOT",
+      "bytes": 112,
+      "path": "cases/r2-w8-a4-sqlite_r/store/ROOT",
+      "sha256": "19931f11ad5be43d293eec84d20c4cb588a326e862fc139234df6de2473d5568"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r2-w8-a4-sqlite_r/store/images/image-00000011.sqlite",
+      "bytes": 339968,
+      "path": "cases/r2-w8-a4-sqlite_r/store/images/image-00000011.sqlite",
+      "sha256": "dae7dc199024b047b23366ff7eb961f288fff604e67ad2bf77469d1f1ee39746"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r2-w8-a4-sqlite_r/store/exports/audit-00000011.json",
+      "bytes": 199859,
+      "path": "cases/r2-w8-a4-sqlite_r/store/exports/audit-00000011.json",
+      "sha256": "8e34e782b55627ba2c9ad5c6632b0d4125d7214014eba17aca8398192ca763e4"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/cases/r2-w8-a4-sqlite_r/trace.jsonl.gz",
+      "bytes": 395039,
+      "path": "cases/r2-w8-a4-sqlite_r/trace.jsonl.gz",
+      "sha256": "248db42cf0c0cb97b06b0031d962591a89d919138491bc19c0c84f0767cf0f80"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/environment.json",
+      "bytes": 5157,
+      "path": "environment.json",
+      "sha256": "700f15e5aec8f764aa802a08061ab147fba6bcfce2927252465037ddd2959cec"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/native-probe/LOCK",
+      "bytes": 0,
+      "path": "native-probe/LOCK",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/native-probe/committed",
+      "bytes": 34,
+      "path": "native-probe/committed",
+      "sha256": "837923a04c6f2029aa1ad94a3104bdb8f403490b9b7181219cd7b29402c3bf98"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/native-probe.json",
+      "bytes": 146,
+      "path": "native-probe.json",
+      "sha256": "a69ece1624bcb51729a460bc5c0bd7143a1c537be34e73cb08fde53c5bba7680"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/reservation.json",
+      "bytes": 363,
+      "path": "reservation.json",
+      "sha256": "e995cd0fc0986eb9ab512c62519502d3209416c340ee54a17213d2faa69a7bc4"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/source-after.json",
+      "bytes": 909,
+      "path": "source-after.json",
+      "sha256": "dcdd4fbbd90c2876e14e3bd707883519ecfaa54e86a9833ca3af6e4de49079c3"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/source-before.json",
+      "bytes": 909,
+      "path": "source-before.json",
+      "sha256": "dcdd4fbbd90c2876e14e3bd707883519ecfaa54e86a9833ca3af6e4de49079c3"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/summary.json",
+      "bytes": 34193,
+      "path": "summary.json",
+      "sha256": "0c576fbe3e7597661d7ba1cfe74d6d497a440df48941407a5eaa5b01abb6d395"
+    },
+    {
+      "archive_member": "p021-native-fanout-40066415944-1/native-fanout/verified-summary.json",
+      "bytes": 6170,
+      "path": "verified-summary.json",
+      "sha256": "b442ff453b0d117957848f65ed10f5b2813ad2cd99fb1661a879a72b0b80463b"
+    },
+    {
+      "archive_member": "p021-native-fanout-logs-40066415944-1/campaign.log",
+      "bytes": 6599,
+      "path": "execution/campaign.log",
+      "sha256": "0eaab6e35791d4fcccc6e62966acb33714dba165ae59232732971946697151ee"
+    },
+    {
+      "archive_member": "p021-native-fanout-logs-40066415944-1/commit.txt",
+      "bytes": 41,
+      "path": "execution/commit.txt",
+      "sha256": "aa5d380f1fa4c26dbcb4b291a796248d9f5fd1b3d8f9a644cff49af35a671132"
+    },
+    {
+      "archive_member": "p021-native-fanout-logs-40066415944-1/replay.log",
+      "bytes": 4130,
+      "path": "execution/replay.log",
+      "sha256": "6242171f3b60c334a0093d0950c0da451499751d6b3ee6d2cf682a23742e2036"
+    },
+    {
+      "archive_member": "p021-native-fanout-logs-40066415944-1/tests.log",
+      "bytes": 1853,
+      "path": "execution/tests.log",
+      "sha256": "63d2a6d0f165954408a718ea94ffb3e32c18c1d07fa2457b59e2030991374d39"
+    }
+  ],
+  "job_id": 120790520723,
+  "repository": "https://github.com/Haoyi-Zhang/FactStore",
+  "run_attempt": 1,
+  "run_id": 40066415944,
+  "schema": "reviewed-native-artifact-v1",
+  "source_preimage_suffix": ".txt",
+  "verification": "Exact downloaded ZIP digest, original commit, nine current/preimage bindings, full independent transaction replay and final physical endpoint decode; import is data-only on Windows, not a native re-execution."
+}

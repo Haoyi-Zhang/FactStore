@@ -1,0 +1,26 @@
+{
+  "accepted": true,
+  "audit_every": 1,
+  "dependency_width": 2,
+  "engine": "frontier",
+  "lifecycle_wall_ns": 1993541685,
+  "position": 0,
+  "process_cpu_ns": 1100312656,
+  "records": 10,
+  "repetition": 0,
+  "scope": "native bootstrap, workload construction, transitions, persistence, current/held reads, scheduled audits, maintenance, collection, release, orderly reopen; wall includes raw trace instrumentation; phase totals exclude trace writes",
+  "sources": 64,
+  "stage_ns": {
+    "audit": 104342632,
+    "bootstrap": 50568790,
+    "collection": 83626423,
+    "current_read": 203195670,
+    "held_read": 43180048,
+    "maintenance": 131586356,
+    "persistence": 853451539,
+    "release": 107712,
+    "reopen": 20085733,
+    "transition": 74249538
+  },
+  "updates": 8
+}
