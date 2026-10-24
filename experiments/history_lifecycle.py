@@ -75,7 +75,7 @@ def checkpoint(db,root,mode,event):
                 before=before,after=footprint(root))
 
 
-def archive_endpoint(db,directory,state):
+def archive_endpoint(db,directory,state,*,validate=True):
     image=directory/f'image-{state.epoch:08d}.sqlite'
     export=directory/f'audit-{state.epoch:08d}.json'
     with closing(sqlite3.connect(image)) as destination:
@@ -90,10 +90,11 @@ def archive_endpoint(db,directory,state):
         handle.write(canonical_state_bytes(state))
         handle.flush()
         os.fsync(handle.fileno())
-    decoded=_read_sqlite_state(image)
-    parsed=parse_audit_export(export)
-    if not states_equal(decoded,state) or parsed!=state.as_dict():
-        raise AssertionError('archived database/export endpoint mismatch')
+    if validate:
+        decoded=_read_sqlite_state(image)
+        parsed=parse_audit_export(export)
+        if not states_equal(decoded,state) or parsed!=state.as_dict():
+            raise AssertionError('archived database/export endpoint mismatch')
     return (image,export)
 
 
@@ -109,22 +110,26 @@ def reclaim(directory,pairs,keep):
     return dict(removed=removed,remaining_epochs=sorted(pairs),elapsed_ns=time.perf_counter_ns()-start)
 
 
-def run_case(path,sources,updates,policy):
+def run_case(path,sources,updates,policy,*,dependency_width=2,audit_every=1):
     if not __debug__:
         raise RuntimeError('assertions required')
     if (type(sources)!=int or not 2<=sources<=500 or
             type(updates)!=int or not 4<=updates<=12 or policy not in {'all','leases'}):
         raise ValueError('bounded control requires 2..500 sources, 4..12 updates, all/leases policy')
+    if (type(dependency_width)!=int or not 1<=dependency_width<=sources or
+            type(audit_every)!=int or not 1<=audit_every<=updates):
+        raise ValueError('invalid dependency width or audit cadence')
     path=owned(path)
     path.mkdir(parents=True,exist_ok=False)
     history=path/'history'
     history.mkdir()
     records=[]
     checkpoints=[]
-    stage_ns=dict(transition=0,persistence=0,reads=0,archive=0,reclamation=0,checkpoint=0)
+    stage_ns=dict(transition=0,persistence=0,reads=0,archive=0,audit=0,reclamation=0,checkpoint=0)
+    audit_checks=0
     started=time.perf_counter_ns()
     cpu_start=time.process_time_ns()
-    state=make_synthetic_state(sources)
+    state=make_synthetic_state(sources,dependency_width=dependency_width)
     bootstrap=state.clone()
     db=sqlite3.connect(path/'normalized.sqlite',timeout=0)
     reader=None
@@ -158,8 +163,8 @@ def run_case(path,sources,updates,policy):
         records.append(dict(event='bootstrap',input=bootstrap.as_dict(),settings=settings,footprint=footprint(path)))
         release_at=updates//2
         for index in range(1,updates+1):
-            transaction=make_update(state,batch=min(8,sources),seed=100+index)
             start=time.perf_counter_ns()
+            transaction=make_update(state,batch=min(8,sources),seed=100+index)
             state,delta=apply_transaction(state,transaction)
             stage_ns['transition']+=time.perf_counter_ns()-start
             start=time.perf_counter_ns()
@@ -172,14 +177,28 @@ def run_case(path,sources,updates,policy):
             assert historical is None or states_equal(historical,bootstrap)
             stage_ns['reads']+=time.perf_counter_ns()-start
             start=time.perf_counter_ns()
-            pairs[state.epoch]=archive_endpoint(db,history,state)
+            # Current endpoint reads remain mandatory at every update. Separate
+            # cross-interface history auditing follows the declared cadence.
+            pairs[state.epoch]=archive_endpoint(db,history,state,validate=False)
             stage_ns['archive']+=time.perf_counter_ns()-start
+            audited=index%audit_every==0 or index==updates
+            if audited:
+                start=time.perf_counter_ns()
+                image,export=pairs[state.epoch]
+                if (not states_equal(_read_sqlite_state(image),state)
+                        or parse_audit_export(export)!=state.as_dict()):
+                    raise AssertionError('scheduled archive audit mismatch')
+                stage_ns['audit']+=time.perf_counter_ns()-start
+                audit_checks+=1
             peaks.append(footprint(path)['total_bytes'])
             keep=set(pairs) if policy=='all' else {state.epoch}|({bootstrap.epoch} if reader is not None else set())
             collection=reclaim(history,pairs,keep)
             stage_ns['reclamation']+=collection['elapsed_ns']
             assert state.epoch in pairs and (reader is None or bootstrap.epoch in pairs)
             records.append(dict(event='update',index=index,
+                fact_replacements=len(delta.fact_put),invalidated_facts=len(delta.fact_del),
+                dependency_edges=sum(len(f.dependencies) for f in state.facts.values()),
+                scheduled_audit=audited,
                 transaction=dict(source_changes=dict(transaction.source_changes),
                     fact_replacements=[dict(spec) for spec in transaction.fact_replacements],
                     fact_retractions=list(transaction.fact_retractions),new_schema=transaction.new_schema),
@@ -222,6 +241,7 @@ def run_case(path,sources,updates,policy):
         elapsed=time.perf_counter_ns()-started
         cpu=time.process_time_ns()-cpu_start
         result=dict(sources=sources,facts=len(state.facts),updates=updates,policy=policy,
+                    dependency_width=dependency_width,audit_every=audit_every,audit_checks=audit_checks,
                     release_at=release_at,settings=settings,endpoint_equal=True,
                     held_endpoint_equal=True,retained_epochs=sorted(pairs),checkpoints=checkpoints,
                     lifecycle_elapsed_ns=elapsed,process_cpu_ns=cpu,stage_ns=stage_ns,

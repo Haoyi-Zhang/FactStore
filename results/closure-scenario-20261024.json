@@ -1,0 +1,157 @@
+{
+  "provenance": "owned SQL schedule; not an analyzer reproduction",
+  "old": {
+    "epoch": 1,
+    "schema": 1,
+    "sources": {
+      "client": {
+        "id": "client",
+        "generation": 1,
+        "payload": "client-v1"
+      },
+      "header": {
+        "id": "header",
+        "generation": 1,
+        "payload": "header-v1"
+      }
+    },
+    "facts": {
+      "diagnostic": {
+        "id": "diagnostic",
+        "payload": "diagnostic-v1",
+        "schema": 1,
+        "dependencies": [
+          {
+            "source": "header",
+            "generation": 1
+          }
+        ]
+      }
+    },
+    "reverse": {
+      "client": [],
+      "header": [
+        "diagnostic"
+      ]
+    }
+  },
+  "new": {
+    "epoch": 2,
+    "schema": 1,
+    "sources": {
+      "client": {
+        "id": "client",
+        "generation": 2,
+        "payload": "client-v2"
+      },
+      "header": {
+        "id": "header",
+        "generation": 1,
+        "payload": "header-v1"
+      }
+    },
+    "facts": {
+      "diagnostic": {
+        "id": "diagnostic",
+        "payload": "diagnostic-v2",
+        "schema": 1,
+        "dependencies": [
+          {
+            "source": "header",
+            "generation": 1
+          }
+        ]
+      }
+    },
+    "reverse": {
+      "client": [],
+      "header": [
+        "diagnostic"
+      ]
+    }
+  },
+  "results": [
+    {
+      "one_enclosing_read_transaction": false,
+      "closed": true,
+      "equals_committed_endpoint": false,
+      "observation": {
+        "epoch": 1,
+        "schema": 1,
+        "sources": {
+          "client": {
+            "id": "client",
+            "generation": 1,
+            "payload": "client-v1"
+          },
+          "header": {
+            "id": "header",
+            "generation": 1,
+            "payload": "header-v1"
+          }
+        },
+        "facts": {
+          "diagnostic": {
+            "id": "diagnostic",
+            "payload": "diagnostic-v2",
+            "schema": 1,
+            "dependencies": [
+              {
+                "source": "header",
+                "generation": 1
+              }
+            ]
+          }
+        },
+        "reverse": {
+          "client": [],
+          "header": [
+            "diagnostic"
+          ]
+        }
+      }
+    },
+    {
+      "one_enclosing_read_transaction": true,
+      "closed": true,
+      "equals_committed_endpoint": true,
+      "observation": {
+        "epoch": 1,
+        "schema": 1,
+        "sources": {
+          "client": {
+            "id": "client",
+            "generation": 1,
+            "payload": "client-v1"
+          },
+          "header": {
+            "id": "header",
+            "generation": 1,
+            "payload": "header-v1"
+          }
+        },
+        "facts": {
+          "diagnostic": {
+            "id": "diagnostic",
+            "payload": "diagnostic-v1",
+            "schema": 1,
+            "dependencies": [
+              {
+                "source": "header",
+                "generation": 1
+              }
+            ]
+          }
+        },
+        "reverse": {
+          "client": [],
+          "header": [
+            "diagnostic"
+          ]
+        }
+      }
+    }
+  ],
+  "motivating_source": "https://github.com/clangd/clangd/issues/1088",
+  "source_scope": "reported editor/disk and multi-file event-order mismatch; no storage defect or exact closure schedule inferred"
+}

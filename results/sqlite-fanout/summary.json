@@ -1,0 +1,880 @@
+{
+  "cases": 12,
+  "current_updates": 96,
+  "held_reads": 48,
+  "reopens": 12,
+  "schedule": [
+    "r0-w8-a1",
+    "r0-w2-a4",
+    "r0-w8-a4",
+    "r0-w2-a1",
+    "r1-w2-a1",
+    "r1-w2-a4",
+    "r1-w8-a4",
+    "r1-w8-a1",
+    "r2-w8-a1",
+    "r2-w2-a1",
+    "r2-w2-a4",
+    "r2-w8-a4"
+  ],
+  "seed_policy": "random.Random(21024+repetition); four configs shuffled per repetition",
+  "rows": [
+    {
+      "sources": 64,
+      "facts": 384,
+      "updates": 8,
+      "policy": "leases",
+      "dependency_width": 8,
+      "audit_every": 1,
+      "audit_checks": 8,
+      "release_at": 4,
+      "settings": {
+        "journal_mode": "wal",
+        "synchronous": 2,
+        "wal_autocheckpoint": 0,
+        "busy_timeout": 0,
+        "page_size": 4096,
+        "foreign_keys": 0,
+        "archive_journal_mode": "DELETE"
+      },
+      "endpoint_equal": true,
+      "held_endpoint_equal": true,
+      "retained_epochs": [
+        9
+      ],
+      "lifecycle_elapsed_ns": 813426300,
+      "process_cpu_ns": 812500000,
+      "stage_ns": {
+        "transition": 117943400,
+        "persistence": 258729500,
+        "reads": 122059600,
+        "archive": 83854300,
+        "audit": 137603100,
+        "reclamation": 5147600,
+        "checkpoint": 3443700
+      },
+      "peak_sampled_bytes": 3345635,
+      "before_close": {
+        "files": {
+          "normalized.sqlite": 372736,
+          "normalized.sqlite-shm": 32768,
+          "normalized.sqlite-wal": 0,
+          "history/audit-00000009.json": 199466,
+          "history/image-00000009.sqlite": 372736
+        },
+        "db_wal_shm_bytes": 405504,
+        "archive_bytes": 572202,
+        "total_bytes": 977706
+      },
+      "final": {
+        "files": {
+          "normalized.sqlite": 372736,
+          "normalized.sqlite-shm": 32768,
+          "normalized.sqlite-wal": 0,
+          "history/audit-00000009.json": 199466,
+          "history/image-00000009.sqlite": 372736
+        },
+        "db_wal_shm_bytes": 405504,
+        "archive_bytes": 572202,
+        "total_bytes": 977706
+      },
+      "raw_record_count": 11,
+      "scope": "SQLite API including bootstrap, transitions, commit, reads, content-flushed history, actual archive collection, checkpoints, close/reopen. Excludes raw-log serialization, POSIX directory sync, atomic export/root publication, device traffic and other engines.",
+      "repetition": 0,
+      "mean_replaced_facts": 241.375,
+      "total_archive_files_removed": 16
+    },
+    {
+      "sources": 64,
+      "facts": 384,
+      "updates": 8,
+      "policy": "leases",
+      "dependency_width": 2,
+      "audit_every": 4,
+      "audit_checks": 2,
+      "release_at": 4,
+      "settings": {
+        "journal_mode": "wal",
+        "synchronous": 2,
+        "wal_autocheckpoint": 0,
+        "busy_timeout": 0,
+        "page_size": 4096,
+        "foreign_keys": 0,
+        "archive_journal_mode": "DELETE"
+      },
+      "endpoint_equal": true,
+      "held_endpoint_equal": true,
+      "retained_epochs": [
+        9
+      ],
+      "lifecycle_elapsed_ns": 299337100,
+      "process_cpu_ns": 250000000,
+      "stage_ns": {
+        "transition": 37597200,
+        "persistence": 91552400,
+        "reads": 46663700,
+        "archive": 55425000,
+        "audit": 13227100,
+        "reclamation": 4447200,
+        "checkpoint": 2771600
+      },
+      "peak_sampled_bytes": 1334009,
+      "before_close": {
+        "files": {
+          "normalized.sqlite": 155648,
+          "normalized.sqlite-shm": 32768,
+          "normalized.sqlite-wal": 0,
+          "history/audit-00000009.json": 80510,
+          "history/image-00000009.sqlite": 155648
+        },
+        "db_wal_shm_bytes": 188416,
+        "archive_bytes": 236158,
+        "total_bytes": 424574
+      },
+      "final": {
+        "files": {
+          "normalized.sqlite": 155648,
+          "normalized.sqlite-shm": 32768,
+          "normalized.sqlite-wal": 0,
+          "history/audit-00000009.json": 80510,
+          "history/image-00000009.sqlite": 155648
+        },
+        "db_wal_shm_bytes": 188416,
+        "archive_bytes": 236158,
+        "total_bytes": 424574
+      },
+      "raw_record_count": 11,
+      "scope": "SQLite API including bootstrap, transitions, commit, reads, content-flushed history, actual archive collection, checkpoints, close/reopen. Excludes raw-log serialization, POSIX directory sync, atomic export/root publication, device traffic and other engines.",
+      "repetition": 0,
+      "mean_replaced_facts": 89.875,
+      "total_archive_files_removed": 16
+    },
+    {
+      "sources": 64,
+      "facts": 384,
+      "updates": 8,
+      "policy": "leases",
+      "dependency_width": 8,
+      "audit_every": 4,
+      "audit_checks": 2,
+      "release_at": 4,
+      "settings": {
+        "journal_mode": "wal",
+        "synchronous": 2,
+        "wal_autocheckpoint": 0,
+        "busy_timeout": 0,
+        "page_size": 4096,
+        "foreign_keys": 0,
+        "archive_journal_mode": "DELETE"
+      },
+      "endpoint_equal": true,
+      "held_endpoint_equal": true,
+      "retained_epochs": [
+        9
+      ],
+      "lifecycle_elapsed_ns": 715887900,
+      "process_cpu_ns": 671875000,
+      "stage_ns": {
+        "transition": 112559000,
+        "persistence": 265248800,
+        "reads": 124316100,
+        "archive": 85096900,
+        "audit": 33862700,
+        "reclamation": 4841100,
+        "checkpoint": 3414600
+      },
+      "peak_sampled_bytes": 3345635,
+      "before_close": {
+        "files": {
+          "normalized.sqlite": 372736,
+          "normalized.sqlite-shm": 32768,
+          "normalized.sqlite-wal": 0,
+          "history/audit-00000009.json": 199466,
+          "history/image-00000009.sqlite": 372736
+        },
+        "db_wal_shm_bytes": 405504,
+        "archive_bytes": 572202,
+        "total_bytes": 977706
+      },
+      "final": {
+        "files": {
+          "normalized.sqlite": 372736,
+          "normalized.sqlite-shm": 32768,
+          "normalized.sqlite-wal": 0,
+          "history/audit-00000009.json": 199466,
+          "history/image-00000009.sqlite": 372736
+        },
+        "db_wal_shm_bytes": 405504,
+        "archive_bytes": 572202,
+        "total_bytes": 977706
+      },
+      "raw_record_count": 11,
+      "scope": "SQLite API including bootstrap, transitions, commit, reads, content-flushed history, actual archive collection, checkpoints, close/reopen. Excludes raw-log serialization, POSIX directory sync, atomic export/root publication, device traffic and other engines.",
+      "repetition": 0,
+      "mean_replaced_facts": 241.375,
+      "total_archive_files_removed": 16
+    },
+    {
+      "sources": 64,
+      "facts": 384,
+      "updates": 8,
+      "policy": "leases",
+      "dependency_width": 2,
+      "audit_every": 1,
+      "audit_checks": 8,
+      "release_at": 4,
+      "settings": {
+        "journal_mode": "wal",
+        "synchronous": 2,
+        "wal_autocheckpoint": 0,
+        "busy_timeout": 0,
+        "page_size": 4096,
+        "foreign_keys": 0,
+        "archive_journal_mode": "DELETE"
+      },
+      "endpoint_equal": true,
+      "held_endpoint_equal": true,
+      "retained_epochs": [
+        9
+      ],
+      "lifecycle_elapsed_ns": 338501100,
+      "process_cpu_ns": 281250000,
+      "stage_ns": {
+        "transition": 37588100,
+        "persistence": 85232700,
+        "reads": 46227200,
+        "archive": 62287100,
+        "audit": 54416800,
+        "reclamation": 4659800,
+        "checkpoint": 2334200
+      },
+      "peak_sampled_bytes": 1334009,
+      "before_close": {
+        "files": {
+          "normalized.sqlite": 155648,
+          "normalized.sqlite-shm": 32768,
+          "normalized.sqlite-wal": 0,
+          "history/audit-00000009.json": 80510,
+          "history/image-00000009.sqlite": 155648
+        },
+        "db_wal_shm_bytes": 188416,
+        "archive_bytes": 236158,
+        "total_bytes": 424574
+      },
+      "final": {
+        "files": {
+          "normalized.sqlite": 155648,
+          "normalized.sqlite-shm": 32768,
+          "normalized.sqlite-wal": 0,
+          "history/audit-00000009.json": 80510,
+          "history/image-00000009.sqlite": 155648
+        },
+        "db_wal_shm_bytes": 188416,
+        "archive_bytes": 236158,
+        "total_bytes": 424574
+      },
+      "raw_record_count": 11,
+      "scope": "SQLite API including bootstrap, transitions, commit, reads, content-flushed history, actual archive collection, checkpoints, close/reopen. Excludes raw-log serialization, POSIX directory sync, atomic export/root publication, device traffic and other engines.",
+      "repetition": 0,
+      "mean_replaced_facts": 89.875,
+      "total_archive_files_removed": 16
+    },
+    {
+      "sources": 64,
+      "facts": 384,
+      "updates": 8,
+      "policy": "leases",
+      "dependency_width": 2,
+      "audit_every": 1,
+      "audit_checks": 8,
+      "release_at": 4,
+      "settings": {
+        "journal_mode": "wal",
+        "synchronous": 2,
+        "wal_autocheckpoint": 0,
+        "busy_timeout": 0,
+        "page_size": 4096,
+        "foreign_keys": 0,
+        "archive_journal_mode": "DELETE"
+      },
+      "endpoint_equal": true,
+      "held_endpoint_equal": true,
+      "retained_epochs": [
+        9
+      ],
+      "lifecycle_elapsed_ns": 335771700,
+      "process_cpu_ns": 328125000,
+      "stage_ns": {
+        "transition": 37737000,
+        "persistence": 85222100,
+        "reads": 50887800,
+        "archive": 55347900,
+        "audit": 57915500,
+        "reclamation": 4557000,
+        "checkpoint": 2318100
+      },
+      "peak_sampled_bytes": 1334009,
+      "before_close": {
+        "files": {
+          "normalized.sqlite": 155648,
+          "normalized.sqlite-shm": 32768,
+          "normalized.sqlite-wal": 0,
+          "history/audit-00000009.json": 80510,
+          "history/image-00000009.sqlite": 155648
+        },
+        "db_wal_shm_bytes": 188416,
+        "archive_bytes": 236158,
+        "total_bytes": 424574
+      },
+      "final": {
+        "files": {
+          "normalized.sqlite": 155648,
+          "normalized.sqlite-shm": 32768,
+          "normalized.sqlite-wal": 0,
+          "history/audit-00000009.json": 80510,
+          "history/image-00000009.sqlite": 155648
+        },
+        "db_wal_shm_bytes": 188416,
+        "archive_bytes": 236158,
+        "total_bytes": 424574
+      },
+      "raw_record_count": 11,
+      "scope": "SQLite API including bootstrap, transitions, commit, reads, content-flushed history, actual archive collection, checkpoints, close/reopen. Excludes raw-log serialization, POSIX directory sync, atomic export/root publication, device traffic and other engines.",
+      "repetition": 1,
+      "mean_replaced_facts": 89.875,
+      "total_archive_files_removed": 16
+    },
+    {
+      "sources": 64,
+      "facts": 384,
+      "updates": 8,
+      "policy": "leases",
+      "dependency_width": 2,
+      "audit_every": 4,
+      "audit_checks": 2,
+      "release_at": 4,
+      "settings": {
+        "journal_mode": "wal",
+        "synchronous": 2,
+        "wal_autocheckpoint": 0,
+        "busy_timeout": 0,
+        "page_size": 4096,
+        "foreign_keys": 0,
+        "archive_journal_mode": "DELETE"
+      },
+      "endpoint_equal": true,
+      "held_endpoint_equal": true,
+      "retained_epochs": [
+        9
+      ],
+      "lifecycle_elapsed_ns": 295139800,
+      "process_cpu_ns": 281250000,
+      "stage_ns": {
+        "transition": 41856900,
+        "persistence": 85802600,
+        "reads": 47712000,
+        "archive": 56068500,
+        "audit": 13465400,
+        "reclamation": 4332000,
+        "checkpoint": 2556400
+      },
+      "peak_sampled_bytes": 1334009,
+      "before_close": {
+        "files": {
+          "normalized.sqlite": 155648,
+          "normalized.sqlite-shm": 32768,
+          "normalized.sqlite-wal": 0,
+          "history/audit-00000009.json": 80510,
+          "history/image-00000009.sqlite": 155648
+        },
+        "db_wal_shm_bytes": 188416,
+        "archive_bytes": 236158,
+        "total_bytes": 424574
+      },
+      "final": {
+        "files": {
+          "normalized.sqlite": 155648,
+          "normalized.sqlite-shm": 32768,
+          "normalized.sqlite-wal": 0,
+          "history/audit-00000009.json": 80510,
+          "history/image-00000009.sqlite": 155648
+        },
+        "db_wal_shm_bytes": 188416,
+        "archive_bytes": 236158,
+        "total_bytes": 424574
+      },
+      "raw_record_count": 11,
+      "scope": "SQLite API including bootstrap, transitions, commit, reads, content-flushed history, actual archive collection, checkpoints, close/reopen. Excludes raw-log serialization, POSIX directory sync, atomic export/root publication, device traffic and other engines.",
+      "repetition": 1,
+      "mean_replaced_facts": 89.875,
+      "total_archive_files_removed": 16
+    },
+    {
+      "sources": 64,
+      "facts": 384,
+      "updates": 8,
+      "policy": "leases",
+      "dependency_width": 8,
+      "audit_every": 4,
+      "audit_checks": 2,
+      "release_at": 4,
+      "settings": {
+        "journal_mode": "wal",
+        "synchronous": 2,
+        "wal_autocheckpoint": 0,
+        "busy_timeout": 0,
+        "page_size": 4096,
+        "foreign_keys": 0,
+        "archive_journal_mode": "DELETE"
+      },
+      "endpoint_equal": true,
+      "held_endpoint_equal": true,
+      "retained_epochs": [
+        9
+      ],
+      "lifecycle_elapsed_ns": 721447700,
+      "process_cpu_ns": 609375000,
+      "stage_ns": {
+        "transition": 118333400,
+        "persistence": 266623300,
+        "reads": 126766200,
+        "archive": 80610800,
+        "audit": 38548100,
+        "reclamation": 5382200,
+        "checkpoint": 3172700
+      },
+      "peak_sampled_bytes": 3345635,
+      "before_close": {
+        "files": {
+          "normalized.sqlite": 372736,
+          "normalized.sqlite-shm": 32768,
+          "normalized.sqlite-wal": 0,
+          "history/audit-00000009.json": 199466,
+          "history/image-00000009.sqlite": 372736
+        },
+        "db_wal_shm_bytes": 405504,
+        "archive_bytes": 572202,
+        "total_bytes": 977706
+      },
+      "final": {
+        "files": {
+          "normalized.sqlite": 372736,
+          "normalized.sqlite-shm": 32768,
+          "normalized.sqlite-wal": 0,
+          "history/audit-00000009.json": 199466,
+          "history/image-00000009.sqlite": 372736
+        },
+        "db_wal_shm_bytes": 405504,
+        "archive_bytes": 572202,
+        "total_bytes": 977706
+      },
+      "raw_record_count": 11,
+      "scope": "SQLite API including bootstrap, transitions, commit, reads, content-flushed history, actual archive collection, checkpoints, close/reopen. Excludes raw-log serialization, POSIX directory sync, atomic export/root publication, device traffic and other engines.",
+      "repetition": 1,
+      "mean_replaced_facts": 241.375,
+      "total_archive_files_removed": 16
+    },
+    {
+      "sources": 64,
+      "facts": 384,
+      "updates": 8,
+      "policy": "leases",
+      "dependency_width": 8,
+      "audit_every": 1,
+      "audit_checks": 8,
+      "release_at": 4,
+      "settings": {
+        "journal_mode": "wal",
+        "synchronous": 2,
+        "wal_autocheckpoint": 0,
+        "busy_timeout": 0,
+        "page_size": 4096,
+        "foreign_keys": 0,
+        "archive_journal_mode": "DELETE"
+      },
+      "endpoint_equal": true,
+      "held_endpoint_equal": true,
+      "retained_epochs": [
+        9
+      ],
+      "lifecycle_elapsed_ns": 842953300,
+      "process_cpu_ns": 750000000,
+      "stage_ns": {
+        "transition": 114484900,
+        "persistence": 265934900,
+        "reads": 123154500,
+        "archive": 89807400,
+        "audit": 148999600,
+        "reclamation": 5205400,
+        "checkpoint": 3349500
+      },
+      "peak_sampled_bytes": 3345635,
+      "before_close": {
+        "files": {
+          "normalized.sqlite": 372736,
+          "normalized.sqlite-shm": 32768,
+          "normalized.sqlite-wal": 0,
+          "history/audit-00000009.json": 199466,
+          "history/image-00000009.sqlite": 372736
+        },
+        "db_wal_shm_bytes": 405504,
+        "archive_bytes": 572202,
+        "total_bytes": 977706
+      },
+      "final": {
+        "files": {
+          "normalized.sqlite": 372736,
+          "normalized.sqlite-shm": 32768,
+          "normalized.sqlite-wal": 0,
+          "history/audit-00000009.json": 199466,
+          "history/image-00000009.sqlite": 372736
+        },
+        "db_wal_shm_bytes": 405504,
+        "archive_bytes": 572202,
+        "total_bytes": 977706
+      },
+      "raw_record_count": 11,
+      "scope": "SQLite API including bootstrap, transitions, commit, reads, content-flushed history, actual archive collection, checkpoints, close/reopen. Excludes raw-log serialization, POSIX directory sync, atomic export/root publication, device traffic and other engines.",
+      "repetition": 1,
+      "mean_replaced_facts": 241.375,
+      "total_archive_files_removed": 16
+    },
+    {
+      "sources": 64,
+      "facts": 384,
+      "updates": 8,
+      "policy": "leases",
+      "dependency_width": 8,
+      "audit_every": 1,
+      "audit_checks": 8,
+      "release_at": 4,
+      "settings": {
+        "journal_mode": "wal",
+        "synchronous": 2,
+        "wal_autocheckpoint": 0,
+        "busy_timeout": 0,
+        "page_size": 4096,
+        "foreign_keys": 0,
+        "archive_journal_mode": "DELETE"
+      },
+      "endpoint_equal": true,
+      "held_endpoint_equal": true,
+      "retained_epochs": [
+        9
+      ],
+      "lifecycle_elapsed_ns": 842230500,
+      "process_cpu_ns": 796875000,
+      "stage_ns": {
+        "transition": 119083000,
+        "persistence": 268086100,
+        "reads": 132618700,
+        "archive": 79965000,
+        "audit": 148726300,
+        "reclamation": 4959600,
+        "checkpoint": 3380500
+      },
+      "peak_sampled_bytes": 3345635,
+      "before_close": {
+        "files": {
+          "normalized.sqlite": 372736,
+          "normalized.sqlite-shm": 32768,
+          "normalized.sqlite-wal": 0,
+          "history/audit-00000009.json": 199466,
+          "history/image-00000009.sqlite": 372736
+        },
+        "db_wal_shm_bytes": 405504,
+        "archive_bytes": 572202,
+        "total_bytes": 977706
+      },
+      "final": {
+        "files": {
+          "normalized.sqlite": 372736,
+          "normalized.sqlite-shm": 32768,
+          "normalized.sqlite-wal": 0,
+          "history/audit-00000009.json": 199466,
+          "history/image-00000009.sqlite": 372736
+        },
+        "db_wal_shm_bytes": 405504,
+        "archive_bytes": 572202,
+        "total_bytes": 977706
+      },
+      "raw_record_count": 11,
+      "scope": "SQLite API including bootstrap, transitions, commit, reads, content-flushed history, actual archive collection, checkpoints, close/reopen. Excludes raw-log serialization, POSIX directory sync, atomic export/root publication, device traffic and other engines.",
+      "repetition": 2,
+      "mean_replaced_facts": 241.375,
+      "total_archive_files_removed": 16
+    },
+    {
+      "sources": 64,
+      "facts": 384,
+      "updates": 8,
+      "policy": "leases",
+      "dependency_width": 2,
+      "audit_every": 1,
+      "audit_checks": 8,
+      "release_at": 4,
+      "settings": {
+        "journal_mode": "wal",
+        "synchronous": 2,
+        "wal_autocheckpoint": 0,
+        "busy_timeout": 0,
+        "page_size": 4096,
+        "foreign_keys": 0,
+        "archive_journal_mode": "DELETE"
+      },
+      "endpoint_equal": true,
+      "held_endpoint_equal": true,
+      "retained_epochs": [
+        9
+      ],
+      "lifecycle_elapsed_ns": 346713400,
+      "process_cpu_ns": 281250000,
+      "stage_ns": {
+        "transition": 37870300,
+        "persistence": 88485700,
+        "reads": 53151200,
+        "archive": 62408700,
+        "audit": 54021900,
+        "reclamation": 4412000,
+        "checkpoint": 2551400
+      },
+      "peak_sampled_bytes": 1334009,
+      "before_close": {
+        "files": {
+          "normalized.sqlite": 155648,
+          "normalized.sqlite-shm": 32768,
+          "normalized.sqlite-wal": 0,
+          "history/audit-00000009.json": 80510,
+          "history/image-00000009.sqlite": 155648
+        },
+        "db_wal_shm_bytes": 188416,
+        "archive_bytes": 236158,
+        "total_bytes": 424574
+      },
+      "final": {
+        "files": {
+          "normalized.sqlite": 155648,
+          "normalized.sqlite-shm": 32768,
+          "normalized.sqlite-wal": 0,
+          "history/audit-00000009.json": 80510,
+          "history/image-00000009.sqlite": 155648
+        },
+        "db_wal_shm_bytes": 188416,
+        "archive_bytes": 236158,
+        "total_bytes": 424574
+      },
+      "raw_record_count": 11,
+      "scope": "SQLite API including bootstrap, transitions, commit, reads, content-flushed history, actual archive collection, checkpoints, close/reopen. Excludes raw-log serialization, POSIX directory sync, atomic export/root publication, device traffic and other engines.",
+      "repetition": 2,
+      "mean_replaced_facts": 89.875,
+      "total_archive_files_removed": 16
+    },
+    {
+      "sources": 64,
+      "facts": 384,
+      "updates": 8,
+      "policy": "leases",
+      "dependency_width": 2,
+      "audit_every": 4,
+      "audit_checks": 2,
+      "release_at": 4,
+      "settings": {
+        "journal_mode": "wal",
+        "synchronous": 2,
+        "wal_autocheckpoint": 0,
+        "busy_timeout": 0,
+        "page_size": 4096,
+        "foreign_keys": 0,
+        "archive_journal_mode": "DELETE"
+      },
+      "endpoint_equal": true,
+      "held_endpoint_equal": true,
+      "retained_epochs": [
+        9
+      ],
+      "lifecycle_elapsed_ns": 311623600,
+      "process_cpu_ns": 218750000,
+      "stage_ns": {
+        "transition": 38170200,
+        "persistence": 86844200,
+        "reads": 54108900,
+        "archive": 64748500,
+        "audit": 15645900,
+        "reclamation": 5258000,
+        "checkpoint": 2866600
+      },
+      "peak_sampled_bytes": 1334009,
+      "before_close": {
+        "files": {
+          "normalized.sqlite": 155648,
+          "normalized.sqlite-shm": 32768,
+          "normalized.sqlite-wal": 0,
+          "history/audit-00000009.json": 80510,
+          "history/image-00000009.sqlite": 155648
+        },
+        "db_wal_shm_bytes": 188416,
+        "archive_bytes": 236158,
+        "total_bytes": 424574
+      },
+      "final": {
+        "files": {
+          "normalized.sqlite": 155648,
+          "normalized.sqlite-shm": 32768,
+          "normalized.sqlite-wal": 0,
+          "history/audit-00000009.json": 80510,
+          "history/image-00000009.sqlite": 155648
+        },
+        "db_wal_shm_bytes": 188416,
+        "archive_bytes": 236158,
+        "total_bytes": 424574
+      },
+      "raw_record_count": 11,
+      "scope": "SQLite API including bootstrap, transitions, commit, reads, content-flushed history, actual archive collection, checkpoints, close/reopen. Excludes raw-log serialization, POSIX directory sync, atomic export/root publication, device traffic and other engines.",
+      "repetition": 2,
+      "mean_replaced_facts": 89.875,
+      "total_archive_files_removed": 16
+    },
+    {
+      "sources": 64,
+      "facts": 384,
+      "updates": 8,
+      "policy": "leases",
+      "dependency_width": 8,
+      "audit_every": 4,
+      "audit_checks": 2,
+      "release_at": 4,
+      "settings": {
+        "journal_mode": "wal",
+        "synchronous": 2,
+        "wal_autocheckpoint": 0,
+        "busy_timeout": 0,
+        "page_size": 4096,
+        "foreign_keys": 0,
+        "archive_journal_mode": "DELETE"
+      },
+      "endpoint_equal": true,
+      "held_endpoint_equal": true,
+      "retained_epochs": [
+        9
+      ],
+      "lifecycle_elapsed_ns": 714818400,
+      "process_cpu_ns": 625000000,
+      "stage_ns": {
+        "transition": 113571800,
+        "persistence": 260752200,
+        "reads": 130062500,
+        "archive": 80616800,
+        "audit": 39916100,
+        "reclamation": 4747800,
+        "checkpoint": 3322300
+      },
+      "peak_sampled_bytes": 3345635,
+      "before_close": {
+        "files": {
+          "normalized.sqlite": 372736,
+          "normalized.sqlite-shm": 32768,
+          "normalized.sqlite-wal": 0,
+          "history/audit-00000009.json": 199466,
+          "history/image-00000009.sqlite": 372736
+        },
+        "db_wal_shm_bytes": 405504,
+        "archive_bytes": 572202,
+        "total_bytes": 977706
+      },
+      "final": {
+        "files": {
+          "normalized.sqlite": 372736,
+          "normalized.sqlite-shm": 32768,
+          "normalized.sqlite-wal": 0,
+          "history/audit-00000009.json": 199466,
+          "history/image-00000009.sqlite": 372736
+        },
+        "db_wal_shm_bytes": 405504,
+        "archive_bytes": 572202,
+        "total_bytes": 977706
+      },
+      "raw_record_count": 11,
+      "scope": "SQLite API including bootstrap, transitions, commit, reads, content-flushed history, actual archive collection, checkpoints, close/reopen. Excludes raw-log serialization, POSIX directory sync, atomic export/root publication, device traffic and other engines.",
+      "repetition": 2,
+      "mean_replaced_facts": 241.375,
+      "total_archive_files_removed": 16
+    }
+  ],
+  "aggregates": [
+    {
+      "dependency_width": 2,
+      "audit_every": 1,
+      "repetitions": 3,
+      "mean_replaced_facts": 89.875,
+      "audit_checks": 8,
+      "median_lifecycle_ms": 338.5011,
+      "median_stage_ms": {
+        "transition": 37.737,
+        "persistence": 85.2327,
+        "reads": 50.8878,
+        "archive": 62.2871,
+        "audit": 54.4168,
+        "reclamation": 4.557,
+        "checkpoint": 2.3342
+      },
+      "final_bytes": 424574
+    },
+    {
+      "dependency_width": 2,
+      "audit_every": 4,
+      "repetitions": 3,
+      "mean_replaced_facts": 89.875,
+      "audit_checks": 2,
+      "median_lifecycle_ms": 299.3371,
+      "median_stage_ms": {
+        "transition": 38.1702,
+        "persistence": 86.8442,
+        "reads": 47.712,
+        "archive": 56.0685,
+        "audit": 13.4654,
+        "reclamation": 4.4472,
+        "checkpoint": 2.7716
+      },
+      "final_bytes": 424574
+    },
+    {
+      "dependency_width": 8,
+      "audit_every": 1,
+      "repetitions": 3,
+      "mean_replaced_facts": 241.375,
+      "audit_checks": 8,
+      "median_lifecycle_ms": 842.2305,
+      "median_stage_ms": {
+        "transition": 117.9434,
+        "persistence": 265.9349,
+        "reads": 123.1545,
+        "archive": 83.8543,
+        "audit": 148.7263,
+        "reclamation": 5.1476,
+        "checkpoint": 3.3805
+      },
+      "final_bytes": 977706
+    },
+    {
+      "dependency_width": 8,
+      "audit_every": 4,
+      "repetitions": 3,
+      "mean_replaced_facts": 241.375,
+      "audit_checks": 2,
+      "median_lifecycle_ms": 715.8879,
+      "median_stage_ms": {
+        "transition": 113.5718,
+        "persistence": 265.2488,
+        "reads": 126.7662,
+        "archive": 80.6168,
+        "audit": 38.5481,
+        "reclamation": 4.8411,
+        "checkpoint": 3.3223
+      },
+      "final_bytes": 977706
+    }
+  ],
+  "source_unchanged": true,
+  "scope": "SQLite API only; current durable reads every update; separate pair audit every 1/4 updates; 8 changed sources, 64 sources/384 facts, widths 2/8, bootstrap lease through update 4; common make_update+transition included in lifecycle and transition stage; content fsync only for archives, no POSIX directory durability or atomic pair/root publication",
+  "interpretation": "Host-dependent three-repeat sensitivity; no native engine ranking or statistical significance claim"
+}

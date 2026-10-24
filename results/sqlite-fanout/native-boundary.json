@@ -1,0 +1,7 @@
+{
+  "available": false,
+  "platform": "Windows-11-10.0.28000-SP0",
+  "required": "native FrontierStore fcntl + unchanged directory fsync",
+  "substituted": false,
+  "native_three_representation_costs_measured": false
+}

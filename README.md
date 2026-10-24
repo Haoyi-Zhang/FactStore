@@ -1,6 +1,94 @@
 # FrontierStore artifact
 
-This artifact supports the negative result reported in **Auditable Source–Fact Storage: Transactional Equivalence, Closure Counterexamples, and Representation Costs**. It contains:
+## Current-source fanout/cadence evidence
+
+`experiments/fanout_cadence.py` extends the owned SQLite-API lifecycle without
+changing the native engines' persistence contract. It uses dependency widths
+2/8, separate archive-audit intervals 1/4, 64 sources/384 facts, eight updates
+and three shuffled-order repetitions per configuration. Workload/affected-set
+generation and state conversion are included in the timed lifecycle and
+transition phase. Every commit still has a current endpoint read; audit cadence
+controls only the additional database/export comparison. Leases, actual archive
+deletion and checkpoint policy are common. Source-before/after bindings,
+environment/SQLite compile options, raw states and phase samples are retained in
+`results/sqlite-fanout/`. Unavailable native fcntl support is
+recorded without substituting lock or directory-fsync calls.
+
+```sh
+python -B -m unittest experiments.fanout_cadence_tests -v
+python -B -m unittest experiments.history_lifecycle_tests -v
+python -B -m experiments.fanout_cadence --check results/sqlite-fanout --tex ../paper/fanout-cadence.tex
+```
+
+For a new measurement, replace `--check` with `--out` and choose a fresh owned
+directory. Replaying/checking retained data is not a new timing run. This is not
+the requested native FrontierStore/SQLite-N/SQLite-R matched lifecycle result;
+that Linux experiment remains scientifically open. No whole-engine ordering or
+device-write conclusion follows from this API sensitivity.
+
+The newly measured Windows cohort has the semantic dataset name `sqlite-fanout`.
+Only its new directory name changed; raw samples, observed footprints, negative
+results and the consumed source-before/after bytes are unchanged. This dataset
+is not the native Linux comparison below.
+
+### Pending supported-Linux comparison
+
+`experiments/native_fanout_cadence.py` adds actual engine selection for the
+unchanged FrontierStore, SQLite-Normalized and SQLite-Rooted-Audit writers.
+The `native-fanout` job in `.github/workflows/scientific-checks.yml` runs it on
+the existing Ubuntu 24.04/Python 3.12 CI, preserving every current check:
+
+```sh
+python -B -m unittest experiments.native_fanout_cadence_tests -v
+python -B -m experiments.native_fanout_cadence --authorize-new-study --engines frontier sqlite_n sqlite_r --out "$NATIVE_FANOUT_OUT" --json-out "$NATIVE_FANOUT_OUT/verified-summary.json"
+python -B -m experiments.native_fanout_cadence --check "$NATIVE_FANOUT_OUT"
+```
+
+The output is a fresh `native-fanout` directory under `$RUNNER_TEMP`, outside
+the checkout. No retained result or exhausted historical ledger is rewritten.
+There are 36 lifecycles: widths 2/8, audit intervals 1/4, three repetitions and
+all three native engines. The six engine permutations occur twice across the
+12 paired blocks; within each width/cadence, each engine occupies every slot
+once. Each lifecycle includes workload/affected-set generation, eight shared
+updates, a bootstrap lease through update four, matched maintenance epochs at
+updates four/eight, physical historical reads after collection, release and
+actual reclamation, and a checked orderly reopen. The common empty maintenance
+transition advances all engines to the same epoch: FrontierStore publishes a
+base, SQLite-N commits the empty delta and checkpoints, and SQLite-R publishes
+its native complete pair. SQLite-N uses native FULL/WAL and never deletes live
+WAL/SHM files. SQLite-R's minimal harness collector protects the captured pair
+until lease release and fsyncs directories after confined obsolete-file unlink.
+
+The common comparison contract is quiescent, post-return durable current and
+leased endpoint equality. Native writers retain their actual synchronization
+and failure semantics. SQLite-N remains the logical SQL null: it has neither
+an independent export nor the rooted engines' atomic cross-interface selector.
+Scheduled full audits use each delivered interpreter; SQLite-R performs one
+selected-pair pass per audit call (in addition to its mandatory current read),
+not a rewritten interpretation of historical double-pass measurements.
+Phase totals separate transition, persistence, current/held reads, audits,
+maintenance, collection, release and reopen. Full wall time also includes raw
+trace instrumentation; it is not presented as uninstrumented device time.
+
+The job bounds the campaign at 360 seconds externally (300 seconds between
+cases and 60 seconds per case internally), checks/replays the saved raw
+per-transition trace and final physical endpoint, prints compact JSON summaries,
+and uploads source/ledger identities, environment/SQLite options, actual native
+fsync/flock probe, compressed traces, final stores and logs even on failure.
+The artifact name is `p021-native-fanout-<run_id>-<run_attempt>`, retained for
+14 days. A reviewed successful run may later be imported as `results/native-fanout`.
+No such Linux run has been executed or imported here. The native three-engine
+scientific gap remains open until that evidence is reviewed; this driver and
+its Windows refusal are not a three-engine result.
+
+`experiments/closure_scenario.py` actually interleaves two SQLite connections:
+separate SELECT groups produce a closed nonendpoint, while one enclosing read
+transaction returns a complete endpoint. `results/closure-scenario-20261024.json`
+retains both observations. The documented analyzer use case and exact boundary
+are in `external_inputs/clangd-usecase.md`; the SQL schedule is owned and is not
+an execution or reproduction of clangd issue 1088.
+
+This artifact supports the negative result reported in **Auditable Source�CFact Storage: Transactional Equivalence, Closure Counterexamples, and Representation Costs**. It contains:
 
 - a finite source/fact transition model;
 - the FrontierStore typed immutable-segment implementation;

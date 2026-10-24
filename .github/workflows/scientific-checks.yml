@@ -34,3 +34,53 @@ jobs:
           name: p021-owned-checks-${{ github.run_id }}-${{ github.run_attempt }}
           path: ${{ runner.temp }}/p021-owned-checks
           if-no-files-found: error
+  native-fanout:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+      PYTHONUTF8: '1'
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: '3.12'
+      - name: Reserve fresh native-fanout output without changing retained data
+        shell: bash
+        run: |
+          set -euo pipefail
+          out="$RUNNER_TEMP/p021-native-fanout-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}/native-fanout"
+          logs="$RUNNER_TEMP/p021-native-fanout-logs-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}"
+          if [[ -e "$out" || -e "$logs" ]]; then
+            echo "fresh native-fanout output path already exists" >&2
+            exit 1
+          fi
+          mkdir "$logs"
+          printf 'NATIVE_FANOUT_OUT=%s\nNATIVE_FANOUT_LOGS=%s\n' "$out" "$logs" >> "$GITHUB_ENV"
+          git rev-parse HEAD > "$logs/commit.txt"
+      - name: Check portable admission and actual small native-writer contract
+        shell: bash
+        run: |
+          set -euo pipefail
+          ulimit -v 1572864
+          timeout 45s python -B -m unittest experiments.native_fanout_cadence_tests -v 2>&1 | tee "$NATIVE_FANOUT_LOGS/tests.log"
+      - name: Run matched native FrontierStore SQLite-N and SQLite-R lifecycles
+        shell: bash
+        run: |
+          set -euo pipefail
+          ulimit -v 1572864
+          timeout 360s python -B -m experiments.native_fanout_cadence --authorize-new-study --engines frontier sqlite_n sqlite_r --out "$NATIVE_FANOUT_OUT" --json-out "$NATIVE_FANOUT_OUT/verified-summary.json" 2>&1 | tee "$NATIVE_FANOUT_LOGS/campaign.log"
+          timeout 90s python -B -m experiments.native_fanout_cadence --check "$NATIVE_FANOUT_OUT" 2>&1 | tee "$NATIVE_FANOUT_LOGS/replay.log"
+      - name: Upload raw source environment transition lease maintenance and reopen evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: p021-native-fanout-${{ github.run_id }}-${{ github.run_attempt }}
+          path: |
+            ${{ env.NATIVE_FANOUT_OUT }}/
+            ${{ env.NATIVE_FANOUT_LOGS }}/
+          include-hidden-files: true
+          if-no-files-found: error
+          retention-days: 14
