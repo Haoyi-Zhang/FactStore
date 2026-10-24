@@ -136,9 +136,18 @@ def schedule(engines=ENGINES):
 
 
 def transaction_dict(value):
+    # Transaction captures dependency sequences as tuples. Project that exact
+    # ordered content to JSON arrays before comparing it with a decoded trace.
+    # Do not drop fields, sort dependencies or relax the same-input predicate.
     return dict(source_changes=dict(value.source_changes),
-        fact_replacements=[dict(item) for item in value.fact_replacements],
+        fact_replacements=[dict(item,sources=list(item['sources'])) for item in value.fact_replacements],
         fact_retractions=list(value.fact_retractions),new_schema=value.new_schema)
+
+
+def replay_transaction(state,event,index):
+    tx=make_update(state,batch=min(8,len(state.sources)),seed=100+index)
+    require(transaction_dict(tx)==event['transaction'],'unequal input transition')
+    return tx
 
 
 def footprint(path):
@@ -431,6 +440,21 @@ def verify(out):
     require(all(probe[k] is True for k in ('file_fsync','replace','directory_fsync','flock'))
             and not probe['substitution_used'],'native persistence probe failed')
     require(not (out/'failure.json').exists(),'failed cohort is not accepted')
+    result=replay_cohort_contents(out,summary)
+    return dict(result,status='VERIFIED_FRESH_NATIVE_COHORT',source_binding_verified=True,source_unchanged=True)
+
+
+def replay_cohort_contents(out,summary=None):
+    """Replay saved data without accepting its source/environment provenance.
+
+    This separately named read-only diagnostic also permits forensic inspection
+    of an old failed run. Only verify() can report a source-bound fresh cohort;
+    it must pass all identity, native-environment and failure gates first.
+    """
+    if summary is None:
+        summary=json.loads((out/'summary.json').read_text())
+    require(summary.get('status')=='NATIVE_CASES_COMPLETED' and summary.get('native_three_engine_costs_measured'),
+            'complete native three-engine cohort required')
     expected_schedule=schedule()
     require(len(summary['rows'])==len(expected_schedule)==36,'incomplete native case matrix')
     common={}; audits=held_reads=updates=maintenance=0; medians=[]
@@ -455,8 +479,7 @@ def verify(out):
         identities=[]
         for index,event in enumerate(trace[1:-1],1):
             require(event['event']=='update' and event['index']==index,'update sequence mismatch')
-            tx=make_update(state,batch=8,seed=100+index)
-            require(transaction_dict(tx)==event['transaction'],'unequal input transition')
+            tx=replay_transaction(state,event,index)
             state,delta=apply_transaction(state,tx)
             endpoint=state.as_dict()
             require(event['current_after_update']==event['update_expected']==endpoint,'post-update durable state mismatch')
@@ -524,9 +547,9 @@ def verify(out):
         medians.append(dict(width=width,audit_interval=cadence,engine=engine,repetitions=3,
             median_wall_ms=round(statistics.median(r['lifecycle_wall_ns']/1e6 for r in group),3),
             median_phase_ms={key:round(statistics.median(r['stage_ns'][key]/1e6 for r in group),3) for key in PHASES}))
-    return dict(status='VERIFIED_FRESH_NATIVE_COHORT',cases=36,paired_blocks=12,unique_logical_streams=2,
+    return dict(status='REPLAYED_NATIVE_CONTENTS_ONLY',cases=36,paired_blocks=12,unique_logical_streams=2,
         updates=updates,maintenance_epochs=maintenance,scheduled_audits=audits,
-        held_endpoint_reads=held_reads,orderly_reopens=36,source_unchanged=True,mismatches=0,
+        held_endpoint_reads=held_reads,orderly_reopens=36,source_binding_verified=False,mismatches=0,
         medians=medians,boundary='quiescent native post-return equality/leases; SQLite-N remains a logical SQL null without an independent export/atomic cross-interface selector; no power loss or historical timing rewrite')
 
 

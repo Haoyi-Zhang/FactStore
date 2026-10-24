@@ -77,9 +77,30 @@ and uploads source/ledger identities, environment/SQLite options, actual native
 fsync/flock probe, compressed traces, final stores and logs even on failure.
 The artifact name is `p021-native-fanout-<run_id>-<run_attempt>`, retained for
 14 days. A reviewed successful run may later be imported as `results/native-fanout`.
-No such Linux run has been executed or imported here. The native three-engine
-scientific gap remains open until that evidence is reviewed; this driver and
-its Windows refusal are not a three-engine result.
+A generated cohort is accepted only after the source-bound verifier succeeds;
+case-completion lines alone do not certify a result. Transaction replay compares
+the exact ordered JSON input, including dependency arrays after trace decoding.
+The Linux smoke test also replays its saved transactions rather than testing
+only the live writer. A successful `verified-summary.json` and reviewed Linux
+job are required before importing native measurements into manuscript tables.
+An old failed run retains its own source identities and is never rebound to a
+fixed driver. The separately named `replay_cohort_contents` diagnostic returns
+a contents-only status, not fresh-source acceptance. The native three-engine
+scientific gap remains open until successful source-bound evidence is reviewed.
+
+### Compressed scientific evidence
+
+`python -B -m experiments.verify_artifact` admits the six retained lifecycle
+records and the twelve `results/sqlite-fanout` records through separate exact
+scientific consumers. For the latter, it checks the fixed case matrix and
+filenames, measured source-before/after bindings, bounded JSON decoding, every
+input/current/held endpoint, audit and lease/reclamation schedule, checkpoint
+evidence, complete raw-to-summary equality and reaggregated medians. The shared
+decoder rejects duplicate members, nonfinite values, truncated gzip and decoded
+records above 32 MiB. No directory-wide gzip or archive exception is used;
+unconsumed compressed files and packages remain errors, including adjacent
+copies with plausible names. Run these admission regressions with
+`python -B -m unittest tests.test_compressed_records -v`.
 
 `experiments/closure_scenario.py` actually interleaves two SQLite connections:
 separate SELECT groups produce a closed nonendpoint, while one enclosing read
@@ -88,7 +109,7 @@ retains both observations. The documented analyzer use case and exact boundary
 are in `external_inputs/clangd-usecase.md`; the SQL schedule is owned and is not
 an execution or reproduction of clangd issue 1088.
 
-This artifact supports the negative result reported in **Auditable Source�CFact Storage: Transactional Equivalence, Closure Counterexamples, and Representation Costs**. It contains:
+This artifact supports the negative result reported in **Auditable Source–Fact Storage: Transactional Equivalence, Closure Counterexamples, and Representation Costs**. It contains:
 
 - a finite source/fact transition model;
 - the FrontierStore typed immutable-segment implementation;
