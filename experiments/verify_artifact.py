@@ -99,8 +99,12 @@ def verify_primary_wrapper(paper: Path) -> dict:
     match = re.search(r"\\documentclass\[([^]]+)\]\{acmart\}", text)
     require(match is not None, "current primary ACM wrapper missing")
     options = tuple(part.strip() for part in match.group(1).split(","))
-    require(options == ("manuscript", "screen", "review", "anonymous"),
+    require(options in (("manuscript", "screen", "review", "anonymous"),
+                        ("manuscript", "screen", "review")),
             "current primary wrapper format differs")
+    if "anonymous" not in options:
+        require(r"\def\JournalAuthorVisible{}" in text,
+                "named wrapper must enable its supplied author declarations")
     for name in ("journal-preamble.tex", "journal-frontmatter.tex"):
         require(r"\input{" + name + "}" in text, "current primary shared source differs")
     return {"status": "SOURCE_CHECKED", "source_inspected": True,

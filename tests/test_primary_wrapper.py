@@ -11,15 +11,23 @@ class PrimaryWrapperTests(unittest.TestCase):
         root = Path(directory)
         (root/"main.tex").write_text(
             r"\documentclass["+options+r"]{acmart}"+"\n"
+            +(r"\def\JournalAuthorVisible{}"+"\n" if options == "manuscript,screen,review" else "")+
             r"\input{journal-preamble.tex}"+"\n"
             r"\input{journal-frontmatter.tex}"+"\n", encoding="utf-8")
         return root
 
     def test_current_manuscript_wrapper(self):
-        with tempfile.TemporaryDirectory() as directory:
-            result = verify_primary_wrapper(self.write_wrapper(directory, "manuscript,screen,review,anonymous"))
-            self.assertEqual("SOURCE_CHECKED", result["status"])
-            self.assertFalse(result["pdf_inspected"])
+        for options in ("manuscript,screen,review,anonymous", "manuscript,screen,review"):
+            with self.subTest(options=options), tempfile.TemporaryDirectory() as directory:
+                root = self.write_wrapper(directory, options)
+                result = verify_primary_wrapper(root)
+                self.assertEqual("SOURCE_CHECKED", result["status"])
+                self.assertFalse(result["pdf_inspected"])
+                if options == "manuscript,screen,review":
+                    text = (root/"main.tex").read_text(encoding="utf-8")
+                    (root/"main.tex").write_text(text.replace(r"\def\JournalAuthorVisible{}", ""), encoding="utf-8")
+                    with self.assertRaisesRegex(AssertionError, "must enable"):
+                        verify_primary_wrapper(root)
 
     def test_production_format_is_not_current(self):
         with tempfile.TemporaryDirectory() as directory:
