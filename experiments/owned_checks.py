@@ -13,7 +13,10 @@ import traceback
 import unittest
 from unittest.mock import patch
 
-from experiments.fresh_run import ROOT, baseline_inventory, child_cpu, source_inventory, write_json
+from experiments.fresh_run import (
+    ROOT, REGISTERED_EXTENSION_METHODS, baseline_inventory, child_cpu,
+    inventory_identity, source_inventory, validate_baseline_inventory, write_json,
+)
 from frontierstore import baselines
 from frontierstore.audit_export import check_audit_export
 from frontierstore.model import Transaction, apply_transaction, bootstrap_state, canonical_state_bytes
@@ -49,12 +52,14 @@ def initialize_sql(path: Path, state, mode="WAL") -> None:
 
 def unit_checks(report):
     inventory = source_inventory(ROOT)
-    # The retained 132-method baseline predates the run-admission, wrapper,
-    # maintenance, compressed-record and historical-byte tests. The entire current inventory is
-    # executed below; the historical baseline is not relabeled as their run.
+    # Historical identities and the entire current execution surface are
+    # separate. Registration never removes an extension from test execution.
     baseline = baseline_inventory(inventory)
-    if len(baseline) != 132:
-        raise AssertionError(f"expected the existing 132-method surface, found {len(baseline)}")
+    report.update(static_methods=len(inventory), existing_methods=len(baseline),
+                  static_inventory=inventory,
+                  historical_baseline_identity_sha256=inventory_identity(baseline),
+                  registered_extension_methods=sorted(set(inventory) & REGISTERED_EXTENSION_METHODS))
+    validate_baseline_inventory(inventory)
     loader = unittest.TestLoader()
     suite = loader.discover(str(ROOT / "tests"), pattern="test_*.py", top_level_dir=str(ROOT))
 

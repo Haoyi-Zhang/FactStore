@@ -49,6 +49,37 @@ class FreshRunTests(unittest.TestCase):
         for name in added:
             self.assertEqual(baseline, fresh_run.baseline_inventory([n for n in names if n != name]))
 
+    def test_import_extensions_keep_exact_retained_baseline_and_execute(self):
+        names = fresh_run.source_inventory(fresh_run.ROOT)
+        added = {name for name in names if name.startswith('tests.test_import_inventory.')}
+        self.assertEqual(fresh_run.REGISTERED_EXTENSION_METHODS, added)
+        self.assertEqual(4, len(added))
+        baseline = fresh_run.validate_baseline_inventory(names)
+        retained = json.loads((fresh_run.ROOT / 'results/current/linux/unit/checks.json').read_text())
+        retained_baseline = {name for name in retained['static_inventory']
+                             if not name.startswith('tests.test_fresh_run.')}
+        self.assertEqual(132, len(retained_baseline))
+        self.assertEqual(retained_baseline, set(baseline))
+        self.assertFalse(added & set(baseline))
+        suite = unittest.TestLoader().loadTestsFromName('tests.test_import_inventory')
+        self.assertEqual(len(added), suite.countTestCases())
+
+    def test_unregistered_import_method_is_not_silently_historical(self):
+        names = fresh_run.source_inventory(fresh_run.ROOT)
+        extra = 'tests.test_import_inventory.ImportInventoryTests.test_unregistered'
+        self.assertIn(extra, fresh_run.baseline_inventory(names + [extra]))
+        with self.assertRaisesRegex(AssertionError, 'identity mismatch'):
+            fresh_run.validate_baseline_inventory(names + [extra])
+
+    def test_same_count_historical_identity_substitution_is_rejected(self):
+        names = fresh_run.source_inventory(fresh_run.ROOT)
+        historical = fresh_run.baseline_inventory(names)
+        substituted = [name for name in names if name != historical[0]] + [
+            'tests.test_unreviewed.ReplacementTests.test_substituted']
+        self.assertEqual(132, len(fresh_run.baseline_inventory(substituted)))
+        with self.assertRaisesRegex(AssertionError, 'identity mismatch'):
+            fresh_run.validate_baseline_inventory(substituted)
+
     def test_exhausted_old_ledger_is_read_only(self):
         path = fresh_run.ROOT / "resource-accounting.json"
         before = path.read_bytes()

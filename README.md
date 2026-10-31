@@ -391,6 +391,15 @@ their execution records and evidence scopes are distinct.
 
 ## Current executable cases
 
+The historical 132-method baseline is bound to its exact sorted method
+identities from the retained Linux unit record, not only to its count. The four
+later import-inventory methods are explicitly registered as current extensions;
+their registration does not omit them from discovery or execution. A missing,
+extra or same-count substituted historical identity fails admission. The entire
+current static inventory must still match discovery, execute without failures
+or errors, and contain no skipped methods. This separation changes neither the
+historical test counts nor the exhausted campaign ledger.
+
 The historical guarded runner defines named cases for tests, histories, scale comparison, and attempted order control. Its lifetime allowance is exhausted: `run_bounded.py` must not admit another run or reset `resource-accounting.json`. Data-only reconstruction remains usable.
 
 For a separately authorized **new finite correctness run**, the flat artifact repository has one fixed entry point:

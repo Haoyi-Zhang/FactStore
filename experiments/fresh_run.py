@@ -29,6 +29,22 @@ BASELINE_EXCLUDED_PREFIXES = (
     'tests.test_historical_bytes.', 'tests.test_historical_admission.',
     'tests.test_native_fanout_results.',
 )
+# These four current analysis-consumer tests were added after the retained
+# run. Register exact identities, not the whole module: an unreviewed addition
+# must not silently change what is called the historical baseline.
+REGISTERED_EXTENSION_METHODS = frozenset(
+    'tests.test_import_inventory.ImportInventoryTests.' + method for method in (
+        'test_transitive_edit_and_unrelated_retention',
+        'test_negative_lookup_insertion_deletion_and_retarget',
+        'test_parse_only_and_explicit_scope',
+        'test_native_representations_consume_captured_dependencies',
+    )
+)
+FROZEN_BASELINE_COUNT = 132
+# SHA256 of sorted method IDs, each followed by LF, from the 132 historical
+# identities in results/current/linux/unit/checks.json (excluding its eight
+# then-new fresh_run tests). This is an identity binding, not a current count.
+FROZEN_BASELINE_IDENTITY_SHA256 = 'c4457e0de793f59e1722ec50fba6362f04acbd842ccab6af44ac2eec47b88633'
 
 
 def baseline_inventory(inventory: list[str]) -> list[str]:
@@ -37,7 +53,23 @@ def baseline_inventory(inventory: list[str]) -> list[str]:
     The current suite must still discover and execute every static method,
     including all of the extension modules listed here.
     """
-    return [name for name in inventory if not name.startswith(BASELINE_EXCLUDED_PREFIXES)]
+    return [name for name in inventory if not name.startswith(BASELINE_EXCLUDED_PREFIXES)
+            and name not in REGISTERED_EXTENSION_METHODS]
+
+
+def inventory_identity(names: list[str]) -> str:
+    return hashlib.sha256(('\n'.join(sorted(names)) + '\n').encode('utf-8')).hexdigest()
+
+
+def validate_baseline_inventory(inventory: list[str]) -> list[str]:
+    """Reject missing, extra or same-count substituted historical identities."""
+    baseline = baseline_inventory(inventory)
+    if (len(baseline) != FROZEN_BASELINE_COUNT
+            or inventory_identity(baseline) != FROZEN_BASELINE_IDENTITY_SHA256):
+        raise AssertionError(
+            f'historical {FROZEN_BASELINE_COUNT}-method identity mismatch: '
+            f'found {len(baseline)} methods, sha256={inventory_identity(baseline)}')
+    return baseline
 
 
 def write_json(path: Path, value: dict) -> None:
