@@ -1,5 +1,24 @@
 # FrontierStore artifact
 
+## Read-captured static analysis consumer
+
+`frontierstore/import_inventory.py` parses Python source text with the standard
+AST parser without importing or executing it. For each root module it stores
+syntactic absolute-import reachability, top-level definitions and unresolved
+module names relative to an explicit module registry. Dependencies are the
+registry plus the source texts actually read by traversal, not sorted-neighbour
+edges. Registry versioning captures absent-to-present lookup changes; a module
+addition/deletion conservatively invalidates every inventory. Relative imports
+are rejected. Dynamic imports, package search rules and runtime reachability are
+not claimed. This is an owned analysis adapter, not execution of an external
+analyzer or a performance cohort.
+
+On Linux run `python -B -m unittest tests.test_import_inventory -v`. It compares
+incremental refresh against full recomputation across transitive edits, cycles,
+retargeting, insertions and deletions, preserves unrelated facts, and persists
+the same captured transitions in all three native representations. The older
+Solidity lexical bridge remains an artificial test relation.
+
 ## Current-source fanout/cadence evidence
 
 `experiments/fanout_cadence.py` extends the owned SQLite-API lifecycle without

@@ -136,7 +136,7 @@ def render_table(result):
              r'\caption{Native matched lifecycle at 64 sources/384 facts. Each cell is the median of three eight-update lifecycle totals in milliseconds. Wall includes bootstrap and raw-trace instrumentation; phase medians are aggregated separately and do not sum to wall.}',
              r'\label{tab:native-fanout}',
              r'\begin{tabular}{@{}rrlrrrrrrr@{}}', r'\toprule',
-             r'Width & Audit every & Engine & Wall & Transition & Persist. & Current & Held & Audit & Maint. \\',
+             r'Width & \shortstack{Audit\\every} & Engine & Wall & Transition & Persist. & Current & Held & Audit & Maint. \\',
              r'\midrule']
     labels = {'frontier': r'\system', 'sqlite_n': r'\sqlnorm', 'sqlite_r': r'\sqlroot'}
     for index, row in enumerate(result['medians']):
