@@ -6,7 +6,31 @@ on:
 permissions:
   contents: read
 jobs:
+  retained-logical-export:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 5
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+      PYTHONUTF8: '1'
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: '3.12'
+      - name: Read retained complete exports and final databases without a new campaign
+        shell: bash
+        run: |
+          set -euo pipefail
+          python -B independent_sql_export/verify_archive.py --archive results/logical-sql-export/evidence.zip --scratch "$RUNNER_TEMP/logical-export-audit"
+          PYTHONPATH=independent_sql_export python -B -m unittest discover -s independent_sql_export -p test_candidate.py -v
+          PYTHONPATH=independent_sql_export python -B -O -m unittest discover -s independent_sql_export -p test_candidate.py -v
+  # Historical benchmark allowances are exhausted. Pushes retain all existing
+  # data/admission checks but must not silently launch more timed lifecycles.
+  # These explicit manual entrypoints are not evidence of a push-time rerun.
   owned-checks:
+    if: github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-24.04
     timeout-minutes: 15
     env:
@@ -35,6 +59,7 @@ jobs:
           path: ${{ runner.temp }}/p021-owned-checks
           if-no-files-found: error
   native-fanout:
+    if: github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-24.04
     timeout-minutes: 10
     env:

@@ -513,3 +513,41 @@ python -B figures/draw_schematics.py --output figures
 ## Portable path notation
 
 Published execution records use `<PYTHON_ROOT>`, `<NODE_ROOT>`, `<RUNTIME_ROOT>` and `<PROJECTS_ROOT>` for machine-local installation and workspace prefixes. These are path aliases, not literal directories; substitute the corresponding local roots when replaying a command. Recorded interpreter and dependency versions, inputs, measurements and outcomes are unchanged. File inventories bind the published portable serializations; any `recorded_` identity denotes the pre-normalization bytes.
+## Independent logical-SQL export
+
+The opt-in `independent_sql_export` implementation derives invalidation through
+SQL dependency queries and exports all four logical relations inside one read
+transaction. Its separate JSON consumer imports neither SQLite nor the producer
+model and checks the entire endpoint, not closure alone. Six authored histories
+at 16/64/256 sources and dependency widths 2/8 pass 54 endpoint pairs, 108
+separately decoded exports, 54 original import/export roundtrips, six held
+exports and 12 orderly reopens. These are synthetic correctness inputs, not
+independent applications or an equal-work performance comparison.
+
+`results/logical-sql-export/evidence.zip` losslessly retains frozen inputs,
+databases, exports, complete raw matrix, source preimages and all resource
+receipts. The optional all-database reread timed out, and the worker's archive
+attempt also timed out; both remain failed records. Ordinary delivery packaging
+preserves those originals rather than overwriting their status. The separate
+consumer can check all bytes and, in fresh private scratch, 108 exports, 12 final
+databases and six selected final roundtrips. It does not claim 54 new database
+rereads or rerun the scientific matrix:
+
+```sh
+python -B independent_sql_export/verify_archive.py --archive results/logical-sql-export/evidence.zip --scratch /owned/new-logical-audit
+python -B independent_sql_export/cli.py --database /owned/normalized.sqlite --output /owned/fresh-export.json
+```
+
+The database commit and export replacement have no shared selector and are not
+a crash-atomic pair. SQLite's physical interpreter is still trusted. Historical
+timing/source bindings and exhausted allowances are unchanged; push CI checks
+retained data and focused regressions, without automatically scheduling another
+timed lifecycle. The old manually selected benchmark jobs are not counted as
+new push-time reproductions.
+
+Durable export requires POSIX directory synchronization (use the Linux/WSL
+environment). Unsupported hosts are refused before creating or replacing the
+export. This platform preflight was added after the retained Linux matrix;
+the archive preserves that matrix's exact earlier source rather than claiming
+a new run. The supported Linux transaction/export path is otherwise unchanged.
+
