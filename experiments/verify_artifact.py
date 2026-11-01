@@ -629,6 +629,13 @@ def main() -> int:
     verified_records = verify_compressed_records(root)
     verified_records |= verify_sqlite_fanout(root)
     verified_records |= verify_native_fanout(root)
+    # The new logical-export payload is admitted only after full byte/manifest
+    # validation against its reviewed identity; other archives remain invalid.
+    from independent_sql_export.verify_archive import verify as verify_logical_archive
+    logical_archive = "results/logical-sql-export/evidence.zip"
+    verify_logical_archive(root / logical_archive,
+        expected_sha256="88452d4da639ab4f1a7bb97f8f6b7de97964d7f45159ad6318f5cbf161323a66")
+    verified_records.add(logical_archive)
     nested_archives: list[str] = []
     bad_paths: list[str] = []
     text_violations: list[str] = []
