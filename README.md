@@ -555,7 +555,9 @@ independent applications or an equal-work performance comparison.
 
 `results/logical-sql-export/evidence.zip` losslessly retains frozen inputs,
 databases, exports, complete raw matrix, source preimages and all resource
-receipts. The optional all-database reread timed out, and the worker's archive
+receipts. Two administrative records use the portable `<WORK_ROOT>` path alias,
+declared in the archive manifest; measurement data, source preimages, resource
+limits and outcomes are unchanged. The optional all-database reread timed out, and the worker's archive
 attempt also timed out; both remain failed records. Ordinary delivery packaging
 preserves those originals rather than overwriting their status. The separate
 consumer can check all bytes and, in fresh private scratch, 108 exports, 12 final

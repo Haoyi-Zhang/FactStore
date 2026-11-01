@@ -637,7 +637,7 @@ def main() -> int:
     from independent_sql_export.verify_archive import verify as verify_logical_archive
     logical_archive = "results/logical-sql-export/evidence.zip"
     verify_logical_archive(root / logical_archive,
-        expected_sha256="88452d4da639ab4f1a7bb97f8f6b7de97964d7f45159ad6318f5cbf161323a66")
+        expected_sha256="54e99e974ef87ac2af69740aaf53cfbc3f28a5a12f241cb24366059828866a95")
     verified_records.add(logical_archive)
     from experiments.import_archive_admission import verify as verify_import_archives
     verified_records |= verify_import_archives(root)

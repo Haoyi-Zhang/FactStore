@@ -120,6 +120,7 @@ def verify(archive, scratch=None, expected_sha256=None):
                 target.parent.mkdir(parents=True,exist_ok=True);target.write_bytes(data)
     result=dict(status='PASS',archive_sha256=digest,manifest_files=len(by),all_member_identities_verified=True,
         full_reconstruction_checked=scratch is not None,archive_code_executed=False,
+        path_representation=manifest.get('path_representation'),
         authenticity='Unkeyed integrity only; use externally trusted archive SHA256. Not a signature.')
     if scratch is not None:
         frozen=scratch/'inputs/raw-facts-transactions.json'
