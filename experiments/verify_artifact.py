@@ -422,7 +422,7 @@ def main() -> int:
             date.fromisoformat(row["verified_on"])
     except ValueError as error:
         raise AssertionError(f"invalid reference verification date: {error}") from error
-    require(len(references) == 62, "reference audit count changed")
+    require(len(references) == 65, "reference audit count changed")
 
     reference_manifest = read_rows(root / "publication_reference_manifest.csv")
     require(bool(reference_manifest), "publication reference manifest is empty")
@@ -460,9 +460,11 @@ def main() -> int:
     require(publication["same_scientific_source"] is True, "review/layout source divergence")
     require(publication["acceptance_critical_material_in_main_paper"] is True, "main-paper evidence surface")
     require(publication["paper_input_reconstruction_status"] == "PASS", "paper input reconstruction incomplete")
-    require(publication["reference_count"] == len(references), "publication reference count mismatch")
+    # This retained rendering cohort had62 references; later active-reference
+    # inventories are checked above and must not rewrite its recorded counts.
+    require(publication["reference_count"] == 62, "retained publication reference count mismatch")
     require(publication["reference_inventory_status"] == "PASS", "publication reference inventory incomplete")
-    require(publication.get("fully_verified_reference_count") == len(references), "publication verified-reference count mismatch")
+    require(publication.get("fully_verified_reference_count") == 62, "retained publication verified-reference count mismatch")
     require(publication.get("maximum_citation_cluster_size") == 1, "publication citation cluster boundary")
     require(publication.get("bibtex_metadata_surface_checked") is True, "publication BibTeX metadata check missing")
     require(publication.get("author_order_year_venue_checked") is True, "publication author/year/venue check missing")
@@ -522,7 +524,7 @@ def main() -> int:
         "historical_summary_rows": historical["summary_rows"],
         "current_accepted_observation_rows": current_observations,
         "claim_ledger_rows": len(claims),
-        "reference_audit_rows": len(references),
+        "reference_audit_rows": publication["reference_count"],
         "calibration_matrix_rows": len(calibration),
         "current_executable_methods_passed": current_test_count,
         "bounded_histories": int(abstract["histories"]),

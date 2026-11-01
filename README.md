@@ -1,5 +1,10 @@
 # FrontierStore artifact
 
+The active reference inventory is `reference_audit.csv` with 65 sources.
+`results/publication-surface.json` records an earlier 62-source rendering
+cohort; its page counts, anonymity and checks are historical, not the current
+companion manuscript's build or author presentation.
+
 ## Read-captured static analysis consumer
 
 ### Released-source native lifecycle

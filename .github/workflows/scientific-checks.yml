@@ -28,6 +28,10 @@ jobs:
           PYTHONPATH=independent_sql_export python -B -O -m unittest discover -s independent_sql_export -p test_candidate.py -v
       - name: Released-source import analysis and saved native lifecycle
         run: |
+          python -B -m unittest discover -s experiments -p test_publication_reference_manual.py -v
+          python -O -B -m unittest discover -s experiments -p test_publication_reference_manual.py -v
+          python -B -m unittest tests.test_native_pair_summary -v
+          python -O -B -m unittest tests.test_native_pair_summary -v
           python -B -m unittest tests.test_import_inventory tests.test_import_lifecycle -v
           python -O -B -m unittest tests.test_import_inventory tests.test_import_lifecycle -v
   # Historical benchmark allowances are exhausted. Pushes retain all existing

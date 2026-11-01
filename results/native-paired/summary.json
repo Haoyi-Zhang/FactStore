@@ -1,0 +1,159 @@
+{
+  "input_sha256": "0c576fbe3e7597661d7ba1cfe74d6d497a440df48941407a5eaa5b01abb6d395",
+  "measurements_rerun": 0,
+  "paired_blocks": 12,
+  "pairs": [
+    {
+      "audit_every": 1,
+      "differences_ms": [
+        490.240465,
+        -253.643784,
+        34.806564
+      ],
+      "frontier_wins": 1,
+      "median_difference_ms": 34.806564,
+      "sqlite_r_wins": 2,
+      "ties": 0,
+      "width": 2
+    },
+    {
+      "audit_every": 4,
+      "differences_ms": [
+        -104.441618,
+        -190.760575,
+        168.366487
+      ],
+      "frontier_wins": 2,
+      "median_difference_ms": -104.441618,
+      "sqlite_r_wins": 1,
+      "ties": 0,
+      "width": 2
+    },
+    {
+      "audit_every": 1,
+      "differences_ms": [
+        627.881237,
+        85.148868,
+        128.749963
+      ],
+      "frontier_wins": 0,
+      "median_difference_ms": 128.749963,
+      "sqlite_r_wins": 3,
+      "ties": 0,
+      "width": 8
+    },
+    {
+      "audit_every": 4,
+      "differences_ms": [
+        349.078127,
+        75.651357,
+        60.684512
+      ],
+      "frontier_wins": 0,
+      "median_difference_ms": 75.651357,
+      "sqlite_r_wins": 3,
+      "ties": 0,
+      "width": 8
+    }
+  ],
+  "phases": [
+    {
+      "audit_every": 1,
+      "engine": "frontier",
+      "median_phase_sum_ms": 702.703841,
+      "median_residual_ms": 426.45769399999995,
+      "median_wall_ms": 1128.089115,
+      "width": 2
+    },
+    {
+      "audit_every": 1,
+      "engine": "sqlite_n",
+      "median_phase_sum_ms": 446.544686,
+      "median_residual_ms": 428.97754199999997,
+      "median_wall_ms": 876.739425,
+      "width": 2
+    },
+    {
+      "audit_every": 1,
+      "engine": "sqlite_r",
+      "median_phase_sum_ms": 942.876222,
+      "median_residual_ms": 423.59801400000003,
+      "median_wall_ms": 1366.474236,
+      "width": 2
+    },
+    {
+      "audit_every": 4,
+      "engine": "frontier",
+      "median_phase_sum_ms": 602.433801,
+      "median_residual_ms": 375.533369,
+      "median_wall_ms": 978.50212,
+      "width": 2
+    },
+    {
+      "audit_every": 4,
+      "engine": "sqlite_n",
+      "median_phase_sum_ms": 395.332095,
+      "median_residual_ms": 363.321146,
+      "median_wall_ms": 758.653241,
+      "width": 2
+    },
+    {
+      "audit_every": 4,
+      "engine": "sqlite_r",
+      "median_phase_sum_ms": 710.069997,
+      "median_residual_ms": 367.920531,
+      "median_wall_ms": 1082.943738,
+      "width": 2
+    },
+    {
+      "audit_every": 1,
+      "engine": "frontier",
+      "median_phase_sum_ms": 1794.36896,
+      "median_residual_ms": 616.1881389999999,
+      "median_wall_ms": 2408.170099,
+      "width": 8
+    },
+    {
+      "audit_every": 1,
+      "engine": "sqlite_n",
+      "median_phase_sum_ms": 1175.468849,
+      "median_residual_ms": 575.6347899999998,
+      "median_wall_ms": 1751.103639,
+      "width": 8
+    },
+    {
+      "audit_every": 1,
+      "engine": "sqlite_r",
+      "median_phase_sum_ms": 1676.096757,
+      "median_residual_ms": 591.4969880000001,
+      "median_wall_ms": 2279.420136,
+      "width": 8
+    },
+    {
+      "audit_every": 4,
+      "engine": "frontier",
+      "median_phase_sum_ms": 1583.386671,
+      "median_residual_ms": 523.1849609999999,
+      "median_wall_ms": 2109.447533,
+      "width": 8
+    },
+    {
+      "audit_every": 4,
+      "engine": "sqlite_n",
+      "median_phase_sum_ms": 1093.201483,
+      "median_residual_ms": 505.845413,
+      "median_wall_ms": 1599.046896,
+      "width": 8
+    },
+    {
+      "audit_every": 4,
+      "engine": "sqlite_r",
+      "median_phase_sum_ms": 1519.8688,
+      "median_residual_ms": 512.1533580000003,
+      "median_wall_ms": 2036.460313,
+      "width": 8
+    }
+  ],
+  "scope": "Three paired repetitions per configuration; residuals include checks/conversions/footprint and trace emission; no uninstrumented speedup estimated",
+  "status": "PASS"
+}

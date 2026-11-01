@@ -48,6 +48,9 @@ REGISTERED_EXTENSION_METHODS |= frozenset(
     )
 )
 FROZEN_BASELINE_COUNT = 132
+REGISTERED_EXTENSION_METHODS |= frozenset({
+    'tests.test_native_pair_summary.NativePairSummaryTests.test_native_paired_reversal_and_phase_reconciliation',
+})
 # SHA256 of sorted method IDs, each followed by LF, from the 132 historical
 # identities in results/current/linux/unit/checks.json (excluding its eight
 # then-new fresh_run tests). This is an identity binding, not a current count.

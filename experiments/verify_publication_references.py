@@ -30,6 +30,16 @@ AUDIT_COLUMNS = {
 MANIFEST_COLUMNS = {"bibtex_key", "title", "manuscript_role", "stable_locator"}
 
 
+def valid_bibliography_year(fields: dict[str, str]) -> bool:
+    """Undated technical manuals are not assigned an invented publication year."""
+    year = fields.get("year", "").strip()
+    return bool(re.fullmatch(r"[12][0-9]{3}", year)) or (
+        fields.get("entry_type") == "manual" and year == "n.d."
+        and bool(fields.get("note", "").strip())
+        and fields.get("url", "").startswith("https://")
+    )
+
+
 def fail(message: str) -> None:
     raise AssertionError(message)
 
@@ -349,7 +359,7 @@ def main() -> int:
             for field in ("author", "title", "year"):
                 if not fields.get(field, "").strip():
                     fail(f"bibliography: missing {field} for {key}")
-            if not re.fullmatch(r"[12][0-9]{3}", fields["year"].strip()):
+            if not valid_bibliography_year(fields):
                 fail(f"bibliography: invalid year for {key}: {fields['year']}")
             if not any(fields.get(field, "").strip() for field in ("journal", "booktitle", "note")):
                 fail(f"bibliography: missing publication venue/note for {key}")
@@ -370,6 +380,7 @@ def main() -> int:
                 "inproceedings": "peer-reviewed conference paper",
                 "article": "peer-reviewed journal article",
                 "misc": "scholarly preprint",
+                "manual": "technical documentation",
             }.get(fields["entry_type"])
             if expected_kind is None or audit[key]["publication_kind"] != expected_kind:
                 fail(f"bibliography entry type differs from audited publication kind for {key}")
@@ -402,6 +413,7 @@ def main() -> int:
             "conference_reference_count": sum(1 for fields in bibliography_entries.values() if fields["entry_type"] == "inproceedings"),
             "journal_reference_count": sum(1 for fields in bibliography_entries.values() if fields["entry_type"] == "article"),
             "preprint_reference_count": sum(1 for fields in bibliography_entries.values() if fields["entry_type"] == "misc"),
+            "technical_documentation_count": sum(1 for fields in bibliography_entries.values() if fields["entry_type"] == "manual"),
             "bibtex_metadata_surface_checked": True,
             "author_order_year_venue_checked": True,
         })

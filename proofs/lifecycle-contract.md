@@ -73,12 +73,15 @@ Six PASSIVE results report status zero while incomplete; six held TRUNCATE calls
 are busy; all six release TRUNCATE calls complete. All 36 checkpoint observations
 are retained, with 90 full raw event records and 72 actual archive-file deletions.
 
-Only the API stage ran on Windows. Neither POSIX directory synchronization nor
-fcntl locking was stubbed; the segment engine was not run. A native same-history,
-same-persistence FrontierStore/SQLite-R/SQLite-N lifecycle comparison remains
-unclosed and must include the stronger audit-lease interface where claimed.
-Current timings are one descriptive repetition in fixed policy order with page
-cache retained, not a statistical ranking, deployment benefit or device result.
+The preceding API stage ran on Windows; neither POSIX directory synchronization
+nor fcntl locking was stubbed, and it did not run the segment engine. The later
+retained `results/native-fanout` cohort supplies the scoped three-native-engine
+comparison: 36 lifecycles with common input histories, maintenance/lease
+schedules and quiescent endpoint checks. SQLite-N is the logical-only null;
+SQLite-R supplies the independently audited database/export interface. Native
+synchronization differences remain explicit. The earlier one-repetition API
+timings are not relabeled as that Linux cohort. Neither activity establishes
+power-loss behavior, a deployment benefit, or a universal storage ranking.
 
 Primary API sources read for this argument (2026-10-14):
 
