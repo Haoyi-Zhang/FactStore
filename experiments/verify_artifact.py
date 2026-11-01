@@ -6,9 +6,14 @@ import ast
 import csv
 import json
 import re
+import sys
 import tempfile
 from datetime import date
 from pathlib import Path
+
+if __package__ in (None, ""):
+    # Keep the direct-script CLI independent of PYTHONPATH and the working directory.
+    sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from experiments.generate_paper_values import render_paper_values
 from experiments.journal_robustness import run as reconstruct_journal_robustness

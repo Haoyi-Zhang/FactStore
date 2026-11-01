@@ -346,7 +346,7 @@ Run these commands from the artifact root. Use a fresh destination for `summariz
 ```sh
 mkdir -p ../summary-reconstruction ../current-summary-reconstruction ../paper-input-reconstruction
 PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=. python experiments/verify_checked_results.py --results results
-PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=. python experiments/verify_artifact.py
+python -B experiments/verify_artifact.py
 PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=. python experiments/verify_publication_references.py
 PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=. python experiments/verify_reviewer_repairs.py --output ../reviewer-repairs.json
 PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=. python experiments/summarize_results.py --results results --output ../summary-reconstruction
@@ -354,6 +354,8 @@ PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=. python experiments/summarize_current.py -
 PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=. python experiments/generate_paper_values.py --output ../paper-input-reconstruction/paper-values.tex
 PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=. python experiments/journal_robustness.py --results results/current --output ../current-summary-reconstruction/journal-robustness.json
 ```
+
+The direct `verify_artifact.py` command needs no `PYTHONPATH`; imports and evidence paths are bound to the script's artifact root. Its subprocess regression runs with `python -B -m unittest tests.test_verifier_cli -v` (also with `-O`).
 
 `verify_publication_references.py` fails closed unless the audit and publication manifest contain the same duplicate-free inventory of at least 55 scholarly references, every audit row has closed metadata and passage-fit status with a valid date, and titles and stable locators agree. When the paper sources are available, run this extended check from the project root:
 
