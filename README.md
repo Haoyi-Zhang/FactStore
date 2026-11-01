@@ -2,6 +2,35 @@
 
 ## Read-captured static analysis consumer
 
+### Released-source native lifecycle
+
+`experiments/import_lifecycle.py` connects the inventory to all eight non-test
+modules in two exact licensed released package snapshots. Four module texts
+change. The authored intermediate schedule replaces those four texts in lexical
+order; it is not a natural commit sequence. The registry-possible relation now
+also visits explicitly registered named submodules in from-imports. It still
+does not resolve dynamic Python attributes, import hooks or runtime bindings.
+
+```sh
+python -B -m unittest tests.test_import_inventory tests.test_import_lifecycle -v
+python -B -m experiments.report_import_lifecycle --output ../paper/import-lifecycle-results.tex
+```
+
+The fresh native Linux activity in `results/import-lifecycle` has three engine
+lifecycles and twelve source-update transitions, with a retained initial reader,
+middle maintenance/collection, release, actual reclamation and orderly reopen.
+Every current/held endpoint and decoded final store agrees. Both incremental
+refresh and full recomputation receive identical source bundles; actual read
+callbacks record 79 versus 96 source parses and 1,313,745 versus 1,416,208 source
+bytes per engine. This is avoided analysis-read work, not a timing or engine
+speedup. The old negative timing results and exhausted historical allowances
+are unchanged. The independent saved-result check reconstructs transitions and
+opens every final native store from its byte-bound archive; it does not recover
+historical files that were legitimately reclaimed or simulate power loss.
+
+The exact parser-only input texts, original MIT notices and release identities
+are in `data/import-releases`. No external source is imported or executed.
+
 `frontierstore/import_inventory.py` parses Python source text with the standard
 AST parser without importing or executing it. For each root module it stores
 syntactic absolute-import reachability, top-level definitions and unresolved

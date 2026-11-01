@@ -44,6 +44,19 @@ class ImportInventoryTests(unittest.TestCase):
         with self.assertRaises(SyntaxError):
             bootstrap({"app": "def broken("})
 
+    def test_registered_from_submodule_and_observed_real_reads(self):
+        modules={'app':'from pkg import child','pkg':'pass','pkg.child':'def before(): pass','unused':'pass'}
+        reads=[];state=bootstrap(modules,observe=lambda key,size:reads.append((key,size)))
+        self.assertIn('py.src.pkg.child',dict(state.facts['py.fact.app'].dependencies))
+        updated=dict(modules,**{'pkg.child':'def after(): pass'})
+        current=[];new,delta,_=refresh(state,updated,observe=lambda key,size:current.append((key,size)))
+        self.assertIn('py.fact.app',delta.fact_put)
+        self.assertNotIn('py.fact.unused',delta.fact_put)
+        self.assertTrue(all(size>=0 for _,size in current))
+        self.assert_full_recompute(new,updated)
+        added=dict(updated,**{'pkg.new':'pass'})
+        newest,_,_=refresh(new,added);self.assert_full_recompute(newest,added)
+
     def test_native_representations_consume_captured_dependencies(self):
         from frontierstore.baselines import SQLiteNormalized, SQLiteRootedAudit
         from frontierstore.store import FrontierStore

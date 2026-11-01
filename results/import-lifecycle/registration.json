@@ -1,0 +1,36 @@
+{
+  "changed_modules": [
+    "pyflakes",
+    "pyflakes.api",
+    "pyflakes.checker",
+    "pyflakes.messages"
+  ],
+  "engines": [
+    "frontier",
+    "sqlite_n",
+    "sqlite_r"
+  ],
+  "held_endpoint": "complete bootstrap analysis",
+  "intermediate_schedule": "lexically ordered one-module replacements, authored interleaving of real released endpoint bytes",
+  "maintenance": "after middle update and after release; common empty epoch and native maintenance",
+  "modules": 8,
+  "observation": "exact persisted current, historical leased endpoint, full recomputation, actual read callbacks and reclaim/reopen",
+  "performance_claim": false,
+  "releases": [
+    "2.1.1",
+    "2.2.0"
+  ],
+  "source_bindings": {
+    "data/import-releases/sources.json": "8de0ffbed61d55c5c73e7359a77197c9b53a8bbfc05e0c558e0c1dae4cddf034",
+    "data/import-releases/sources.zip": "94d7f6ee01e175ae20b8656338a0cb62665d96e8a6030bdd7a42f42e06e7e65d",
+    "experiments/import_lifecycle.py": "2607b2582681a56efebff1395053ce5d79d24e7e4f39e88658e86a3c0ea656ea",
+    "experiments/native_fanout_cadence.py": "0f271ff8220695756c28c4710c8a42904bab6c8389ab6c04ef05884a100a0bd2",
+    "frontierstore/audit_export.py": "02bf691b0fea70e13684de928c313c8e0d4c67ed9534d484529db8bc375930d1",
+    "frontierstore/baselines.py": "b8f7e947feb2034b458649b8cb8ac17575fe0a35affd838d2c93575ae139b089",
+    "frontierstore/checker.py": "2695c15947bd2651bb264499b69815a1e4222ec28ee6b6635a2a9fc0189b664c",
+    "frontierstore/import_inventory.py": "5ef151d04e37e752a2e26fe425ae25216f7c5c1894da16be4125c4cdd58f4c2d",
+    "frontierstore/model.py": "7b887161b78d6354a7c7218c3030f1562ed17704a0205b7dc6987244abca96a5",
+    "frontierstore/store.py": "1f344ee9b6be74ca42a4c5a962a75c867ce60beda3e7ee3583125231d5d34672"
+  },
+  "wall_campaign_cap_seconds": 120
+}

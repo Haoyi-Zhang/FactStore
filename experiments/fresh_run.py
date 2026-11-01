@@ -29,7 +29,7 @@ BASELINE_EXCLUDED_PREFIXES = (
     'tests.test_historical_bytes.', 'tests.test_historical_admission.',
     'tests.test_native_fanout_results.',
 )
-# These four current analysis-consumer tests were added after the retained
+# These registered analysis-consumer tests were added after the retained
 # run. Register exact identities, not the whole module: an unreviewed addition
 # must not silently change what is called the historical baseline.
 REGISTERED_EXTENSION_METHODS = frozenset(
@@ -38,8 +38,9 @@ REGISTERED_EXTENSION_METHODS = frozenset(
         'test_negative_lookup_insertion_deletion_and_retarget',
         'test_parse_only_and_explicit_scope',
         'test_native_representations_consume_captured_dependencies',
+        'test_registered_from_submodule_and_observed_real_reads',
     )
-)
+) | frozenset({'tests.test_import_lifecycle.ImportLifecycleTests.test_complete_captured_native_lifecycle'})
 FROZEN_BASELINE_COUNT = 132
 # SHA256 of sorted method IDs, each followed by LF, from the 132 historical
 # identities in results/current/linux/unit/checks.json (excluding its eight

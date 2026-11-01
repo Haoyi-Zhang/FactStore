@@ -29,12 +29,14 @@ def source_bundle(modules: Mapping[str, str]) -> dict[str, str]:
             **{registry[name]: text for name, text in captured.items()}}
 
 
-def inventory(payloads: Mapping[str, str], root: str) -> dict:
+def inventory(payloads: Mapping[str, str], root: str, *, observe=None) -> dict:
     reads = set()
 
     def read(identifier):
         reads.add(identifier)
-        return payloads[identifier]
+        value=payloads[identifier]
+        if observe is not None:observe(identifier,len(value.encode('utf-8')))
+        return value
 
     registry = json.loads(read(REGISTRY))
     if root not in registry:
@@ -60,6 +62,10 @@ def inventory(payloads: Mapping[str, str], root: str) -> dict:
                 if node.level:
                     raise ValueError("relative imports outside inventory contract")
                 pending.append(node.module)
+                # The explicit registry, not runtime attribute resolution,
+                # determines possible submodule references for this relation.
+                pending.extend(node.module+'.'+alias.name for alias in node.names
+                               if alias.name!='*' and node.module+'.'+alias.name in registry)
     return {"id": "py.fact." + root,
             "payload": json.dumps({"reachable": sorted(visited),
                                    "unresolved": sorted(missing),
@@ -67,12 +73,12 @@ def inventory(payloads: Mapping[str, str], root: str) -> dict:
             "sources": sorted(reads)}
 
 
-def bootstrap(modules: Mapping[str, str]) -> State:
+def bootstrap(modules: Mapping[str, str], *, observe=None) -> State:
     bundle = source_bundle(modules)
-    return bootstrap_state(bundle, [inventory(bundle, root) for root in sorted(modules)])
+    return bootstrap_state(bundle, [inventory(bundle, root,observe=observe) for root in sorted(modules)])
 
 
-def refresh(old: State, modules: Mapping[str, str]):
+def refresh(old: State, modules: Mapping[str, str], *, observe=None):
     """Recompute old read dependents plus new roots; retain unaffected facts.
 
     Registry changes conservatively invalidate every inventory. This captures
@@ -88,6 +94,6 @@ def refresh(old: State, modules: Mapping[str, str]):
     replace = (affected | (set(roots) - set(old.facts))) & set(roots)
     tx = Transaction(source_changes=changes,
                      fact_retractions=sorted(set(old.facts) - set(roots)),
-                     fact_replacements=[inventory(bundle, roots[key]) for key in sorted(replace)])
+                     fact_replacements=[inventory(bundle, roots[key],observe=observe) for key in sorted(replace)])
     state, delta = apply_transaction(old, tx)
     return state, delta, tx

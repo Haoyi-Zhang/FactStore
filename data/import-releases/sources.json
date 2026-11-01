@@ -1,0 +1,86 @@
+{
+  "contract": "Registry-possible syntactic absolute prefix/submodule reachability, not runtime import resolution",
+  "releases": [
+    {
+      "modules": {
+        "pyflakes/__init__.py": {
+          "bytes": 22,
+          "sha256": "021b76dbde63f05b3067e9cf6287c262bddf059e94c9fd2d8537e5e4e7369960"
+        },
+        "pyflakes/__main__.py": {
+          "bytes": 105,
+          "sha256": "f619ad4eaa38a8043077bd5fd9e91630881be777ebc4657011a6c55861bf5a21"
+        },
+        "pyflakes/api.py": {
+          "bytes": 6396,
+          "sha256": "23e73e8e4c04a731c8e38ad36ca799b4b4dfec530acc2e24de0eeebd20307f57"
+        },
+        "pyflakes/checker.py": {
+          "bytes": 61215,
+          "sha256": "bf1107816c5b812d3c10c5c8bb0f17cbc0f4a9cf20dfceb9d18ab83c5bff329f"
+        },
+        "pyflakes/messages.py": {
+          "bytes": 7575,
+          "sha256": "1e5a4cf05d26fa3c170b936f38d907b630a1f6baf7ec9ec640eac62dce03e188"
+        },
+        "pyflakes/reporter.py": {
+          "bytes": 2715,
+          "sha256": "c638e55292f046955947fa9ec4061cebdd4b7e350ba682dd9893ab7c2a8ae04b"
+        },
+        "pyflakes/scripts/__init__.py": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "pyflakes/scripts/pyflakes.py": {
+          "bytes": 287,
+          "sha256": "9a4336f8b5328b58ba66de3eabbafae9f249bb82529c1e748162933c52c9966a"
+        }
+      },
+      "registry": "https://pypi.org/pypi/pyflakes/2.1.1/json",
+      "release": "2.1.1",
+      "wheel": "pyflakes-2.1.1-py2.py3-none-any.whl",
+      "wheel_sha256": "17dbeb2e3f4d772725c777fabc446d5634d1038f234e77343108ce445ea69ce0"
+    },
+    {
+      "modules": {
+        "pyflakes/__init__.py": {
+          "bytes": 22,
+          "sha256": "5727fa3fa50264a15e42d47362e8cf9857dd96a49f9dcd355443161373b466b0"
+        },
+        "pyflakes/__main__.py": {
+          "bytes": 105,
+          "sha256": "f619ad4eaa38a8043077bd5fd9e91630881be777ebc4657011a6c55861bf5a21"
+        },
+        "pyflakes/api.py": {
+          "bytes": 6647,
+          "sha256": "72e2dda9d3d17875a0ceb59b4de30e6d7a6c4be97e2e3e00d5ccfc517e649003"
+        },
+        "pyflakes/checker.py": {
+          "bytes": 79233,
+          "sha256": "740acb9bef00dd00d3d6cdae84f17230fce80c5537864dba1a4fe55ca9248f94"
+        },
+        "pyflakes/messages.py": {
+          "bytes": 10908,
+          "sha256": "ed3091b2d37c73609eb796e300b2a6594db8da3f3690cb60a38715712c343533"
+        },
+        "pyflakes/reporter.py": {
+          "bytes": 2715,
+          "sha256": "c638e55292f046955947fa9ec4061cebdd4b7e350ba682dd9893ab7c2a8ae04b"
+        },
+        "pyflakes/scripts/__init__.py": {
+          "bytes": 0,
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        "pyflakes/scripts/pyflakes.py": {
+          "bytes": 287,
+          "sha256": "9a4336f8b5328b58ba66de3eabbafae9f249bb82529c1e748162933c52c9966a"
+        }
+      },
+      "registry": "https://pypi.org/pypi/pyflakes/2.2.0/json",
+      "release": "2.2.0",
+      "wheel": "pyflakes-2.2.0-py2.py3-none-any.whl",
+      "wheel_sha256": "0d94e0e05a19e57a99444b6ddcf9a6eb2e5c68d3ca1e98e90707af8152c90a92"
+    }
+  ],
+  "selection": "All .py modules below pyflakes/ outside test/, prior to parser observations"
+}

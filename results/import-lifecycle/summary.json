@@ -1,0 +1,107 @@
+{
+  "changed_modules": 4,
+  "engines": 3,
+  "modules": 8,
+  "native_transitions": 12,
+  "natural_intermediate_commit_history": false,
+  "performance_claim": false,
+  "power_loss_or_cross_process_pins_tested": false,
+  "released_endpoint_pairs": 1,
+  "rows": [
+    {
+      "all_endpoints_equal": true,
+      "collection": {
+        "method": "native pin-aware collector",
+        "removed": [
+          "segment-00000001.jsonl",
+          "segment-00000004.jsonl",
+          "segment-00000005.jsonl",
+          "segment-00000006.jsonl"
+        ]
+      },
+      "engine": "frontier",
+      "full_source_bytes": 1416208,
+      "full_source_reads": 96,
+      "incremental_source_bytes": 1313745,
+      "incremental_source_reads": 79,
+      "maintenance": {
+        "method": "native base compaction",
+        "selected": [
+          "segment-00000007.jsonl"
+        ]
+      },
+      "orderly_reopen_equal": true,
+      "released": {
+        "released": true
+      },
+      "updates": 4
+    },
+    {
+      "all_endpoints_equal": true,
+      "collection": {
+        "method": "SQLite owns WAL lifetime; reclaimed by maintenance/release checkpoint",
+        "removed": []
+      },
+      "engine": "sqlite_n",
+      "full_source_bytes": 1416208,
+      "full_source_reads": 96,
+      "incremental_source_bytes": 1313745,
+      "incremental_source_reads": 79,
+      "maintenance": {
+        "checkpoint": {
+          "held": false,
+          "mode": "TRUNCATE",
+          "result": [
+            0,
+            0,
+            0
+          ],
+          "wal_bytes": 0
+        },
+        "method": "empty logical commit plus native WAL checkpoint"
+      },
+      "orderly_reopen_equal": true,
+      "released": {
+        "held": false,
+        "mode": "TRUNCATE",
+        "result": [
+          0,
+          0,
+          0
+        ],
+        "wal_bytes": 0
+      },
+      "updates": 4
+    },
+    {
+      "all_endpoints_equal": true,
+      "collection": {
+        "method": "single-owner harness lease protects captured native pair; confined unlink + directory fsync",
+        "removed": [
+          "images/image-00000001.sqlite",
+          "images/image-00000004.sqlite",
+          "images/image-00000005.sqlite",
+          "images/image-00000006.sqlite",
+          "exports/audit-00000001.json",
+          "exports/audit-00000004.json",
+          "exports/audit-00000005.json",
+          "exports/audit-00000006.json"
+        ]
+      },
+      "engine": "sqlite_r",
+      "full_source_bytes": 1416208,
+      "full_source_reads": 96,
+      "incremental_source_bytes": 1313745,
+      "incremental_source_reads": 79,
+      "maintenance": {
+        "method": "empty logical commit publishes native full image/export pair"
+      },
+      "orderly_reopen_equal": true,
+      "released": {
+        "released": true
+      },
+      "updates": 4
+    }
+  ],
+  "status": "PASS"
+}

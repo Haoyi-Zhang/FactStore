@@ -26,6 +26,10 @@ jobs:
           python -B independent_sql_export/verify_archive.py --archive results/logical-sql-export/evidence.zip --scratch "$RUNNER_TEMP/logical-export-audit"
           PYTHONPATH=independent_sql_export python -B -m unittest discover -s independent_sql_export -p test_candidate.py -v
           PYTHONPATH=independent_sql_export python -B -O -m unittest discover -s independent_sql_export -p test_candidate.py -v
+      - name: Released-source import analysis and saved native lifecycle
+        run: |
+          python -B -m unittest tests.test_import_inventory tests.test_import_lifecycle -v
+          python -O -B -m unittest tests.test_import_inventory tests.test_import_lifecycle -v
   # Historical benchmark allowances are exhausted. Pushes retain all existing
   # data/admission checks but must not silently launch more timed lifecycles.
   # These explicit manual entrypoints are not evidence of a push-time rerun.
