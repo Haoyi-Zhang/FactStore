@@ -11,28 +11,30 @@ class PrimaryWrapperTests(unittest.TestCase):
         root = Path(directory)
         (root/"main.tex").write_text(
             r"\documentclass["+options+r"]{acmart}"+"\n"
-            +(r"\def\JournalAuthorVisible{}"+"\n" if options == "manuscript,screen,review" else "")+
+            +(r"\def\JournalAuthorVisible{}"+"\n" if options == "acmsmall,screen,review" else "")+
             r"\input{journal-preamble.tex}"+"\n"
             r"\input{journal-frontmatter.tex}"+"\n", encoding="utf-8")
         return root
 
     def test_current_manuscript_wrapper(self):
-        for options in ("manuscript,screen,review,anonymous", "manuscript,screen,review"):
+        for options in ("acmsmall,screen,review,anonymous", "acmsmall,screen,review"):
             with self.subTest(options=options), tempfile.TemporaryDirectory() as directory:
                 root = self.write_wrapper(directory, options)
                 result = verify_primary_wrapper(root)
                 self.assertEqual("SOURCE_CHECKED", result["status"])
                 self.assertFalse(result["pdf_inspected"])
-                if options == "manuscript,screen,review":
+                if options == "acmsmall,screen,review":
                     text = (root/"main.tex").read_text(encoding="utf-8")
                     (root/"main.tex").write_text(text.replace(r"\def\JournalAuthorVisible{}", ""), encoding="utf-8")
                     with self.assertRaisesRegex(AssertionError, "must enable"):
                         verify_primary_wrapper(root)
 
     def test_production_format_is_not_current(self):
+        # Retain the registered historical test identity; the current assertion
+        # now follows the journal-specific TOS submission rule, not its old name.
         with tempfile.TemporaryDirectory() as directory:
             with self.assertRaisesRegex(AssertionError, "format differs"):
-                verify_primary_wrapper(self.write_wrapper(directory, "acmsmall,screen,review,anonymous"))
+                verify_primary_wrapper(self.write_wrapper(directory, "manuscript,screen,review,anonymous"))
 
     def test_standalone_code_checkout_does_not_claim_paper_inspection(self):
         with tempfile.TemporaryDirectory() as directory:
@@ -42,7 +44,7 @@ class PrimaryWrapperTests(unittest.TestCase):
 
     def test_additional_manuscript_entry_is_rejected(self):
         with tempfile.TemporaryDirectory() as directory:
-            root = self.write_wrapper(directory, "manuscript,screen,review,anonymous")
+            root = self.write_wrapper(directory, "acmsmall,screen,review,anonymous")
             (root / "alternate.tex").write_text(
                 r"\documentclass[manuscript,review]{acmart}", encoding="utf-8")
             with self.assertRaisesRegex(AssertionError, "multiple manuscript entry points"):
@@ -50,7 +52,7 @@ class PrimaryWrapperTests(unittest.TestCase):
 
     def test_included_fragment_is_not_another_entry(self):
         with tempfile.TemporaryDirectory() as directory:
-            root = self.write_wrapper(directory, "manuscript,screen,review,anonymous")
+            root = self.write_wrapper(directory, "acmsmall,screen,review,anonymous")
             (root / "body.tex").write_text(r"\section{Introduction}", encoding="utf-8")
             result = verify_primary_wrapper(root)
             self.assertEqual(["main.tex"], result["entry_points"])

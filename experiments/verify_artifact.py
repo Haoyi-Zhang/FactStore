@@ -99,8 +99,11 @@ def verify_primary_wrapper(paper: Path) -> dict:
     match = re.search(r"\\documentclass\[([^]]+)\]\{acmart\}", text)
     require(match is not None, "current primary ACM wrapper missing")
     options = tuple(part.strip() for part in match.group(1).split(","))
-    require(options in (("manuscript", "screen", "review", "anonymous"),
-                        ("manuscript", "screen", "review")),
+    # TOS's specific submission guide requires acmsmall. This overrides the
+    # generic ACM manuscript-template recommendation. Retained render records
+    # below continue to describe their actual historical formats.
+    require(options in (("acmsmall", "screen", "review", "anonymous"),
+                        ("acmsmall", "screen", "review")),
             "current primary wrapper format differs")
     if "anonymous" not in options:
         require(r"\def\JournalAuthorVisible{}" in text,
