@@ -80,6 +80,16 @@ def require(condition: bool, message: str) -> None:
         raise AssertionError(message)
 
 
+def publication_inventory_counts(references: list[dict], publication: dict) -> dict:
+    """Keep active inventory counts separate from the retained rendering cohort."""
+    return {
+        "reference_audit_rows": len(references),
+        "retained_rendering_reference_rows": publication["reference_count"],
+        "retained_rendering_review_pages": int(publication["review_pages"]),
+        "retained_rendering_tos_layout_pages": int(publication["tos_layout_pages"]),
+    }
+
+
 def verify_primary_wrapper(paper: Path) -> dict:
     """Inspect the current wrapper when papers accompany the code checkout.
 
@@ -524,9 +534,9 @@ def main() -> int:
         "historical_summary_rows": historical["summary_rows"],
         "current_accepted_observation_rows": current_observations,
         "claim_ledger_rows": len(claims),
-        "reference_audit_rows": publication["reference_count"],
+        **publication_inventory_counts(references, publication),
         "calibration_matrix_rows": len(calibration),
-        "current_executable_methods_passed": current_test_count,
+        "retained_repair_executable_methods_passed": current_test_count,
         "bounded_histories": int(abstract["histories"]),
         "bounded_intermediate_states": int(abstract["intermediate_states"]),
         "abstract_publication_cuts": int(abstract["crash_cuts"]),
@@ -540,7 +550,7 @@ def main() -> int:
         "rooted_audit_timed_pair_passes": 2,
         # Maintenance metadata accompanies the retained repair record, not a
         # claim that later files were parsed by that historical execution.
-        "python_sources_parsed": json.loads(
+        "retained_repair_python_sources_parsed": json.loads(
             (root / "results/current/reviewer-repairs/verification.json").read_text(encoding="utf-8")
         )["f6"]["python_sources_parsed"],
         "joint_updates": int(joint["updates"]),
@@ -554,8 +564,6 @@ def main() -> int:
         "retired_prefix_history_count": 769,
         "retired_prefix_intermediate_states": 2913,
         "retired_prefix_publication_cuts": 7690,
-        "paper_review_pages": int(publication["review_pages"]),
-        "paper_tos_layout_pages": int(publication["tos_layout_pages"]),
         "resource_cpu_upper_bound_seconds": float(resource["campaign_cpu_upper_bound_seconds"]),
         "remaining_scientific_run_allowance_seconds": 0,
         "resource_accounting": "resource-accounting.json",

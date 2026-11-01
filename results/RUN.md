@@ -60,7 +60,7 @@ The artifact retains two independent publication-side inventories:
 - `reference_audit.csv`, which records bibliographic metadata, the exact manuscript role, inspected support, and a stable locator;
 - `publication_reference_manifest.csv`, a compact release inventory of key, title, manuscript role, and stable locator.
 
-The artifact-only command above requires a duplicate-free exact match between those two surfaces and enforces a floor of 55 scholarly entries. The delivered inventory has 62 entries. From the complete project root, the stronger source-coupled check is:
+The artifact-only command above requires a duplicate-free exact match between those two surfaces and enforces a floor of 55 scholarly entries. The delivered inventory has 65 entries. From the complete project root, the stronger source-coupled check is:
 
 ```sh
 PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=artifact \
@@ -71,7 +71,7 @@ python artifact/experiments/verify_publication_references.py \
   --bib paper/references.bib
 ```
 
-That mode also requires exact set equality among all citation keys in `paper/main.tex`, all entries in `paper/references.bib`, and both artifact inventories. It requires closed metadata and passage-fit status for all 62 audit rows, checks audited author order, year, venue, title, publication kind, and encoded DOI/arXiv agreement, and rejects citation commands containing multiple keys. Consequently, an uncited padding entry, missing BibTeX record, duplicate key, unresolved audit row, mismatched title/locator, or citation pile makes the verification fail.
+That mode also requires exact set equality among all citation keys in `paper/main.tex`, all entries in `paper/references.bib`, and both artifact inventories. It requires closed metadata and passage-fit status for all 65 audit rows, checks audited author order, year, venue, title, publication kind, and encoded DOI/arXiv agreement, and rejects citation commands containing multiple keys. Consequently, an uncited padding entry, missing BibTeX record, duplicate key, unresolved audit row, mismatched title/locator, or citation pile makes the verification fail.
 
 ## Metric boundaries
 

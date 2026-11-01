@@ -366,7 +366,7 @@ python artifact/experiments/verify_publication_references.py \
   --bib paper/references.bib
 ```
 
-Extended mode also requires exact equality among manuscript citation keys, BibTeX entries, the passage audit, and the publication manifest; checks audited author order, year, venue, title, publication kind, and DOI/arXiv locator agreement where encoded; and rejects multi-key citation commands. The delivered paper contains 62 cited entries, all 62 audit rows are closed, and the largest citation command contains one key.
+Extended mode also requires exact equality among manuscript citation keys, BibTeX entries, the passage audit, and the publication manifest; checks audited author order, year, venue, title, publication kind, and DOI/arXiv locator agreement where encoded; and rejects multi-key citation commands. The delivered paper contains 65 cited entries, all 65 audit rows are closed, and the largest citation command contains one key.
 
 `journal_robustness.py` deterministically reconstructs distribution summaries, paired differences, and TeX macros from the 264 already accepted rows. It executes no storage engine, uses a fixed bootstrap seed, and states a fixed-order conditional inference boundary. The package verifier byte-compares all four retained journal-robustness outputs.
 
@@ -515,7 +515,7 @@ ranking or new-store novelty.
 - `results/current/`: retained current, pilot, failed/excluded, order-control, and summary evidence.
 - `claim_evidence_ledger.csv`: manuscript claims mapped to arguments, code, tests, results, maturity, and limitations.
 - `calibration_matrix.csv`: complete-paper venue and related-work calibration.
-- `reference_audit.csv` and `publication_reference_manifest.csv`: the 62-entry passage audit and exact publication inventory.
+- `reference_audit.csv` and `publication_reference_manifest.csv`: the 65-entry passage audit and exact publication inventory.
 - `external_resources.csv` and `external_inputs/`: provenance, licenses, and lawful text inputs.
 - `FORMAT.md`: exact durable byte-format and publication contract.
 
