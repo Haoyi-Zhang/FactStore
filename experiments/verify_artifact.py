@@ -639,6 +639,8 @@ def main() -> int:
     verify_logical_archive(root / logical_archive,
         expected_sha256="88452d4da639ab4f1a7bb97f8f6b7de97964d7f45159ad6318f5cbf161323a66")
     verified_records.add(logical_archive)
+    from experiments.import_archive_admission import verify as verify_import_archives
+    verified_records |= verify_import_archives(root)
     nested_archives: list[str] = []
     bad_paths: list[str] = []
     text_violations: list[str] = []

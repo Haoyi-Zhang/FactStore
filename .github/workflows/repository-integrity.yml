@@ -31,6 +31,7 @@ jobs:
             python -m unittest tests.test_evidence_admission tests.test_journal_evidence tests.test_sql_integer_domain tests.test_exhaustive -v > "$P021_LOGS/tests.stdout.txt" 2> "$P021_LOGS/tests.stderr.txt"
             python -m experiments.verify_checked_results --results results > "$P021_LOGS/historical.stdout.txt" 2> "$P021_LOGS/historical.stderr.txt"
             python -m experiments.verify_artifact > "$P021_LOGS/package.stdout.txt" 2> "$P021_LOGS/package.stderr.txt"
+            python -m unittest tests.test_import_archive_admission -v > "$P021_LOGS/import-archives.stdout.txt" 2> "$P021_LOGS/import-archives.stderr.txt"
             python -m experiments.verify_publication_references > "$P021_LOGS/references.stdout.txt" 2> "$P021_LOGS/references.stderr.txt"
           ' > "$P021_LOGS/campaign.stdout.txt" 2> "$P021_LOGS/campaign.stderr.txt"
           code=$?

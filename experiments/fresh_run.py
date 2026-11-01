@@ -41,6 +41,12 @@ REGISTERED_EXTENSION_METHODS = frozenset(
         'test_registered_from_submodule_and_observed_real_reads',
     )
 ) | frozenset({'tests.test_import_lifecycle.ImportLifecycleTests.test_complete_captured_native_lifecycle'})
+REGISTERED_EXTENSION_METHODS |= frozenset(
+    'tests.test_import_archive_admission.ImportArchiveAdmissionTests.'+method for method in (
+        'test_exact_reviewed_payloads', 'test_modified_payloads_reject',
+        'test_unregistered_archive_is_not_admitted',
+    )
+)
 FROZEN_BASELINE_COUNT = 132
 # SHA256 of sorted method IDs, each followed by LF, from the 132 historical
 # identities in results/current/linux/unit/checks.json (excluding its eight
