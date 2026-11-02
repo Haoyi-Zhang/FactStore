@@ -8,11 +8,13 @@ import hashlib
 import json
 from pathlib import Path
 import statistics
+from experiments.paper_evidence_admission import admit_native
 ROOT=Path(__file__).resolve().parents[1]
 
-def summarize():
-    path=ROOT/'results/native-fanout/summary.json'
-    data=json.loads(path.read_text(encoding='utf-8'));rows=data['rows']
+def summarize(directory=None):
+    directory=Path(directory) if directory is not None else ROOT/'results/native-fanout'
+    path=directory/'summary.json'
+    data=admit_native(directory,ROOT);rows=data['rows']
     by={(r['dependency_width'],r['audit_every'],r['repetition'],r['engine']):r for r in rows}
     expected={(w,a,r,e) for w in (2,8) for a in (1,4) for r in range(3) for e in ('frontier','sqlite_n','sqlite_r')}
     if len(rows)!=36 or set(by)!=expected or not all(r['accepted'] for r in rows):
@@ -49,10 +51,13 @@ def tables(result):
     return '\n'.join(lines+[r'\bottomrule\end{tabular}\end{table}',''])
 
 if __name__=='__main__':
-    parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--json',type=Path);parser.add_argument('--tex',type=Path);args=parser.parse_args()
-    result=summarize()
-    for path,text in ((args.json,json.dumps(result,sort_keys=True,indent=2)+'\n'),(args.tex,tables(result))):
+    parser=argparse.ArgumentParser(description=__doc__);parser.add_argument('--json',type=Path);parser.add_argument('--tex',type=Path)
+    parser.add_argument('--check',type=Path);parser.add_argument('--check-tex',type=Path);args=parser.parse_args()
+    result=summarize(args.check)
+    if args.check_tex and args.check_tex.read_text(encoding='utf-8')!=tables(result):
+        raise ValueError('paired native paper table differs from admitted evidence')
+    for path,text in ((args.json,json.dumps(result,sort_keys=True,indent=2,allow_nan=False)+'\n'),(args.tex,tables(result))):
         if path:
             path.parent.mkdir(parents=True,exist_ok=True)
             with path.open('x',encoding='utf-8',newline='\n') as stream:stream.write(text)
-    print(json.dumps(result,sort_keys=True))
+    print(json.dumps(result,sort_keys=True,allow_nan=False))

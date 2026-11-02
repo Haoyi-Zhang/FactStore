@@ -18,7 +18,7 @@ does not resolve dynamic Python attributes, import hooks or runtime bindings.
 
 ```sh
 python -B -m unittest tests.test_import_inventory tests.test_import_lifecycle -v
-python -B -m experiments.report_import_lifecycle --output ../paper/import-lifecycle-results.tex
+PYTHONDONTWRITEBYTECODE=1 python -X utf8 -B -m experiments.report_import_lifecycle --check-tex ../paper/import-lifecycle-results.tex
 ```
 
 The fresh native Linux activity in `results/import-lifecycle` has three engine
@@ -70,11 +70,13 @@ recorded without substituting lock or directory-fsync calls.
 ```sh
 python -B -m unittest experiments.fanout_cadence_tests -v
 python -B -m unittest experiments.history_lifecycle_tests -v
-python -B -m experiments.fanout_cadence --check results/sqlite-fanout --tex ../paper/fanout-cadence.tex
+PYTHONDONTWRITEBYTECODE=1 python -X utf8 -B -m experiments.report_sqlite_fanout --check results/sqlite-fanout --check-tex ../paper/fanout-cadence.tex
 ```
 
-For a new measurement, replace `--check` with `--out` and choose a fresh owned
-directory. Replaying/checking retained data is not a new timing run. This is not
+The unmeasured report receiver has no measurement mode. The frozen
+`experiments.fanout_cadence` producer and its legacy `--check` remain unchanged
+as measured evidence, not as the current paper-build admission command.
+Replaying/checking retained data is not a new timing run. This is not
 the requested native FrontierStore/SQLite-N/SQLite-R matched lifecycle result;
 the separately admitted Linux experiment below supplies that scoped comparison.
 No whole-engine ordering or device-write conclusion follows from this API
@@ -340,6 +342,27 @@ Metadata, sources, facts, and dependency edges are stored in normalized tables. 
 Each update writes a complete immutable SQLite image and a complete canonical export, synchronizes both, and atomically replaces one selector naming the pair. The export parser uses only the Python standard library and checks strict structure, source-generation closure, schema equality, ordering, and exact reverse membership. The audit requires equal database and export decodes. SQLite internals are not modified, and SQLite physical pages are not independently parsed. The frozen timing harness calls the complete selected-pair reader twice per audit sample--once through `durable_state()` and once through `audit_report()`--then compares the first decoded state with the logical oracle. Each retained rooted-audit sample therefore includes two full database decodes, two export parses, and two pair comparisons; the published numbers are not single-pass timings.
 
 ## Reconstructing retained and current summaries
+
+The current paper-build default is the no-write receiver preflight below. It
+admits complete typed matrices, binds every consumed summary to saved raw
+records/original archive members, and checks exact current TeX input equality.
+No store, source-analysis adapter, workload bootstrap or new campaign is run:
+
+```sh
+PYTHONDONTWRITEBYTECODE=1 python -X utf8 -B -m experiments.check_paper_inputs
+PYTHONDONTWRITEBYTECODE=1 python -X utf8 -B -m experiments.report_native_pairs --check-tex ../paper/native-paired.tex
+PYTHONDONTWRITEBYTECODE=1 python -X utf8 -B -m unittest tests.test_paper_evidence_receivers -v
+PYTHONDONTWRITEBYTECODE=1 python -X utf8 -B -O -m unittest tests.test_paper_evidence_receivers -v
+```
+
+The unmeasured receivers can render into an explicitly requested fresh owned
+destination. Only the parent integration owner regenerates paper inputs/PDFs,
+current manifests or packages. Byte-bound saved-data admission is not a new
+native replay, and does not authenticate the original producer. Original raw
+timings, negative results, source binding maps and measured preimages remain
+unchanged. The active claim ledger describes the current named single wrapper
+and new evidence; its original historical version is retained by the parent
+before-image backup, not rewritten inside the old rendering record.
 
 Run these commands from the artifact root. Use a fresh destination for `summarize_results.py`; the scripts do not execute the storage engines.
 
