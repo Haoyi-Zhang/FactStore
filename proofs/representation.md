@@ -71,11 +71,16 @@ obeys the new-generation rule. A logical compaction observation can be represent
 by changing only the publication epoch; this does not emulate physical segment
 selection, pins, or reclamation.
 
-The delivered SQLite-N wrapper applies a shared precomputed delta; it does not
+The measured SQLite-N wrapper applies a shared precomputed delta; it does not
 independently derive the invalidation set with the SQL join used in this existence
-argument. The executable path therefore checks atomic application of a validated
-delta and one-snapshot materialization. Join-based invalidation derivation and its
-cost remain theorem-level rather than separately executed or timed evidence.
+argument. This wrapper's executable path therefore checks atomic application of
+a validated delta and one-snapshot materialization.
+
+A separate, untimed `independent_sql_export` control derives invalidation through
+SQL dependency queries and checks 54 endpoint pairs against frozen oracles
+(`results/logical-sql-export/summary.json`). This functional evidence does not
+measure SQL-derived invalidation cost, change the measured wrapper, or support an
+equal-work latency comparison.
 
 ### Theorem A: endpoint observations through a transactional encoding
 

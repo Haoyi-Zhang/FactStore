@@ -223,7 +223,9 @@ decoded value with the logical oracle.  Existing timing rows retain that
 specific double-pass meaning.
 
 All current Python sources are parsed read-only with `ast.parse`; a syntax error
-in any unimported `.py` file fails verification.  The retained complete executable
-passing transcript contains 114 methods. The delivered suite has 140 methods;
-the separate Windows diagnostic is partial rather than a complete passing run.
-Earlier test counts remain only in explicitly historical records.
+in any unimported `.py` file fails verification. The earlier retained complete
+executable passing transcript contains 114 methods. A separate retained,
+source-bound Linux run passed 140 methods in its recorded source. The current
+test inventory is obtained by discovery of the delivered tests, not by reusing
+those historical counts; no current full-suite execution is implied here.
+The separate Windows diagnostic is partial rather than a complete passing run.
