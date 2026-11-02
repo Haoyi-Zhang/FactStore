@@ -216,12 +216,34 @@ class ReceiverFixtureTests(unittest.TestCase):
 class RetainedInputTests(unittest.TestCase):
     def test_all_current_inputs_identical_without_native_or_bootstrap(self):
         from experiments.check_paper_inputs import check
+        from experiments.check_paper_inputs import native_medians, native_table, import_text
         from experiments import native_fanout_cadence as native
+        # These are the four reviewed consumer inputs, not regenerated expected
+        # values, with text newlines normalized as in the manuscript preflight.
+        # Keep this contract executable in the artifact-only checkout.
+        expected = {
+            'fanout-cadence.tex': 'c30e72f833b596babe9f02eda9fe7e4f19bd9ba32d916e612ae0ebf7c6d3203f',
+            'native-fanout.tex': 'b9a24bf2475835a5a63901fe40b6e293a447112344f88e495b9bea1ab4462e6a',
+            'native-paired.tex': 'c17cefeb6ced4c4347ded0e16f3be83e45d4836ad1d8a5a3037858bfae5442da',
+            'import-lifecycle-results.tex': 'b24a68cd3eaed63a7f94b01520ce87748221e19b70c2f75a9841fa1d5cb33b56',
+        }
         def forbidden(*args,**kwargs):raise AssertionError('native/scientific call forbidden')
         with patch.object(native,'verify',forbidden),patch.object(native,'run',forbidden),\
              patch.object(native,'NativeOwner',forbidden),\
-             patch.object(native,'make_synthetic_state',forbidden),patch.object(native,'make_update',forbidden):
-            result=check(ROOT.parent/'paper')
+             patch.object(native,'make_synthetic_state',forbidden),patch.object(native,'make_update',forbidden),\
+             tempfile.TemporaryDirectory(prefix='factstore-consumer-inputs-') as directory:
+            paper = Path(directory)
+            contents = {
+                'fanout-cadence.tex': report_sqlite_fanout.table(admission.admit_api()),
+                'native-fanout.tex': native_table(native_medians(admission.admit_native())),
+                'native-paired.tex': report_native_pairs.tables(report_native_pairs.summarize()),
+                'import-lifecycle-results.tex': import_text(),
+            }
+            for name, content in contents.items():
+                raw = content.encode('utf-8')
+                self.assertEqual(hashlib.sha256(raw).hexdigest(), expected[name], name)
+                (paper/name).write_bytes(raw)
+            result=check(paper)
         self.assertEqual(result['status'],'PAPER_INPUTS_IDENTICAL')
         self.assertEqual(result['new_campaigns'],0)
 
@@ -233,6 +255,11 @@ class RetainedInputTests(unittest.TestCase):
         for key in ('C32','C34','C35','C36','C37'):
             for name in rows[key]['raw_result_path'].split(';'):
                 self.assertTrue((ROOT/name).is_file(),name)
+    @unittest.skipUnless((ROOT.parent/'paper/README.md').is_file(),
+                         'manuscript checkout is not part of the artifact-only repository')
+    def test_manuscript_build_recipe_and_installed_inputs(self):
+        from experiments.check_paper_inputs import check
+        self.assertEqual(check(ROOT.parent/'paper')['status'], 'PAPER_INPUTS_IDENTICAL')
         doc=(ROOT.parent/'paper/README.md').read_text(encoding='utf-8')
         self.assertIn('experiments.check_paper_inputs',doc)
         self.assertNotIn('experiments.fanout_cadence --check',doc)
