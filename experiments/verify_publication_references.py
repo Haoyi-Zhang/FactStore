@@ -34,7 +34,7 @@ def valid_bibliography_year(fields: dict[str, str]) -> bool:
     """Undated technical manuals are not assigned an invented publication year."""
     year = fields.get("year", "").strip()
     return bool(re.fullmatch(r"[12][0-9]{3}", year)) or (
-        fields.get("entry_type") == "manual" and year == "n.d."
+        fields.get("entry_type") == "manual" and year == "n.d"
         and bool(fields.get("note", "").strip())
         and fields.get("url", "").startswith("https://")
     )
